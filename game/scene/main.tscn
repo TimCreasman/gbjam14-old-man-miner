@@ -1,0 +1,36 @@
+[gd_scene format=4 uid="uid://cs0wc8xy53728"]
+
+[ext_resource type="Texture2D" uid="uid://dp6hu8ihhp767" path="res://assets/splash/splash2.png" id="1_ccxu0"]
+[ext_resource type="Shader" uid="uid://v4v84j62k6rl" path="res://assets/shaders/palette.gdshader" id="1_ma7nm"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://assets/shaders/palette_shader.gd" id="2_b8ek1"]
+[ext_resource type="Script" uid="uid://cm3iofpy5h14b" path="res://assets/shaders/gb_palette.gd" id="3_b8ek1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srulj"]
+shader = ExtResource("1_ma7nm")
+shader_parameter/input_palette = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/output_palette = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_srulj"]
+script = ExtResource("3_b8ek1")
+metadata/_custom_type_script = "uid://cm3iofpy5h14b"
+
+[sub_resource type="Resource" id="Resource_bvr34"]
+script = ExtResource("3_b8ek1")
+background = Color(3.85046e-07, 0.38012242, 0.30083656, 1)
+foreground = Color(0.45974553, 0.70963615, 0.6025284, 1)
+highlight = Color(0.7607843, 1, 1, 1)
+metadata/_custom_type_script = "uid://cm3iofpy5h14b"
+
+[node name="Node2D" type="SubViewportContainer" unique_id=1044598483]
+material = SubResource("ShaderMaterial_srulj")
+script = ExtResource("2_b8ek1")
+input_palette = SubResource("Resource_srulj")
+output_palette = SubResource("Resource_bvr34")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=353043122]
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1939209931]
+position = Vector2(80, 72)
+texture = ExtResource("1_ccxu0")
