@@ -3,40 +3,126 @@
 [ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://game/ground.gd" id="1_0ss1m"]
 [ext_resource type="Texture2D" uid="uid://b8diqeiwyi7r8" path="res://assets/sprites/ground.png" id="1_chlg1"]
 [ext_resource type="Texture2D" uid="uid://b6yyepw71eau3" path="res://assets/sprites/numbers.png" id="2_br182"]
+[ext_resource type="Texture2D" uid="uid://74ksolvvfqk5" path="res://assets/sprites/break_animation.png" id="3_vwehn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjbks"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1xka"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1puf"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jotop"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2hi5"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rslp"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdjv5"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhcux"]
+atlas = ExtResource("3_vwehn")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hd8ri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 0.01,
+"texture": SubResource("AtlasTexture_yjbks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1xka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1puf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jotop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2hi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rslp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdjv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhcux")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"breaking_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chlg1"]
 size = Vector2(8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ss1m"]
-texture = ExtResource("2_br182")
-texture_region_size = Vector2i(8, 8)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwehn"]
+size = Vector2(6, 20)
 
-[sub_resource type="TileSet" id="TileSet_vwehn"]
-tile_size = Vector2i(8, 8)
-sources/0 = SubResource("TileSetAtlasSource_0ss1m")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy6p4"]
+size = Vector2(20, 6)
 
-[node name="Node2D" type="StaticBody2D" unique_id=1157843804]
+[node name="Node2D" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area")]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_0ss1m")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453375674]
+texture_filter = 1
+texture_repeat = 1
 texture = ExtResource("1_chlg1")
+
+[node name="NumberSprite" type="Sprite2D" parent="." unique_id=1173574428]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_br182")
+hframes = 11
+
+[node name="BreakingAnimation" type="AnimatedSprite2D" parent="." unique_id=890741485]
+sprite_frames = SubResource("SpriteFrames_hd8ri")
+speed_scale = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715147708]
 shape = SubResource("RectangleShape2D_chlg1")
 
 [node name="BreakTimer" type="Timer" parent="." unique_id=1383425191]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=691721416]
-position = Vector2(-4, -4)
-tile_set = SubResource("TileSet_vwehn")
+[node name="Area2D" type="Area2D" parent="." unique_id=602176226]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=922168443]
+shape = SubResource("RectangleShape2D_vwehn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=900540304]
+shape = SubResource("RectangleShape2D_fy6p4")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/sprites/miner.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(8, 8)
+size = Vector2(7, 7)
 
 [node name="Player" type="CharacterBody2D" unique_id=1488697836]
 script = ExtResource("1_4flbx")

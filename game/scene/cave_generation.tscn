@@ -1,0 +1,2000 @@
+[gd_scene format=3 uid="uid://c6njgqn2764mb"]
+
+[ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://assets/shaders/inline.gdshader" id="1_7uvl8"]
+[ext_resource type="Script" uid="uid://y83dacopgqtt" path="res://game/generate_mine.gd" id="2_yyyc3"]
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://game/scene/ground.tscn" id="3_f5w2v"]
+[ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://game/ground.gd" id="4_yyyc3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
+shader = ExtResource("1_7uvl8")
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 7.932000851769999
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5w2v"]
+shader = ExtResource("1_7uvl8")
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 8.0
+
+[node name="CaveGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("tile_container")]
+material = SubResource("ShaderMaterial_5nb03")
+script = ExtResource("2_yyyc3")
+size = Vector2i(20, 10)
+tile = ExtResource("3_f5w2v")
+tile_container = NodePath("Tiles")
+
+[node name="Tiles" type="CanvasGroup" parent="." unique_id=1224250136]
+material = SubResource("ShaderMaterial_f5w2v")
+
+[node name="Node2D" type="StaticBody2D" parent="Tiles" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193145" type="StaticBody2D" parent="Tiles" unique_id=672382396 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193146" type="StaticBody2D" parent="Tiles" unique_id=485620927 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193147" type="StaticBody2D" parent="Tiles" unique_id=697969150 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193148" type="StaticBody2D" parent="Tiles" unique_id=1413821046 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193149" type="StaticBody2D" parent="Tiles" unique_id=1694001460 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193150" type="StaticBody2D" parent="Tiles" unique_id=1653839725 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193151" type="StaticBody2D" parent="Tiles" unique_id=1465737612 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193152" type="StaticBody2D" parent="Tiles" unique_id=1562064700 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193153" type="StaticBody2D" parent="Tiles" unique_id=385572774 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(0, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193154" type="StaticBody2D" parent="Tiles" unique_id=626380583 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193155" type="StaticBody2D" parent="Tiles" unique_id=302633583 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193156" type="StaticBody2D" parent="Tiles" unique_id=954143162 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193157" type="StaticBody2D" parent="Tiles" unique_id=108676325 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193158" type="StaticBody2D" parent="Tiles" unique_id=40889556 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193159" type="StaticBody2D" parent="Tiles" unique_id=742778145 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193160" type="StaticBody2D" parent="Tiles" unique_id=1531553552 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193161" type="StaticBody2D" parent="Tiles" unique_id=1431184753 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193162" type="StaticBody2D" parent="Tiles" unique_id=2090030791 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193163" type="StaticBody2D" parent="Tiles" unique_id=108938087 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(8, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193164" type="StaticBody2D" parent="Tiles" unique_id=1503915948 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193165" type="StaticBody2D" parent="Tiles" unique_id=1203261617 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193166" type="StaticBody2D" parent="Tiles" unique_id=210969912 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193167" type="StaticBody2D" parent="Tiles" unique_id=1911095722 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193168" type="StaticBody2D" parent="Tiles" unique_id=81179852 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193169" type="StaticBody2D" parent="Tiles" unique_id=754524627 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193170" type="StaticBody2D" parent="Tiles" unique_id=1924829696 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193171" type="StaticBody2D" parent="Tiles" unique_id=1042767580 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193172" type="StaticBody2D" parent="Tiles" unique_id=321306826 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193173" type="StaticBody2D" parent="Tiles" unique_id=137774114 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(16, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193174" type="StaticBody2D" parent="Tiles" unique_id=1073999574 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193175" type="StaticBody2D" parent="Tiles" unique_id=1908634211 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193176" type="StaticBody2D" parent="Tiles" unique_id=1845811633 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193177" type="StaticBody2D" parent="Tiles" unique_id=578059082 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193178" type="StaticBody2D" parent="Tiles" unique_id=1309538637 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193179" type="StaticBody2D" parent="Tiles" unique_id=301511050 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193180" type="StaticBody2D" parent="Tiles" unique_id=1632739027 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193181" type="StaticBody2D" parent="Tiles" unique_id=1246518619 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193182" type="StaticBody2D" parent="Tiles" unique_id=101336028 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193183" type="StaticBody2D" parent="Tiles" unique_id=1239904051 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(24, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193184" type="StaticBody2D" parent="Tiles" unique_id=228469528 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193185" type="StaticBody2D" parent="Tiles" unique_id=1014340330 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193186" type="StaticBody2D" parent="Tiles" unique_id=591399414 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193187" type="StaticBody2D" parent="Tiles" unique_id=908851048 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193188" type="StaticBody2D" parent="Tiles" unique_id=42674324 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193189" type="StaticBody2D" parent="Tiles" unique_id=1394043671 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193190" type="StaticBody2D" parent="Tiles" unique_id=124129737 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193191" type="StaticBody2D" parent="Tiles" unique_id=1751264576 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193192" type="StaticBody2D" parent="Tiles" unique_id=1485652093 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193193" type="StaticBody2D" parent="Tiles" unique_id=246986079 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(32, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193194" type="StaticBody2D" parent="Tiles" unique_id=848942212 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193195" type="StaticBody2D" parent="Tiles" unique_id=118578533 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193196" type="StaticBody2D" parent="Tiles" unique_id=1275903463 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193197" type="StaticBody2D" parent="Tiles" unique_id=1536168070 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193198" type="StaticBody2D" parent="Tiles" unique_id=2140036786 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193199" type="StaticBody2D" parent="Tiles" unique_id=1021601791 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193200" type="StaticBody2D" parent="Tiles" unique_id=913310105 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193201" type="StaticBody2D" parent="Tiles" unique_id=2090651762 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193202" type="StaticBody2D" parent="Tiles" unique_id=1954312515 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193203" type="StaticBody2D" parent="Tiles" unique_id=1594877767 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(40, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193204" type="StaticBody2D" parent="Tiles" unique_id=1237531196 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193205" type="StaticBody2D" parent="Tiles" unique_id=1553957828 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193206" type="StaticBody2D" parent="Tiles" unique_id=1312892703 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193207" type="StaticBody2D" parent="Tiles" unique_id=680222160 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193208" type="StaticBody2D" parent="Tiles" unique_id=433017045 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193209" type="StaticBody2D" parent="Tiles" unique_id=1848280103 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193210" type="StaticBody2D" parent="Tiles" unique_id=183485825 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193211" type="StaticBody2D" parent="Tiles" unique_id=1191007365 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193212" type="StaticBody2D" parent="Tiles" unique_id=553541837 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193213" type="StaticBody2D" parent="Tiles" unique_id=1481750744 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(48, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193214" type="StaticBody2D" parent="Tiles" unique_id=1876976019 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193215" type="StaticBody2D" parent="Tiles" unique_id=553118854 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193216" type="StaticBody2D" parent="Tiles" unique_id=209871537 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193217" type="StaticBody2D" parent="Tiles" unique_id=1532426989 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193218" type="StaticBody2D" parent="Tiles" unique_id=1261734457 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193219" type="StaticBody2D" parent="Tiles" unique_id=42233281 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193220" type="StaticBody2D" parent="Tiles" unique_id=722686772 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193221" type="StaticBody2D" parent="Tiles" unique_id=1877563050 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193222" type="StaticBody2D" parent="Tiles" unique_id=2097780065 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193223" type="StaticBody2D" parent="Tiles" unique_id=744171693 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(56, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193224" type="StaticBody2D" parent="Tiles" unique_id=1277987714 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193225" type="StaticBody2D" parent="Tiles" unique_id=1678753549 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193226" type="StaticBody2D" parent="Tiles" unique_id=771908273 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193227" type="StaticBody2D" parent="Tiles" unique_id=588973560 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193228" type="StaticBody2D" parent="Tiles" unique_id=313533568 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193229" type="StaticBody2D" parent="Tiles" unique_id=22818307 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193230" type="StaticBody2D" parent="Tiles" unique_id=2108036160 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193231" type="StaticBody2D" parent="Tiles" unique_id=365349222 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193232" type="StaticBody2D" parent="Tiles" unique_id=1096255227 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193233" type="StaticBody2D" parent="Tiles" unique_id=2119188856 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(64, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193234" type="StaticBody2D" parent="Tiles" unique_id=827600695 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193235" type="StaticBody2D" parent="Tiles" unique_id=1814984973 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193236" type="StaticBody2D" parent="Tiles" unique_id=1033255564 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193237" type="StaticBody2D" parent="Tiles" unique_id=470808683 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193238" type="StaticBody2D" parent="Tiles" unique_id=479152101 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193239" type="StaticBody2D" parent="Tiles" unique_id=833536679 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193240" type="StaticBody2D" parent="Tiles" unique_id=1482243635 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193241" type="StaticBody2D" parent="Tiles" unique_id=666538281 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193242" type="StaticBody2D" parent="Tiles" unique_id=1216818503 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193243" type="StaticBody2D" parent="Tiles" unique_id=544258573 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(72, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193244" type="StaticBody2D" parent="Tiles" unique_id=92223828 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193245" type="StaticBody2D" parent="Tiles" unique_id=1754630631 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193246" type="StaticBody2D" parent="Tiles" unique_id=1879718723 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193247" type="StaticBody2D" parent="Tiles" unique_id=1278401924 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193248" type="StaticBody2D" parent="Tiles" unique_id=1628275063 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193249" type="StaticBody2D" parent="Tiles" unique_id=551307229 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193250" type="StaticBody2D" parent="Tiles" unique_id=2038153751 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193251" type="StaticBody2D" parent="Tiles" unique_id=1921807619 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193252" type="StaticBody2D" parent="Tiles" unique_id=841771925 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193253" type="StaticBody2D" parent="Tiles" unique_id=1588529301 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(80, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193254" type="StaticBody2D" parent="Tiles" unique_id=1727237113 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193255" type="StaticBody2D" parent="Tiles" unique_id=1843576796 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193256" type="StaticBody2D" parent="Tiles" unique_id=658073870 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193257" type="StaticBody2D" parent="Tiles" unique_id=1046891951 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193258" type="StaticBody2D" parent="Tiles" unique_id=838437154 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193259" type="StaticBody2D" parent="Tiles" unique_id=971069268 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193260" type="StaticBody2D" parent="Tiles" unique_id=468443014 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193261" type="StaticBody2D" parent="Tiles" unique_id=1794647888 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193262" type="StaticBody2D" parent="Tiles" unique_id=1888553016 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193263" type="StaticBody2D" parent="Tiles" unique_id=802185569 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(88, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193264" type="StaticBody2D" parent="Tiles" unique_id=1301051144 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193265" type="StaticBody2D" parent="Tiles" unique_id=1067634714 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193266" type="StaticBody2D" parent="Tiles" unique_id=608251974 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193267" type="StaticBody2D" parent="Tiles" unique_id=422195400 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193268" type="StaticBody2D" parent="Tiles" unique_id=1557793844 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193269" type="StaticBody2D" parent="Tiles" unique_id=138697034 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193270" type="StaticBody2D" parent="Tiles" unique_id=336273651 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193271" type="StaticBody2D" parent="Tiles" unique_id=1784868563 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193272" type="StaticBody2D" parent="Tiles" unique_id=1407455499 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193273" type="StaticBody2D" parent="Tiles" unique_id=37268166 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(96, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193274" type="StaticBody2D" parent="Tiles" unique_id=1164807722 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193275" type="StaticBody2D" parent="Tiles" unique_id=499864308 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193276" type="StaticBody2D" parent="Tiles" unique_id=2133031126 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193277" type="StaticBody2D" parent="Tiles" unique_id=1270372758 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193278" type="StaticBody2D" parent="Tiles" unique_id=1272750859 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193279" type="StaticBody2D" parent="Tiles" unique_id=77199084 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193280" type="StaticBody2D" parent="Tiles" unique_id=588226087 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193281" type="StaticBody2D" parent="Tiles" unique_id=1846711474 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193282" type="StaticBody2D" parent="Tiles" unique_id=97288631 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193283" type="StaticBody2D" parent="Tiles" unique_id=1834575612 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(104, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193284" type="StaticBody2D" parent="Tiles" unique_id=1061462676 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193285" type="StaticBody2D" parent="Tiles" unique_id=201931787 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193286" type="StaticBody2D" parent="Tiles" unique_id=1549198692 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193287" type="StaticBody2D" parent="Tiles" unique_id=874573813 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193288" type="StaticBody2D" parent="Tiles" unique_id=1274402002 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193289" type="StaticBody2D" parent="Tiles" unique_id=1348445808 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193290" type="StaticBody2D" parent="Tiles" unique_id=1303004953 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193291" type="StaticBody2D" parent="Tiles" unique_id=2028878165 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193292" type="StaticBody2D" parent="Tiles" unique_id=1551759809 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193293" type="StaticBody2D" parent="Tiles" unique_id=1795373124 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(112, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193294" type="StaticBody2D" parent="Tiles" unique_id=1835068079 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193295" type="StaticBody2D" parent="Tiles" unique_id=1268762926 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193296" type="StaticBody2D" parent="Tiles" unique_id=983866768 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193297" type="StaticBody2D" parent="Tiles" unique_id=2081550422 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193298" type="StaticBody2D" parent="Tiles" unique_id=1364510428 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193299" type="StaticBody2D" parent="Tiles" unique_id=638654709 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193300" type="StaticBody2D" parent="Tiles" unique_id=111613910 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193301" type="StaticBody2D" parent="Tiles" unique_id=881271191 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193302" type="StaticBody2D" parent="Tiles" unique_id=585868092 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193303" type="StaticBody2D" parent="Tiles" unique_id=1112591752 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(120, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193304" type="StaticBody2D" parent="Tiles" unique_id=194666661 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193305" type="StaticBody2D" parent="Tiles" unique_id=479103851 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193306" type="StaticBody2D" parent="Tiles" unique_id=1707081025 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193307" type="StaticBody2D" parent="Tiles" unique_id=290160531 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193308" type="StaticBody2D" parent="Tiles" unique_id=698256797 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193309" type="StaticBody2D" parent="Tiles" unique_id=563649936 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193310" type="StaticBody2D" parent="Tiles" unique_id=396088968 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193311" type="StaticBody2D" parent="Tiles" unique_id=1136251261 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193312" type="StaticBody2D" parent="Tiles" unique_id=1991092990 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193313" type="StaticBody2D" parent="Tiles" unique_id=796379170 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(128, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193314" type="StaticBody2D" parent="Tiles" unique_id=2087911092 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193315" type="StaticBody2D" parent="Tiles" unique_id=1639394538 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193316" type="StaticBody2D" parent="Tiles" unique_id=1677533294 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193317" type="StaticBody2D" parent="Tiles" unique_id=1664809315 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193318" type="StaticBody2D" parent="Tiles" unique_id=1445307599 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 5
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193319" type="StaticBody2D" parent="Tiles" unique_id=1116456723 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193320" type="StaticBody2D" parent="Tiles" unique_id=426295919 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193321" type="StaticBody2D" parent="Tiles" unique_id=1672712808 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193322" type="StaticBody2D" parent="Tiles" unique_id=809907276 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193323" type="StaticBody2D" parent="Tiles" unique_id=414340699 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(136, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193324" type="StaticBody2D" parent="Tiles" unique_id=1441597784 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193325" type="StaticBody2D" parent="Tiles" unique_id=1560406922 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193326" type="StaticBody2D" parent="Tiles" unique_id=655482122 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193327" type="StaticBody2D" parent="Tiles" unique_id=1108404866 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 4
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193328" type="StaticBody2D" parent="Tiles" unique_id=451351248 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193329" type="StaticBody2D" parent="Tiles" unique_id=1357639097 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193330" type="StaticBody2D" parent="Tiles" unique_id=744178091 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193331" type="StaticBody2D" parent="Tiles" unique_id=719590996 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193332" type="StaticBody2D" parent="Tiles" unique_id=2080756318 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 10
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193333" type="StaticBody2D" parent="Tiles" unique_id=536035222 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(144, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193334" type="StaticBody2D" parent="Tiles" unique_id=1844276554 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 1
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193335" type="StaticBody2D" parent="Tiles" unique_id=1815220158 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 8)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 6
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193336" type="StaticBody2D" parent="Tiles" unique_id=1775477884 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193337" type="StaticBody2D" parent="Tiles" unique_id=764680088 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 24)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193338" type="StaticBody2D" parent="Tiles" unique_id=1000574236 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 32)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193339" type="StaticBody2D" parent="Tiles" unique_id=1110425687 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 40)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 9
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193340" type="StaticBody2D" parent="Tiles" unique_id=686116691 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 48)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 7
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193341" type="StaticBody2D" parent="Tiles" unique_id=326070309 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 56)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 2
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193342" type="StaticBody2D" parent="Tiles" unique_id=1887201182 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 64)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 8
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")
+
+[node name="@StaticBody2D@193343" type="StaticBody2D" parent="Tiles" unique_id=600920605 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area") instance=ExtResource("3_f5w2v")]
+position = Vector2(152, 72)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_yyyc3")
+hardness = 3
+breaking_animation_sprite = NodePath("BreakingAnimation")
+number_sprite = NodePath("NumberSprite")
+neighbor_area = NodePath("Area2D")

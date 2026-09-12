@@ -4,8 +4,9 @@ extends CharacterBody2D
 const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
-
 func _physics_process(delta):
+	move_camera()
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -28,7 +29,11 @@ func _physics_process(delta):
 			handle_mine(collision.get_collider(), collision.get_normal())
 
 func handle_mine(tile: OMM_GroundTile, dir: Vector2):
-	print(dir, tile.hardness)
 	var move_dir = Vector2(Input.get_axis("move_right", "move_left"), Input.get_axis("move_down", "move_up"))
 	if dir == move_dir:
 		tile.do_break()
+
+# Manual camera movement to mitigate pixel ghosting
+func move_camera():
+	var v := get_viewport()
+	v.canvas_transform = Transform2D(0.0, -Vector2i(global_position) + v.size / 2)

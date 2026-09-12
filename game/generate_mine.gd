@@ -5,9 +5,12 @@ extends Node2D
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var tile_size: Vector2i = Vector2i(8,8)
 @export var tile: PackedScene
 
+@export_category("Internal Components")
+@export var tile_container: CanvasGroup
+
 @export_tool_button("Generate level") var generate = func ():
-	for child in get_children():
-		remove_child(child)
+	for child in tile_container.get_children():
+		tile_container.remove_child(child)
 	# clear()
 	var grid = random_grid(size)
 	generate_tiles(grid)
@@ -30,10 +33,14 @@ func random_grid(_size: Vector2i) -> Dictionary:
 
 func generate_tiles(grid: Dictionary):
 	for coord in grid.keys():
+		# print(grid[coord]['hardness'])
+		# if grid[coord]['hardness'] == 0:
+		# 	continue
+
 		var tile_scene = tile.instantiate()
 		if tile_scene is OMM_GroundTile:
 			tile_scene.hardness = grid[coord]['hardness']
 			tile_scene.global_position = Vector2i(coord[0] * tile_size.x, coord[1] * tile_size.y)
-			add_child(tile_scene)
+
+			tile_container.add_child(tile_scene)
 			tile_scene.owner = get_tree().edited_scene_root
-		# print()

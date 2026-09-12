@@ -15,6 +15,8 @@ void fragment() {
     float neighbor_obscurity_level = 0.0;
 
     for(int i = 0; i < OFFSETS.length(); i++) {
+        // TODO We need to figure out how to consider the neighbor obscured
+        // If outside the shader - maybe a cascading affect on neighboring 0 hardness blocks?
         neighbor_obscurity_level += texture(screen_texture, SCREEN_UV + size * OFFSETS[i]).a;
     }
 
