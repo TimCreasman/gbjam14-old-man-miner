@@ -1,12 +1,20 @@
 @tool
 extends Node2D
 
-@export var size: Vector2i = Vector2i.ZERO
+@export var size: Vector2i = Vector2i.ZERO:
+	set(value):
+		size = value
+		if noise_map:
+			noise_map.width = size.x
+			noise_map.height = size.y 
+
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var tile_size: Vector2i = Vector2i(8,8)
+			
 @export var tile: PackedScene
 
 @export_category("Internal Components")
 @export var tile_container: CanvasGroup
+@export var noise_map: NoiseTexture2D
 
 @export_tool_button("Generate level") var generate = func ():
 	for child in tile_container.get_children():
@@ -22,11 +30,10 @@ func random_grid(_size: Vector2i) -> Dictionary:
 
 	for x in range(_size.x):
 		for y in range(_size.y):
-			# set_cell(Vector2i(x, y), 1, Vector2i.ZERO, 1)
-			# tile_set.get_source(
+			var color = noise_map.get_image().get_pixel(x, y)
 			grid[[x, y]] = {
-				# 'scene' : 
-				'hardness' : rng.randi_range(0, 10)
+				# Noise maps are greyscale so we only need one channel
+				'hardness' : floori(remap(color.r, 0, 1, 0, 10))
 			}
 
 	return grid
