@@ -4,9 +4,10 @@
 - [x] Breaking blocks
 - [x] Basic Camera
 - [x] Block breaking time tweaks
+- [x] Better terrain gen
+  - [x] Inifinte terrain gen
 
 # In progress
-- [ ] Better terrain gen
 
 # To do
 - [ ] Design Miner Sprite
