@@ -1,18 +1,15 @@
 [gd_scene format=3 uid="uid://cs0wc8xy53728"]
 
 [ext_resource type="Texture2D" uid="uid://dp6hu8ihhp767" path="res://assets/splash/splash2.png" id="1_ccxu0"]
-[ext_resource type="Shader" uid="uid://v4v84j62k6rl" path="res://assets/shaders/palette.gdshader" id="1_ma7nm"]
 [ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://assets/shaders/palette_shader.gd" id="2_b8ek1"]
 [ext_resource type="Script" uid="uid://cm3iofpy5h14b" path="res://assets/shaders/gb_palette.gd" id="3_b8ek1"]
 [ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://game/scene/ground.tscn" id="5_srulj"]
+[ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://assets/shaders/inline.gdshader" id="6_yjmwy"]
 [ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://game/ground.gd" id="7_0rwjj"]
-[ext_resource type="PackedScene" uid="uid://c04kdg0d8sqag" path="res://player.tscn" id="7_5nb03"]
+[ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://player.tscn" id="7_5nb03"]
 [ext_resource type="Script" uid="uid://y83dacopgqtt" path="res://game/generate_mine.gd" id="7_yjmwy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srulj"]
-shader = ExtResource("1_ma7nm")
-shader_parameter/input_palette = [Vector4(0.32156864, 0.32156864, 0.32156864, 1), Vector4(0, 0, 0, 1), Vector4(0.64705884, 0.64705884, 0.64705884, 1), Vector4(1, 1, 1, 1)]
-shader_parameter/output_palette = [Vector4(3.85046e-07, 0.38012242, 0.30083656, 1), Vector4(0, 0, 0, 1), Vector4(0.45974553, 0.70963615, 0.6025284, 1), Vector4(0.7607843, 1, 1, 1)]
 
 [sub_resource type="Resource" id="Resource_srulj"]
 script = ExtResource("3_b8ek1")
@@ -24,6 +21,11 @@ background = Color(3.85046e-07, 0.38012242, 0.30083656, 1)
 foreground = Color(0.45974553, 0.70963615, 0.6025284, 1)
 highlight = Color(0.7607843, 1, 1, 1)
 metadata/_custom_type_script = "uid://cm3iofpy5h14b"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
+shader = ExtResource("6_yjmwy")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 7.932000851769999
 
 [node name="Node2D" type="SubViewportContainer" unique_id=1044598483]
 material = SubResource("ShaderMaterial_srulj")
@@ -40,403 +42,407 @@ render_target_update_mode = 4
 position = Vector2(80, 72)
 texture = ExtResource("1_ccxu0")
 
-[node name="Tiles" type="Node2D" parent="SubViewport" unique_id=1992436415]
+[node name="Player" parent="SubViewport" unique_id=1488697836 instance=ExtResource("7_5nb03")]
+position = Vector2(82, 102)
+
+[node name="Tiles" type="CanvasGroup" parent="SubViewport" unique_id=97441040]
+material = SubResource("ShaderMaterial_5nb03")
 position = Vector2(4, 116)
+fit_margin = 0.0
 script = ExtResource("7_yjmwy")
 size = Vector2i(20, 4)
 tile = ExtResource("5_srulj")
 
 [node name="Node2D" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1157843804 instance=ExtResource("5_srulj")]
 script = ExtResource("7_0rwjj")
-hardness = 7
-
-[node name="@StaticBody2D@80364" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1428316840 instance=ExtResource("5_srulj")]
-position = Vector2(0, 8)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80365" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1863771604 instance=ExtResource("5_srulj")]
-position = Vector2(0, 16)
-script = ExtResource("7_0rwjj")
-hardness = 7
-
-[node name="@StaticBody2D@80366" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=734414303 instance=ExtResource("5_srulj")]
-position = Vector2(0, 24)
-script = ExtResource("7_0rwjj")
-hardness = 1
-
-[node name="@StaticBody2D@80367" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1388426608 instance=ExtResource("5_srulj")]
-position = Vector2(8, 0)
-script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80368" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=70234889 instance=ExtResource("5_srulj")]
-position = Vector2(8, 8)
+[node name="@StaticBody2D@51852" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1537143668 instance=ExtResource("5_srulj")]
+position = Vector2(0, 8)
+script = ExtResource("7_0rwjj")
+hardness = 8
+
+[node name="@StaticBody2D@51853" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=565608625 instance=ExtResource("5_srulj")]
+position = Vector2(0, 16)
+script = ExtResource("7_0rwjj")
+hardness = 2
+
+[node name="@StaticBody2D@51854" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1888710887 instance=ExtResource("5_srulj")]
+position = Vector2(0, 24)
+script = ExtResource("7_0rwjj")
+hardness = 4
+
+[node name="@StaticBody2D@51855" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=768205952 instance=ExtResource("5_srulj")]
+position = Vector2(8, 0)
 script = ExtResource("7_0rwjj")
 hardness = 9
 
-[node name="@StaticBody2D@80369" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=933279114 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51856" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=506411717 instance=ExtResource("5_srulj")]
+position = Vector2(8, 8)
+script = ExtResource("7_0rwjj")
+hardness = 3
+
+[node name="@StaticBody2D@51857" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=358164928 instance=ExtResource("5_srulj")]
 position = Vector2(8, 16)
 script = ExtResource("7_0rwjj")
-hardness = 6
+hardness = 4
 
-[node name="@StaticBody2D@80370" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1767865468 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51858" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1004465450 instance=ExtResource("5_srulj")]
 position = Vector2(8, 24)
 script = ExtResource("7_0rwjj")
-hardness = 3
+hardness = 1
 
-[node name="@StaticBody2D@80371" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=238547243 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51859" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1414575992 instance=ExtResource("5_srulj")]
 position = Vector2(16, 0)
 script = ExtResource("7_0rwjj")
-hardness = 3
+hardness = 10
 
-[node name="@StaticBody2D@80372" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1742035206 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51860" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=698294160 instance=ExtResource("5_srulj")]
 position = Vector2(16, 8)
 script = ExtResource("7_0rwjj")
 hardness = 4
 
-[node name="@StaticBody2D@80373" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2084688386 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51861" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1503931411 instance=ExtResource("5_srulj")]
 position = Vector2(16, 16)
 script = ExtResource("7_0rwjj")
-hardness = 10
+hardness = 7
 
-[node name="@StaticBody2D@80374" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1691723110 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51862" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=853143220 instance=ExtResource("5_srulj")]
 position = Vector2(16, 24)
 script = ExtResource("7_0rwjj")
-hardness = 2
 
-[node name="@StaticBody2D@80375" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2007945487 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51863" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1644016899 instance=ExtResource("5_srulj")]
 position = Vector2(24, 0)
+script = ExtResource("7_0rwjj")
+hardness = 3
+
+[node name="@StaticBody2D@51864" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=420089288 instance=ExtResource("5_srulj")]
+position = Vector2(24, 8)
+script = ExtResource("7_0rwjj")
+hardness = 7
+
+[node name="@StaticBody2D@51865" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1999797288 instance=ExtResource("5_srulj")]
+position = Vector2(24, 16)
 script = ExtResource("7_0rwjj")
 hardness = 2
 
-[node name="@StaticBody2D@80376" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1147004603 instance=ExtResource("5_srulj")]
-position = Vector2(24, 8)
+[node name="@StaticBody2D@51866" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1985112617 instance=ExtResource("5_srulj")]
+position = Vector2(24, 24)
 script = ExtResource("7_0rwjj")
 hardness = 1
 
-[node name="@StaticBody2D@80377" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1039365906 instance=ExtResource("5_srulj")]
-position = Vector2(24, 16)
-script = ExtResource("7_0rwjj")
-
-[node name="@StaticBody2D@80378" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=423509046 instance=ExtResource("5_srulj")]
-position = Vector2(24, 24)
-script = ExtResource("7_0rwjj")
-
-[node name="@StaticBody2D@80379" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=692127439 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51867" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=645442553 instance=ExtResource("5_srulj")]
 position = Vector2(32, 0)
 script = ExtResource("7_0rwjj")
 hardness = 7
 
-[node name="@StaticBody2D@80380" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1521104935 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51868" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1597955597 instance=ExtResource("5_srulj")]
 position = Vector2(32, 8)
 script = ExtResource("7_0rwjj")
-hardness = 3
+hardness = 9
 
-[node name="@StaticBody2D@80381" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1981942576 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51869" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=511054358 instance=ExtResource("5_srulj")]
 position = Vector2(32, 16)
 script = ExtResource("7_0rwjj")
-hardness = 6
+hardness = 8
 
-[node name="@StaticBody2D@80382" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=41097932 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51870" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=974744758 instance=ExtResource("5_srulj")]
 position = Vector2(32, 24)
 script = ExtResource("7_0rwjj")
-hardness = 9
+hardness = 1
 
-[node name="@StaticBody2D@80383" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1839414008 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51871" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1974693196 instance=ExtResource("5_srulj")]
 position = Vector2(40, 0)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80384" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=898761081 instance=ExtResource("5_srulj")]
-position = Vector2(40, 8)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80385" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=696635462 instance=ExtResource("5_srulj")]
-position = Vector2(40, 16)
-script = ExtResource("7_0rwjj")
-hardness = 7
-
-[node name="@StaticBody2D@80386" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=537615386 instance=ExtResource("5_srulj")]
-position = Vector2(40, 24)
-script = ExtResource("7_0rwjj")
-hardness = 8
-
-[node name="@StaticBody2D@80387" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=566588051 instance=ExtResource("5_srulj")]
-position = Vector2(48, 0)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80388" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=339644814 instance=ExtResource("5_srulj")]
-position = Vector2(48, 8)
-script = ExtResource("7_0rwjj")
-hardness = 1
-
-[node name="@StaticBody2D@80389" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1918543501 instance=ExtResource("5_srulj")]
-position = Vector2(48, 16)
+[node name="@StaticBody2D@51872" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1430955135 instance=ExtResource("5_srulj")]
+position = Vector2(40, 8)
 script = ExtResource("7_0rwjj")
 hardness = 6
 
-[node name="@StaticBody2D@80390" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1940484828 instance=ExtResource("5_srulj")]
-position = Vector2(48, 24)
-script = ExtResource("7_0rwjj")
-hardness = 3
-
-[node name="@StaticBody2D@80391" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1243414347 instance=ExtResource("5_srulj")]
-position = Vector2(56, 0)
-script = ExtResource("7_0rwjj")
-hardness = 3
-
-[node name="@StaticBody2D@80392" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1485690837 instance=ExtResource("5_srulj")]
-position = Vector2(56, 8)
-script = ExtResource("7_0rwjj")
-hardness = 8
-
-[node name="@StaticBody2D@80393" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1613620693 instance=ExtResource("5_srulj")]
-position = Vector2(56, 16)
-script = ExtResource("7_0rwjj")
-hardness = 8
-
-[node name="@StaticBody2D@80394" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1028538020 instance=ExtResource("5_srulj")]
-position = Vector2(56, 24)
+[node name="@StaticBody2D@51873" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=872613812 instance=ExtResource("5_srulj")]
+position = Vector2(40, 16)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80395" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1553009268 instance=ExtResource("5_srulj")]
-position = Vector2(64, 0)
+[node name="@StaticBody2D@51874" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=114284359 instance=ExtResource("5_srulj")]
+position = Vector2(40, 24)
 script = ExtResource("7_0rwjj")
-hardness = 9
 
-[node name="@StaticBody2D@80396" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1661541834 instance=ExtResource("5_srulj")]
-position = Vector2(64, 8)
-script = ExtResource("7_0rwjj")
-hardness = 4
-
-[node name="@StaticBody2D@80397" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1200296716 instance=ExtResource("5_srulj")]
-position = Vector2(64, 16)
-script = ExtResource("7_0rwjj")
-hardness = 2
-
-[node name="@StaticBody2D@80398" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1211834323 instance=ExtResource("5_srulj")]
-position = Vector2(64, 24)
+[node name="@StaticBody2D@51875" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2096652745 instance=ExtResource("5_srulj")]
+position = Vector2(48, 0)
 script = ExtResource("7_0rwjj")
 hardness = 1
 
-[node name="@StaticBody2D@80399" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2014346886 instance=ExtResource("5_srulj")]
-position = Vector2(72, 0)
-script = ExtResource("7_0rwjj")
-
-[node name="@StaticBody2D@80400" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1007424689 instance=ExtResource("5_srulj")]
-position = Vector2(72, 8)
+[node name="@StaticBody2D@51876" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=330848930 instance=ExtResource("5_srulj")]
+position = Vector2(48, 8)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80401" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=44979449 instance=ExtResource("5_srulj")]
-position = Vector2(72, 16)
-script = ExtResource("7_0rwjj")
-hardness = 2
-
-[node name="@StaticBody2D@80402" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1849348686 instance=ExtResource("5_srulj")]
-position = Vector2(72, 24)
-script = ExtResource("7_0rwjj")
-hardness = 7
-
-[node name="@StaticBody2D@80403" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1838231585 instance=ExtResource("5_srulj")]
-position = Vector2(80, 0)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80404" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1787006423 instance=ExtResource("5_srulj")]
-position = Vector2(80, 8)
-script = ExtResource("7_0rwjj")
-hardness = 3
-
-[node name="@StaticBody2D@80405" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=863383602 instance=ExtResource("5_srulj")]
-position = Vector2(80, 16)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80406" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1984641536 instance=ExtResource("5_srulj")]
-position = Vector2(80, 24)
-script = ExtResource("7_0rwjj")
-
-[node name="@StaticBody2D@80407" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=846586913 instance=ExtResource("5_srulj")]
-position = Vector2(88, 0)
-script = ExtResource("7_0rwjj")
-hardness = 4
-
-[node name="@StaticBody2D@80408" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=715793985 instance=ExtResource("5_srulj")]
-position = Vector2(88, 8)
+[node name="@StaticBody2D@51877" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1983613331 instance=ExtResource("5_srulj")]
+position = Vector2(48, 16)
 script = ExtResource("7_0rwjj")
 hardness = 8
 
-[node name="@StaticBody2D@80409" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1763047071 instance=ExtResource("5_srulj")]
-position = Vector2(88, 16)
+[node name="@StaticBody2D@51878" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1955226436 instance=ExtResource("5_srulj")]
+position = Vector2(48, 24)
+script = ExtResource("7_0rwjj")
+hardness = 9
+
+[node name="@StaticBody2D@51879" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=558426794 instance=ExtResource("5_srulj")]
+position = Vector2(56, 0)
+script = ExtResource("7_0rwjj")
+hardness = 4
+
+[node name="@StaticBody2D@51880" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=513789424 instance=ExtResource("5_srulj")]
+position = Vector2(56, 8)
+script = ExtResource("7_0rwjj")
+hardness = 4
+
+[node name="@StaticBody2D@51881" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1664442531 instance=ExtResource("5_srulj")]
+position = Vector2(56, 16)
+script = ExtResource("7_0rwjj")
+hardness = 10
+
+[node name="@StaticBody2D@51882" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2145217759 instance=ExtResource("5_srulj")]
+position = Vector2(56, 24)
+script = ExtResource("7_0rwjj")
+
+[node name="@StaticBody2D@51883" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2020110670 instance=ExtResource("5_srulj")]
+position = Vector2(64, 0)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80410" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=967938322 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51884" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=251901189 instance=ExtResource("5_srulj")]
+position = Vector2(64, 8)
+script = ExtResource("7_0rwjj")
+hardness = 5
+
+[node name="@StaticBody2D@51885" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1542238327 instance=ExtResource("5_srulj")]
+position = Vector2(64, 16)
+script = ExtResource("7_0rwjj")
+hardness = 6
+
+[node name="@StaticBody2D@51886" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=469557621 instance=ExtResource("5_srulj")]
+position = Vector2(64, 24)
+script = ExtResource("7_0rwjj")
+hardness = 9
+
+[node name="@StaticBody2D@51887" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1455932987 instance=ExtResource("5_srulj")]
+position = Vector2(72, 0)
+script = ExtResource("7_0rwjj")
+hardness = 9
+
+[node name="@StaticBody2D@51888" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1029603575 instance=ExtResource("5_srulj")]
+position = Vector2(72, 8)
+script = ExtResource("7_0rwjj")
+hardness = 1
+
+[node name="@StaticBody2D@51889" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1325635472 instance=ExtResource("5_srulj")]
+position = Vector2(72, 16)
+script = ExtResource("7_0rwjj")
+hardness = 1
+
+[node name="@StaticBody2D@51890" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1408401368 instance=ExtResource("5_srulj")]
+position = Vector2(72, 24)
+script = ExtResource("7_0rwjj")
+hardness = 5
+
+[node name="@StaticBody2D@51891" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=128078272 instance=ExtResource("5_srulj")]
+position = Vector2(80, 0)
+script = ExtResource("7_0rwjj")
+hardness = 6
+
+[node name="@StaticBody2D@51892" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1139144875 instance=ExtResource("5_srulj")]
+position = Vector2(80, 8)
+script = ExtResource("7_0rwjj")
+
+[node name="@StaticBody2D@51893" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1331097774 instance=ExtResource("5_srulj")]
+position = Vector2(80, 16)
+script = ExtResource("7_0rwjj")
+hardness = 5
+
+[node name="@StaticBody2D@51894" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1847195045 instance=ExtResource("5_srulj")]
+position = Vector2(80, 24)
+script = ExtResource("7_0rwjj")
+hardness = 8
+
+[node name="@StaticBody2D@51895" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=606575920 instance=ExtResource("5_srulj")]
+position = Vector2(88, 0)
+script = ExtResource("7_0rwjj")
+hardness = 8
+
+[node name="@StaticBody2D@51896" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=627088260 instance=ExtResource("5_srulj")]
+position = Vector2(88, 8)
+script = ExtResource("7_0rwjj")
+hardness = 3
+
+[node name="@StaticBody2D@51897" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=129171842 instance=ExtResource("5_srulj")]
+position = Vector2(88, 16)
+script = ExtResource("7_0rwjj")
+hardness = 3
+
+[node name="@StaticBody2D@51898" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=973105303 instance=ExtResource("5_srulj")]
 position = Vector2(88, 24)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80411" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=437990038 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51899" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=30355110 instance=ExtResource("5_srulj")]
 position = Vector2(96, 0)
 script = ExtResource("7_0rwjj")
-hardness = 10
+hardness = 1
 
-[node name="@StaticBody2D@80412" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2033267697 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51900" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1510810526 instance=ExtResource("5_srulj")]
 position = Vector2(96, 8)
 script = ExtResource("7_0rwjj")
-hardness = 10
+hardness = 5
 
-[node name="@StaticBody2D@80413" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1229397169 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51901" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1466600858 instance=ExtResource("5_srulj")]
 position = Vector2(96, 16)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80414" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1223422185 instance=ExtResource("5_srulj")]
-position = Vector2(96, 24)
 script = ExtResource("7_0rwjj")
 hardness = 7
 
-[node name="@StaticBody2D@80415" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1775971858 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51902" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1190075235 instance=ExtResource("5_srulj")]
+position = Vector2(96, 24)
+script = ExtResource("7_0rwjj")
+hardness = 1
+
+[node name="@StaticBody2D@51903" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1499776001 instance=ExtResource("5_srulj")]
 position = Vector2(104, 0)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80416" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=801990803 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51904" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=559759991 instance=ExtResource("5_srulj")]
 position = Vector2(104, 8)
 script = ExtResource("7_0rwjj")
 hardness = 8
 
-[node name="@StaticBody2D@80417" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=776229753 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51905" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=824608041 instance=ExtResource("5_srulj")]
 position = Vector2(104, 16)
 script = ExtResource("7_0rwjj")
-hardness = 10
 
-[node name="@StaticBody2D@80418" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1178890153 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51906" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1786497103 instance=ExtResource("5_srulj")]
 position = Vector2(104, 24)
-script = ExtResource("7_0rwjj")
-
-[node name="@StaticBody2D@80419" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1744715404 instance=ExtResource("5_srulj")]
-position = Vector2(112, 0)
-script = ExtResource("7_0rwjj")
-hardness = 2
-
-[node name="@StaticBody2D@80420" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1705283073 instance=ExtResource("5_srulj")]
-position = Vector2(112, 8)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80421" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=859214085 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51907" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=599621048 instance=ExtResource("5_srulj")]
+position = Vector2(112, 0)
+script = ExtResource("7_0rwjj")
+hardness = 8
+
+[node name="@StaticBody2D@51908" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=486774501 instance=ExtResource("5_srulj")]
+position = Vector2(112, 8)
+script = ExtResource("7_0rwjj")
+hardness = 6
+
+[node name="@StaticBody2D@51909" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=172770811 instance=ExtResource("5_srulj")]
 position = Vector2(112, 16)
 script = ExtResource("7_0rwjj")
-hardness = 7
+hardness = 10
 
-[node name="@StaticBody2D@80422" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1349016187 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51910" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=132809591 instance=ExtResource("5_srulj")]
 position = Vector2(112, 24)
 script = ExtResource("7_0rwjj")
-hardness = 7
+hardness = 2
 
-[node name="@StaticBody2D@80423" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=348527263 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51911" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=956775617 instance=ExtResource("5_srulj")]
 position = Vector2(120, 0)
 script = ExtResource("7_0rwjj")
 hardness = 4
 
-[node name="@StaticBody2D@80424" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=577783630 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51912" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1092944571 instance=ExtResource("5_srulj")]
 position = Vector2(120, 8)
 script = ExtResource("7_0rwjj")
 hardness = 2
 
-[node name="@StaticBody2D@80425" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1405708374 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51913" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1744913417 instance=ExtResource("5_srulj")]
 position = Vector2(120, 16)
-script = ExtResource("7_0rwjj")
-
-[node name="@StaticBody2D@80426" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1996194716 instance=ExtResource("5_srulj")]
-position = Vector2(120, 24)
-script = ExtResource("7_0rwjj")
-hardness = 1
-
-[node name="@StaticBody2D@80427" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2033695821 instance=ExtResource("5_srulj")]
-position = Vector2(128, 0)
 script = ExtResource("7_0rwjj")
 hardness = 4
 
-[node name="@StaticBody2D@80428" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1161407515 instance=ExtResource("5_srulj")]
-position = Vector2(128, 8)
-script = ExtResource("7_0rwjj")
-hardness = 9
-
-[node name="@StaticBody2D@80429" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=883703129 instance=ExtResource("5_srulj")]
-position = Vector2(128, 16)
+[node name="@StaticBody2D@51914" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1616196118 instance=ExtResource("5_srulj")]
+position = Vector2(120, 24)
 script = ExtResource("7_0rwjj")
 hardness = 6
 
-[node name="@StaticBody2D@80430" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1458110968 instance=ExtResource("5_srulj")]
-position = Vector2(128, 24)
+[node name="@StaticBody2D@51915" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1288922466 instance=ExtResource("5_srulj")]
+position = Vector2(128, 0)
 script = ExtResource("7_0rwjj")
-hardness = 2
+hardness = 6
 
-[node name="@StaticBody2D@80431" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2020868536 instance=ExtResource("5_srulj")]
-position = Vector2(136, 0)
+[node name="@StaticBody2D@51916" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=161766741 instance=ExtResource("5_srulj")]
+position = Vector2(128, 8)
 script = ExtResource("7_0rwjj")
 hardness = 1
 
-[node name="@StaticBody2D@80432" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=830630649 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51917" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1662697775 instance=ExtResource("5_srulj")]
+position = Vector2(128, 16)
+script = ExtResource("7_0rwjj")
+hardness = 1
+
+[node name="@StaticBody2D@51918" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=457968824 instance=ExtResource("5_srulj")]
+position = Vector2(128, 24)
+script = ExtResource("7_0rwjj")
+hardness = 5
+
+[node name="@StaticBody2D@51919" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=983386016 instance=ExtResource("5_srulj")]
+position = Vector2(136, 0)
+script = ExtResource("7_0rwjj")
+hardness = 6
+
+[node name="@StaticBody2D@51920" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=127019226 instance=ExtResource("5_srulj")]
 position = Vector2(136, 8)
 script = ExtResource("7_0rwjj")
-hardness = 7
+hardness = 2
 
-[node name="@StaticBody2D@80433" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=466606207 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51921" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1426803345 instance=ExtResource("5_srulj")]
 position = Vector2(136, 16)
 script = ExtResource("7_0rwjj")
 hardness = 3
 
-[node name="@StaticBody2D@80434" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=929582538 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51922" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1325053594 instance=ExtResource("5_srulj")]
 position = Vector2(136, 24)
 script = ExtResource("7_0rwjj")
-hardness = 3
+hardness = 8
 
-[node name="@StaticBody2D@80435" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=676133953 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51923" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1016271531 instance=ExtResource("5_srulj")]
 position = Vector2(144, 0)
 script = ExtResource("7_0rwjj")
 hardness = 10
 
-[node name="@StaticBody2D@80436" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1303926204 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51924" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1323947562 instance=ExtResource("5_srulj")]
 position = Vector2(144, 8)
-script = ExtResource("7_0rwjj")
-hardness = 1
-
-[node name="@StaticBody2D@80437" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=814690310 instance=ExtResource("5_srulj")]
-position = Vector2(144, 16)
-script = ExtResource("7_0rwjj")
-hardness = 10
-
-[node name="@StaticBody2D@80438" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1817034087 instance=ExtResource("5_srulj")]
-position = Vector2(144, 24)
 script = ExtResource("7_0rwjj")
 hardness = 5
 
-[node name="@StaticBody2D@80439" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1098161232 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51925" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=2124412365 instance=ExtResource("5_srulj")]
+position = Vector2(144, 16)
+script = ExtResource("7_0rwjj")
+hardness = 7
+
+[node name="@StaticBody2D@51926" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=866202265 instance=ExtResource("5_srulj")]
+position = Vector2(144, 24)
+script = ExtResource("7_0rwjj")
+hardness = 8
+
+[node name="@StaticBody2D@51927" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=60730173 instance=ExtResource("5_srulj")]
 position = Vector2(152, 0)
 script = ExtResource("7_0rwjj")
+hardness = 8
 
-[node name="@StaticBody2D@80440" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1016823349 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51928" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1437229931 instance=ExtResource("5_srulj")]
 position = Vector2(152, 8)
 script = ExtResource("7_0rwjj")
 hardness = 9
 
-[node name="@StaticBody2D@80441" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1008521616 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51929" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=124191659 instance=ExtResource("5_srulj")]
 position = Vector2(152, 16)
 script = ExtResource("7_0rwjj")
-hardness = 2
+hardness = 7
 
-[node name="@StaticBody2D@80442" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=585215035 instance=ExtResource("5_srulj")]
+[node name="@StaticBody2D@51930" type="StaticBody2D" parent="SubViewport/Tiles" unique_id=1772723485 instance=ExtResource("5_srulj")]
 position = Vector2(152, 24)
 script = ExtResource("7_0rwjj")
-hardness = 5
-
-[node name="Player" parent="SubViewport" unique_id=1488697836 instance=ExtResource("7_5nb03")]
-position = Vector2(82, 102)
+hardness = 7
