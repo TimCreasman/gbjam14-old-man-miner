@@ -16,4 +16,3 @@ func _on_input_palette_changed():
 
 func _on_output_palette_changed():
 	material.set_shader_parameter("output_palette", output_palette.to_vec4())
-
