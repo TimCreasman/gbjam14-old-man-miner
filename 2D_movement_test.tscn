@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b2wfq3863qj6k"]
+[gd_scene format=3 uid="uid://bu2x48u34bawi"]
 
 [ext_resource type="Texture2D" uid="uid://btsg75vcd7r38" path="res://icon.svg" id="1_jynof"]
-[ext_resource type="PackedScene" uid="uid://c04kdg0d8sqag" path="res://player.tscn" id="1_q40sx"]
+[ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://player.tscn" id="1_q40sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jynof"]
 size = Vector2(132, 130)
@@ -12,12 +12,11 @@ size = Vector2(132, 130)
 position = Vector2(121, 70)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Player" unique_id=411007419]
-visible = false
 scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("1_jynof")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=764859139]
-position = Vector2(127, 171)
+position = Vector2(64, 155)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1502205644]
