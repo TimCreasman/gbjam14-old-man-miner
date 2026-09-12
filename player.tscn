@@ -1,11 +1,16 @@
-[gd_scene format=3 uid="uid://bm4wkjp71d2vb"]
+[gd_scene format=3 uid="uid://c04kdg0d8sqag"]
 
-[ext_resource type="Script" uid="uid://cbubdv7obrftg" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/sprites/miner.png" id="2_onrkg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q40sx"]
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1488697836]
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779616123]
 shape = SubResource("CircleShape2D_q40sx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1900351364]
+texture = ExtResource("2_onrkg")

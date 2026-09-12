@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c6ggmu5a15gnh"]
+
+[ext_resource type="Script" path="res://game/scene/ground.gd" id="1_br182"]
+[ext_resource type="Texture2D" uid="uid://b8diqeiwyi7r8" path="res://assets/sprites/ground.png" id="1_chlg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chlg1"]
+size = Vector2(8, 8)
+
+[node name="Node2D" type="StaticBody2D" unique_id=1157843804]
+script = ExtResource("1_br182")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453375674]
+texture = ExtResource("1_chlg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715147708]
+shape = SubResource("RectangleShape2D_chlg1")
+
+[node name="BreakTimer" type="Timer" parent="." unique_id=1383425191]
