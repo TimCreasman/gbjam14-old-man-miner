@@ -3,8 +3,8 @@
 - [x] Shader outline/ fog of war
 
 # In progress
+- [ ] Breaking blocks
 
 # To do
 - [ ] Design Miner Sprite
 - [ ] Camera scroll down
-- [ ] Breaking blocks
