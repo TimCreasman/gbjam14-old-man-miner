@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://c5jwnisjhvlu7"]
+
+[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="1_fmcdn"]
+
+[resource]
+default_font = ExtResource("1_fmcdn")
+Control/colors/font_color = Color(0.9977836, 0.8718092, 0.5995908, 1)
+MarginContainer/constants/margin_bottom = 2
+MarginContainer/constants/margin_top = 2

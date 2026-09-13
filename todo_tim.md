@@ -6,12 +6,12 @@
 - [x] Block breaking time tweaks
 - [x] Better terrain gen
   - [x] Inifinte terrain gen
+- [x] Score
 
 # In progress
-- [ ] Score
+- [ ] Mining bug
 
 # To do
-- [ ] Mining bug
 - [ ] Design Miner Sprite
 - [ ] Add proper outlining
 - [ ] Add walls

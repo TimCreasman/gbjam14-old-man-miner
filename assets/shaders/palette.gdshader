@@ -15,7 +15,7 @@ void fragment() {
         vec4 input_color = input_palette[i];
         vec4 output_color = output_palette[i];
 
-        if(color_match(current_color, input_color)) {
+        if(color_match(current_color, input_color) && current_color.a > 0.001) {
             COLOR = vec4(output_color.x, output_color.y, output_color.z, 1.0);
         }
     }

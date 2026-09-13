@@ -2,12 +2,12 @@
 class_name OMM_DepthComponent
 extends Node
 
-signal changed()
+signal changed(new_value)
 
 var _depth := 0:
 	set(value):
 		if _depth != value:
-			changed.emit()
+			changed.emit(value)
 		_depth = value
 
 func increment_depth(value = null):

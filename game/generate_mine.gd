@@ -32,16 +32,17 @@ func _ready():
 	if depth_component:
 		depth_component.changed.connect(_generate_chunk_at_depth)
 
-func _generate_chunk_at_depth():
-	if _depth_to_chunk_index() == chunk_index:
+func _generate_chunk_at_depth(depth: int):
+	var _new_chunk_index = _depth_to_chunk_index(depth)
+	if _new_chunk_index == chunk_index:
 		return
 
 	# TODO this is spaghetti
-	chunk_index = _depth_to_chunk_index()
+	chunk_index = _new_chunk_index
 	# _generate_chunk(chunk_size, _depth_to_chunk_index())
 
-func _depth_to_chunk_index() -> int:
-	return depth_component.get_depth() / (chunk_size.y * tile_size.y)
+func _depth_to_chunk_index(depth: int) -> int:
+	return depth / (chunk_size.y * tile_size.y)
 
 func _generate():
 	_generate_chunk(chunk_size, chunk_index)

@@ -14,22 +14,24 @@ extends StaticBody2D
 @export var gold_sprite: Sprite2D
 @export var neighbor_area: Area2D
 
-var is_gold := false
 var score_component: OMM_ScoreComponent
 
-static var tile_scene := preload("res://game/scene/ground.tscn")
+var _is_gold := false
 
+static var tile_scene := preload("res://game/scene/ground.tscn")
 static func new_tile(pos: Vector2i, _score_component: OMM_ScoreComponent, _hardness := 0) -> OMM_GroundTile:
 	var tile: OMM_GroundTile = tile_scene.instantiate()
 	tile.global_position = pos
+
 	tile.hardness = _hardness
-	tile.is_gold = _hardness >= 9
+	tile._is_gold = _hardness >= 9
+
 	tile.score_component = _score_component
 	return tile
 
 func _ready():
 	breaking_animation_sprite.animation_finished.connect(breaking_done)
-	gold_sprite.visible = is_gold
+	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 
 func do_break():
@@ -45,9 +47,10 @@ func breaking_done():
 	update_hardness_sprite()
 
 func on_destroy():
-	# if is_gold:
-		#score_component.increment_score()
 	queue_free()
+	if _is_gold:
+		score_component.increment_score()
+		_is_gold = false
 	propagate_destroy.call_deferred()
 
 func do_damage():
