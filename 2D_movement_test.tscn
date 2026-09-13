@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://btsg75vcd7r38" path="res://icon.svg" id="1_jynof"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://player.tscn" id="1_q40sx"]
+[ext_resource type="Script" uid="uid://clafqicw46pi0" path="res://2d_movement_test.gd" id="1_qxg1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jynof"]
 size = Vector2(132, 130)
 
 [node name="Node2D" type="Node2D" unique_id=2090373667]
+script = ExtResource("1_qxg1n")
 
 [node name="Player" parent="." unique_id=1488697836 instance=ExtResource("1_q40sx")]
 position = Vector2(121, 70)

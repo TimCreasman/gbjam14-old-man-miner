@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" uid="uid://v4v84j62k6rl" path="res://assets/shaders/palette.gdshader" id="1_ma7nm"]
 [ext_resource type="Script" uid="uid://cfn8xfrcp64se" path="res://game/scene/main.gd" id="2_bvr34"]
-[ext_resource type="Script" uid="uid://1o6faey4m0e8" path="res://game/scene/pause_menu.gd" id="3_5nb03"]
 [ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://game/scene/camera.tscn" id="4_bvr34"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://game/scene/cave_generation.tscn" id="5_srulj"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://player.tscn" id="7_5nb03"]
@@ -14,51 +13,27 @@ shader_parameter/input_palette = [Vector4(0.32156864, 0.32156864, 0.32156864, 1)
 shader_parameter/output_palette = [Vector4(3.85046e-07, 0.38012242, 0.30083656, 1), Vector4(0, 0, 0, 1), Vector4(0.45974553, 0.70963615, 0.6025284, 1), Vector4(0.7607843, 1, 1, 1)]
 
 [node name="Node2D" type="SubViewportContainer" unique_id=1044598483]
-process_mode = 3
 material = SubResource("ShaderMaterial_srulj")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 160.0
+offset_bottom = 144.0
 script = ExtResource("2_bvr34")
-
-[node name="PauseMenu" type="Control" parent="." unique_id=1255564472]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("3_5nb03")
-
-[node name="CenterContainer" type="CenterContainer" parent="PauseMenu" unique_id=465852087]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="PauseMenu/CenterContainer" unique_id=2064720606]
-layout_mode = 2
-text = "PAUSED"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=353043122]
 handle_input_locally = false
 size = Vector2i(160, 144)
 render_target_update_mode = 4
 
-[node name="Pauseable" type="Node2D" parent="SubViewport" unique_id=1778506881]
-process_mode = 1
-
-[node name="Camera" parent="SubViewport/Pauseable" unique_id=777090513 node_paths=PackedStringArray("follow_node", "depth_component") instance=ExtResource("4_bvr34")]
+[node name="Camera" parent="SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node", "depth_component") instance=ExtResource("4_bvr34")]
 follow_node = NodePath("../Player")
 depth_component = NodePath("../OMM_DepthComponent")
 
-[node name="Player" parent="SubViewport/Pauseable" unique_id=1488697836 instance=ExtResource("7_5nb03")]
+[node name="Player" parent="SubViewport" unique_id=1488697836 instance=ExtResource("7_5nb03")]
 position = Vector2(82, 10)
 
-[node name="Tiles" parent="SubViewport/Pauseable" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
+[node name="Tiles" parent="SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
 position = Vector2(4, 115)
 depth_component = NodePath("../OMM_DepthComponent")
 
-[node name="OMM_DepthComponent" type="Node" parent="SubViewport/Pauseable" unique_id=529392818]
+[node name="OMM_DepthComponent" type="Node" parent="SubViewport" unique_id=529392818]
 script = ExtResource("7_yjmwy")
 metadata/_custom_type_script = "uid://g75t136olir6"
