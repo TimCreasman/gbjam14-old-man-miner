@@ -7,9 +7,9 @@
 - [x] Better terrain gen
   - [x] Inifinte terrain gen
 - [x] Score
+- [x] Mining bug
 
 # In progress
-- [ ] Mining bug
 
 # To do
 - [ ] Design Miner Sprite

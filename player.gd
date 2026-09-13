@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
+@export_category("Internal Components")
+@export var ray_cast: RayCast2D
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -21,13 +23,15 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	# TODO fix the mining going off collisions and not direction (ray cast?)
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is OMM_GroundTile:
-			handle_mine(collision.get_collider(), collision.get_normal())
+	handle_mine()
 
-func handle_mine(tile: OMM_GroundTile, dir: Vector2):
-	var move_dir = Input.get_vector("move_right", "move_left", "move_down", "move_up")
-	if dir == move_dir:
+func handle_mine():
+	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if move_dir.is_zero_approx():
+		return
+
+	ray_cast.rotation = move_dir.angle()
+
+	var tile = ray_cast.get_collider()
+	if tile is OMM_GroundTile:
 		tile.do_break()
