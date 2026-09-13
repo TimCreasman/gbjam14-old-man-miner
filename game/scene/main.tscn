@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cs0wc8xy53728"]
 
 [ext_resource type="Shader" uid="uid://v4v84j62k6rl" path="res://assets/shaders/palette.gdshader" id="1_ma7nm"]
-[ext_resource type="Script" uid="uid://cfn8xfrcp64se" path="res://game/scene/main.gd" id="2_bvr34"]
-[ext_resource type="Script" uid="uid://1o6faey4m0e8" path="res://game/scene/pause_menu.gd" id="3_5nb03"]
+[ext_resource type="Script" path="res://game/scene/main.gd" id="2_bvr34"]
+[ext_resource type="Script" path="res://game/scene/pause_menu.gd" id="3_5nb03"]
 [ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://game/scene/camera.tscn" id="4_bvr34"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://game/scene/cave_generation.tscn" id="5_srulj"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://player.tscn" id="7_5nb03"]
@@ -44,6 +44,7 @@ text = "PAUSED"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=353043122]
 handle_input_locally = false
+audio_listener_enable_2d = true
 size = Vector2i(160, 144)
 render_target_update_mode = 4
 
