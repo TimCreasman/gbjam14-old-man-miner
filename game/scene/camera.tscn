@@ -8,5 +8,5 @@ move_timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="." unique_id=416630216]
 process_callback = 0
-wait_time = 0.1
+wait_time = 0.2
 autostart = true

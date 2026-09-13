@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://assets/shaders/inline.gdshader" id="1_7uvl8"]
 [ext_resource type="Script" uid="uid://y83dacopgqtt" path="res://game/generate_mine.gd" id="2_yyyc3"]
-[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://game/scene/ground.tscn" id="3_f5w2v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -10,10 +9,10 @@ shader_parameter/fog_color = Color(0, 0, 0, 1)
 shader_parameter/tile_size = 7.932000851769999
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yyyc3"]
-noise_type = 0
-frequency = 0.2363
+noise_type = 2
+frequency = 0.0322
 offset = Vector3(0, 16, 0)
-fractal_type = 0
+fractal_type = 3
 fractal_octaves = 1
 cellular_distance_function = 3
 cellular_return_type = 5
@@ -32,8 +31,6 @@ shader_parameter/tile_size = 8.0
 material = SubResource("ShaderMaterial_5nb03")
 script = ExtResource("2_yyyc3")
 chunk_size = Vector2i(50, 8)
-chunk_index = 2
-tile = ExtResource("3_f5w2v")
 tile_container = NodePath("Tiles")
 noise_map = SubResource("NoiseTexture2D_f5w2v")
 
