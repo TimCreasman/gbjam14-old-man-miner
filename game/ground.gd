@@ -3,33 +3,50 @@ extends StaticBody2D
 
 @export_range(0, 10, 1) var hardness = 0:
 	set(value):
+		if value == null:
+			return
 		hardness = clampi(value, 0, 10)
 
 @export_category("Internal Components")
 @export var break_timer: Timer
 @export var breaking_animation_sprite: AnimatedSprite2D
-@export var number_sprite: Sprite2D
-
+@export var hardness_sprite: Sprite2D
+@export var gold_sprite: Sprite2D
 @export var neighbor_area: Area2D
+
+var is_gold := false
+var score_component: OMM_ScoreComponent
+
+static var tile_scene := preload("res://game/scene/ground.tscn")
+
+static func new_tile(pos: Vector2i, _score_component: OMM_ScoreComponent, _hardness := 0) -> OMM_GroundTile:
+	var tile: OMM_GroundTile = tile_scene.instantiate()
+	tile.global_position = pos
+	tile.hardness = _hardness
+	tile.is_gold = _hardness >= 9
+	tile.score_component = _score_component
+	return tile
 
 func _ready():
 	breaking_animation_sprite.animation_finished.connect(breaking_done)
-	update_number()
+	gold_sprite.visible = is_gold
+	update_hardness_sprite()
 
 func do_break():
 	if breaking_animation_sprite.is_playing():
 		return
 	breaking_animation_sprite.play("breaking_animation")
 
-
-func update_number():
-	number_sprite.frame = hardness
+func update_hardness_sprite():
+	hardness_sprite.frame = hardness
 
 func breaking_done():
 	do_damage()
-	update_number()
+	update_hardness_sprite()
 
-func destroy():
+func on_destroy():
+	# if is_gold:
+		#score_component.increment_score()
 	queue_free()
 	propagate_destroy.call_deferred()
 
@@ -37,8 +54,9 @@ func do_damage():
 	hardness -= 1
 
 	if hardness == 0:
-		destroy()
+		on_destroy()
 
+# Hack to expose more area
 func propagate_destroy():
 	if !neighbor_area.monitoring:
 		return
@@ -46,7 +64,7 @@ func propagate_destroy():
 	for neighbor in neighbor_area.get_overlapping_bodies():
 		if neighbor is OMM_GroundTile:
 			if neighbor.hardness <= 0:
-				neighbor.destroy()
+				neighbor.on_destroy()
 
 	# Turn off monitoring
 	neighbor_area.monitoring = false

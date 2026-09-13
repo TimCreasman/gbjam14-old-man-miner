@@ -21,12 +21,13 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	# TODO fix the mining going off collisions and not direction (ray cast?)
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider() is OMM_GroundTile:
 			handle_mine(collision.get_collider(), collision.get_normal())
 
 func handle_mine(tile: OMM_GroundTile, dir: Vector2):
-	var move_dir = Vector2(Input.get_axis("move_right", "move_left"), Input.get_axis("move_down", "move_up"))
+	var move_dir = Input.get_vector("move_right", "move_left", "move_down", "move_up")
 	if dir == move_dir:
 		tile.do_break()

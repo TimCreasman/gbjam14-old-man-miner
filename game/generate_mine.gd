@@ -1,4 +1,4 @@
-@tool
+# @tool
 extends Node2D
 
 @export var chunk_size: Vector2i = Vector2i.ZERO:
@@ -15,9 +15,9 @@ extends Node2D
 			noise_map.noise.offset.y = chunk_size.y * value
 			_generate()
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var tile_size: Vector2i = Vector2i(8,8)
-@export var tile: PackedScene
 
 @export var depth_component: OMM_DepthComponent
+@export var score_component: OMM_ScoreComponent
 
 @export_category("Internal Components")
 @export var tile_container: CanvasGroup
@@ -25,7 +25,8 @@ extends Node2D
 
 const CHUNK_SCENE: PackedScene = preload("res://game/scene/chunk.tscn")
 
-@export_tool_button("Generate level") var generate_button = _generate
+# Turn back on if a tool script
+# @export_tool_button("Generate level") var generate_button = _generate
 
 func _ready():
 	if depth_component:
@@ -35,6 +36,7 @@ func _generate_chunk_at_depth():
 	if _depth_to_chunk_index() == chunk_index:
 		return
 
+	# TODO this is spaghetti
 	chunk_index = _depth_to_chunk_index()
 	# _generate_chunk(chunk_size, _depth_to_chunk_index())
 
@@ -45,11 +47,7 @@ func _generate():
 	_generate_chunk(chunk_size, chunk_index)
 
 func _generate_chunk(_size: Vector2i, _chunk_index: int):
-	# if tile_container.find_child(str(_chunk_index)):
-	# 	return
-
 	var grid = _get_grid_at_chunk_depth(_size, _chunk_index * _size.y)
-	print("INIT CHUNK")
 	_init_chunk(_size, grid)
 
 func _get_grid_at_chunk_depth(_size: Vector2i, depth_offset: int) -> Dictionary:
@@ -77,17 +75,19 @@ func _init_chunk(_chunk_size: Vector2i, grid: Dictionary):
 	_chunk_container.screen_notifier.rect = Rect2i(Vector2i(_first_coord[0] * tile_size.x, _first_coord[1] * tile_size.y), _chunk_size * tile_size)
 
 	tile_container.add_child(_chunk_container)
-	_chunk_container.owner = get_tree().edited_scene_root
+	# _chunk_container.owner = get_tree().edited_scene_root
 
 	_init_tiles(_chunk_container, grid)
 
+func tile_pos_to_screen_space(tile_pos: Vector2i) -> Vector2i:
+	return tile_pos * tile_size
+
 func _init_tiles(chunk_container: Node2D, grid: Dictionary):
 	for coord in grid.keys():
-
-		var tile_scene = tile.instantiate()
-		if tile_scene is OMM_GroundTile:
-			tile_scene.hardness = grid[coord]['hardness']
-			tile_scene.global_position = Vector2i(coord[0] * tile_size.x, coord[1] * tile_size.y)
-
-			chunk_container.add_child(tile_scene)
-			tile_scene.owner = get_tree().edited_scene_root
+		var tile := OMM_GroundTile.new_tile(
+			tile_pos_to_screen_space(Vector2i(coord[0], coord[1])), 
+			score_component,
+			grid[coord]['hardness']
+		)
+		chunk_container.add_child(tile)
+		# tile.owner = get_tree().edited_scene_root

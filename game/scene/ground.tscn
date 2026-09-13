@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b8diqeiwyi7r8" path="res://assets/sprites/ground.png" id="1_chlg1"]
 [ext_resource type="Texture2D" uid="uid://b6yyepw71eau3" path="res://assets/sprites/numbers.png" id="2_br182"]
 [ext_resource type="Texture2D" uid="uid://74ksolvvfqk5" path="res://assets/sprites/break_animation.png" id="3_vwehn"]
+[ext_resource type="Texture2D" uid="uid://descwxsauqwik" path="res://assets/sprites/gold.png" id="5_fy6p4"]
+[ext_resource type="Texture2D" uid="uid://dqnti0oyt4p4i" path="res://assets/sprites/particles/glint.png" id="6_xsv2n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjbks"]
 atlas = ExtResource("3_vwehn")
@@ -89,12 +91,31 @@ size = Vector2(6, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy6p4"]
 size = Vector2(20, 6)
 
-[node name="Node2D" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "number_sprite", "neighbor_area")]
+[sub_resource type="Curve" id="Curve_xsv2n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9982547, 0.49101412), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yjbks"]
+curve = SubResource("Curve_xsv2n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fy6p4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 1)
+direction = Vector3(0, 0, 0)
+spread = 13.485
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_yjbks")
+
+[node name="Node2D2" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "hardness_sprite", "gold_sprite", "neighbor_area")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_0ss1m")
 breaking_animation_sprite = NodePath("BreakingAnimation")
-number_sprite = NodePath("NumberSprite")
+hardness_sprite = NodePath("HardnessSprite")
+gold_sprite = NodePath("Gold")
 neighbor_area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453375674]
@@ -102,7 +123,7 @@ texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("1_chlg1")
 
-[node name="NumberSprite" type="Sprite2D" parent="." unique_id=1173574428]
+[node name="HardnessSprite" type="Sprite2D" parent="." unique_id=1173574428]
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("2_br182")
@@ -126,3 +147,13 @@ shape = SubResource("RectangleShape2D_vwehn")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=900540304]
 shape = SubResource("RectangleShape2D_fy6p4")
+
+[node name="Gold" type="Sprite2D" parent="." unique_id=833049567]
+texture_filter = 1
+texture = ExtResource("5_fy6p4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Gold" unique_id=1552504546]
+amount = 2
+texture = ExtResource("6_xsv2n")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_fy6p4")
