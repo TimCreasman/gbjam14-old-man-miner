@@ -7,6 +7,8 @@
 shader = ExtResource("1_7uvl8")
 shader_parameter/fog_color = Color(0, 0, 0, 1)
 shader_parameter/tile_size = 7.932000851769999
+shader_parameter/line_thickness = 1.0
+shader_parameter/line_color = Color(0, 0, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yyyc3"]
 noise_type = 2
@@ -25,7 +27,9 @@ noise = SubResource("FastNoiseLite_yyyc3")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f5w2v"]
 shader = ExtResource("1_7uvl8")
 shader_parameter/fog_color = Color(0, 0, 0, 1)
-shader_parameter/tile_size = 8.0
+shader_parameter/tile_size = 8.000000855
+shader_parameter/line_thickness = 1.0
+shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 
 [node name="CaveGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("tile_container")]
 material = SubResource("ShaderMaterial_5nb03")

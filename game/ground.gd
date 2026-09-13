@@ -1,3 +1,4 @@
+@tool
 class_name OMM_GroundTile
 extends StaticBody2D
 
@@ -16,21 +17,25 @@ extends StaticBody2D
 
 var score_component: OMM_ScoreComponent
 
+var _indestructable = false
 var _is_gold := false
 
 static var tile_scene := preload("res://game/scene/ground.tscn")
-static func new_tile(pos: Vector2i, _score_component: OMM_ScoreComponent, _hardness := 0) -> OMM_GroundTile:
+static func new_tile(pos: Vector2i, _score_component: OMM_ScoreComponent, _hardness := 0, indestructable = false) -> OMM_GroundTile:
 	var tile: OMM_GroundTile = tile_scene.instantiate()
 	tile.global_position = pos
 
 	tile.hardness = _hardness
-	tile._is_gold = _hardness >= 9
-
+	if !indestructable:
+		tile._is_gold = _hardness >= 9
+	tile._indestructable = indestructable
 	tile.score_component = _score_component
+
 	return tile
 
 func _ready():
-	breaking_animation_sprite.animation_finished.connect(breaking_done)
+	if !_indestructable:
+		breaking_animation_sprite.animation_finished.connect(breaking_done)
 	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 

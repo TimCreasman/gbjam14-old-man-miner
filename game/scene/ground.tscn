@@ -135,6 +135,7 @@ speed_scale = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715147708]
 shape = SubResource("RectangleShape2D_chlg1")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="BreakTimer" type="Timer" parent="." unique_id=1383425191]
 
@@ -144,9 +145,11 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=922168443]
 shape = SubResource("RectangleShape2D_vwehn")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=900540304]
 shape = SubResource("RectangleShape2D_fy6p4")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="Gold" type="Sprite2D" parent="." unique_id=833049567]
 texture_filter = 1

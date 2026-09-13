@@ -8,10 +8,10 @@
   - [x] Inifinte terrain gen
 - [x] Score
 - [x] Mining bug
+- [x] Add walls
+- [x] Add proper outlining
 
 # In progress
 
 # To do
 - [ ] Design Miner Sprite
-- [ ] Add proper outlining
-- [ ] Add walls

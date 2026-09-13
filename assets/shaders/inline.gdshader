@@ -5,27 +5,49 @@ uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_n
 uniform vec4 fog_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform float tile_size : hint_range(-10, 10) = 8.0;
 
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+uniform vec4 line_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
 const vec2 OFFSETS[8] = {
     vec2(-1, 0), vec2(0, -1), vec2(0, 1), vec2(1, 0),
     vec2(-1, -1), vec2(1, 1), vec2(1, -1), vec2(-1, 1)
 };
 
-void fragment() {
-    vec2 size = SCREEN_PIXEL_SIZE * tile_size;
-    float neighbor_obscurity_level = 0.0;
-
+float calculate_obscurity(vec2 screen_uv, vec2 size) {
+    float obscurity = 0.0;
     for(int i = 0; i < OFFSETS.length(); i++) {
-        // TODO We need to figure out how to consider the neighbor obscured
-        // If outside the shader - maybe a cascading affect on neighboring 0 hardness blocks?
-        neighbor_obscurity_level += texture(screen_texture, SCREEN_UV + size * OFFSETS[i]).a;
+        obscurity += texture(screen_texture, screen_uv + size * OFFSETS[i]).a;
     }
+    return obscurity;
+}
 
-    vec4 color = textureLod(screen_texture, SCREEN_UV, 0.0);
+vec4 fog_of_war(vec2 screen_pixel_size, vec2 screen_uv) {
+    vec4 color = textureLod(screen_texture, screen_uv, 0.0);
 
     // All neighbors are obscured
-    if (neighbor_obscurity_level == 8.0) {
-        COLOR = mix(color, fog_color, color.a);
+    float obscurity = calculate_obscurity(screen_uv, screen_pixel_size * tile_size);
+    if (obscurity == 8.0) {
+        return mix(color, fog_color, color.a);
     } else {
-        COLOR = color;
+        return color;
+    }
+}
+
+vec4 outline(vec2 screen_pixel_size, vec2 screen_uv) {
+    float obscurity = calculate_obscurity(screen_uv, screen_pixel_size * line_thickness);
+    float outline = min(obscurity, 1.0);
+
+    vec4 color = textureLod(screen_texture, screen_uv, 0.0);
+
+    return mix(color, line_color, outline - color.a);
+}
+
+void fragment() {
+    vec4 fog = fog_of_war(SCREEN_PIXEL_SIZE, SCREEN_UV);
+    vec4 outline = outline(SCREEN_PIXEL_SIZE, SCREEN_UV);
+    if (fog.a == 1.0) {
+        COLOR = fog;
+    } else {
+        COLOR = outline;
     }
 }
