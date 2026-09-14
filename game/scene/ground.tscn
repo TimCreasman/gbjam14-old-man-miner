@@ -1,45 +1,43 @@
-[gd_scene format=3 uid="uid://c6ggmu5a15gnh"]
+[gd_scene format=3 uid="uid://csg4iibow74lh"]
 
-[ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://src/terrain/tile.gd" id="1_e36cl"]
-[ext_resource type="Texture2D" uid="uid://b8diqeiwyi7r8" path="res://assets/art/sprites/tiles/ground.png" id="2_mfvtv"]
-[ext_resource type="Texture2D" uid="uid://b6yyepw71eau3" path="res://assets/art/sprites/tiles/numbers.png" id="3_vx8v6"]
-[ext_resource type="Texture2D" uid="uid://74ksolvvfqk5" path="res://assets/art/sprites/tiles/break_animation.png" id="4_olca0"]
-[ext_resource type="Texture2D" uid="uid://descwxsauqwik" path="res://assets/art/sprites/tiles/gold.png" id="5_tqlut"]
-[ext_resource type="Texture2D" uid="uid://dqnti0oyt4p4i" path="res://assets/art/sprites/particles/glint.png" id="6_bp25x"]
-[ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="7_olca0"]
-[ext_resource type="AudioStream" uid="uid://bo2drw4nqa2jr" path="res://assets/audio/sfx/Break.wav" id="8_tqlut"]
-[ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="9_bp25x"]
+[ext_resource type="Script" path="res://game/ground.gd" id="1_0ss1m"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ground.png" id="1_chlg1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/numbers.png" id="2_br182"]
+[ext_resource type="Texture2D" path="res://assets/sprites/break_animation.png" id="3_vwehn"]
+[ext_resource type="Texture2D" path="res://assets/sprites/gold.png" id="5_fy6p4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/particles/glint.png" id="6_xsv2n"]
+[ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="7_yjbks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjbks"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1xka"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1puf"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jotop"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2hi5"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(32, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rslp"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(40, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdjv5"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(48, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhcux"]
-atlas = ExtResource("4_olca0")
+atlas = ExtResource("3_vwehn")
 region = Rect2(56, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hd8ri"]
@@ -112,27 +110,27 @@ initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_yjbks")
 
-[node name="Node2D2" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "hardness_sprite", "gold_sprite", "neighbor_area", "gold_sound", "break_sound", "destroy_sound")]
+[node name="Node2D2" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "hardness_sprite", "gold_sprite", "dig_sound", "break_sound", "gold_sound", "neighbor_area")]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_e36cl")
+script = ExtResource("1_0ss1m")
 breaking_animation_sprite = NodePath("BreakingAnimation")
 hardness_sprite = NodePath("HardnessSprite")
 gold_sprite = NodePath("Gold")
-neighbor_area = NodePath("Area2D")
-gold_sound = NodePath("GoldSound")
+dig_sound = NodePath("DigSound")
 break_sound = NodePath("BreakSound")
-destroy_sound = NodePath("DestroySound")
+gold_sound = NodePath("GoldSound")
+neighbor_area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453375674]
 texture_filter = 1
 texture_repeat = 1
-texture = ExtResource("2_mfvtv")
+texture = ExtResource("1_chlg1")
 
 [node name="HardnessSprite" type="Sprite2D" parent="." unique_id=1173574428]
 texture_filter = 1
 texture_repeat = 1
-texture = ExtResource("3_vx8v6")
+texture = ExtResource("2_br182")
 hframes = 11
 
 [node name="BreakingAnimation" type="AnimatedSprite2D" parent="." unique_id=890741485]
@@ -141,7 +139,6 @@ speed_scale = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715147708]
 shape = SubResource("RectangleShape2D_chlg1")
-debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="BreakTimer" type="Timer" parent="." unique_id=1383425191]
 
@@ -151,28 +148,25 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=922168443]
 shape = SubResource("RectangleShape2D_vwehn")
-debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=900540304]
 shape = SubResource("RectangleShape2D_fy6p4")
-debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="Gold" type="Sprite2D" parent="." unique_id=833049567]
-visible = false
 texture_filter = 1
-texture = ExtResource("5_tqlut")
+texture = ExtResource("5_fy6p4")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Gold" unique_id=1552504546]
 amount = 2
-texture = ExtResource("6_bp25x")
+texture = ExtResource("6_xsv2n")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_fy6p4")
 
-[node name="GoldSound" type="AudioStreamPlayer2D" parent="." unique_id=2069548547]
-stream = ExtResource("7_olca0")
+[node name="DigSound" type="AudioStreamPlayer2D" parent="." unique_id=1671683268]
+stream = ExtResource("7_yjbks")
 
-[node name="BreakSound" type="AudioStreamPlayer2D" parent="." unique_id=789008280]
-stream = ExtResource("8_tqlut")
+[node name="GoldSound" type="AudioStreamPlayer2D" parent="." unique_id=798795144]
+stream = ExtResource("7_yjbks")
 
-[node name="DestroySound" type="AudioStreamPlayer2D" parent="." unique_id=1525073696]
-stream = ExtResource("9_bp25x")
+[node name="BreakSound" type="AudioStreamPlayer2D" parent="." unique_id=843960230]
+stream = ExtResource("7_yjbks")

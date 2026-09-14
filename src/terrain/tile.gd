@@ -14,6 +14,9 @@ extends StaticBody2D
 @export var hardness_sprite: Sprite2D
 @export var gold_sprite: Sprite2D
 @export var neighbor_area: Area2D
+@export var gold_sound: AudioStreamPlayer2D
+@export var break_sound: AudioStreamPlayer2D
+@export var destroy_sound: AudioStreamPlayer2D
 
 var score_component: OMM_ScoreComponent
 
@@ -40,8 +43,10 @@ func _ready():
 	update_hardness_sprite()
 
 func do_break():
+	
 	if breaking_animation_sprite.is_playing():
 		return
+	break_sound.play()
 	breaking_animation_sprite.play("breaking_animation")
 
 func update_hardness_sprite():
@@ -52,16 +57,23 @@ func breaking_done():
 	update_hardness_sprite()
 
 func on_destroy():
-	queue_free()
+	destroy_sound.play()
+	
 	if _is_gold:
 		score_component.increment_score()
+		gold_sound.play()
 		_is_gold = false
+	await destroy_sound.finished
+	queue_free()
+	
 	propagate_destroy.call_deferred()
 
 func do_damage():
+	
 	hardness -= 1
 
 	if hardness == 0:
+		
 		on_destroy()
 
 # Hack to expose more area

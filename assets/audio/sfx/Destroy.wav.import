@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://db7spjhymmvm7"
-path="res://.godot/imported/Block break.wav-52e4891ac8135b9d725fbcad42058552.sample"
+path="res://.godot/imported/Destroy.wav-96ae2c3f6751ed5619041fdc3059629e.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/Block break.wav"
-dest_files=["res://.godot/imported/Block break.wav-52e4891ac8135b9d725fbcad42058552.sample"]
+source_file="res://assets/audio/sfx/Destroy.wav"
+dest_files=["res://.godot/imported/Destroy.wav-96ae2c3f6751ed5619041fdc3059629e.sample"]
 
 [params]
 

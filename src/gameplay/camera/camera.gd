@@ -10,7 +10,7 @@ func _ready():
 	depth_component.increment_depth(follow_node.global_position.y)
 
 	# 1 pixel per tick
-	move_timer.timeout.connect(depth_component.increment_depth)
+	#move_timer.timeout.connect(depth_component.increment_depth)
 
 func _process(_delta):
 	depth_component.increment_depth(follow_node.global_position.y)

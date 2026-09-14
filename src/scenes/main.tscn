@@ -162,7 +162,6 @@ depth_component = NodePath("../../../../../../../Systems/OMM_DepthComponent")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1376039753]
 stream = ExtResource("8_yjmwy")
-autoplay = true
 
 [node name="Systems" type="Node" parent="." unique_id=569555038]
 
