@@ -1,10 +1,17 @@
+class_name OMM_Player
 extends CharacterBody2D
 
 const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
+@export var age_component: OMM_AgeComponent
+
 @export_category("Internal Components")
 @export var ray_cast: RayCast2D
+@export var old_timer: Timer
+
+func _ready():
+	old_timer.timeout.connect(age_component.increment_age)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -35,3 +42,6 @@ func handle_mine():
 	var tile = ray_cast.get_collider()
 	if tile is OMM_GroundTile:
 		tile.do_break()
+
+func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
+	print(item)

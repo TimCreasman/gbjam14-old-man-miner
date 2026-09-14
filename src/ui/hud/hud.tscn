@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="5_2u0ga"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="6_hg5gy"]
 [ext_resource type="Script" uid="uid://dxb61sya7p0hl" path="res://src/ui/hud/gold_amount_label.gd" id="7_div6p"]
-[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/depth_amount_label.gd" id="8_3unv1"]
+[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="8_3unv1"]
 
 [node name="HUD" type="CanvasLayer" unique_id=687735664]
 

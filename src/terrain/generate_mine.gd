@@ -84,7 +84,7 @@ func _init_chunk(_chunk_size: Vector2i, grid: Dictionary[Array, OMM_TileData]):
 	_chunk_container.name = str(_chunk_index)
 
 	# TODO clean up coord math
-	_chunk_container.screen_notifier.rect = Rect2i(Vector2i(_first_coord[0] * tile_size.x, _first_coord[1] * tile_size.y), _chunk_size * tile_size)
+	_chunk_container.screen_notifier.rect = Rect2i(tile_pos_to_screen_space(Vector2i(_first_coord[0], _first_coord[1])), _chunk_size * tile_size)
 
 	tile_container.add_child(_chunk_container)
 	if Engine.is_editor_hint():

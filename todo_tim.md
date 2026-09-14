@@ -10,9 +10,13 @@
 - [x] Mining bug
 - [x] Add walls
 - [x] Add proper outlining
+- [x] Chore: organize project
 
 # In progress
-- [ ] Chore: organize scripts
+- [ ] Add death on old
+- [ ] Add structure/interactables generation system 
+- [ ] Add fountains
+- [ ] Add getting old timer
 - [ ] Create basic bomb item and item scalfolding
 
 # To do

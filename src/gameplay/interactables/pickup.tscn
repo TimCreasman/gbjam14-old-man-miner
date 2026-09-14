@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://pf1amx6ut2n8"]
+
+[ext_resource type="Script" uid="uid://dxyx1smoiqrjc" path="res://src/gameplay/interactables/pickup.gd" id="1_vaouk"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="2_kc85w"]
+[ext_resource type="Texture2D" uid="uid://boqjo1a5jxcej" path="res://assets/art/sprites/interactables/bomb.png" id="3_o0mvt"]
+
+[sub_resource type="Resource" id="Resource_pkh2u"]
+script = ExtResource("2_kc85w")
+texture = ExtResource("3_o0mvt")
+metadata/_custom_type_script = "uid://cohj448giry3f"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ik772"]
+radius = 5.0990195
+
+[node name="Pickup" type="Node2D" unique_id=1075131245 node_paths=PackedStringArray("sprite_2d", "area_2d")]
+script = ExtResource("1_vaouk")
+definition = SubResource("Resource_pkh2u")
+sprite_2d = NodePath("Sprite2D")
+area_2d = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=463033412]
+texture = ExtResource("3_o0mvt")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1028423161]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=298042041]
+shape = SubResource("CircleShape2D_ik772")
