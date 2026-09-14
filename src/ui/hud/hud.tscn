@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bxl2ko754m7ej"]
+
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="1_3uucy"]
+[ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="2_8uab8"]
+[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="3_x3x8j"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="4_q3sj1"]
+[ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="5_2u0ga"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="6_hg5gy"]
+[ext_resource type="Script" uid="uid://dxb61sya7p0hl" path="res://src/ui/hud/gold_amount_label.gd" id="7_div6p"]
+[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/depth_amount_label.gd" id="8_3unv1"]
+
+[node name="HUD" type="CanvasLayer" unique_id=687735664]
+
+[node name="UI" type="Control" parent="." unique_id=1262645448]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3uucy")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=321527553]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme = ExtResource("1_3uucy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=1697396316]
+layout_mode = 2
+
+[node name="GoldContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=737003854]
+layout_mode = 2
+alignment = 2
+
+[node name="GoldLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=162274319]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_8uab8")
+layout_mode = 2
+theme = ExtResource("1_3uucy")
+theme_override_fonts/font = ExtResource("3_x3x8j")
+theme_override_font_sizes/font_size = 8
+text = "GOLD"
+script = ExtResource("4_q3sj1")
+input_palette = ExtResource("5_2u0ga")
+output_palette = ExtResource("6_hg5gy")
+
+[node name="GoldAmount" type="Label" parent="UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=810528238 node_paths=PackedStringArray("score_component")]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_8uab8")
+layout_mode = 2
+theme = ExtResource("1_3uucy")
+theme_override_fonts/font = ExtResource("3_x3x8j")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("7_div6p")
+score_component = NodePath("")
+
+[node name="DepthContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=564260990]
+layout_mode = 2
+alignment = 2
+
+[node name="DepthLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=297738082]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_8uab8")
+layout_mode = 2
+theme = ExtResource("1_3uucy")
+theme_override_fonts/font = ExtResource("3_x3x8j")
+theme_override_font_sizes/font_size = 8
+text = "depth"
+script = ExtResource("4_q3sj1")
+input_palette = ExtResource("5_2u0ga")
+output_palette = ExtResource("6_hg5gy")
+
+[node name="DepthAmount" type="Label" parent="UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=260571540 node_paths=PackedStringArray("depth_component")]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_8uab8")
+layout_mode = 2
+theme = ExtResource("1_3uucy")
+theme_override_fonts/font = ExtResource("3_x3x8j")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("8_3unv1")
+depth_component = NodePath("")

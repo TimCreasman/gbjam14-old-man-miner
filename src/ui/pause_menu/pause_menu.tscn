@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://pbnophpkv3v"]
+
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="1_cg6t5"]
+[ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="2_a3qyg"]
+[ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="3_yo2mp"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="4_7g4sy"]
+[ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="5_h3odn"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="6_w1d8l"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1660468692]
+visible = false
+
+[node name="UI" type="Control" parent="." unique_id=1860348405]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_cg6t5")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI" unique_id=1461391388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/CenterContainer" unique_id=1806355691]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_a3qyg")
+layout_mode = 2
+theme = ExtResource("1_cg6t5")
+theme_override_fonts/font = ExtResource("3_yo2mp")
+text = "PAUSED"
+script = ExtResource("4_7g4sy")
+input_palette = ExtResource("5_h3odn")
+output_palette = ExtResource("6_w1d8l")

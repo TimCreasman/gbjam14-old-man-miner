@@ -12,6 +12,12 @@
 - [x] Add proper outlining
 
 # In progress
+- [ ] Chore: organize scripts
+- [ ] Create basic bomb item and item scalfolding
 
 # To do
+- [ ] SFX
+- [ ] Automatic publish to itch
+- [ ] Add spikes to top / death
+- [ ] Brainstorm items
 - [ ] Design Miner Sprite

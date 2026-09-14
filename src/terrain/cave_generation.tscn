@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c6njgqn2764mb"]
+
+[ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://src/shaders/inline.gdshader" id="1_7uvl8"]
+[ext_resource type="Script" uid="uid://y83dacopgqtt" path="res://src/terrain/generate_mine.gd" id="2_yyyc3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
+shader = ExtResource("1_7uvl8")
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 7.932000851769999
+shader_parameter/line_thickness = 1.0
+shader_parameter/line_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yyyc3"]
+noise_type = 2
+frequency = 0.0322
+offset = Vector3(0, 16, 0)
+fractal_type = 3
+fractal_octaves = 1
+cellular_distance_function = 3
+cellular_return_type = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f5w2v"]
+width = 50
+height = 8
+noise = SubResource("FastNoiseLite_yyyc3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5w2v"]
+shader = ExtResource("1_7uvl8")
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 8.000000855
+shader_parameter/line_thickness = 1.0
+shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
+
+[node name="CaveGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("tile_container")]
+material = SubResource("ShaderMaterial_5nb03")
+script = ExtResource("2_yyyc3")
+chunk_size = Vector2i(50, 8)
+tile_container = NodePath("Tiles")
+noise_map = SubResource("NoiseTexture2D_f5w2v")
+
+[node name="Tiles" type="CanvasGroup" parent="." unique_id=1224250136]
+material = SubResource("ShaderMaterial_f5w2v")

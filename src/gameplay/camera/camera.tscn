@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cqv8mb3s82yf2"]
+
+[ext_resource type="Script" uid="uid://b1bq4363yqdmr" path="res://src/gameplay/camera/camera.gd" id="1_uhw5q"]
+
+[node name="Camera" type="Node2D" unique_id=777090513 node_paths=PackedStringArray("move_timer")]
+script = ExtResource("1_uhw5q")
+move_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=416630216]
+process_callback = 0
+wait_time = 0.2
+autostart = true

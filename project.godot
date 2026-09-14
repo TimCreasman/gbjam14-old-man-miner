@@ -25,6 +25,12 @@ window/size/initial_position_type=3
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://src/debug/": "yellow"
+}
+
 [input]
 
 move_left={

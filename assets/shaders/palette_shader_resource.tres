@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" format=4 uid="uid://7tnu3blnxwhm"]
-
-[ext_resource type="Shader" uid="uid://v4v84j62k6rl" path="res://assets/shaders/palette.gdshader" id="1_pksiv"]
-
-[resource]
-shader = ExtResource("1_pksiv")
-shader_parameter/input_palette = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/output_palette = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
