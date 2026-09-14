@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="1_q40sx"]
 [ext_resource type="Script" uid="uid://clafqicw46pi0" path="res://src/debug/2d_movement_test.gd" id="1_qxg1n"]
 [ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/pickup.tscn" id="2_auij4"]
+[ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="5_s2lkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jynof"]
 size = Vector2(132, 130)
@@ -24,5 +25,10 @@ texture = ExtResource("1_jynof")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1612151562]
 shape = SubResource("RectangleShape2D_jynof")
 
-[node name="Player" parent="." unique_id=1488697836 instance=ExtResource("1_q40sx")]
+[node name="Player" parent="." unique_id=1488697836 node_paths=PackedStringArray("age_component") instance=ExtResource("1_q40sx")]
 position = Vector2(60, 71)
+age_component = NodePath("OMM_AgeComponent")
+
+[node name="OMM_AgeComponent" type="Node" parent="Player" unique_id=1496201091]
+script = ExtResource("5_s2lkr")
+metadata/_custom_type_script = "uid://cwrp6vmtltp0d"

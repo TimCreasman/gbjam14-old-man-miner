@@ -58,6 +58,12 @@ func _generate_chunk(_size: Vector2i, _chunk_index: int):
 	var grid = _get_grid_at_chunk_depth(_size, _chunk_index * _size.y)
 	_init_chunk(_size, grid)
 
+func fountain_check(args):
+	# Sample random points in the chunk
+	# If those points can spawn a fountain
+	# Roll dice to determine if it will spawn
+	pass
+
 func _get_grid_at_chunk_depth(_size: Vector2i, depth_offset: int) -> Dictionary[Array, OMM_TileData]:
 	var grid: Dictionary[Array, OMM_TileData] = {}
 
@@ -70,6 +76,7 @@ func _get_grid_at_chunk_depth(_size: Vector2i, depth_offset: int) -> Dictionary[
 				data = OMM_TileData.new(8, true)
 			else:
 				var noise_at_pos = noise_map.noise.get_noise_2d(x, y)
+
 				data = OMM_TileData.new(floori(remap(noise_at_pos, 0, 1, 0, 10)), false)
 
 			grid[[x, y]] = data

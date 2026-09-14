@@ -11,6 +11,8 @@ const JUMP_VELOCITY = -200.0
 @export var ray_cast: RayCast2D
 @export var old_timer: Timer
 
+var item_picked_up: OMM_ItemDefinition.ITEM_TYPES
+
 func _ready():
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
@@ -56,8 +58,15 @@ func handle_mine():
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
 
-func on_died(_age: OMM_AgeComponent.AGES):
+func on_died():
 	z_index = 100
 
 func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
-	print(item)
+	item_picked_up = item
+
+func use_item():
+	match item_picked_up:
+		OMM_ItemDefinition.ITEM_TYPES.BOMB:
+			pass
+		_:
+			pass
