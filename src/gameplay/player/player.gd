@@ -7,30 +7,40 @@ const JUMP_VELOCITY = -200.0
 @export var age_component: OMM_AgeComponent
 
 @export_category("Internal Components")
+@export var sprite: Sprite2D
 @export var ray_cast: RayCast2D
 @export var old_timer: Timer
 
 func _ready():
+	age_component.aged.connect(on_aged)
+	age_component.died.connect(on_died)
 	old_timer.timeout.connect(age_component.increment_age)
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if !age_component.is_dead:
+		handle_jump()
+		handle_move()
+		handle_mine()
+	else:
+		velocity.x = 0
 
-	# Get the input direction and handle the movement/deceleration.
+	move_and_slide()
+
+func handle_move():
 	var direction = Input.get_axis("move_left", "move_right")
+	if abs(direction) > 0:
+		sprite.flip_h = direction < 0
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	move_and_slide()
-	handle_mine()
+func handle_jump():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 func handle_mine():
 	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -42,6 +52,12 @@ func handle_mine():
 	var tile = ray_cast.get_collider()
 	if tile is OMM_GroundTile:
 		tile.do_break()
+
+func on_aged(age: OMM_AgeComponent.AGES):
+	sprite.frame = age
+
+func on_died(_age: OMM_AgeComponent.AGES):
+	z_index = 100
 
 func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
 	print(item)

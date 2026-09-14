@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(7, 6)
 
-[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("ray_cast", "old_timer")]
+[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "ray_cast", "old_timer")]
 script = ExtResource("1_4flbx")
+sprite = NodePath("Sprite2D")
 ray_cast = NodePath("RayCast2D")
 old_timer = NodePath("OldTimer")
 
@@ -19,10 +20,12 @@ shape = SubResource("RectangleShape2D_onrkg")
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("2_onrkg")
+hframes = 6
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=312943075]
 target_position = Vector2(8, 0)
 collision_mask = 2
 
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
+wait_time = 0.061
 autostart = true
