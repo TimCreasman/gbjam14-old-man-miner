@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OMM_CurrentItemResource" format=3 uid="uid://dlflchdxs0txd"]
+
+[ext_resource type="Script" uid="uid://b0nciu2drg70c" path="res://src/resources/current_item_resource.gd" id="1_0fpcu"]
+
+[resource]
+script = ExtResource("1_0fpcu")
+type = 1
+metadata/_custom_type_script = "uid://b0nciu2drg70c"

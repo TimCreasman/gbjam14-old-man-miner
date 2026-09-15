@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_u71td")
+background = Color(0.32544088, 0.32544088, 0.3254409, 1)
 metadata/_custom_type_script = "uid://cm3iofpy5h14b"

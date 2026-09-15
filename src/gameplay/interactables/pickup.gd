@@ -7,7 +7,7 @@ extends Node2D
 @export var area_2d: Area2D
 
 func _ready():
-	sprite_2d.texture = definition.texture
+	sprite_2d.texture = definition._texture
 	area_2d.body_entered.connect(grant_pickup)
 
 func grant_pickup(body: Node2D):

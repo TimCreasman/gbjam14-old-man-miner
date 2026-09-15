@@ -1,7 +1,18 @@
 class_name OMM_ItemDefinition
 extends Resource
 
-enum ITEM_TYPES { NONE, BOMB, DASH}
+enum ITEM_TYPES { BOMB, DASH, NONE = -1}
 
-@export var texture: Texture
+static var item_textures : Array[Texture2D] = [
+	preload("res://assets/art/sprites/interactables/bomb.png"),
+	preload("res://assets/art/sprites/interactables/bomb.png")
+] 
+
 @export var type: ITEM_TYPES
+@export var texture := get_texture(type)
+
+static func get_texture(_type: ITEM_TYPES) -> Texture2D:
+	if _type == ITEM_TYPES.NONE:
+		return
+
+	return item_textures[_type]

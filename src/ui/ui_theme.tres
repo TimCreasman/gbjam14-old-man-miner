@@ -1,9 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://c5jwnisjhvlu7"]
 
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="1_fmcdn"]
+[ext_resource type="StyleBox" uid="uid://deesfixrsgr1j" path="res://src/ui/style_box_flat.tres" id="1_lupir"]
 
 [resource]
 default_font = ExtResource("1_fmcdn")
-Control/colors/font_color = Color(0.9977836, 0.8718092, 0.5995908, 1)
+Control/colors/font_color = Color(1, 1, 1, 1)
 MarginContainer/constants/margin_bottom = 2
 MarginContainer/constants/margin_top = 2
+Panel/styles/panel = ExtResource("1_lupir")

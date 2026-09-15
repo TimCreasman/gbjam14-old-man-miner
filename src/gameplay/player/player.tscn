@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bm4wkjp71d2vb"]
 
 [ext_resource type="Script" uid="uid://cbubdv7obrftg" path="res://src/gameplay/player/player.gd" id="1_4flbx"]
+[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="2_k2146"]
 [ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/art/sprites/player/miner.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -16,6 +17,7 @@ old_timer = NodePath("OldTimer")
 dash_timer = NodePath("DashTimer")
 dash_area = NodePath("DashArea")
 dig_timer = NodePath("DigTimer")
+current_item = ExtResource("2_k2146")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779616123]
 position = Vector2(0, 1)
