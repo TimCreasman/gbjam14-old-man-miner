@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4hsp6mbwmxj5" path="res://src/scenes/title.gd" id="1_segg1"]
 
-[node name="Title" type="Control" unique_id=1450929623]
+[node name="Title" type="Control" unique_id=1450929623 node_paths=PackedStringArray("main_menu", "name_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_segg1")
+main_menu = NodePath("MainMenu")
+name_menu = NodePath("NameMenu")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=97993810]
 layout_mode = 1
@@ -22,7 +24,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.8474744, 0.84747446, 0.84747446, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1583333976]
+[node name="MainMenu" type="CenterContainer" parent="." unique_id=1583333976]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,17 +33,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=1738123876]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu" unique_id=1738123876]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1216149324]
+[node name="Play" type="Button" parent="MainMenu/HBoxContainer" unique_id=1216149324]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play
 "
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1558625711]
+[node name="Quit" type="Button" parent="MainMenu/HBoxContainer" unique_id=1558625711]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
+"
+
+[node name="NameMenu" type="CenterContainer" parent="." unique_id=1991112592]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NameMenu" unique_id=1524082759]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="NameMenu/VBoxContainer2" unique_id=633062734]
+layout_mode = 2
+placeholder_text = "Enter Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NameMenu/VBoxContainer2" unique_id=495798734]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="NameMenu/VBoxContainer2/HBoxContainer" unique_id=928426931]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start
+"
+
+[node name="Back" type="Button" parent="NameMenu/VBoxContainer2/HBoxContainer" unique_id=335715863]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back
+
 "

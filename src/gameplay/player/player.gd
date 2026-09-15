@@ -49,7 +49,7 @@ func handle_move():
 	if direction:
 		velocity.x = direction * SPEED
 		if dashing:
-			velocity.x = velocity.x*3
+			velocity.x = velocity.x*10
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
