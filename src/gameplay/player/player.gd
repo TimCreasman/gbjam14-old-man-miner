@@ -11,7 +11,7 @@ const JUMP_VELOCITY = -200.0
 @export var ray_cast: RayCast2D
 @export var old_timer: Timer
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
-var item_picked_up: OMM_ItemDefinition.ITEM_TYPES
+var item_picked_up = OMM_ItemDefinition.ITEM_TYPES.BOMB
 
 func _ready():
 	age_component.aged.connect(on_aged)

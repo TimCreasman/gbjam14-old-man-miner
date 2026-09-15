@@ -6,8 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mgnp"]
 radius = 3.0
 
-[node name="BombDropped" type="RigidBody2D" unique_id=2041238797]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wm5i"]
+
+[node name="BombDropped" type="RigidBody2D" unique_id=2041238797 node_paths=PackedStringArray("explode_timer", "explosion_area")]
 script = ExtResource("1_7mgnp")
+explode_timer = NodePath("Timer")
+explosion_area = NodePath("ExplosionArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=392770559]
 position = Vector2(1, -1)
@@ -15,3 +19,11 @@ texture = ExtResource("2_0wm5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=633900095]
 shape = SubResource("CircleShape2D_7mgnp")
+
+[node name="Timer" type="Timer" parent="." unique_id=1915847436]
+autostart = true
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=439749412]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1732977273]
+shape = SubResource("CircleShape2D_0wm5i")
