@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://8ctpwgqht23n"]
+
+[ext_resource type="PackedScene" path="res://src/gameplay/interactables/pickup.tscn" id="1_gp765"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="3_7ipx3"]
+
+[sub_resource type="GDScript" id="GDScript_xuhvl"]
+script/source = "extends \"res://src/gameplay/interactables/pickup.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Resource" id="Resource_frya5"]
+script = ExtResource("3_7ipx3")
+metadata/_custom_type_script = "uid://cohj448giry3f"
+
+[node name="BombPickup" unique_id=1075131245 instance=ExtResource("1_gp765")]
+script = SubResource("GDScript_xuhvl")
+definition = SubResource("Resource_frya5")

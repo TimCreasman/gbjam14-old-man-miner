@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ciuu6idyepvc1"]
+
+[ext_resource type="Script" uid="uid://bp3wb1iosmuug" path="res://src/gameplay/interactables/bomb_dropped.gd" id="1_7mgnp"]
+[ext_resource type="Texture2D" uid="uid://boqjo1a5jxcej" path="res://assets/art/sprites/interactables/bomb.png" id="2_0wm5i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mgnp"]
+radius = 3.0
+
+[node name="BombDropped" type="RigidBody2D" unique_id=2041238797]
+script = ExtResource("1_7mgnp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=392770559]
+position = Vector2(1, -1)
+texture = ExtResource("2_0wm5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=633900095]
+shape = SubResource("CircleShape2D_7mgnp")

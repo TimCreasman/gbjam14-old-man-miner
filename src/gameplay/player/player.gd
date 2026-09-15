@@ -10,7 +10,7 @@ const JUMP_VELOCITY = -200.0
 @export var sprite: Sprite2D
 @export var ray_cast: RayCast2D
 @export var old_timer: Timer
-
+var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 var item_picked_up: OMM_ItemDefinition.ITEM_TYPES
 
 func _ready():
@@ -26,9 +26,10 @@ func _physics_process(delta):
 		handle_jump()
 		handle_move()
 		handle_mine()
+		handle_use_item()
 	else:
 		velocity.x = 0
-
+	
 	move_and_slide()
 
 func handle_move():
@@ -64,9 +65,13 @@ func on_died():
 func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
 	item_picked_up = item
 
-func use_item():
-	match item_picked_up:
-		OMM_ItemDefinition.ITEM_TYPES.BOMB:
-			pass
-		_:
-			pass
+func handle_use_item():
+	if Input.is_action_just_pressed("use_item"):
+		match item_picked_up:
+			OMM_ItemDefinition.ITEM_TYPES.BOMB:
+				var bomb = bomb_scene.instantiate()
+				bomb.position = position
+				bomb.apply_force(velocity*200)
+				get_tree().root.add_child(bomb)
+				pass
+		#item_picked_up = OMM_ItemDefinition.ITEM_TYPES.NONE
