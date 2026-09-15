@@ -6,11 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(7, 6)
 
-[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "ray_cast", "old_timer", "dig_timer")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_64h4j"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "ray_cast", "old_timer", "dash_timer", "dash_area", "dig_timer")]
 script = ExtResource("1_4flbx")
 sprite = NodePath("Sprite2D")
 ray_cast = NodePath("RayCast2D")
 old_timer = NodePath("OldTimer")
+dash_timer = NodePath("DashTimer")
+dash_area = NodePath("DashArea")
 dig_timer = NodePath("DigTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779616123]
@@ -31,3 +35,11 @@ collision_mask = 2
 autostart = true
 
 [node name="DigTimer" type="Timer" parent="." unique_id=627870635]
+
+[node name="DashArea" type="Area2D" parent="." unique_id=1914255011]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashArea" unique_id=1667713725]
+shape = SubResource("CircleShape2D_64h4j")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=1533266614]
+one_shot = true

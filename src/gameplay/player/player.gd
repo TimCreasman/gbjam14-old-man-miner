@@ -11,10 +11,11 @@ const JUMP_VELOCITY = -200.0
 @export var sprite: Sprite2D
 @export var ray_cast: RayCast2D
 @export var old_timer: Timer
+@export var dash_timer: Timer
+@export var dash_area: Area2D
 @export var dig_timer: Timer
-var dig_speed: float = 1.5
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
-var item_picked_up = OMM_ItemDefinition.ITEM_TYPES.BOMB
+var item_picked_up = OMM_ItemDefinition.ITEM_TYPES.DASH
 
 func _ready():
 	age_component.aged.connect(on_aged)
@@ -32,7 +33,6 @@ func _physics_process(delta):
 		handle_use_item()
 	else:
 		velocity.x = 0
-	
 	move_and_slide()
 
 func handle_move():
@@ -41,6 +41,8 @@ func handle_move():
 		sprite.flip_h = direction < 0
 	if direction:
 		velocity.x = direction * SPEED
+		if dashing:
+			velocity.x = velocity.x*3
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -67,6 +69,13 @@ func on_died():
 func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
 	item_picked_up = item
 
+func dash():
+	dashing = true
+	dash_timer.start()
+
+func stop_dashing():
+	dashing = false
+
 func handle_use_item():
 	if Input.is_action_just_pressed("use_item"):
 		match item_picked_up:
@@ -75,4 +84,7 @@ func handle_use_item():
 				bomb.position = position
 				bomb.apply_force(velocity*200)
 				item_container.add_child(bomb)
+			OMM_ItemDefinition.ITEM_TYPES.DASH:
+				dash()
+				
 		#item_picked_up = OMM_ItemDefinition.ITEM_TYPES.NONE
