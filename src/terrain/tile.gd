@@ -42,8 +42,8 @@ func _ready():
 	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 
+
 func do_break(dig_speed):
-	
 	if breaking_animation_sprite.is_playing():
 		return
 	break_sound.play()
@@ -58,6 +58,9 @@ func breaking_done():
 	update_hardness_sprite()
 
 func on_destroy():
+	if _indestructable:
+		return
+
 	destroy_sound.play()
 	
 	if _is_gold:
