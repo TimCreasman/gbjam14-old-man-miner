@@ -14,6 +14,8 @@ const JUMP_VELOCITY = -200.0
 @export var dash_timer: Timer
 @export var dash_area: Area2D
 @export var dig_timer: Timer
+var dashing = false
+var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 var item_picked_up = OMM_ItemDefinition.ITEM_TYPES.DASH
 
@@ -21,6 +23,7 @@ func _ready():
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
 	old_timer.timeout.connect(age_component.increment_age)
+	dash_timer.timeout.connect(stop_dashing)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -33,6 +36,10 @@ func _physics_process(delta):
 		handle_use_item()
 	else:
 		velocity.x = 0
+	if dashing:
+		for tile in dash_area.get_overlapping_bodies():
+			if tile is OMM_GroundTile:
+				tile.on_destroy()
 	move_and_slide()
 
 func handle_move():
