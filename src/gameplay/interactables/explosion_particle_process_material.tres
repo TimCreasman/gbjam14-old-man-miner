@@ -1,0 +1,22 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://cfddpicopyf7t"]
+
+[sub_resource type="Curve" id="Curve_7uy0p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xkgpd"]
+curve = SubResource("Curve_7uy0p")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 15.87
+angle_min = -190.9
+angle_max = 245.50002
+direction = Vector3(0, 0, 0)
+spread = 109.648
+initial_velocity_min = -21.05
+initial_velocity_max = 22.73
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_xkgpd")
