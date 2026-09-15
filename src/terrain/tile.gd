@@ -24,7 +24,7 @@ var _indestructable = false
 var _is_gold := false
 
 static var tile_scene := preload("res://src/terrain/tile.tscn")
-static func new_tile(pos: Vector2i, _score_component: OMM_ScoreComponent, _hardness := 0, indestructable = false) -> OMM_GroundTile:
+static func new_tile(pos: Vector2i, _hardness := 0, indestructable = false) -> OMM_GroundTile:
 	var tile: OMM_GroundTile = tile_scene.instantiate()
 	tile.global_position = pos
 
@@ -32,7 +32,7 @@ static func new_tile(pos: Vector2i, _score_component: OMM_ScoreComponent, _hardn
 	if !indestructable:
 		tile._is_gold = _hardness >= 9
 	tile._indestructable = indestructable
-	tile.score_component = _score_component
+	# tile.score_component = _score_component
 
 	return tile
 
@@ -64,7 +64,7 @@ func on_destroy():
 	destroy_sound.play()
 	
 	if _is_gold:
-		score_component.increment_score()
+		# score_component.increment_score()
 		gold_sound.play()
 		_is_gold = false
 	await destroy_sound.finished
