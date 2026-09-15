@@ -6,11 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(7, 6)
 
-[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "ray_cast", "old_timer")]
+[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "ray_cast", "old_timer", "dig_timer")]
 script = ExtResource("1_4flbx")
 sprite = NodePath("Sprite2D")
 ray_cast = NodePath("RayCast2D")
 old_timer = NodePath("OldTimer")
+dig_timer = NodePath("DigTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779616123]
 position = Vector2(0, 1)
@@ -28,3 +29,5 @@ collision_mask = 2
 
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
 autostart = true
+
+[node name="DigTimer" type="Timer" parent="." unique_id=627870635]

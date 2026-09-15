@@ -42,12 +42,13 @@ func _ready():
 	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 
-func do_break():
+func do_break(dig_speed):
 	
 	if breaking_animation_sprite.is_playing():
 		return
 	break_sound.play()
 	breaking_animation_sprite.play("breaking_animation")
+	breaking_animation_sprite.speed_scale = dig_speed * 10
 
 func update_hardness_sprite():
 	hardness_sprite.frame = hardness

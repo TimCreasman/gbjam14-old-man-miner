@@ -11,6 +11,8 @@ const JUMP_VELOCITY = -200.0
 @export var sprite: Sprite2D
 @export var ray_cast: RayCast2D
 @export var old_timer: Timer
+@export var dig_timer: Timer
+var dig_speed: float = 1.5
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 var item_picked_up = OMM_ItemDefinition.ITEM_TYPES.BOMB
 
@@ -55,7 +57,7 @@ func handle_mine():
 
 	var tile = ray_cast.get_collider()
 	if tile is OMM_GroundTile:
-		tile.do_break()
+		tile.do_break(dig_speed)
 
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
