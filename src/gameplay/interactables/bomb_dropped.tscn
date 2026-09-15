@@ -14,6 +14,7 @@ explode_timer = NodePath("Timer")
 explosion_area = NodePath("ExplosionArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=392770559]
+texture_filter = 1
 position = Vector2(1, -1)
 texture = ExtResource("2_0wm5i")
 

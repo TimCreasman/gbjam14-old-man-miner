@@ -5,6 +5,7 @@ const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
 @export var age_component: OMM_AgeComponent
+@export var item_container: Node2D
 
 @export_category("Internal Components")
 @export var sprite: Sprite2D
@@ -58,7 +59,6 @@ func handle_mine():
 
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
-
 func on_died():
 	z_index = 100
 
@@ -72,6 +72,5 @@ func handle_use_item():
 				var bomb = bomb_scene.instantiate()
 				bomb.position = position
 				bomb.apply_force(velocity*200)
-				get_tree().root.add_child(bomb)
-				pass
+				item_container.add_child(bomb)
 		#item_picked_up = OMM_ItemDefinition.ITEM_TYPES.NONE
