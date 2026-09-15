@@ -26,7 +26,7 @@ func _ready():
 	dash_timer.timeout.connect(stop_dashing)
 
 func _physics_process(delta):
-	if not is_on_floor():
+	if not is_on_floor() and !dashing:
 		velocity += get_gravity() * delta
 
 	if !age_component.is_dead:
@@ -77,6 +77,7 @@ func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
 	item_picked_up = item
 
 func dash():
+	
 	dashing = true
 	dash_timer.start()
 
