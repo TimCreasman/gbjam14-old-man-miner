@@ -14,9 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="9_yk6rd"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="10_qj0xg"]
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/tile.tscn" id="10_v252j"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_sr17e"]
-[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="13_e3sg0"]
 [ext_resource type="Script" uid="uid://2snaqpav0at1" path="res://src/ui/hud/died_message.gd" id="13_lcp4o"]
+[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="14_qsm7c"]
+[ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="14_yk6rd"]
+[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="15_htxff"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="17_lcp4o"]
 
 [node name="Game" type="Node" unique_id=1274922351 node_paths=PackedStringArray("pause_menu")]
@@ -42,17 +45,20 @@ follow_node = NodePath("../Player")
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
 
 [node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("7_5nb03")]
-position = Vector2(76, 121)
+position = Vector2(76, -18)
 age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
 
-[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component", "score_component") instance=ExtResource("5_srulj")]
-position = Vector2(4, 115)
+[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
+position = Vector2(-94, 0)
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
-score_component = NodePath("../../../Systems/OMM_ScoreComponent")
 noise_map = ExtResource("9_yk6rd")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
+
+[node name="Node2D2" parent="Viewport/SubViewport" unique_id=1157843804 instance=ExtResource("10_v252j")]
+visible = false
+position = Vector2(77, 0)
 
 [node name="PauseMenu" type="CanvasLayer" parent="Viewport" unique_id=1753711030]
 visible = false
@@ -91,7 +97,26 @@ output_palette = ExtResource("5_sr17e")
 
 [node name="HUD" type="CanvasLayer" parent="Viewport" unique_id=1035683140]
 
-[node name="UI" type="Control" parent="Viewport/HUD" unique_id=707963452]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/HUD" unique_id=1854463738]
+material = ExtResource("2_sr17e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_b8ek1")
+input_palette = ExtResource("4_7gaau")
+output_palette = ExtResource("5_sr17e")
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/HUD/SubViewportContainer" unique_id=39225272]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport" unique_id=707963452]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,8 +124,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("11_sr17e")
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Viewport/HUD/UI" unique_id=2005923689]
+[node name="MarginContainer" type="MarginContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=2005923689]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -108,94 +134,79 @@ offset_bottom = 7.0
 grow_horizontal = 2
 theme = ExtResource("11_sr17e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/UI/MarginContainer" unique_id=63561127]
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer" unique_id=63561127]
 layout_mode = 2
 
-[node name="GoldContainer" type="HBoxContainer" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer" unique_id=1325225060]
+[node name="GoldContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1325225060]
 layout_mode = 2
 alignment = 2
 
-[node name="GoldLabel" type="Label" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=1081440667]
+[node name="GoldLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=1081440667]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 text = "GOLD"
-script = ExtResource("2_b8ek1")
-input_palette = ExtResource("4_7gaau")
-output_palette = ExtResource("5_sr17e")
 
-[node name="GoldAmount" type="Label" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448 node_paths=PackedStringArray("node_component")]
+[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448 node_paths=PackedStringArray("node_component")]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
-script = ExtResource("13_e3sg0")
-node_component = NodePath("../../../../../../../Systems/OMM_ScoreComponent")
+script = ExtResource("14_qsm7c")
+node_component = NodePath("../../../../../../../../../Systems/OMM_ScoreComponent")
 
-[node name="DepthContainer" type="HBoxContainer" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer" unique_id=2085984537]
+[node name="DepthContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=2085984537]
 layout_mode = 2
 alignment = 2
 
-[node name="DepthLabel" type="Label" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=1650333426]
+[node name="DepthLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=1650333426]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 text = "depth"
-script = ExtResource("2_b8ek1")
-input_palette = ExtResource("4_7gaau")
-output_palette = ExtResource("5_sr17e")
 
-[node name="DepthAmount" type="Label" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237 node_paths=PackedStringArray("node_component")]
+[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237 node_paths=PackedStringArray("node_component")]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
-script = ExtResource("13_e3sg0")
-node_component = NodePath("../../../../../../../Systems/OMM_DepthComponent")
+script = ExtResource("14_qsm7c")
+node_component = NodePath("../../../../../../../../../Systems/OMM_DepthComponent")
 
-[node name="AgeContainer" type="HBoxContainer" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer" unique_id=1643491241]
+[node name="AgeContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1643491241]
 layout_mode = 2
 alignment = 2
 
-[node name="AgeLabel" type="Label" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=2143857136]
+[node name="AgeLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=2143857136]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 text = "age"
-script = ExtResource("2_b8ek1")
-input_palette = ExtResource("4_7gaau")
-output_palette = ExtResource("5_sr17e")
 
-[node name="AgeAmount" type="Label" parent="Viewport/HUD/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810 node_paths=PackedStringArray("node_component")]
+[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810 node_paths=PackedStringArray("node_component")]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
-script = ExtResource("13_e3sg0")
-node_component = NodePath("../../../../../../../Systems/OMM_AgeComponent")
+script = ExtResource("14_qsm7c")
+node_component = NodePath("../../../../../../../../../Systems/OMM_AgeComponent")
 
-[node name="DeathMessage" type="Control" parent="Viewport/HUD/UI" unique_id=1404031394 node_paths=PackedStringArray("age_component")]
+[node name="DeathMessage" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1404031394 node_paths=PackedStringArray("age_component")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -204,9 +215,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("13_lcp4o")
-age_component = NodePath("../../../../Systems/OMM_AgeComponent")
+age_component = NodePath("../../../../../../Systems/OMM_AgeComponent")
 
-[node name="ColorRect" type="ColorRect" parent="Viewport/HUD/UI/DeathMessage" unique_id=1682492565]
+[node name="ColorRect" type="ColorRect" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1682492565]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,43 +226,69 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="Viewport/HUD/UI/DeathMessage" unique_id=1566707419]
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1566707419]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 76.0
 grow_horizontal = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/UI/DeathMessage/CenterContainer" unique_id=896279887]
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=896279887]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Viewport/HUD/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1096330182]
+[node name="Label" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1096330182]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_auijp")
 text = "u ded"
 horizontal_alignment = 1
-script = ExtResource("2_b8ek1")
-input_palette = ExtResource("4_7gaau")
-output_palette = ExtResource("5_sr17e")
 
-[node name="Label2" type="Label" parent="Viewport/HUD/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1227053849]
+[node name="Label2" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1227053849]
 texture_filter = 1
 texture_repeat = 1
-material = ExtResource("2_sr17e")
 layout_mode = 2
 theme = ExtResource("11_sr17e")
 theme_override_font_sizes/font_size = 8
 text = "press anything to 
 try again"
 horizontal_alignment = 1
-script = ExtResource("2_b8ek1")
-input_palette = ExtResource("4_7gaau")
-output_palette = ExtResource("5_sr17e")
+
+[node name="ItemUI" type="MarginContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1307777169]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/ItemUI" unique_id=1012120049 node_paths=PackedStringArray("item_texture_rect")]
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+script = ExtResource("14_yk6rd")
+current_item = ExtResource("15_htxff")
+item_texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/ItemUI/Panel" unique_id=8159934]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1376039753]
 stream = ExtResource("8_yjmwy")

@@ -17,9 +17,12 @@ const JUMP_VELOCITY = -200.0
 var dashing = false
 var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
-var item_picked_up = OMM_ItemDefinition.ITEM_TYPES.DASH
+
+@export var current_item : OMM_CurrentItemResource
 
 func _ready():
+	current_item.type = OMM_ItemDefinition.ITEM_TYPES.BOMB
+
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
 	old_timer.timeout.connect(age_component.increment_age)
@@ -73,8 +76,8 @@ func on_aged(age: OMM_AgeComponent.AGES):
 func on_died():
 	z_index = 100
 
-func pickup(item: OMM_ItemDefinition.ITEM_TYPES):
-	item_picked_up = item
+func pickup(item_type: OMM_ItemDefinition.ITEM_TYPES):
+	current_item.type = item_type
 
 func dash():
 	
@@ -86,7 +89,7 @@ func stop_dashing():
 
 func handle_use_item():
 	if Input.is_action_just_pressed("use_item"):
-		match item_picked_up:
+		match current_item.type:
 			OMM_ItemDefinition.ITEM_TYPES.BOMB:
 				var bomb = bomb_scene.instantiate()
 				bomb.position = position
