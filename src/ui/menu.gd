@@ -1,11 +1,19 @@
 class_name Menu
-extends CenterContainer
-
+extends Control
+var is_open = false;
+var buttons = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for child in find_children("*"):
+		if child is Button:
+			buttons.set(child.name, child)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func open() -> void:
+	visible = true
+	is_open = true
+	print(buttons)
+	buttons.values()[1].grab_focus()
+	
+func close() -> void:
+	visible = false
+	is_open = false

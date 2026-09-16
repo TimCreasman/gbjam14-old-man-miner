@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cn0hor25kcgho"]
+
+[ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="1_jo7h3"]
+
+[node name="MenuNavTest" type="Control" unique_id=2130026428]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1039587272]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1403857803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=1469955513]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=573941918]
+layout_mode = 2
+script = ExtResource("1_jo7h3")
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=181134175]
+layout_mode = 2

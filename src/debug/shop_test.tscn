@@ -21,7 +21,10 @@
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="17_pj22h"]
 [ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="18_njblb"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="19_g6nvp"]
+[ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="20_3fv3h"]
 [ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="20_78y2o"]
+[ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="20_xr847"]
+[ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="21_hjir0"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="21_mn1od"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr847"]
@@ -67,7 +70,7 @@ position = Vector2(77, 0)
 
 [node name="Shop" type="Area2D" parent="Viewport/SubViewport" unique_id=1613971049 node_paths=PackedStringArray("shop_menu", "player")]
 script = ExtResource("11_122ex")
-shop_menu = NodePath("../../ShopMenu")
+shop_menu = NodePath("../../ShopMenu/UI")
 player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="Viewport/SubViewport/Shop" unique_id=2009823659]
@@ -308,7 +311,6 @@ grow_vertical = 2
 stretch_mode = 3
 
 [node name="ShopMenu" type="CanvasLayer" parent="Viewport" unique_id=1229948301]
-visible = false
 
 [node name="UI" type="Control" parent="Viewport/ShopMenu" unique_id=61426069]
 layout_mode = 3
@@ -317,6 +319,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("20_3fv3h")
 
 [node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/UI" unique_id=2059883757]
 layout_mode = 1
@@ -353,15 +356,19 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1143007452]
 layout_mode = 2
-text = "BUY"
+text = "10G"
+icon = ExtResource("21_hjir0")
+script = ExtResource("20_xr847")
 
 [node name="Button2" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1625103286]
 layout_mode = 2
-text = "BUY"
+text = "10G"
+icon = ExtResource("21_hjir0")
 
 [node name="Button3" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1987485005]
 layout_mode = 2
-text = "BUY"
+text = "10G"
+icon = ExtResource("21_hjir0")
 
 [node name="Leave" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=1333496974]
 unique_name_in_owner = true
