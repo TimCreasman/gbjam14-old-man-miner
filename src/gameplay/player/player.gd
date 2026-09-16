@@ -19,6 +19,8 @@ var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 @export var current_item : OMM_CurrentItemResource
 
+var shopping=false
+
 func _ready():
 	current_item.type = OMM_ItemDefinition.ITEM_TYPES.BOMB
 
@@ -42,18 +44,19 @@ func _physics_process(delta):
 		for tile in dash_area.get_overlapping_bodies():
 			if tile is OMM_GroundTile:
 				tile.on_destroy()
-	move_and_slide()
+	if (!shopping):
+		move_and_slide()
 
 func handle_move():
-	var direction = Input.get_axis("move_left", "move_right")
-	if abs(direction) > 0:
-		sprite.flip_h = direction < 0
-	if direction:
-		velocity.x = direction * SPEED
-		if dashing:
-			velocity.x = velocity.x*10
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		var direction = Input.get_axis("move_left", "move_right")
+		if abs(direction) > 0:
+			sprite.flip_h = direction < 0
+		if direction:
+			velocity.x = direction * SPEED
+			if dashing:
+				velocity.x = velocity.x*10
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
