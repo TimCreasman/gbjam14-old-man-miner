@@ -19,13 +19,15 @@
 [ext_resource type="Script" path="res://src/ui/hud/amount_label.gd" id="15_xr847"]
 [ext_resource type="Script" path="res://src/ui/hud/current_item_panel.gd" id="16_bdst1"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="17_pj22h"]
-[ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="18_njblb"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="19_g6nvp"]
 [ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="20_3fv3h"]
 [ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="20_78y2o"]
 [ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="20_xr847"]
 [ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="21_hjir0"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="21_mn1od"]
+[ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="23_hjir0"]
+[ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/debug/music_manager.gd" id="23_to4h6"]
+[ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_rrakc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr847"]
 size = Vector2(22, 22)
@@ -68,10 +70,11 @@ noise_map = ExtResource("5_c14fy")
 visible = false
 position = Vector2(77, 0)
 
-[node name="Shop" type="Area2D" parent="Viewport/SubViewport" unique_id=1613971049 node_paths=PackedStringArray("shop_menu", "player")]
+[node name="Shop" type="Area2D" parent="Viewport/SubViewport" unique_id=1613971049 node_paths=PackedStringArray("shop_menu", "player", "music_manager")]
 script = ExtResource("11_122ex")
 shop_menu = NodePath("../../ShopMenu/UI")
 player = NodePath("../Player")
+music_manager = NodePath("../../../MusicManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="Viewport/SubViewport/Shop" unique_id=2009823659]
 scale = Vector2(0.25, 0.25)
@@ -375,8 +378,18 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "LEAVE"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1376039753]
-stream = ExtResource("18_njblb")
+[node name="MusicManager" type="Node2D" parent="." unique_id=1998449071]
+script = ExtResource("23_to4h6")
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=641415259]
+stream = ExtResource("24_rrakc")
+
+[node name="HubTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=479637867]
+stream = ExtResource("23_hjir0")
+autoplay = true
+
+[node name="ShopTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=204359646]
+stream = ExtResource("24_rrakc")
 
 [node name="Systems" type="Node" parent="." unique_id=569555038]
 
