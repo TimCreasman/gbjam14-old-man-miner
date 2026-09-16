@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://bms7666gdakb2"]
+
+[ext_resource type="Script" uid="uid://cbubdv7obrftg" path="res://src/gameplay/player/player.gd" id="1_f6j8t"]
+[ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="2_eb5hi"]
+[ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="2_pwqg8"]
+[ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://src/gameplay/camera/camera.tscn" id="2_wx3cu"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="3_2uk7y"]
+[ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="4_n51yc"]
+[ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/terrain/cave_generation.tscn" id="4_sqac6"]
+[ext_resource type="Texture2D" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="5_c14fy"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="5_vsekg"]
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/tile.tscn" id="6_bwctk"]
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_mdlpw"]
+[ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="12_br0wy"]
+[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="13_3ys2e"]
+[ext_resource type="Script" path="res://src/ui/hud/depth_amount_label.gd" id="14_04i4c"]
+[ext_resource type="Script" path="res://src/ui/hud/died_message.gd" id="15_p5uhu"]
+[ext_resource type="Script" path="res://src/ui/hud/current_item_panel.gd" id="16_bdst1"]
+[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="17_pj22h"]
+[ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="18_njblb"]
+[ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="19_g6nvp"]
+[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="20_78y2o"]
+[ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="21_mn1od"]
+
+[node name="ShopTest" type="Node" unique_id=226240693]
+script = ExtResource("1_f6j8t")
+
+[node name="Viewport" type="SubViewportContainer" parent="." unique_id=171686004]
+material = ExtResource("2_eb5hi")
+script = ExtResource("3_2uk7y")
+input_palette = ExtResource("4_n51yc")
+output_palette = ExtResource("5_vsekg")
+
+[node name="SubViewport" type="SubViewport" parent="Viewport" unique_id=1973344003]
+process_mode = 1
+handle_input_locally = false
+audio_listener_enable_2d = true
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node", "depth_component") instance=ExtResource("2_wx3cu")]
+follow_node = NodePath("../Player")
+depth_component = NodePath("")
+
+[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("2_pwqg8")]
+position = Vector2(76, -18)
+age_component = NodePath("")
+item_container = NodePath("../ItemContainer")
+current_item = null
+
+[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=747406970 node_paths=PackedStringArray("depth_component") instance=ExtResource("4_sqac6")]
+position = Vector2(-94, 0)
+depth_component = NodePath("")
+noise_map = ExtResource("5_c14fy")
+
+[node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=215936866]
+
+[node name="Node2D2" parent="Viewport/SubViewport" unique_id=1157843804 instance=ExtResource("6_bwctk")]
+visible = false
+position = Vector2(77, 0)
+
+[node name="PauseMenu" type="CanvasLayer" parent="Viewport" unique_id=140450488]
+visible = false
+
+[node name="UI" type="Control" parent="Viewport/PauseMenu" unique_id=1934893779]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("11_mdlpw")
+
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/PauseMenu/UI" unique_id=901316568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Viewport/PauseMenu/UI/CenterContainer" unique_id=2083683713]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_eb5hi")
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("12_br0wy")
+text = "PAUSED"
+script = ExtResource("3_2uk7y")
+input_palette = ExtResource("4_n51yc")
+output_palette = ExtResource("5_vsekg")
+
+[node name="HUD" type="CanvasLayer" parent="Viewport" unique_id=1457340258]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/HUD" unique_id=1095329466]
+material = ExtResource("2_eb5hi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_2uk7y")
+input_palette = ExtResource("4_n51yc")
+output_palette = ExtResource("5_vsekg")
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/HUD/SubViewportContainer" unique_id=167462116]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport" unique_id=2058227030]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_mdlpw")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=969849256]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme = ExtResource("11_mdlpw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer" unique_id=1890726433]
+layout_mode = 2
+
+[node name="GoldContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=625854533]
+layout_mode = 2
+alignment = 2
+
+[node name="GoldLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=1511456872]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("13_3ys2e")
+theme_override_font_sizes/font_size = 8
+text = "GOLD"
+
+[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=1902873097]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("13_3ys2e")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("14_04i4c")
+
+[node name="DepthContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=641912404]
+layout_mode = 2
+alignment = 2
+
+[node name="DepthLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=951907858]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("13_3ys2e")
+theme_override_font_sizes/font_size = 8
+text = "depth"
+
+[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=1690050121]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("13_3ys2e")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("14_04i4c")
+
+[node name="AgeContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1685243383]
+layout_mode = 2
+alignment = 2
+
+[node name="AgeLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=528526939]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("13_3ys2e")
+theme_override_font_sizes/font_size = 8
+text = "age"
+
+[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=619957153]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("13_3ys2e")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("14_04i4c")
+
+[node name="DeathMessage" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=2048770829 node_paths=PackedStringArray("age_component")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_p5uhu")
+age_component = NodePath("")
+
+[node name="ColorRect" type="ColorRect" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1065006987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=689616558]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=487708226]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1994697851]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_fonts/font = ExtResource("12_br0wy")
+text = "u ded"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1853804484]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+theme_override_font_sizes/font_size = 8
+text = "press anything to 
+try again"
+horizontal_alignment = 1
+
+[node name="ItemUI" type="MarginContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1377910640]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/ItemUI" unique_id=891838805 node_paths=PackedStringArray("item_texture_rect")]
+layout_mode = 2
+theme = ExtResource("11_mdlpw")
+script = ExtResource("16_bdst1")
+current_item = ExtResource("17_pj22h")
+item_texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/ItemUI/Panel" unique_id=1999608307]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1165551313]
+stream = ExtResource("18_njblb")
+
+[node name="Systems" type="Node" parent="." unique_id=1782359952]
+
+[node name="OMM_DepthComponent" type="Node" parent="Systems" unique_id=580108530]
+script = ExtResource("19_g6nvp")
+metadata/_custom_type_script = "uid://g75t136olir6"
+
+[node name="OMM_ScoreComponent" type="Node" parent="Systems" unique_id=2043622918]
+script = ExtResource("20_78y2o")
+metadata/_custom_type_script = "uid://pix2oapfihac"
+
+[node name="OMM_AgeComponent" type="Node" parent="Systems" unique_id=175194201]
+script = ExtResource("21_mn1od")

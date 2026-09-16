@@ -17,7 +17,6 @@ const JUMP_VELOCITY = -200.0
 var dashing = false
 var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
-
 @export var current_item : OMM_CurrentItemResource
 
 func _ready():

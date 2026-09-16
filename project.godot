@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OldManMiner"
-run/main_scene="uid://b7ksjcn0njxnh"
+run/main_scene="uid://bms7666gdakb2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://dynr03j65pqwl"
 config/icon="res://icon.svg"
