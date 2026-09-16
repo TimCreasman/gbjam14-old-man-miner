@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/debug/music_manager.gd" id="23_jirt8"]
 [ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_dso5o"]
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="25_gjsjt"]
+[ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="25_h8ax2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr847"]
 size = Vector2(22, 22)
@@ -55,10 +56,11 @@ render_target_update_mode = 4
 follow_node = NodePath("../Player")
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
 
-[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("7_5nb03")]
+[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container", "state_manager") instance=ExtResource("7_5nb03")]
 position = Vector2(76, -18)
 age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
+state_manager = NodePath("")
 
 [node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
@@ -316,6 +318,7 @@ stretch_mode = 3
 [node name="ShopMenu" type="CanvasLayer" parent="Viewport" unique_id=1229948301]
 
 [node name="UI" type="Control" parent="Viewport/ShopMenu" unique_id=61426069]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -387,8 +390,8 @@ text = "LEAVE"
 [node name="MusicManager" type="Node2D" parent="." unique_id=1998449071]
 script = ExtResource("23_jirt8")
 
-[node name="MainTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=641415259]
-stream = ExtResource("24_dso5o")
+[node name="MineTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=641415259]
+stream = ExtResource("25_h8ax2")
 
 [node name="HubTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=479637867]
 stream = ExtResource("25_gjsjt")

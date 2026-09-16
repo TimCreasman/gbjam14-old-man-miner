@@ -34,7 +34,6 @@ target_position = Vector2(8, 0)
 collision_mask = 2
 
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
-autostart = true
 
 [node name="DigTimer" type="Timer" parent="." unique_id=627870635]
 

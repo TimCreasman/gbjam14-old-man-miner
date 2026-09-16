@@ -22,6 +22,7 @@ var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dro
 var shopping=false
 
 func _ready():
+	StateManager.state_changed.connect(_on_state_changed)
 	current_item.type = OMM_ItemDefinition.ITEM_TYPES.DASH
 
 	age_component.aged.connect(on_aged)
@@ -76,6 +77,8 @@ func handle_mine():
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
 func on_died():
+	old_timer.stop()
+	StateManager.change_state("hub")
 	z_index = 100
 
 # func pickup(item_type: OMM_ItemDefinition.ITEM_TYPES):
@@ -101,3 +104,6 @@ func handle_use_item():
 				dash()
 				
 		# current_item.type = OMM_ItemDefinition.ITEM_TYPES.NONE
+func _on_state_changed(new_state, old_state) -> void:
+	if old_state != "mine" and new_state == "mine":
+		old_timer.start()

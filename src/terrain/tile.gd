@@ -18,6 +18,7 @@ extends StaticBody2D
 @export var break_sound: AudioStreamPlayer2D
 @export var destroy_sound: AudioStreamPlayer2D
 
+
 var score_component: OMM_ScoreComponent
 
 var _indestructable = false
@@ -54,9 +55,12 @@ func update_hardness_sprite():
 
 func breaking_done():
 	do_damage()
+
 	update_hardness_sprite()
 
 func on_destroy():
+	if StateManager.current_state != "mine":
+		StateManager.change_state("mine")
 	if _indestructable:
 		return
 

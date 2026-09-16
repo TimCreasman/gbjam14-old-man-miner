@@ -8,6 +8,7 @@ func _ready() -> void:
 	shop_menu.close()
 	body_entered.connect(on_body_entered)
 	%Leave.pressed.connect(exit_shop)
+	StateManager.state_changed.connect(_on_state_changed)
 	pass # Replace with function body.
 
 func on_body_entered(body: Node2D) -> void:
@@ -15,11 +16,17 @@ func on_body_entered(body: Node2D) -> void:
 		enter_shop()
 		
 func enter_shop():
-		music_manager.switch_to_song("ShopTheme")
-		shop_menu.open()
-		player.shopping = true
+	StateManager.change_state("shop")
+	shop_menu.open()
+	player.shopping = true
 
 func exit_shop():
-	music_manager.switch_to_song("HubTheme")
+	StateManager.change_state("hub")
 	shop_menu.close()
 	player.shopping = false
+
+func _on_state_changed(new_state, old_state) -> void:
+	if new_state == "mine":
+		visible=false
+	if new_state == "hub":
+		visible=true
