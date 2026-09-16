@@ -6,7 +6,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is AudioStreamPlayer2D:
 			songs.set(child.name, child)
-	print(songs)
+	switch_to_song("HubTheme")
 
 
 func stop_all_songs() -> void:

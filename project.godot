@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OldManMiner"
-run/main_scene="uid://by3lkdoabu6v3"
+run/main_scene="uid://b7ksjcn0njxnh"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://dynr03j65pqwl"
 config/icon="res://icon.svg"
@@ -24,6 +24,10 @@ window/size/mode=2
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/onscreenkeyboard/plugin.cfg")
 
 [file_customization]
 
