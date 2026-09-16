@@ -42,7 +42,6 @@ func _ready():
 	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 
-
 func do_break(dig_speed):
 	if breaking_animation_sprite.is_playing():
 		return
@@ -68,9 +67,9 @@ func on_destroy():
 		gold_sound.play()
 		_is_gold = false
 	await destroy_sound.finished
-	queue_free()
-	
-	propagate_destroy.call_deferred()
+
+	propagate_destroy()
+	reset_to_pool()
 
 func do_damage():
 	
@@ -79,6 +78,13 @@ func do_damage():
 	if hardness == 0:
 		
 		on_destroy()
+
+
+func reset_to_pool():
+	visible = false
+	position = Vector2(0, -8)
+	if get_parent():
+		get_parent().remove_child(self)
 
 # Hack to expose more area
 func propagate_destroy():

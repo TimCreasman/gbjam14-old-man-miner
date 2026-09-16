@@ -12,6 +12,9 @@ extends Node2D
 
 @export_category("Internal Components")
 @export var chunk_container: CanvasGroup
+
+@export var item_container: Node2D
+
 @export var noise_map: FastNoiseLite
 
 # Turn back on if a tool script
@@ -19,11 +22,21 @@ extends Node2D
 const TILE_SIZE = 8
 const DEPTH_OFFSET = 16
 
+var pool : Array[OMM_GroundTile] = []
+
 func _ready():
 	if depth_component:
 		depth_component.changed.connect(on_depth_changed)
 
+	populate_pool()
 	_init_chunk()
+
+func populate_pool():
+	for i in range(30 * chunk_size.x):
+		var tile = OMM_GroundTile.new_tile(Vector2(0, -8), 0, true)
+		tile.visible = false
+		tile.name = str(i)
+		pool.append(tile)
 
 func on_depth_changed(depth: int):
 	depth += DEPTH_OFFSET
@@ -43,12 +56,11 @@ func _depth_to_chunk_index(depth: float) -> int:
 	return ceili(depth / ( chunk_size.y * TILE_SIZE))
 
 func _init_chunk():
-
 	# Get the pixel position
 	var y = chunk_index * chunk_size.y * TILE_SIZE
 	var chunk_pos = Vector2i(0, y)
 
 	var chunk_bounds = Rect2i(chunk_pos, chunk_size * TILE_SIZE)
-
-	var chunk = OMM_Chunk.create_chunk(chunk_bounds)
+	var chunk = OMM_Chunk.create_chunk(chunk_bounds, item_container, pool)
+	chunk.name = str(chunk_index)
 	chunk_container.add_child(chunk)

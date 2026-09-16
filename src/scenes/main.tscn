@@ -50,7 +50,6 @@ age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
 
 [node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
-position = Vector2(-94, 0)
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
 noise_map = ExtResource("9_yk6rd")
 

@@ -22,7 +22,7 @@ var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dro
 var shopping=false
 
 func _ready():
-	current_item.type = OMM_ItemDefinition.ITEM_TYPES.BOMB
+	current_item.type = OMM_ItemDefinition.ITEM_TYPES.DASH
 
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
@@ -78,8 +78,8 @@ func on_aged(age: OMM_AgeComponent.AGES):
 func on_died():
 	z_index = 100
 
-func pickup(item_type: OMM_ItemDefinition.ITEM_TYPES):
-	current_item.type = item_type
+# func pickup(item_type: OMM_ItemDefinition.ITEM_TYPES):
+	# current_item.type = item_type
 
 func dash():
 	
@@ -100,4 +100,4 @@ func handle_use_item():
 			OMM_ItemDefinition.ITEM_TYPES.DASH:
 				dash()
 				
-		#item_picked_up = OMM_ItemDefinition.ITEM_TYPES.NONE
+		# current_item.type = OMM_ItemDefinition.ITEM_TYPES.NONE
