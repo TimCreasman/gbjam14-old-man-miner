@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://u6mabc8fuola"]
+
+[ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="1_5sq51"]
+
+[resource]
+default_font = ExtResource("1_5sq51")

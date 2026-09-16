@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="3_eoavt"]
 [ext_resource type="Script" uid="uid://dw2s0net6bpp2" path="res://src/scenes/OMM_keyboard.gd" id="3_shm1j"]
 [ext_resource type="Theme" uid="uid://dxwpeiylwa2mv" path="res://Keyboard.tres" id="4_damdu"]
-[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="5_0qc1l"]
+[ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="6_damdu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shm1j"]
 expand_margin_left = 1.0
@@ -49,7 +49,6 @@ grow_vertical = 2
 script = ExtResource("2_a750j")
 
 [node name="MainMenu" type="CenterContainer" parent="MenuManager" unique_id=1583333976]
-visible = false
 layout_mode = 2
 script = ExtResource("2_gctki")
 
@@ -59,16 +58,19 @@ layout_mode = 2
 [node name="Play" type="Button" parent="MenuManager/MainMenu/HBoxContainer" unique_id=1216149324]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_damdu")
 text = "Play
 "
 
 [node name="Quit" type="Button" parent="MenuManager/MainMenu/HBoxContainer" unique_id=1558625711]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_damdu")
 text = "Quit
 "
 
 [node name="NameMenu" type="CenterContainer" parent="MenuManager" unique_id=1991112592]
+visible = false
 layout_mode = 2
 use_top_left = true
 script = ExtResource("2_gctki")
@@ -282,11 +284,14 @@ autowrap_trim_flags = 0
 
 [node name="LineEdit" type="LineEdit" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=775687488]
 layout_mode = 2
-size_flags_horizontal = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("5_0qc1l")
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_eoavt")
 theme_override_font_sizes/font_size = 16
+max_length = 8
+editable = false
 middle_mouse_paste_enabled = false
+virtual_keyboard_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=495798734]
 layout_mode = 2
@@ -294,8 +299,7 @@ layout_mode = 2
 [node name="Start" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=928426931]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_eoavt")
-theme_override_font_sizes/font_size = 12
+theme = ExtResource("6_damdu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qc1l")
 text = "Start
 "
@@ -303,8 +307,7 @@ text = "Start
 [node name="Back" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=507073766]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_eoavt")
-theme_override_font_sizes/font_size = 12
+theme = ExtResource("6_damdu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qc1l")
 text = "Back
 

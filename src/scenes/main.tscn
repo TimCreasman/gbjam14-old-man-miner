@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="15_htxff"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="17_lcp4o"]
 [ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="20_h8ax2"]
+[ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="21_7opv2"]
 [ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="21_r0lsc"]
 [ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="22_n157j"]
 [ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/debug/music_manager.gd" id="23_jirt8"]
@@ -348,7 +349,7 @@ texture_filter = 1
 texture_repeat = 1
 material = ExtResource("2_sr17e")
 layout_mode = 2
-theme = ExtResource("11_sr17e")
+theme = ExtResource("21_7opv2")
 theme_override_fonts/font = ExtResource("10_auijp")
 text = "SHOP"
 horizontal_alignment = 1
@@ -358,23 +359,29 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1143007452]
 layout_mode = 2
+theme = ExtResource("21_7opv2")
 text = "10G"
 icon = ExtResource("21_r0lsc")
 script = ExtResource("22_n157j")
 
-[node name="Button2" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1625103286]
+[node name="Button2" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=379304751]
 layout_mode = 2
+theme = ExtResource("21_7opv2")
 text = "10G"
 icon = ExtResource("21_r0lsc")
+script = ExtResource("22_n157j")
 
-[node name="Button3" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1987485005]
+[node name="Button3" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=425266735]
 layout_mode = 2
+theme = ExtResource("21_7opv2")
 text = "10G"
 icon = ExtResource("21_r0lsc")
+script = ExtResource("22_n157j")
 
 [node name="Leave" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=1333496974]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("21_7opv2")
 text = "LEAVE"
 
 [node name="MusicManager" type="Node2D" parent="." unique_id=1998449071]
