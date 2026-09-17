@@ -5,17 +5,15 @@ extends Node2D
 @export var noise_map: NoiseTexture2D
 
 var bounds: Rect2i
-var pool_ref : Array[OMM_GroundTile] = []
 
 var rng = RandomNumberGenerator.new()
 
 @export var item_container : Node2D
 
 static var chunk_scene := preload("res://src/terrain/chunk.tscn")
-static func create_chunk(rect: Rect2i, _item_container: Node2D, _pool: Array) -> OMM_Chunk:
+static func create_chunk(rect: Rect2i, _item_container: Node2D) -> OMM_Chunk:
 	var chunk: OMM_Chunk = chunk_scene.instantiate()
 	chunk.bounds = rect
-	chunk.pool_ref = _pool
 	chunk.item_container = _item_container
 	return chunk
 
@@ -47,10 +45,7 @@ func _generate_tile(tile_position: Vector2i):
 	var indestructable = (tile_position.x == 0 || tile_position.x == (bounds.size.x - TILE_SIZE))
 	var hardness = _hardness(tile_position)
 
-	# if hardness > 0:
-	var tile = pool_ref[pool_ref.find_custom(func(t):
-		return !t.visible
-	)]
+	var tile = OMM_ObjectPool.get_tile()
 
 	if !tile:
 		return
@@ -58,7 +53,8 @@ func _generate_tile(tile_position: Vector2i):
 	tile.position = tile_position
 	tile.hardness = hardness
 	tile._indestructable = indestructable
-	tile.visible = true
+	if !indestructable:
+		tile._is_gold = hardness >= 9
 
 	add_child(tile)
 
@@ -73,9 +69,9 @@ func _generate_items(pos: Vector2i):
 
 func reset_all_to_pool():
 	var count = 0
-	for child in get_children():
-		if child is OMM_GroundTile:
-			child.reset_to_pool()
+	for tile in get_children():
+		if tile is OMM_GroundTile:
+			OMM_ObjectPool.pool_tile(tile)
 			count += 1
 
 	print_debug("Chunk: %s is resetting %s tiles to the pool" % [name, count])

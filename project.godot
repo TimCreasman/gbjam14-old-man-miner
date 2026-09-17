@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="OldManMiner"
-run/main_scene="uid://by3lkdoabu6v3"
+run/main_scene="uid://cs0wc8xy53728"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://dynr03j65pqwl"
 config/icon="res://icon.svg"
+
+[autoload]
+
+OMM_ObjectPool="*uid://xlv2a165j8e5"
 
 [display]
 
