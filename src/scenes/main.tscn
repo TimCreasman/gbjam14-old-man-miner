@@ -56,11 +56,10 @@ render_target_update_mode = 4
 follow_node = NodePath("../Player")
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
 
-[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container", "state_manager") instance=ExtResource("7_5nb03")]
+[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("7_5nb03")]
 position = Vector2(76, -18)
 age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
-state_manager = NodePath("")
 
 [node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
 depth_component = NodePath("../../../Systems/OMM_DepthComponent")
@@ -74,7 +73,7 @@ position = Vector2(77, 0)
 
 [node name="Shop" type="Area2D" parent="Viewport/SubViewport" unique_id=1613971049 node_paths=PackedStringArray("shop_menu", "player", "music_manager")]
 script = ExtResource("11_am227")
-shop_menu = NodePath("../../ShopMenu/UI")
+shop_menu = NodePath("../../ShopMenu/SubViewportContainer/SubViewport/UI")
 player = NodePath("../Player")
 music_manager = NodePath("../../../MusicManager")
 
@@ -317,8 +316,23 @@ stretch_mode = 3
 
 [node name="ShopMenu" type="CanvasLayer" parent="Viewport" unique_id=1229948301]
 
-[node name="UI" type="Control" parent="Viewport/ShopMenu" unique_id=61426069]
-visible = false
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/ShopMenu" unique_id=1763926736]
+material = ExtResource("2_sr17e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_b8ek1")
+input_palette = ExtResource("4_7gaau")
+output_palette = ExtResource("5_sr17e")
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/ShopMenu/SubViewportContainer" unique_id=2065020275]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport" unique_id=61426069]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -327,7 +341,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("20_h8ax2")
 
-[node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/UI" unique_id=2059883757]
+[node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI" unique_id=2059883757]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -336,7 +350,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="Viewport/ShopMenu/UI" unique_id=768246629]
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI" unique_id=768246629]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -344,10 +358,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/ShopMenu/UI/CenterContainer" unique_id=1219942490]
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer" unique_id=1219942490]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=576526890]
+[node name="Label" type="Label" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=576526890]
 texture_filter = 1
 texture_repeat = 1
 material = ExtResource("2_sr17e")
@@ -357,31 +371,31 @@ theme_override_fonts/font = ExtResource("10_auijp")
 text = "SHOP"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=1392602854]
+[node name="HBoxContainer" type="HBoxContainer" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1392602854]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1143007452]
-layout_mode = 2
-theme = ExtResource("21_7opv2")
-text = "10G"
-icon = ExtResource("21_r0lsc")
-script = ExtResource("22_n157j")
-
-[node name="Button2" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=379304751]
+[node name="Button" type="Button" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1143007452]
 layout_mode = 2
 theme = ExtResource("21_7opv2")
 text = "10G"
 icon = ExtResource("21_r0lsc")
 script = ExtResource("22_n157j")
 
-[node name="Button3" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=425266735]
+[node name="Button2" type="Button" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=379304751]
 layout_mode = 2
 theme = ExtResource("21_7opv2")
 text = "10G"
 icon = ExtResource("21_r0lsc")
 script = ExtResource("22_n157j")
 
-[node name="Leave" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=1333496974]
+[node name="Button3" type="Button" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=425266735]
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+text = "10G"
+icon = ExtResource("21_r0lsc")
+script = ExtResource("22_n157j")
+
+[node name="Leave" type="Button" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1333496974]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("21_7opv2")

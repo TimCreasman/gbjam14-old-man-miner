@@ -13,23 +13,36 @@ const JUMP_VELOCITY = -200.0
 @export var old_timer: Timer
 @export var dash_timer: Timer
 @export var dash_area: Area2D
+@export var midas_area: Area2D
 @export var dig_timer: Timer
+@export var midas_timer: Timer
 var dashing = false
+var has_midas = false
 var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 @export var current_item : OMM_CurrentItemResource
 
 var shopping=false
 
+
+
 func _ready():
+	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
-	current_item.type = OMM_ItemDefinition.ITEM_TYPES.DASH
+	current_item.type = OMM_ItemDefinition.ITEM_TYPES.MIDAS
 
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
 	old_timer.timeout.connect(age_component.increment_age)
 	dash_timer.timeout.connect(stop_dashing)
+	midas_timer.timeout.connect(stop_midas)
 
+
+func on_body_entered(body: Node2D) -> void:
+	if body is OMM_GroundTile:
+		if !body._is_gold and has_midas:
+			print("midas")
+			body.turn_to_gold()
 func _physics_process(delta):
 	if not is_on_floor() and !dashing:
 		velocity += get_gravity() * delta
@@ -64,15 +77,16 @@ func handle_jump():
 		velocity.y = JUMP_VELOCITY
 
 func handle_mine():
-	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if move_dir.is_zero_approx():
-		return
+	if (!shopping):
+		var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		if move_dir.is_zero_approx():
+			return
 
-	ray_cast.rotation = move_dir.angle()
+		ray_cast.rotation = move_dir.angle()
 
-	var tile = ray_cast.get_collider()
-	if tile is OMM_GroundTile:
-		tile.do_break(dig_speed)
+		var tile = ray_cast.get_collider()
+		if tile is OMM_GroundTile:
+			tile.do_break(dig_speed)
 
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
@@ -92,6 +106,13 @@ func dash():
 func stop_dashing():
 	dashing = false
 
+func midas_touch() -> void:
+	has_midas = true
+	midas_timer.start()
+
+func stop_midas_touch() -> void:
+	has_midas = false
+
 func handle_use_item():
 	if Input.is_action_just_pressed("use_item"):
 		match current_item.type:
@@ -102,6 +123,8 @@ func handle_use_item():
 				item_container.add_child(bomb)
 			OMM_ItemDefinition.ITEM_TYPES.DASH:
 				dash()
+			OMM_ItemDefinition.ITEM_TYPES.MIDAS:
+				midas_touch()
 				
 		# current_item.type = OMM_ItemDefinition.ITEM_TYPES.NONE
 func _on_state_changed(new_state, old_state) -> void:

@@ -1,9 +1,10 @@
 class_name OMM_ItemDefinition
 extends Resource
 
-enum ITEM_TYPES { BOMB, DASH, NONE = -1}
+enum ITEM_TYPES { BOMB, DASH, MIDAS, NONE = -1}
 
 static var item_textures : Array[Texture2D] = [
+	preload("res://assets/art/sprites/interactables/bomb.png"),
 	preload("res://assets/art/sprites/interactables/bomb.png"),
 	preload("res://assets/art/sprites/interactables/bomb.png")
 ] 

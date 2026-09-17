@@ -58,6 +58,14 @@ func breaking_done():
 
 	update_hardness_sprite()
 
+func turn_to_gold() -> void:
+	if !_is_gold:
+		hardness = 9
+		update_hardness_sprite()
+		_is_gold = true
+		gold_sprite.visible = _is_gold
+	
+
 func on_destroy():
 	if StateManager.current_state != "mine":
 		StateManager.change_state("mine")
