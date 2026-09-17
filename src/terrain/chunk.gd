@@ -31,27 +31,31 @@ func _ready():
 	_generate()
 
 func _generate():
-	print("%s Generating tiles" % name)
+	var count = 0
 	for x in range(0, bounds.size.x, TILE_SIZE):
 		for y in range(0, bounds.size.y, TILE_SIZE):
 			_generate_tile(Vector2i(x, y))
+			count += 1
 			# _generate_items(Vector2i(x, y))
 
+	print("%s Generated %s tiles" % [name, count])
+
 func _hardness(pos: Vector2i):
-	var noise_level = noise_map.noise.get_noise_2d(pos.x, pos.y + bounds.position.y)
-	return clampi(remap(noise_level, 0, 1, 0, 10), 0, 10)
+	var noise_level = noise_map.noise.get_noise_2dv(pos + bounds.position)
+	return remap(noise_level, -0.5, 1, 0, 10)
 
 func _generate_tile(tile_position: Vector2i):
+	# IF tile_position has been destroyed do not add
 	# var indestructable = (tile_position.x == 0 || tile_position.x == (bounds.size.x - TILE_SIZE))
 	var hardness = _hardness(tile_position)
+	if hardness <= 0:
+		return
 
 	var tile = OMM_ObjectPool.pull_from_pool({
-		"global_position" : tile_position,
+		"position" : tile_position,
 		"hardness" : hardness,
 		"indestructable" : false
 	})
-
-	# print(tile.global_position)
 
 	add_child(tile)
 
@@ -68,9 +72,9 @@ func reset_all_to_pool():
 	var count = 0
 	for tile in get_children():
 		if tile is OMM_GroundTile:
+			remove_child(tile)
 			OMM_ObjectPool.add_to_pool(tile)
 			count += 1
 
 	print_debug("Chunk: %s is resetting %s tiles to the pool" % [name, count])
-
-	# queue_free()
+	queue_free()

@@ -52,17 +52,16 @@ audio_listener_enable_2d = true
 size = Vector2i(160, 144)
 render_target_update_mode = 4
 
-[node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node", "depth_component") instance=ExtResource("4_bvr34")]
+[node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("4_bvr34")]
 follow_node = NodePath("../Player")
-depth_component = NodePath("../../../Systems/OMM_DepthComponent")
 
 [node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("7_5nb03")]
 position = Vector2(76, -18)
 age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
 
-[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("5_srulj")]
-depth_component = NodePath("../../../Systems/OMM_DepthComponent")
+[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 instance=ExtResource("5_srulj")]
+chunk_size = Vector2i(3, 5)
 noise_map = ExtResource("9_yk6rd")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]

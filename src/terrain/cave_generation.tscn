@@ -3,6 +3,8 @@
 [ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://src/shaders/inline.gdshader" id="1_7uvl8"]
 [ext_resource type="Script" uid="uid://y83dacopgqtt" path="res://src/terrain/generate_mine.gd" id="2_yyyc3"]
 [ext_resource type="FastNoiseLite" uid="uid://2s5chv4f2ehe" path="res://src/terrain/cave_generation_lite_noise.tres" id="3_4kcx1"]
+[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
+[ext_resource type="Script" uid="uid://dq6py6ib2bbya" path="res://src/terrain/tiles.gd" id="4_lovyd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -26,13 +28,13 @@ shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 [node name="CaveGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("chunk_container", "item_container")]
 material = SubResource("ShaderMaterial_5nb03")
 script = ExtResource("2_yyyc3")
-chunk_size = Vector2i(25, 8)
-chunk_index = 0
+player_coordinate = ExtResource("3_7ecim")
 chunk_container = NodePath("Tiles")
 item_container = NodePath("ItemLayer")
 noise_map = SubResource("NoiseTexture2D_f5w2v")
 
 [node name="Tiles" type="CanvasGroup" parent="." unique_id=1224250136]
 material = SubResource("ShaderMaterial_f5w2v")
+script = ExtResource("4_lovyd")
 
 [node name="ItemLayer" type="Node2D" parent="." unique_id=1589812991]

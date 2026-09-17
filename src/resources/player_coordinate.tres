@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="OMM_Coordinate" format=3 uid="uid://bk1k0w4hk1drf"]
+
+[ext_resource type="Script" uid="uid://chov7ny0060gd" path="res://src/resources/coordinate_resource.gd" id="1_ciwhj"]
+
+[resource]
+script = ExtResource("1_ciwhj")
+metadata/_custom_type_script = "uid://chov7ny0060gd"

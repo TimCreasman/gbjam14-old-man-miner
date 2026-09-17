@@ -18,8 +18,9 @@ extends StaticBody2D
 @export var break_sound: AudioStreamPlayer2D
 @export var destroy_sound: AudioStreamPlayer2D
 
-var score_component: OMM_ScoreComponent
+signal destroyed()
 
+var score_component: OMM_ScoreComponent
 var indestructable = false
 var _is_gold: bool: 
 	get():
@@ -68,16 +69,18 @@ func on_destroy():
 	if StateManager.current_state != "mine":
 		StateManager.change_state("mine")
 
-	destroy_sound.play()
+	# destroy_sound.play()
 	
 	if _is_gold:
 		# score_component.increment_score()
 		gold_sound.play()
+		print("GOLD")
+		await gold_sound.finished
 		# _is_gold = false
-	await destroy_sound.finished
+	# await destroy_sound.finished
 
-	propagate_destroy()
-
+	# propagate_destroy()
+	destroyed.emit()
 	OMM_ObjectPool.add_to_pool(self)
 
 func do_damage():
@@ -100,7 +103,3 @@ func propagate_destroy():
 	# Turn off monitoring
 	neighbor_area.monitoring = false
 	neighbor_area.monitorable = false
-
-# func _exit_tree() -> void:
-# 	print_debug("%s is going back into the pool" % name)
-# 	OMM_ObjectPool.pool_tile(self)

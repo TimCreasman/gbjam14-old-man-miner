@@ -20,11 +20,10 @@ static func new_tile() -> OMM_GroundTile:
 	tile.reset_properties(default_tile_properties)
 	return tile
 
-func _ready():
-	populate_pool()
+var pool_container: Node2D
 
-func populate_pool():
-	for i in range(10* MAP_LENGTH):
+func pre_populate_pool():
+	for i in range(20* MAP_LENGTH):
 		instantiate_tile(i)
 
 func instantiate_tile(index: int):
@@ -35,9 +34,9 @@ func instantiate_tile(index: int):
 func pull_from_pool(initial_properties: Dictionary) -> OMM_GroundTile:
 	var tile: OMM_GroundTile
 	if _pool.is_empty():
-		tile = instantiate_tile(0)
-	else:
-		tile = _pool.pop_back()
+		instantiate_tile(0)
+	
+	tile = _pool.pop_back()
 
 	_detach_tile(tile)
 
@@ -54,9 +53,10 @@ func add_to_pool(tile: OMM_GroundTile):
 		
 	_detach_tile(tile)
 
-	tile.reset_properties(default_tile_properties)
+	tile.global_position = Vector2.ZERO
+	# tile.reset_properties(default_tile_properties)
 	_pool.push_back(tile)
 
 func _detach_tile(tile: OMM_GroundTile):
 	if tile.get_parent():
-		tile.get_parent().remove_child(tile)
+		tile.get_parent().remove_child.call_deferred(tile)

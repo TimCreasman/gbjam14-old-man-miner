@@ -16,6 +16,9 @@ const JUMP_VELOCITY = -200.0
 @export var midas_area: Area2D
 @export var dig_timer: Timer
 @export var midas_timer: Timer
+# TODO Add this as a component
+@export var player_coordinate: OMM_Coordinate
+
 var dashing = false
 var has_midas = false
 var dig_speed: float = 1.0
@@ -27,7 +30,7 @@ var shopping=false
 func _ready():
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
-	current_item.type = OMM_ItemDefinition.ITEM_TYPES.MIDAS
+	current_item.type = OMM_ItemDefinition.ITEM_TYPES.DASH
 
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
@@ -40,6 +43,7 @@ func on_body_entered(body: Node2D) -> void:
 		if !body._is_gold and has_midas:
 			print("midas")
 			body.turn_to_gold()
+
 func _physics_process(delta):
 	if not is_on_floor() and !dashing:
 		velocity += get_gravity() * delta
@@ -55,6 +59,7 @@ func _physics_process(delta):
 		for tile in dash_area.get_overlapping_bodies():
 			if tile is OMM_GroundTile:
 				tile.on_destroy()
+
 	if (!shopping):
 		move_and_slide()
 
@@ -68,6 +73,8 @@ func handle_move():
 				velocity.x = velocity.x*10
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+
+		player_coordinate.coordinate = position
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
