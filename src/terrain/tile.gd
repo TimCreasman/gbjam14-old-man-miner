@@ -81,7 +81,7 @@ func on_destroy():
 	await destroy_sound.finished
 
 	propagate_destroy()
-	reset_to_pool()
+	OMM_ObjectPool.pool_tile(self)
 
 func do_damage():
 	
@@ -91,12 +91,6 @@ func do_damage():
 		
 		on_destroy()
 
-
-func reset_to_pool():
-	visible = false
-	position = Vector2(0, -8)
-	if get_parent():
-		get_parent().remove_child(self)
 
 # Hack to expose more area
 func propagate_destroy():
