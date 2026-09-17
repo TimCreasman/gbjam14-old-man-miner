@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cs0wc8xy53728"]
+[gd_scene format=3 uid="uid://by3lkdoabu6v3"]
 
 [ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="2_b8ek1"]
 [ext_resource type="Script" uid="uid://cfn8xfrcp64se" path="res://src/scenes/main.gd" id="2_bvr34"]
@@ -10,17 +10,28 @@
 [ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="7_0rwjj"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="7_5nb03"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="7_yjmwy"]
-[ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="8_yjmwy"]
 [ext_resource type="Texture2D" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="9_yk6rd"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="10_qj0xg"]
 [ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/tile.tscn" id="10_v252j"]
+[ext_resource type="Script" uid="uid://b50kdm01xtr10" path="res://src/debug/shop.gd" id="11_am227"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_sr17e"]
-[ext_resource type="Script" uid="uid://2snaqpav0at1" path="res://src/ui/hud/died_message.gd" id="13_lcp4o"]
-[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="14_qsm7c"]
-[ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="14_yk6rd"]
+[ext_resource type="Texture2D" uid="uid://btsg75vcd7r38" path="res://icon.svg" id="12_7opv2"]
+[ext_resource type="Script" path="res://src/ui/hud/died_message.gd" id="13_lcp4o"]
+[ext_resource type="Script" path="res://src/ui/hud/amount_label.gd" id="14_qsm7c"]
+[ext_resource type="Script" path="res://src/ui/hud/current_item_panel.gd" id="14_yk6rd"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="15_htxff"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="17_lcp4o"]
+[ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="20_h8ax2"]
+[ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="21_7opv2"]
+[ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="21_r0lsc"]
+[ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="22_n157j"]
+[ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/debug/music_manager.gd" id="23_jirt8"]
+[ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_dso5o"]
+[ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="25_gjsjt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr847"]
+size = Vector2(22, 22)
 
 [node name="Game" type="Node" unique_id=1274922351 node_paths=PackedStringArray("pause_menu")]
 process_mode = 3
@@ -58,6 +69,19 @@ noise_map = ExtResource("9_yk6rd")
 [node name="Node2D2" parent="Viewport/SubViewport" unique_id=1157843804 instance=ExtResource("10_v252j")]
 visible = false
 position = Vector2(77, 0)
+
+[node name="Shop" type="Area2D" parent="Viewport/SubViewport" unique_id=1613971049 node_paths=PackedStringArray("shop_menu", "player", "music_manager")]
+script = ExtResource("11_am227")
+shop_menu = NodePath("../../ShopMenu/UI")
+player = NodePath("../Player")
+music_manager = NodePath("../../../MusicManager")
+
+[node name="Sprite2D" type="Sprite2D" parent="Viewport/SubViewport/Shop" unique_id=2009823659]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_7opv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport/SubViewport/Shop" unique_id=1319587174]
+shape = SubResource("RectangleShape2D_xr847")
 
 [node name="PauseMenu" type="CanvasLayer" parent="Viewport" unique_id=1753711030]
 visible = false
@@ -289,8 +313,88 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 3
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1376039753]
-stream = ExtResource("8_yjmwy")
+[node name="ShopMenu" type="CanvasLayer" parent="Viewport" unique_id=1229948301]
+
+[node name="UI" type="Control" parent="Viewport/ShopMenu" unique_id=61426069]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_h8ax2")
+
+[node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/UI" unique_id=2059883757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/ShopMenu/UI" unique_id=768246629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/ShopMenu/UI/CenterContainer" unique_id=1219942490]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=576526890]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_sr17e")
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+theme_override_fonts/font = ExtResource("10_auijp")
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=1392602854]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1143007452]
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+text = "10G"
+icon = ExtResource("21_r0lsc")
+script = ExtResource("22_n157j")
+
+[node name="Button2" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=379304751]
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+text = "10G"
+icon = ExtResource("21_r0lsc")
+script = ExtResource("22_n157j")
+
+[node name="Button3" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer/HBoxContainer" unique_id=425266735]
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+text = "10G"
+icon = ExtResource("21_r0lsc")
+script = ExtResource("22_n157j")
+
+[node name="Leave" type="Button" parent="Viewport/ShopMenu/UI/CenterContainer/VBoxContainer" unique_id=1333496974]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+text = "LEAVE"
+
+[node name="MusicManager" type="Node2D" parent="." unique_id=1998449071]
+script = ExtResource("23_jirt8")
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=641415259]
+stream = ExtResource("24_dso5o")
+
+[node name="HubTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=479637867]
+stream = ExtResource("25_gjsjt")
+
+[node name="ShopTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=204359646]
+stream = ExtResource("24_dso5o")
 
 [node name="Systems" type="Node" parent="." unique_id=569555038]
 

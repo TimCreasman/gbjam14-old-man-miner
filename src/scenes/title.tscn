@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://b48dshi3qc7c1" path="res://src/scenes/menu_manager.gd" id="2_a750j"]
 [ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="2_gctki"]
+[ext_resource type="AudioStream" uid="uid://crnlfretcxwbw" path="res://assets/audio/music/Title.wav" id="3_a750j"]
+[ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="3_eoavt"]
+[ext_resource type="Script" uid="uid://dw2s0net6bpp2" path="res://src/scenes/OMM_keyboard.gd" id="3_shm1j"]
+[ext_resource type="Theme" uid="uid://dxwpeiylwa2mv" path="res://Keyboard.tres" id="4_damdu"]
+[ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="6_damdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shm1j"]
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qc1l"]
 
 [node name="Title" type="Control" unique_id=1450929623]
 layout_mode = 3
@@ -27,6 +40,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_a750j")
@@ -41,26 +58,240 @@ layout_mode = 2
 [node name="Play" type="Button" parent="MenuManager/MainMenu/HBoxContainer" unique_id=1216149324]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_damdu")
 text = "Play
 "
 
 [node name="Quit" type="Button" parent="MenuManager/MainMenu/HBoxContainer" unique_id=1558625711]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_damdu")
 text = "Quit
 "
 
 [node name="NameMenu" type="CenterContainer" parent="MenuManager" unique_id=1991112592]
 visible = false
 layout_mode = 2
+use_top_left = true
 script = ExtResource("2_gctki")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MenuManager/NameMenu" unique_id=1524082759]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=633062734]
+[node name="Keyboard" type="VBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=1809688236]
 layout_mode = 2
-placeholder_text = "Enter Name"
+size_flags_vertical = 3
+script = ExtResource("3_shm1j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=468757829]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=889290904]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "A"
+autowrap_trim_flags = 0
+
+[node name="Button2" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=1655607376]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "B"
+autowrap_trim_flags = 0
+
+[node name="Button3" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=159053884]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "C"
+autowrap_trim_flags = 0
+
+[node name="Button4" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=490795871]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "D"
+autowrap_trim_flags = 0
+
+[node name="Button5" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=2024747820]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "E"
+autowrap_trim_flags = 0
+
+[node name="Button6" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=930405015]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "F"
+autowrap_trim_flags = 0
+
+[node name="Button7" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=345648375]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "G"
+autowrap_trim_flags = 0
+
+[node name="Button8" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=1922280140]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "H"
+autowrap_trim_flags = 0
+
+[node name="Button9" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=740558799]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "I"
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=2013918666]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=217195649]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "J"
+autowrap_trim_flags = 0
+
+[node name="Button2" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1059997468]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "K"
+autowrap_trim_flags = 0
+
+[node name="Button3" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=145658379]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "L"
+autowrap_trim_flags = 0
+
+[node name="Button4" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=984779932]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "M"
+autowrap_trim_flags = 0
+
+[node name="Button5" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=704133528]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "N"
+autowrap_trim_flags = 0
+
+[node name="Button6" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1756532080]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "O"
+autowrap_trim_flags = 0
+
+[node name="Button7" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1017629166]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "P"
+autowrap_trim_flags = 0
+
+[node name="Button8" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=598823881]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "Q"
+autowrap_trim_flags = 0
+
+[node name="Button9" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=55847691]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "R"
+autowrap_trim_flags = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=1317606068]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=209394663]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "S"
+autowrap_trim_flags = 0
+
+[node name="Button10" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=224288995]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "T"
+autowrap_trim_flags = 0
+
+[node name="Button2" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=2092684122]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "U"
+autowrap_trim_flags = 0
+
+[node name="Button3" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1477434349]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "V"
+autowrap_trim_flags = 0
+
+[node name="Button4" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=85038777]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "W"
+autowrap_trim_flags = 0
+
+[node name="Button5" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1361237706]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "X"
+autowrap_trim_flags = 0
+
+[node name="Button6" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=2040415347]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "Y"
+autowrap_trim_flags = 0
+
+[node name="Button7" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=311208736]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "Z"
+autowrap_trim_flags = 0
+
+[node name="Button8" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1614746976]
+layout_mode = 2
+theme = ExtResource("4_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+text = "<"
+autowrap_trim_flags = 0
+
+[node name="LineEdit" type="LineEdit" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=775687488]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_eoavt")
+theme_override_font_sizes/font_size = 16
+max_length = 8
+editable = false
+middle_mouse_paste_enabled = false
+virtual_keyboard_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=495798734]
 layout_mode = 2
@@ -68,12 +299,27 @@ layout_mode = 2
 [node name="Start" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=928426931]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qc1l")
 text = "Start
 "
 
-[node name="Back" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=335715863]
+[node name="Back" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=507073766]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_damdu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qc1l")
 text = "Back
 
 "
+
+[node name="LineEdit" type="LineEdit" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=633062734]
+visible = false
+layout_mode = 2
+placeholder_text = "Enter Name"
+virtual_keyboard_show_on_focus = false
+virtual_keyboard_type = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1571613630]
+stream = ExtResource("3_a750j")
+autoplay = true

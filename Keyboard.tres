@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dxwpeiylwa2mv"]
+
+[ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="1_jlnsm"]
+
+[resource]
+default_font = ExtResource("1_jlnsm")
+default_font_size = 24
