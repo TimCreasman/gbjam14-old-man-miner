@@ -18,33 +18,30 @@ extends StaticBody2D
 @export var break_sound: AudioStreamPlayer2D
 @export var destroy_sound: AudioStreamPlayer2D
 
-
 var score_component: OMM_ScoreComponent
 
-var _indestructable = false
-var _is_gold := false
+var indestructable = false
+var _is_gold: bool: 
+	get():
+		return hardness >= 9
 
-static var tile_scene := preload("res://src/terrain/tile.tscn")
-static func new_tile(pos: Vector2i, _hardness := 0, indestructable = false) -> OMM_GroundTile:
-	var tile: OMM_GroundTile = tile_scene.instantiate()
-	tile.global_position = pos
+## Takes place of _ready since this a pooled object
+func reset_properties(properties: Dictionary):
+	for key in properties.keys():
+		set(key, properties[key])
 
-	tile.hardness = _hardness
-	if !indestructable:
-		tile._is_gold = _hardness >= 9
-	tile._indestructable = indestructable
-	# tile.score_component = _score_component
-
-	return tile
-
-func _ready():
-	if !_indestructable:
-		breaking_animation_sprite.animation_finished.connect(breaking_done)
 	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 
+	# Reset signal connections
+	if breaking_animation_sprite.animation_finished.is_connected(breaking_done):
+		breaking_animation_sprite.animation_finished.disconnect(breaking_done)
+
+	if !indestructable:
+		breaking_animation_sprite.animation_finished.connect(breaking_done)
+
 func do_break(dig_speed):
-	if breaking_animation_sprite.is_playing():
+	if breaking_animation_sprite.is_playing() || !get_parent():
 		return
 	break_sound.play()
 	breaking_animation_sprite.play("breaking_animation")
@@ -62,35 +59,33 @@ func turn_to_gold() -> void:
 	if !_is_gold:
 		hardness = 9
 		update_hardness_sprite()
-		_is_gold = true
 		gold_sprite.visible = _is_gold
 	
-
 func on_destroy():
+	if indestructable:
+		return
+
 	if StateManager.current_state != "mine":
 		StateManager.change_state("mine")
-	if _indestructable:
-		return
 
 	destroy_sound.play()
 	
 	if _is_gold:
 		# score_component.increment_score()
 		gold_sound.play()
-		_is_gold = false
+		# _is_gold = false
 	await destroy_sound.finished
 
 	propagate_destroy()
-	OMM_ObjectPool.pool_tile(self)
+
+	OMM_ObjectPool.add_to_pool(self)
 
 func do_damage():
 	
 	hardness -= 1
 
 	if hardness == 0:
-		
 		on_destroy()
-
 
 # Hack to expose more area
 func propagate_destroy():
@@ -105,3 +100,7 @@ func propagate_destroy():
 	# Turn off monitoring
 	neighbor_area.monitoring = false
 	neighbor_area.monitorable = false
+
+# func _exit_tree() -> void:
+# 	print_debug("%s is going back into the pool" % name)
+# 	OMM_ObjectPool.pool_tile(self)

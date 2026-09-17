@@ -24,8 +24,6 @@ var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dro
 
 var shopping=false
 
-
-
 func _ready():
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
@@ -35,8 +33,7 @@ func _ready():
 	age_component.died.connect(on_died)
 	old_timer.timeout.connect(age_component.increment_age)
 	dash_timer.timeout.connect(stop_dashing)
-	midas_timer.timeout.connect(stop_midas)
-
+	midas_timer.timeout.connect(stop_midas_touch)
 
 func on_body_entered(body: Node2D) -> void:
 	if body is OMM_GroundTile:

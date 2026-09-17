@@ -35,26 +35,23 @@ func _generate():
 	for x in range(0, bounds.size.x, TILE_SIZE):
 		for y in range(0, bounds.size.y, TILE_SIZE):
 			_generate_tile(Vector2i(x, y))
-			_generate_items(Vector2i(x, y))
+			# _generate_items(Vector2i(x, y))
 
 func _hardness(pos: Vector2i):
 	var noise_level = noise_map.noise.get_noise_2d(pos.x, pos.y + bounds.position.y)
-	return floori(remap(noise_level, 0, 1, 0, 10))
+	return clampi(remap(noise_level, 0, 1, 0, 10), 0, 10)
 
 func _generate_tile(tile_position: Vector2i):
-	var indestructable = (tile_position.x == 0 || tile_position.x == (bounds.size.x - TILE_SIZE))
+	# var indestructable = (tile_position.x == 0 || tile_position.x == (bounds.size.x - TILE_SIZE))
 	var hardness = _hardness(tile_position)
 
-	var tile = OMM_ObjectPool.get_tile()
+	var tile = OMM_ObjectPool.pull_from_pool({
+		"global_position" : tile_position,
+		"hardness" : hardness,
+		"indestructable" : false
+	})
 
-	if !tile:
-		return
-
-	tile.position = tile_position
-	tile.hardness = hardness
-	tile._indestructable = indestructable
-	if !indestructable:
-		tile._is_gold = hardness >= 9
+	# print(tile.global_position)
 
 	add_child(tile)
 
@@ -71,9 +68,9 @@ func reset_all_to_pool():
 	var count = 0
 	for tile in get_children():
 		if tile is OMM_GroundTile:
-			OMM_ObjectPool.pool_tile(tile)
+			OMM_ObjectPool.add_to_pool(tile)
 			count += 1
 
 	print_debug("Chunk: %s is resetting %s tiles to the pool" % [name, count])
 
-	queue_free()
+	# queue_free()

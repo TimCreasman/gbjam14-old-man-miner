@@ -2,7 +2,7 @@ class_name MenuManager
 extends Control
 
 var menus = {}
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 
 	for child in get_children():
@@ -41,8 +41,3 @@ func start():
 func back():
 	open_menu_close_others("MainMenu")
 
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
