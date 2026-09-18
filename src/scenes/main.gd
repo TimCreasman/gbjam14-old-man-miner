@@ -3,7 +3,7 @@ extends Node
 @export var pause_menu: CanvasLayer
 
 func _ready() -> void:
-	StateManager.change_state("hub")
+	StateManager.change_state(StateManager.STATE.HUB)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

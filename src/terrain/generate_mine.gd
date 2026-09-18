@@ -30,20 +30,10 @@ func _ready():
 func on_coordinate_changed(coordinate: Vector2i):
 	# Look at surrounding chunks and generate
 	var current_index = coordinate_to_chunk_index(coordinate)
-	# Three below
 
-	_init_chunk(current_index)
-	_init_chunk(current_index + Vector2i(0, 1))
-	_init_chunk(current_index + Vector2i(0, 2))
-
-	_init_chunk(current_index + Vector2i(0, -1))
-	_init_chunk(current_index + Vector2i(0, -2))
-
-	_init_chunk(current_index + Vector2i(1, 0))
-	_init_chunk(current_index + Vector2i(-1, 0))
-
-	_init_chunk(current_index + Vector2i(1, 1))
-	_init_chunk(current_index + Vector2i(-1, 1))
+	for x in range(-5, 5):
+		for y in range(-7, 7):
+			_init_chunk(current_index + Vector2i(x, y))
 
 func coordinate_to_chunk_pos(coordinate: Vector2i):
 	return coordinate * chunk_size * TILE_SIZE
@@ -55,11 +45,12 @@ func _depth_to_chunk_index(depth: float) -> int:
 	return ceili(depth / ( chunk_size.y * TILE_SIZE))
 
 func _init_chunk(chunk_index: Vector2i):
+	var chunk_pos = chunk_index * chunk_size * TILE_SIZE
 	var chunk_id = str(chunk_index).sha1_text()
-	if chunk_container.has_node(chunk_id) || chunk_index.y < 0:
+
+	if chunk_container.has_node(chunk_id) || chunk_pos.y < 144:
 		return
 
-	var chunk_pos = chunk_index * chunk_size * TILE_SIZE
 	var chunk_bounds = Rect2i(chunk_pos, chunk_size * TILE_SIZE)
 	var chunk = OMM_Chunk.create_chunk(chunk_bounds, item_container)
 

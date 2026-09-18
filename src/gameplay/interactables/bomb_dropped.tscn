@@ -110,6 +110,6 @@ texture_filter = 1
 emitting = false
 amount = 100
 texture = ExtResource("5_xpk8j")
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 process_material = ExtResource("6_0un4j")

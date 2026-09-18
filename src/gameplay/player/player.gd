@@ -25,12 +25,10 @@ var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 @export var current_item : OMM_CurrentItemResource
 
-var shopping=false
-
 func _ready():
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
-	current_item.type = OMM_ItemDefinition.ITEM_TYPES.DASH
+	current_item.type = OMM_ItemDefinition.ITEM_TYPES.BOMB
 
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
@@ -41,7 +39,6 @@ func _ready():
 func on_body_entered(body: Node2D) -> void:
 	if body is OMM_GroundTile:
 		if !body._is_gold and has_midas:
-			print("midas")
 			body.turn_to_gold()
 
 func _physics_process(delta):
@@ -60,8 +57,7 @@ func _physics_process(delta):
 			if tile is OMM_GroundTile:
 				tile.on_destroy()
 
-	if (!shopping):
-		move_and_slide()
+	move_and_slide()
 
 func handle_move():
 		var direction = Input.get_axis("move_left", "move_right")
@@ -81,22 +77,23 @@ func handle_jump():
 		velocity.y = JUMP_VELOCITY
 
 func handle_mine():
-	if (!shopping):
-		var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		if move_dir.is_zero_approx():
-			return
+	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if move_dir.is_zero_approx():
+		return
 
-		ray_cast.rotation = move_dir.angle()
+	ray_cast.rotation = move_dir.angle()
 
-		var tile = ray_cast.get_collider()
-		if tile is OMM_GroundTile:
-			tile.do_break(dig_speed)
+	var tile = ray_cast.get_collider()
+	if tile is OMM_GroundTile:
+		tile.do_break(dig_speed)
+		if StateManager.current_state != StateManager.STATE.MINE:
+			StateManager.change_state(StateManager.STATE.MINE)
 
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
 func on_died():
 	old_timer.stop()
-	StateManager.change_state("hub")
+	StateManager.change_state(StateManager.STATE.HUB)
 	z_index = 100
 
 # func pickup(item_type: OMM_ItemDefinition.ITEM_TYPES):
@@ -132,5 +129,5 @@ func handle_use_item():
 				
 		# current_item.type = OMM_ItemDefinition.ITEM_TYPES.NONE
 func _on_state_changed(new_state, old_state) -> void:
-	if old_state != "mine" and new_state == "mine":
+	if old_state != StateManager.STATE.MINE and new_state == StateManager.STATE.MINE:
 		old_timer.start()

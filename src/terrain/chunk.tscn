@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://co7u0ipc33cjn" path="res://src/terrain/chunk.gd" id="1_y714x"]
 [ext_resource type="Texture2D" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="2_k0l0t"]
+[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/destroyed_tiles.tres" id="3_wio2p"]
 
 [node name="Chunk" type="Node2D" unique_id=484316964 node_paths=PackedStringArray("screen_notifier")]
 script = ExtResource("1_y714x")
 screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 noise_map = ExtResource("2_k0l0t")
+destroyed_tiles = ExtResource("3_wio2p")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2088750862]

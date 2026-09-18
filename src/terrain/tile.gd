@@ -1,4 +1,3 @@
-@tool
 class_name OMM_GroundTile
 extends StaticBody2D
 
@@ -18,7 +17,7 @@ extends StaticBody2D
 @export var break_sound: AudioStreamPlayer2D
 @export var destroy_sound: AudioStreamPlayer2D
 
-signal destroyed()
+@export var destroyed_positions: OMM_DestroyedPositions
 
 var score_component: OMM_ScoreComponent
 var indestructable = false
@@ -66,9 +65,6 @@ func on_destroy():
 	if indestructable:
 		return
 
-	if StateManager.current_state != "mine":
-		StateManager.change_state("mine")
-
 	# destroy_sound.play()
 	
 	if _is_gold:
@@ -79,9 +75,10 @@ func on_destroy():
 		# _is_gold = false
 	# await destroy_sound.finished
 
-	# propagate_destroy()
-	destroyed.emit()
+	destroyed_positions.add_position(global_position)
 	OMM_ObjectPool.add_to_pool(self)
+
+	# propagate_destroy()
 
 func do_damage():
 	
@@ -94,8 +91,11 @@ func do_damage():
 func propagate_destroy():
 	if !neighbor_area.monitoring:
 		return
+	var bodies = neighbor_area.get_overlapping_bodies()
+	neighbor_area.monitoring = false
+	neighbor_area.monitorable = false
 
-	for neighbor in neighbor_area.get_overlapping_bodies():
+	for neighbor in bodies:
 		if neighbor is OMM_GroundTile:
 			if neighbor.hardness <= 0:
 				neighbor.on_destroy()

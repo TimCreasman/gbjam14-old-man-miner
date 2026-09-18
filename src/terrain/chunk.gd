@@ -8,7 +8,9 @@ var bounds: Rect2i
 
 var rng = RandomNumberGenerator.new()
 
+@export_category("Internal Components")
 @export var item_container : Node2D
+@export var destroyed_tiles : OMM_DestroyedPositions
 
 static var chunk_scene := preload("res://src/terrain/chunk.tscn")
 static func create_chunk(rect: Rect2i, _item_container: Node2D) -> OMM_Chunk:
@@ -25,7 +27,7 @@ var bomb_definition = preload("res://src/resources/bomb_definition.tres")
 func _ready():
 	position = bounds.position
 
-	screen_notifier.rect = Rect2(Vector2.ZERO, bounds.size)
+	screen_notifier.rect = Rect2(Vector2.ZERO, bounds.expand(Vector2i(-16, 16)).size)
 	screen_notifier.screen_exited.connect(reset_all_to_pool)
 
 	_generate()
@@ -38,18 +40,19 @@ func _generate():
 			count += 1
 			# _generate_items(Vector2i(x, y))
 
-	print("%s Generated %s tiles" % [name, count])
+	# print("%s Generated %s tiles" % [name, count])
 
 func _hardness(pos: Vector2i):
 	var noise_level = noise_map.noise.get_noise_2dv(pos + bounds.position)
 	return remap(noise_level, -0.5, 1, 0, 10)
 
 func _generate_tile(tile_position: Vector2i):
-	# IF tile_position has been destroyed do not add
-	# var indestructable = (tile_position.x == 0 || tile_position.x == (bounds.size.x - TILE_SIZE))
-	var hardness = _hardness(tile_position)
-	if hardness <= 0:
+	if destroyed_tiles.has_position(tile_position + Vector2i(position)):
 		return
+
+	var hardness = _hardness(tile_position)
+	# if hardness <= 0:
+	# 	return
 
 	var tile = OMM_ObjectPool.pull_from_pool({
 		"position" : tile_position,
@@ -57,7 +60,7 @@ func _generate_tile(tile_position: Vector2i):
 		"indestructable" : false
 	})
 
-	add_child(tile)
+	add_child.call_deferred(tile)
 
 func _generate_items(pos: Vector2i):
 
