@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b8iui5k0dy5v7"]
+[gd_scene format=3 uid="uid://crgxi0du6hto4"]
 
 [ext_resource type="Script" uid="uid://cfn8xfrcp64se" path="res://src/scenes/main.gd" id="1_pt3y5"]
 [ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="2_eb5hi"]
@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="4_n51yc"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/terrain/cave_generation.tscn" id="4_sqac6"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="5_vsekg"]
-[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/tiles/tile.tscn" id="6_bwctk"]
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/world/tiles/tile.tscn" id="6_bwctk"]
 [ext_resource type="Script" uid="uid://b50kdm01xtr10" path="res://src/debug/shop.gd" id="11_122ex"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_mdlpw"]
 [ext_resource type="Texture2D" uid="uid://btsg75vcd7r38" path="res://icon.svg" id="12_122ex"]
@@ -18,10 +18,10 @@
 [ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="15_xr847"]
 [ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="16_bdst1"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="17_pj22h"]
-[ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/debug/shop_menu.gd" id="19_3b2i5"]
+[ext_resource type="Script" path="res://src/debug/shop_menu.gd" id="19_3b2i5"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="19_g6nvp"]
-[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="20_78y2o"]
-[ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="20_xr847"]
+[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_resource.gd" id="20_78y2o"]
+[ext_resource type="Script" path="res://src/debug/OMM_button.gd" id="20_xr847"]
 [ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="21_hjir0"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="21_mn1od"]
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="23_hjir0"]
@@ -169,7 +169,7 @@ theme_override_fonts/font = ExtResource("13_3ys2e")
 theme_override_font_sizes/font_size = 8
 text = "GOLD"
 
-[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448 node_paths=PackedStringArray("node_component")]
+[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -177,7 +177,6 @@ theme = ExtResource("11_mdlpw")
 theme_override_fonts/font = ExtResource("13_3ys2e")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("15_xr847")
-node_component = NodePath("../../../../../../../../../Systems/OMM_ScoreComponent")
 
 [node name="DepthContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=2085984537]
 layout_mode = 2
@@ -192,7 +191,7 @@ theme_override_fonts/font = ExtResource("13_3ys2e")
 theme_override_font_sizes/font_size = 8
 text = "depth"
 
-[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237 node_paths=PackedStringArray("node_component")]
+[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -200,7 +199,6 @@ theme = ExtResource("11_mdlpw")
 theme_override_fonts/font = ExtResource("13_3ys2e")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("15_xr847")
-node_component = NodePath("../../../../../../../../../Systems/OMM_DepthComponent")
 
 [node name="AgeContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1643491241]
 layout_mode = 2
@@ -215,7 +213,7 @@ theme_override_fonts/font = ExtResource("13_3ys2e")
 theme_override_font_sizes/font_size = 8
 text = "age"
 
-[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810 node_paths=PackedStringArray("node_component")]
+[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -223,7 +221,6 @@ theme = ExtResource("11_mdlpw")
 theme_override_fonts/font = ExtResource("13_3ys2e")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("15_xr847")
-node_component = NodePath("../../../../../../../../../Systems/OMM_AgeComponent")
 
 [node name="DeathMessage" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1404031394 node_paths=PackedStringArray("age_component")]
 visible = false

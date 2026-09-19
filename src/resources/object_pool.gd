@@ -13,7 +13,7 @@ static var default_tile_properties = {
 	"process_mode": Node.PROCESS_MODE_DISABLED
 }
 
-static var tile_scene := preload("res://src/terrain/tiles/tile.tscn")
+static var tile_scene := preload("res://src/terrain/world/tiles/tile.tscn")
 static func new_tile() -> OMM_GroundTile:
 	var tile: OMM_GroundTile = tile_scene.instantiate()
 	tile.reset_properties(default_tile_properties)

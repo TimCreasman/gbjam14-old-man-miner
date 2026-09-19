@@ -1,6 +1,6 @@
 [gd_resource type="FastNoiseLite" script_class="OMM_TerrainNoise" format=3 uid="uid://74d1gyqwt2or"]
 
-[ext_resource type="Script" uid="uid://b7oxwhjtaglxn" path="res://src/terrain/terrain_noise.gd" id="1_styag"]
+[ext_resource type="Script" uid="uid://b7oxwhjtaglxn" path="res://src/terrain/world/noise/terrain_noise.gd" id="1_styag"]
 
 [resource]
 frequency = 0.0026

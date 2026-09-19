@@ -22,6 +22,7 @@
 - [x] Correctly color menu
 
 # In progress
+- [ ] Get to bottom
 
 # To do
 - [ ] SFX

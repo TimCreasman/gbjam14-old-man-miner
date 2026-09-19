@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6ggmu5a15gnh"]
 
-[ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://src/terrain/tiles/tile.gd" id="1_e36cl"]
+[ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://src/terrain/world/tiles/tile.gd" id="1_e36cl"]
 [ext_resource type="Texture2D" uid="uid://b8diqeiwyi7r8" path="res://assets/art/sprites/tiles/ground.png" id="2_mfvtv"]
 [ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/destroyed_tiles.tres" id="2_tqlut"]
 [ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/score_resource.tres" id="3_evjkc"]

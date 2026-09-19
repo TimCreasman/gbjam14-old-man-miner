@@ -79,7 +79,6 @@ func on_destroy():
 	await destroy_sound.finished
 	
 	if _is_gold:
-		print("GOLD")
 		score_resource.increment_score()
 		gold_sound.play()
 		await gold_sound.finished
@@ -95,25 +94,7 @@ func do_damage():
 	hardness -= 1
 
 	if hardness == 0:
-		print("DESTORYING")
 		on_destroy()
-
-# # Hack to expose more area
-# func propagate_destroy():
-# 	if !neighbor_area.monitoring:
-# 		return
-# 	var bodies = neighbor_area.get_overlapping_bodies()
-# 	neighbor_area.monitoring = false
-# 	neighbor_area.monitorable = false
-#
-# 	for neighbor in bodies:
-# 		if neighbor is OMM_GroundTile:
-# 			if neighbor.hardness <= 0:
-# 				neighbor.on_destroy()
-#
-# 	# Turn off monitoring
-# 	neighbor_area.monitoring = false
-# 	neighbor_area.monitorable = false
 
 func _on_screen_exit():
 	pool_me.emit(self)

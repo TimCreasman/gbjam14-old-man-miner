@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_tgtre")
 type = 2
-cost = 9
 metadata/_custom_type_script = "uid://cohj448giry3f"

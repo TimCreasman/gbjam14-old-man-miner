@@ -1,7 +1,11 @@
 [gd_resource type="Resource" script_class="OMM_Coordinate" format=3 uid="uid://bk1k0w4hk1drf"]
 
 [ext_resource type="Script" uid="uid://chov7ny0060gd" path="res://src/resources/coordinate_resource.gd" id="1_ciwhj"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="1_cpcmi"]
+[ext_resource type="Resource" uid="uid://q2hp31ss2580" path="res://src/shaders/level_1_palette.tres" id="1_k1u1b"]
 
 [resource]
 script = ExtResource("1_ciwhj")
+output_palette = ExtResource("1_cpcmi")
+level_1_palette = ExtResource("1_k1u1b")
 metadata/_custom_type_script = "uid://chov7ny0060gd"

@@ -35,3 +35,9 @@ func to_vec4() -> Array:
 		return Vector4(color.r, color.g, color.b, color.a)
 	)
 	return vec4_array
+
+func set_palette(other: GBPalette):
+	background = other.background
+	shadow = other.shadow
+	foreground = other.foreground
+	highlight = other.highlight
