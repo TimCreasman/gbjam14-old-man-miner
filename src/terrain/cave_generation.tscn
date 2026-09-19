@@ -57,6 +57,5 @@ material = SubResource("ShaderMaterial_f5w2v")
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-editor_only = false
 
 [node name="ItemLayer" type="Node2D" parent="." unique_id=1589812991]

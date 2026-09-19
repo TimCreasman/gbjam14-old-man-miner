@@ -50,8 +50,7 @@ func on_coordinate_changed(coordinate: Vector2i):
 func _generate(generation_bounds: Rect2i):
 	for x in range(generation_bounds.position.x, generation_bounds.position.x + generation_bounds.size.x, TILE_SIZE):
 		for y in range(generation_bounds.position.y, generation_bounds.position.y + generation_bounds.size.y, TILE_SIZE):
-			if y < 0:
-				return
+			if y < 0: continue
 			_generate_tile(Vector2i(x, y))
 			structure_generator.generate(Vector2i(x, y))
 	# print_debug("Generated %s tiles" % count)
@@ -66,6 +65,9 @@ func _generate_tile(global_pos: Vector2i):
 		return
 
 	var hardness = terrain_noise.get_ground_hardness(global_pos)
+
+	if global_pos.y == 0: hardness = 1
+
 	if hardness <= 0:
 		return
 
