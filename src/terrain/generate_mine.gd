@@ -22,10 +22,11 @@ const TILE_SIZE = 8
 const DEPTH_OFFSET = 16
 
 func _ready():
-	if player_coordinate:
-		player_coordinate.coordinate_changed.connect(on_coordinate_changed)
-
-	_init_chunk(Vector2i(0, 0))
+	pass
+	# if player_coordinate:
+	# 	player_coordinate.coordinate_changed.connect(on_coordinate_changed)
+	#
+	# _init_chunk(Vector2i(0, 0))
 
 func on_coordinate_changed(coordinate: Vector2i):
 	# Look at surrounding chunks and generate

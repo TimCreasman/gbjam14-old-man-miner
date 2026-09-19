@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://c6njgqn2764mb"]
 
 [ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://src/shaders/inline.gdshader" id="1_7uvl8"]
-[ext_resource type="Script" uid="uid://y83dacopgqtt" path="res://src/terrain/generate_mine.gd" id="2_yyyc3"]
-[ext_resource type="FastNoiseLite" uid="uid://2s5chv4f2ehe" path="res://src/terrain/cave_generation_lite_noise.tres" id="3_4kcx1"]
+[ext_resource type="Script" uid="uid://bp88867fua5og" path="res://src/terrain/world_generator.gd" id="2_rsdux"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
-[ext_resource type="Script" uid="uid://dq6py6ib2bbya" path="res://src/terrain/tiles.gd" id="4_lovyd"]
+[ext_resource type="Script" uid="uid://bxf6t82jxbgij" path="res://src/terrain/tiles/tile_generator.gd" id="5_in67t"]
+[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/destroyed_tiles.tres" id="6_7lict"]
+[ext_resource type="Script" uid="uid://bn3x17gdumh67" path="res://src/resources/object_pool.gd" id="6_nmn5o"]
+[ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="7_870o3"]
+[ext_resource type="Script" uid="uid://brpi7ye8k2q4g" path="res://src/terrain/structure_generator.gd" id="7_rsdux"]
+[ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definition.gd" id="8_27ujy"]
+[ext_resource type="Resource" uid="uid://d2j6ghh7kpec0" path="res://src/resources/fountain_definition.tres" id="9_r2bs0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -13,10 +18,9 @@ shader_parameter/tile_size = 7.932000851769999
 shader_parameter/line_thickness = 1.0
 shader_parameter/line_color = Color(0, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f5w2v"]
-width = 50
-height = 8
-noise = ExtResource("3_4kcx1")
+[sub_resource type="Resource" id="Resource_ux334"]
+script = ExtResource("6_nmn5o")
+metadata/_custom_type_script = "uid://bn3x17gdumh67"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f5w2v"]
 shader = ExtResource("1_7uvl8")
@@ -25,17 +29,34 @@ shader_parameter/tile_size = 8.000000855
 shader_parameter/line_thickness = 1.0
 shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 
-[node name="CaveGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("chunk_container", "item_container")]
+[node name="WorldGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("tile_generator")]
 material = SubResource("ShaderMaterial_5nb03")
-script = ExtResource("2_yyyc3")
-chunk_size = Vector2i(8, 8)
+script = ExtResource("2_rsdux")
+tile_generator = NodePath("TileGenerator")
+
+[node name="StructureGenerator" type="Node2D" parent="." unique_id=463061862]
+z_as_relative = false
+script = ExtResource("7_rsdux")
+structures = Array[ExtResource("8_27ujy")]([ExtResource("9_r2bs0")])
+terrain_noise = ExtResource("7_870o3")
+
+[node name="TileGenerator" type="Node2D" parent="." unique_id=948789447 node_paths=PackedStringArray("tile_container", "ref_rect", "structure_generator")]
+script = ExtResource("5_in67t")
 player_coordinate = ExtResource("3_7ecim")
-chunk_container = NodePath("Tiles")
-item_container = NodePath("ItemLayer")
-noise_map = SubResource("NoiseTexture2D_f5w2v")
+tile_container = NodePath("Tiles")
+destroyed_tiles = ExtResource("6_7lict")
+terrain_noise = ExtResource("7_870o3")
+ref_rect = NodePath("ReferenceRect")
+structure_generator = NodePath("../StructureGenerator")
+tile_object_pool = SubResource("Resource_ux334")
+
+[node name="Tiles" type="CanvasGroup" parent="TileGenerator" unique_id=1224250136]
+material = SubResource("ShaderMaterial_f5w2v")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="TileGenerator" unique_id=1999696519]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+editor_only = false
 
 [node name="ItemLayer" type="Node2D" parent="." unique_id=1589812991]
-
-[node name="Tiles" type="CanvasGroup" parent="." unique_id=1224250136]
-material = SubResource("ShaderMaterial_f5w2v")
-script = ExtResource("4_lovyd")

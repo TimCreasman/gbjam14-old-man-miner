@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="7_0rwjj"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="7_5nb03"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="7_yjmwy"]
-[ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="9_yk6rd"]
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/tiles/tile.tscn" id="10_am227"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="10_qj0xg"]
 [ext_resource type="PackedScene" uid="uid://b82a52ea3c6ce" path="res://src/gameplay/interactables/shop.tscn" id="11_7opv2"]
@@ -55,15 +55,13 @@ follow_node = NodePath("../Player")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
-[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("7_5nb03")]
-position = Vector2(75, 139)
+[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container", "world_generator") instance=ExtResource("7_5nb03")]
+position = Vector2(80, 68)
 age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
+world_generator = NodePath("../WorldGenerator")
 
-[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("item_container") instance=ExtResource("5_srulj")]
-chunk_size = Vector2i(4, 3)
-item_container = NodePath("../ItemContainer")
-noise_map = ExtResource("9_yk6rd")
+[node name="WorldGenerator" parent="Viewport/SubViewport" unique_id=1622406730 instance=ExtResource("5_srulj")]
 
 [node name="Shop" parent="Viewport/SubViewport" unique_id=1161904382 node_paths=PackedStringArray("shop_menu", "player", "music_manager") instance=ExtResource("11_7opv2")]
 position = Vector2(115, 124)
@@ -72,6 +70,10 @@ collision_layer = 0
 shop_menu = NodePath("../../ShopMenu/SubViewportContainer/SubViewport/UI")
 player = NodePath("../Player")
 music_manager = NodePath("../../../MusicManager")
+
+[node name="Node2D2" parent="Viewport/SubViewport" unique_id=1157843804 instance=ExtResource("10_am227")]
+position = Vector2(77, 88)
+hardness = 5
 
 [node name="PauseMenu" type="CanvasLayer" parent="Viewport" unique_id=1753711030]
 visible = false
@@ -86,6 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("11_sr17e")
 
 [node name="CenterContainer" type="CenterContainer" parent="Viewport/PauseMenu/UI" unique_id=465852087]
@@ -119,6 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("2_b8ek1")
 input_palette = ExtResource("4_7gaau")
 output_palette = ExtResource("5_sr17e")
@@ -313,6 +317,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_b8ek1")
 input_palette = ExtResource("4_7gaau")
 output_palette = ExtResource("5_sr17e")
@@ -331,6 +336,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("20_h8ax2")
 
 [node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/UI" unique_id=2059883757]

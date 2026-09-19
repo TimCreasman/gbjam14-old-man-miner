@@ -6,7 +6,7 @@ extends Node2D
 
 var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
 var bomb_definition = preload("res://src/resources/bomb_definition.tres")
-var _spawn_container: Node2D
+var _spawn_container: Node2D = self
 
 var structure: OMM_StructureDefinition
 

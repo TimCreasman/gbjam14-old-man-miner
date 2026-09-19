@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -200.0
 
 @export var age_component: OMM_AgeComponent
 @export var item_container: Node2D
+@export var world_generator: OMM_WorldGenerator
 
 @export_category("Internal Components")
 @export var sprite: Sprite2D
@@ -26,6 +27,11 @@ var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dro
 @export var current_item : OMM_CurrentItemResource
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_DISABLED
+	world_generator.generated.connect(func():
+		process_mode = Node.PROCESS_MODE_INHERIT
+	)
+
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
 	current_item.type = OMM_ItemDefinition.ITEM_TYPES.BOMB
@@ -70,7 +76,7 @@ func handle_move():
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		player_coordinate.coordinate = position
+		player_coordinate.coordinate = global_position
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():

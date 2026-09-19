@@ -26,8 +26,10 @@ var _is_gold: bool:
 	get():
 		return hardness >= 9
 
-# func _ready():
-	# on_screen_notifier.screen_exited.connect(_on_screen_exit)
+signal pool_me(body: OMM_GroundTile)
+
+func _ready():
+	on_screen_notifier.screen_exited.connect(_on_screen_exit)
 
 ## Takes place of _ready since this a pooled object
 func reset_properties(properties: Dictionary):
@@ -80,7 +82,8 @@ func on_destroy():
 	# await destroy_sound.finished
 
 	destroyed_positions.add_position(global_position)
-	OMM_ObjectPool.add_to_pool(self)
+
+	pool_me.emit(self)
 
 	# propagate_destroy()
 
@@ -108,6 +111,5 @@ func propagate_destroy():
 	neighbor_area.monitoring = false
 	neighbor_area.monitorable = false
 
-# func _on_screen_exit():
-# 	OMM_ObjectPool.add_to_pool(self)
-# 	pass
+func _on_screen_exit():
+	pool_me.emit(self)

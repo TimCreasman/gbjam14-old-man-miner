@@ -5,7 +5,6 @@ extends Node2D
 @export var noise: OMM_TerrainNoise
 
 var bounds: Rect2i
-var rng = RandomNumberGenerator.new()
 
 @export_category("Internal Components")
 @export var item_container : Node2D
@@ -22,18 +21,18 @@ static func create_chunk(rect: Rect2i, _item_container: Node2D) -> OMM_Chunk:
 const TILE_SIZE = 8
 
 func _ready():
-	position = bounds.position
-
-	screen_notifier.rect = Rect2(Vector2.ZERO, bounds.expand(Vector2i(-16, 16)).size)
-	screen_notifier.screen_exited.connect(reset_all_to_pool)
-
-	structure_generator.set_spawn_container(item_container)
-
-	structure_generator.generate(Vector2i(-8, 168))
-	_generate()
+	pass
+	# position = bounds.position
+	#
+	# screen_notifier.rect = Rect2(Vector2.ZERO, bounds.expand(Vector2i(-16, 16)).size)
+	# screen_notifier.screen_exited.connect(reset_all_to_pool)
+	#
+	# structure_generator.set_spawn_container(item_container)
+	#
+	# structure_generator.generate(Vector2i(-8, 168))
+	# _generate()
 
 func _generate():
-
 	for x in range(bounds.position.x, bounds.position.x + bounds.size.x, TILE_SIZE):
 		for y in range(bounds.position.y, bounds.position.y + bounds.size.y, TILE_SIZE):
 			_generate_tile(Vector2i(x, y))
@@ -48,7 +47,7 @@ func _generate_tile(global_pos: Vector2i):
 	if hardness <= 0:
 		return
 
-	var tile = OMM_ObjectPool.pull_from_pool({
+	var tile = OMM_TilePool.pull_from_pool({
 		"position" : global_pos - bounds.position,
 		"hardness" : hardness,
 		"indestructable" : false
@@ -61,6 +60,6 @@ func reset_all_to_pool():
 	for tile in get_children():
 		if tile is OMM_GroundTile:
 			remove_child(tile)
-			OMM_ObjectPool.add_to_pool(tile)
+			OMM_TilePool.add_to_pool(tile)
 
 	queue_free()

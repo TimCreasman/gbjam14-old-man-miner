@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="OMM_ObjectPool" format=3 uid="uid://5kv70pfegcie"]
+
+[ext_resource type="Script" uid="uid://bn3x17gdumh67" path="res://src/resources/object_pool.gd" id="1_mcyar"]
+
+[resource]
+script = ExtResource("1_mcyar")
+metadata/_custom_type_script = "uid://bn3x17gdumh67"
