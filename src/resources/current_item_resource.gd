@@ -2,10 +2,11 @@
 class_name OMM_CurrentItemResource
 extends Resource
 
-signal item_changed(type: OMM_ItemDefinition.ITEM_TYPES)
+signal item_changed(definition: OMM_ItemDefinition)
 
-@export var type := OMM_ItemDefinition.ITEM_TYPES.NONE:
+@export var definition : OMM_ItemDefinition:
 	set(value):
-		item_changed.emit(value)
-		type = value
+		if value:
+			item_changed.emit(value)
+		definition = value
 

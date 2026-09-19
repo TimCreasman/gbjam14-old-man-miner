@@ -24,12 +24,13 @@ const JUMP_VELOCITY = -200.0
 var dashing = false
 var has_midas = false
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
+var none_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/none_definition.tres")
+
 @export var current_item : OMM_CurrentItemResource
 
 func _ready():
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
-	current_item.type = OMM_ItemDefinition.ITEM_TYPES.BOMB
 
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
@@ -39,7 +40,7 @@ func _ready():
 
 func on_body_entered(body: Node2D) -> void:
 	if body is OMM_GroundTile:
-		if !body._is_gold and has_midas:
+		if has_midas:
 			body.turn_to_gold()
 
 func _physics_process(delta):
@@ -85,8 +86,8 @@ func on_died():
 	StateManager.change_state(StateManager.STATE.HUB)
 	z_index = 100
 
-# func pickup(item_type: OMM_ItemDefinition.ITEM_TYPES):
-	# current_item.type = item_type
+func pickup(item_definition: OMM_ItemDefinition):
+	current_item.definition = item_definition
 
 func dash():
 	
@@ -98,14 +99,16 @@ func stop_dashing():
 
 func midas_touch() -> void:
 	has_midas = true
+	midas_area.monitoring = true
 	midas_timer.start()
 
 func stop_midas_touch() -> void:
+	midas_area.monitoring = false
 	has_midas = false
 
 func handle_use_item():
 	if Input.is_action_just_pressed("use_item"):
-		match current_item.type:
+		match current_item.definition.type:
 			OMM_ItemDefinition.ITEM_TYPES.BOMB:
 				var bomb = bomb_scene.instantiate()
 				bomb.position = position
@@ -116,7 +119,8 @@ func handle_use_item():
 			OMM_ItemDefinition.ITEM_TYPES.MIDAS:
 				midas_touch()
 				
-		# current_item.type = OMM_ItemDefinition.ITEM_TYPES.NONE
+		current_item.definition = none_item 
+
 func _on_state_changed(new_state, old_state) -> void:
 	if old_state != StateManager.STATE.MINE and new_state == StateManager.STATE.MINE:
 		old_timer.start()

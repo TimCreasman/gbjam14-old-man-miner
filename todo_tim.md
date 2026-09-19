@@ -20,9 +20,10 @@
 - [x] Add quicker mining
 - [x] Add score resource / Fix gold
 - [x] Correctly color menu
+- [x] Get to bottom
 
 # In progress
-- [ ] Get to bottom
+- [ ] Item spawns
 
 # To do
 - [ ] SFX

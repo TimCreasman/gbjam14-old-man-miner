@@ -10,6 +10,7 @@ signal generated()
 
 @export var tile_generator: OMM_TileGenerator
 @export var structure_generator : OMM_StructureGenerator
+@export var item_generator : OMM_ItemGenerator
 
 const TILE_SIZE = 8
 const GENERATION_OFFSET = 36 * TILE_SIZE
@@ -67,3 +68,4 @@ func _generate(generation_bounds: Rect2i):
 				continue
 
 			structure_generator.generate(pos)
+			item_generator.generate(pos)

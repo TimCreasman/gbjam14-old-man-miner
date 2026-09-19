@@ -7,10 +7,10 @@
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_37hmv"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="5_4evt0"]
 [ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/debug/shop_menu.gd" id="6_3abm2"]
-[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="7_slot5"]
-[ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/bomb_definition.tres" id="8_abowv"]
-[ext_resource type="Resource" uid="uid://6lys5lpocnpe" path="res://src/resources/dash_definition.tres" id="9_odc3c"]
-[ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/midas_definition.tres" id="10_cp0ni"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="7_slot5"]
+[ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/item_definitions/bomb_definition.tres" id="8_abowv"]
+[ext_resource type="Resource" uid="uid://6lys5lpocnpe" path="res://src/resources/item_definitions/dash_definition.tres" id="9_odc3c"]
+[ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/item_definitions/midas_definition.tres" id="11_5kyyw"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="11_ih0lp"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="12_u4eqt"]
 
@@ -47,7 +47,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("5_4evt0")
 script = ExtResource("6_3abm2")
-buyables = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("10_cp0ni")])
+buyables = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw")])
 buy_buttons = NodePath("CenterContainer/VBoxContainer/BuyButtons")
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/UI" unique_id=1997063660]

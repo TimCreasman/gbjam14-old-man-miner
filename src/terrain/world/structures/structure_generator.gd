@@ -4,8 +4,6 @@ extends Node2D
 @export var structures: Array[OMM_StructureDefinition]
 @export var terrain_noise: OMM_TerrainNoise
 
-var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
-var bomb_definition = preload("res://src/resources/bomb_definition.tres")
 var _spawn_container: Node2D = self
 
 var structure: OMM_StructureDefinition

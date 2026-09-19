@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cn0hor25kcgho"]
 
-[ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="1_jo7h3"]
+[ext_resource type="Script" path="res://src/debug/OMM_button.gd" id="1_jo7h3"]
 
 [node name="MenuNavTest" type="Control" unique_id=2130026428]
 layout_mode = 3

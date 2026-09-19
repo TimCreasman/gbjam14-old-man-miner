@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://btsg75vcd7r38" path="res://icon.svg" id="1_jynof"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="1_q40sx"]
 [ext_resource type="Script" uid="uid://clafqicw46pi0" path="res://src/debug/2d_movement_test.gd" id="1_qxg1n"]
-[ext_resource type="PackedScene" path="res://src/gameplay/interactables/pickup.tscn" id="2_auij4"]
-[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="3_frqc6"]
-[ext_resource type="Texture2D" uid="uid://boqjo1a5jxcej" path="res://assets/art/sprites/interactables/bomb.png" id="4_s463h"]
+[ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/pickup.tscn" id="2_auij4"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="3_frqc6"]
+[ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="4_s463h"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="5_s2lkr"]
 
 [sub_resource type="Resource" id="Resource_fl7nr"]

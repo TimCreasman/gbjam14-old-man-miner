@@ -12,6 +12,9 @@ size = Vector2(7, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_64h4j"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxsvo"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "old_timer", "dash_timer", "dash_area", "midas_area", "midas_timer", "mining_component")]
 script = ExtResource("1_4flbx")
 age_component = ExtResource("2_dxsvo")
@@ -43,16 +46,16 @@ hframes = 6
 shape = SubResource("CircleShape2D_64h4j")
 
 [node name="MidasArea" type="Area2D" parent="." unique_id=1797923543]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MidasArea" unique_id=1509517187]
-shape = SubResource("CircleShape2D_64h4j")
+shape = SubResource("CircleShape2D_dxsvo")
 
 [node name="DashTimer" type="Timer" parent="." unique_id=1533266614]
 wait_time = 0.5
 one_shot = true
 
 [node name="Midas Timer" type="Timer" parent="." unique_id=1355493002]
-wait_time = 0.5
 one_shot = true
 
 [node name="MiningComponent" type="Node2D" parent="." unique_id=501280726 node_paths=PackedStringArray("ray_cast")]

@@ -19,6 +19,3 @@ func _on_buy_button_pressed(item_defintion: OMM_ItemDefinition):
 	print(item_defintion.cost)
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

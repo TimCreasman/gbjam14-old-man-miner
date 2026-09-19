@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="OMM_ItemDefinition" format=3 uid="uid://cmcv71apbpf70"]
-
-[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="1_tgtre"]
-
-[resource]
-script = ExtResource("1_tgtre")
-type = 2
-metadata/_custom_type_script = "uid://cohj448giry3f"
