@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://b7ksjcn0njxnh"]
 
+[ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="1_adtws"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="2_8jlty"]
 [ext_resource type="Script" uid="uid://b48dshi3qc7c1" path="res://src/ui/menu_manager.gd" id="2_a750j"]
 [ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="2_gctki"]
 [ext_resource type="AudioStream" uid="uid://crnlfretcxwbw" path="res://assets/audio/music/Title.wav" id="3_a750j"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="3_eoavt"]
-[ext_resource type="Script" uid="uid://dw2s0net6bpp2" path="res://src/ui/OMM_keyboard.gd" id="3_shm1j"]
-[ext_resource type="Theme" uid="uid://dxwpeiylwa2mv" path="res://Keyboard.tres" id="4_damdu"]
+[ext_resource type="Script" path="res://src/ui/OMM_keyboard.gd" id="3_shm1j"]
+[ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="3_y7a7n"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_g5sub"]
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="6_adtws"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="6_damdu"]
+[ext_resource type="StyleBox" uid="uid://deesfixrsgr1j" path="res://src/ui/style_box_flat.tres" id="11_8jlty"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shm1j"]
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qc1l"]
-
-[node name="Title" type="Control" unique_id=1450929623]
-layout_mode = 3
+[node name="Title" type="SubViewportContainer" unique_id=122588369]
+material = ExtResource("1_adtws")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,37 +22,57 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("2_8jlty")
+input_palette = ExtResource("3_y7a7n")
+output_palette = ExtResource("4_g5sub")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=97993810]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=755742681]
+handle_input_locally = false
+audio_listener_enable_2d = true
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SubViewport" unique_id=1571613630]
+stream = ExtResource("3_a750j")
+autoplay = true
+
+[node name="UI" type="Control" parent="SubViewport" unique_id=1819298620]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_adtws")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/UI" unique_id=97993810]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8474744, 0.84747446, 0.84747446, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="MenuManager" type="CenterContainer" parent="." unique_id=654113637]
+[node name="MenuManager" type="CenterContainer" parent="SubViewport/UI" unique_id=654113637]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = -1.0
-offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_a750j")
 
-[node name="MainMenu" type="CenterContainer" parent="MenuManager" unique_id=1583333976]
+[node name="MainMenu" type="CenterContainer" parent="SubViewport/UI/MenuManager" unique_id=1583333976]
+visible = false
 layout_mode = 2
 script = ExtResource("2_gctki")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuManager/MainMenu" unique_id=1273331197]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1273331197]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MenuManager/MainMenu/VBoxContainer" unique_id=1327643460]
+[node name="Label" type="Label" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer" unique_id=1327643460]
 layout_mode = 2
 theme = ExtResource("6_damdu")
 theme_override_font_sizes/font_size = 19
@@ -63,238 +80,186 @@ text = "OLD MAN
 MINER"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuManager/MainMenu/VBoxContainer" unique_id=1738123876]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer" unique_id=1738123876]
 layout_mode = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="MenuManager/MainMenu/VBoxContainer/HBoxContainer" unique_id=1216149324]
+[node name="Play" type="Button" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer/HBoxContainer" unique_id=1216149324]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("6_damdu")
 text = "Play
 "
 
-[node name="Quit" type="Button" parent="MenuManager/MainMenu/VBoxContainer/HBoxContainer" unique_id=1558625711]
+[node name="Quit" type="Button" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer/HBoxContainer" unique_id=1558625711]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("6_damdu")
 text = "Quit
 "
 
-[node name="NameMenu" type="CenterContainer" parent="MenuManager" unique_id=1991112592]
-visible = false
+[node name="NameMenu" type="CenterContainer" parent="SubViewport/UI/MenuManager" unique_id=1991112592]
 layout_mode = 2
 use_top_left = true
 script = ExtResource("2_gctki")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MenuManager/NameMenu" unique_id=1524082759]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu" unique_id=1524082759]
 layout_mode = 2
 
-[node name="Keyboard" type="VBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=1809688236]
+[node name="Keyboard" type="VBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2" unique_id=1809688236]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_shm1j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=468757829]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=468757829]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Button" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=889290904]
+[node name="Button" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=889290904]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "A"
 autowrap_trim_flags = 0
 
-[node name="Button2" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=1655607376]
+[node name="Button2" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=1655607376]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "B"
 autowrap_trim_flags = 0
 
-[node name="Button3" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=159053884]
+[node name="Button3" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=159053884]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "C"
 autowrap_trim_flags = 0
 
-[node name="Button4" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=490795871]
+[node name="Button4" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=490795871]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "D"
 autowrap_trim_flags = 0
 
-[node name="Button5" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=2024747820]
+[node name="Button5" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=2024747820]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+theme_override_styles/normal = ExtResource("11_8jlty")
 text = "E"
 autowrap_trim_flags = 0
 
-[node name="Button6" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=930405015]
+[node name="Button6" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=930405015]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+theme_override_styles/normal = ExtResource("11_8jlty")
 text = "F"
 autowrap_trim_flags = 0
 
-[node name="Button7" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=345648375]
+[node name="Button7" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=345648375]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+theme_override_styles/normal = ExtResource("11_8jlty")
 text = "G"
 autowrap_trim_flags = 0
 
-[node name="Button8" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=1922280140]
+[node name="Button8" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=1922280140]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+theme_override_styles/normal = ExtResource("11_8jlty")
 text = "H"
 autowrap_trim_flags = 0
 
-[node name="Button9" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=740558799]
+[node name="Button9" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=740558799]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
+theme_override_styles/normal = ExtResource("11_8jlty")
 text = "I"
 autowrap_trim_flags = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=2013918666]
+[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=2013918666]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=217195649]
+[node name="Button" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=217195649]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "J"
 autowrap_trim_flags = 0
 
-[node name="Button2" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1059997468]
+[node name="Button2" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1059997468]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "K"
 autowrap_trim_flags = 0
 
-[node name="Button3" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=145658379]
+[node name="Button3" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=145658379]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "L"
 autowrap_trim_flags = 0
 
-[node name="Button4" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=984779932]
+[node name="Button4" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=984779932]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "M"
 autowrap_trim_flags = 0
 
-[node name="Button5" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=704133528]
+[node name="Button5" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=704133528]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "N"
 autowrap_trim_flags = 0
 
-[node name="Button6" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1756532080]
+[node name="Button6" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1756532080]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "O"
 autowrap_trim_flags = 0
 
-[node name="Button7" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1017629166]
+[node name="Button7" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=1017629166]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "P"
 autowrap_trim_flags = 0
 
-[node name="Button8" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=598823881]
+[node name="Button8" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=598823881]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "Q"
 autowrap_trim_flags = 0
 
-[node name="Button9" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=55847691]
+[node name="Button9" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer2" unique_id=55847691]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "R"
 autowrap_trim_flags = 0
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=1317606068]
+[node name="HBoxContainer3" type="HBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=1317606068]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=209394663]
+[node name="Button" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=209394663]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "S"
 autowrap_trim_flags = 0
 
-[node name="Button10" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=224288995]
+[node name="Button10" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=224288995]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "T"
 autowrap_trim_flags = 0
 
-[node name="Button2" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=2092684122]
+[node name="Button2" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=2092684122]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "U"
 autowrap_trim_flags = 0
 
-[node name="Button3" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1477434349]
+[node name="Button3" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1477434349]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "V"
 autowrap_trim_flags = 0
 
-[node name="Button4" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=85038777]
+[node name="Button4" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=85038777]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "W"
 autowrap_trim_flags = 0
 
-[node name="Button5" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1361237706]
+[node name="Button5" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1361237706]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "X"
 autowrap_trim_flags = 0
 
-[node name="Button6" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=2040415347]
+[node name="Button6" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=2040415347]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "Y"
 autowrap_trim_flags = 0
 
-[node name="Button7" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=311208736]
+[node name="Button7" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=311208736]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "Z"
 autowrap_trim_flags = 0
 
-[node name="Button8" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1614746976]
+[node name="Button8" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer3" unique_id=1614746976]
 layout_mode = 2
-theme = ExtResource("4_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_shm1j")
 text = "<"
 autowrap_trim_flags = 0
 
-[node name="LineEdit" type="LineEdit" parent="MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=775687488]
+[node name="LineEdit" type="LineEdit" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=775687488]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
@@ -305,33 +270,25 @@ editable = false
 middle_mouse_paste_enabled = false
 virtual_keyboard_enabled = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=495798734]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2" unique_id=495798734]
 layout_mode = 2
 
-[node name="Start" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=928426931]
+[node name="Start" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=928426931]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("6_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_0qc1l")
 text = "Start
 "
 
-[node name="Back" type="Button" parent="MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=507073766]
+[node name="Back" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/HBoxContainer" unique_id=507073766]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("6_damdu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_0qc1l")
 text = "Back
 
 "
 
-[node name="LineEdit" type="LineEdit" parent="MenuManager/NameMenu/VBoxContainer2" unique_id=633062734]
+[node name="LineEdit" type="LineEdit" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2" unique_id=633062734]
 visible = false
 layout_mode = 2
 placeholder_text = "Enter Name"
 virtual_keyboard_show_on_focus = false
 virtual_keyboard_type = 1
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1571613630]
-stream = ExtResource("3_a750j")
-autoplay = true

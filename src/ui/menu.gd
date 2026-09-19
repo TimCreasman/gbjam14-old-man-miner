@@ -12,7 +12,7 @@ func open() -> void:
 	visible = true
 	is_open = true
 	print(buttons)
-	buttons.values()[1].grab_focus()
+	buttons.values()[0].grab_focus()
 	
 func close() -> void:
 	visible = false

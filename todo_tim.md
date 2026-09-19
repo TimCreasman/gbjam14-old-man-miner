@@ -19,6 +19,7 @@
 - [x] Add fountains
 - [x] Add quicker mining
 - [x] Add score resource / Fix gold
+- [x] Correctly color menu
 
 # In progress
 
