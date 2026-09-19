@@ -56,7 +56,7 @@ one_shot = true
 [node name="MiningComponent" type="Node2D" parent="." unique_id=501280726 node_paths=PackedStringArray("ray_cast")]
 script = ExtResource("5_d3trc")
 ray_cast = NodePath("RayCast2D")
-dig_speed = 0.1
+dig_speed = 0.2
 
 [node name="RayCast2D" type="RayCast2D" parent="MiningComponent" unique_id=312943075]
 target_position = Vector2(8, 0)

@@ -18,6 +18,7 @@
 - [x] Add structure/interactables generation system 
 - [x] Add fountains
 - [x] Add quicker mining
+- [x] Add score resource / Fix gold
 
 # In progress
 

@@ -7,7 +7,6 @@ extends Node2D
 # @export_custom(PROPERTY_HINT_NONE, "suffix:px") var tile_size: Vector2i = Vector2i(8,8)
 
 @export var player_coordinate: OMM_Coordinate
-# @export var score_component: OMM_ScoreComponent
 
 @export_category("Internal Components")
 @export var chunk_container: CanvasGroup

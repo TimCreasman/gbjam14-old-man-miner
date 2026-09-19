@@ -1,7 +1,5 @@
-class_name OMM_ScoreComponent
-extends Node
-
-signal changed(new_value)
+class_name OMM_ScoreResource
+extends Resource
 
 var _score: int = 0
 
