@@ -40,18 +40,24 @@ func reset_properties(properties: Dictionary):
 	update_hardness_sprite()
 
 	# Reset signal connections
-	if breaking_animation_sprite.animation_finished.is_connected(breaking_done):
-		breaking_animation_sprite.animation_finished.disconnect(breaking_done)
+	if break_timer.timeout.is_connected(breaking_done):
+		break_timer.timeout.disconnect(breaking_done)
 
-	if !indestructable:
-		breaking_animation_sprite.animation_finished.connect(breaking_done)
+	break_timer.timeout.connect(breaking_done)
+	break_timer.stop()
 
-func do_break(dig_speed):
-	if breaking_animation_sprite.is_playing() || !get_parent():
+func do_break(time_to_break: float):
+	breaking_animation_sprite.speed_scale = 1 / break_timer.wait_time
+
+	if !breaking_animation_sprite.is_playing():
+		breaking_animation_sprite.play("breaking_animation")
+
+	if break_timer.time_left:
 		return
+
+	break_timer.wait_time = time_to_break
+	break_timer.start()
 	break_sound.play()
-	breaking_animation_sprite.play("breaking_animation")
-	breaking_animation_sprite.speed_scale = dig_speed * 10
 
 func update_hardness_sprite():
 	hardness_sprite.frame = hardness
