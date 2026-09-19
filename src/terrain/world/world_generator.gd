@@ -57,6 +57,9 @@ func _generate(generation_bounds: Rect2i):
 		for y in range(generation_bounds.position.y, generation_bounds.position.y + generation_bounds.size.y, TILE_SIZE):
 			if y < 0: continue
 
+			if y <= max_depth && y >= (max_depth - 10 * TILE_SIZE):
+				continue
+
 			var pos = Vector2i(x, y)
 			tile_generator.generate(pos)
 

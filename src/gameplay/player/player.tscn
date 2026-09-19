@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bm4wkjp71d2vb"]
 
 [ext_resource type="Script" uid="uid://cbubdv7obrftg" path="res://src/gameplay/player/player.gd" id="1_4flbx"]
+[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/age_resource.tres" id="2_dxsvo"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="2_k2146"]
 [ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/art/sprites/player/miner.png" id="2_onrkg"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
@@ -13,6 +14,7 @@ size = Vector2(7, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "old_timer", "dash_timer", "dash_area", "midas_area", "midas_timer", "mining_component")]
 script = ExtResource("1_4flbx")
+age_component = ExtResource("2_dxsvo")
 sprite = NodePath("Sprite2D")
 old_timer = NodePath("OldTimer")
 dash_timer = NodePath("DashTimer")

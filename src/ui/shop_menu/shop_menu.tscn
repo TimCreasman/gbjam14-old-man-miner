@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://d3f1n5iemoan3"]
+
+[ext_resource type="Script" uid="uid://ceggtw7aso2uv" path="res://src/ui/shop_menu/shop_menu_canvas_layer.gd" id="1_5kyyw"]
+[ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="1_gmpoe"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="2_5kyyw"]
+[ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="3_bnu6r"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_37hmv"]
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="5_4evt0"]
+[ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/debug/shop_menu.gd" id="6_3abm2"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="7_slot5"]
+[ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/bomb_definition.tres" id="8_abowv"]
+[ext_resource type="Resource" uid="uid://6lys5lpocnpe" path="res://src/resources/dash_definition.tres" id="9_odc3c"]
+[ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/midas_definition.tres" id="10_cp0ni"]
+[ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="11_ih0lp"]
+[ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="12_u4eqt"]
+
+[node name="ShopMenu" type="CanvasLayer" unique_id=188154621 node_paths=PackedStringArray("menu")]
+script = ExtResource("1_5kyyw")
+menu = NodePath("SubViewportContainer/SubViewport/UI")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1307658135]
+material = ExtResource("1_gmpoe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_5kyyw")
+input_palette = ExtResource("3_bnu6r")
+output_palette = ExtResource("4_37hmv")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=853221203]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1604366270 node_paths=PackedStringArray("buy_buttons")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_4evt0")
+script = ExtResource("6_3abm2")
+buyables = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("10_cp0ni")])
+buy_buttons = NodePath("CenterContainer/VBoxContainer/BuyButtons")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/UI" unique_id=1997063660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/UI" unique_id=677838306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer" unique_id=1439658148]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=921352698]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("1_gmpoe")
+layout_mode = 2
+theme = ExtResource("11_ih0lp")
+theme_override_fonts/font = ExtResource("12_u4eqt")
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="BuyButtons" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1089251204]
+layout_mode = 2
+
+[node name="Leave" type="Button" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1538497323]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("11_ih0lp")
+text = "LEAVE"

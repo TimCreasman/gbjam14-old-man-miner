@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bahcix65cwagj" path="res://assets/art/sprites/interactables/fountain.png" id="1_aeqaj"]
 [ext_resource type="Script" uid="uid://biygwqvacnpyc" path="res://src/gameplay/interactables/fountain.gd" id="2_wg17o"]
+[ext_resource type="AudioStream" uid="uid://ja3sx5s650cq" path="res://assets/audio/sfx/Fountain.wav" id="3_31ukk"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gb8ac"]
 particle_flag_disable_z = true
@@ -16,7 +17,7 @@ linear_accel_max = -2.2351742e-06
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wg17o"]
 size = Vector2(48, 25)
 
-[node name="Fountain" type="Sprite2D" unique_id=1493492279 node_paths=PackedStringArray("area_2D", "particles")]
+[node name="Fountain" type="Sprite2D" unique_id=1493492279 node_paths=PackedStringArray("area_2D", "particles", "audio")]
 texture_filter = 1
 texture = ExtResource("1_aeqaj")
 centered = false
@@ -24,6 +25,7 @@ offset = Vector2(0, -32)
 script = ExtResource("2_wg17o")
 area_2D = NodePath("Area2D")
 particles = NodePath("GPUParticles2D")
+audio = NodePath("YouthGained")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1602867338]
 position = Vector2(24, -24)
@@ -36,3 +38,7 @@ process_material = SubResource("ParticleProcessMaterial_gb8ac")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1525304811]
 position = Vector2(24, -12.5)
 shape = SubResource("RectangleShape2D_wg17o")
+
+[node name="YouthGained" type="AudioStreamPlayer2D" parent="." unique_id=241642145]
+stream = ExtResource("3_31ukk")
+volume_db = 1.912

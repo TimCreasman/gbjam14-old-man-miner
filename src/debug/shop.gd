@@ -1,6 +1,6 @@
 class_name OMM_Shop
 extends RigidBody2D
-@export var shop_menu: Menu
+@export var shop_menu: OMM_ShopMenuLayer
 @export var player: OMM_Player
 @export var music_manager: MusicManager
 
@@ -13,7 +13,7 @@ var closed = false
 func _ready() -> void:
 	shop_menu.close()
 	area_2d.body_entered.connect(on_body_entered)
-	%Leave.pressed.connect(exit_shop)
+	shop_menu.get_leave_button().pressed.connect(exit_shop)
 	StateManager.state_changed.connect(_on_state_changed)
 
 func on_body_entered(body: Node2D) -> void:

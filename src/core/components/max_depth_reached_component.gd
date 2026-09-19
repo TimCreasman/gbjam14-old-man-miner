@@ -1,0 +1,26 @@
+class_name OMM_MaxDepthReachedComponent
+extends Node
+
+@export var player_coordinate: OMM_Coordinate
+
+var max_depth
+
+signal max_depth_reached()
+
+func _ready():
+	player_coordinate.coordinate_changed.connect(_on_coordinate_changed)
+	load_cfg()
+
+func load_cfg():
+	var world_gen_cfg = ConfigFile.new()
+	var err = world_gen_cfg.load("res://src/terrain/world/world_gen.cfg")
+	if err!= OK:
+		print_debug("Could not load world gen config file")
+
+	max_depth = world_gen_cfg.get_value("main", "max_depth", INF)
+
+func _on_coordinate_changed(coordinate: Vector2i):
+	# TODO use TILESIZS
+	if coordinate.y >= (max_depth - 80):
+		StateManager.change_state(StateManager.STATE.WIN)
+		max_depth_reached.emit()

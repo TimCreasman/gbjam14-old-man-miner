@@ -1,11 +1,9 @@
 extends Node2D
 
-var states = ["mine", "shop", "hub"]
-enum STATE { MINE, SHOP, HUB } 
+enum STATE { MINE, SHOP, HUB, WIN} 
 
 var current_state: STATE
 signal state_changed
-
 	
 func change_state(new_state: STATE) -> void:
 	var old_state = current_state

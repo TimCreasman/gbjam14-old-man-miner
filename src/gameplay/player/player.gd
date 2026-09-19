@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
-@export var age_component: OMM_AgeComponent
+@export var age_component: OMM_AgeResource
 @export var item_container: Node2D
 @export var world_generator: OMM_WorldGenerator
 
@@ -77,7 +77,7 @@ func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-func on_aged(age: OMM_AgeComponent.AGES):
+func on_aged(age: OMM_AgeResource.AGES):
 	sprite.frame = age
 
 func on_died():

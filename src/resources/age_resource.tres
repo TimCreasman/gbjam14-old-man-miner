@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OMM_AgeResource" format=3 uid="uid://c7y3rtu6x3qck"]
+
+[ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="1_n5eyw"]
+
+[resource]
+script = ExtResource("1_n5eyw")
+ages = null
+metadata/_custom_type_script = "uid://cwrp6vmtltp0d"

@@ -1,6 +1,6 @@
 extends Control
 
-@export var age_component: OMM_AgeComponent
+@export var age_component:OMM_AgeResource
 
 func _ready():
 	age_component.died.connect(on_died)

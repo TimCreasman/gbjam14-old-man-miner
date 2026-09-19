@@ -1,13 +1,12 @@
 ## Age currently reached in years
-class_name OMM_AgeComponent
-extends Node
+class_name OMM_AgeResource
+extends Resource
 
 var max_age = 150
 @export var ages := [0, 25, 50, 75, 100, max_age]
 
 enum AGES {BABY, YOUNG, MIDDLE, OLD, ANCIENT, HISTORY }
 
-signal changed(new_value)
 signal aged(current_age: AGES)
 signal died()
 

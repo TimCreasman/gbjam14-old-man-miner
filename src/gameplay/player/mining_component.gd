@@ -15,5 +15,5 @@ func handle_mine():
 	var tile = ray_cast.get_collider()
 	if tile && tile.has_method("do_break"):
 		tile.do_break(dig_speed)
-		if StateManager.current_state != StateManager.STATE.MINE:
+		if StateManager.current_state != StateManager.STATE.MINE && StateManager.current_state != StateManager.STATE.WIN:
 			StateManager.change_state(StateManager.STATE.MINE)
