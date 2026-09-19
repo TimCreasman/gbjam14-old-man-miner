@@ -15,9 +15,10 @@ linear_accel_max = -2.2351742e-06
 [node name="Fountain" type="Sprite2D" unique_id=1493492279]
 texture_filter = 1
 texture = ExtResource("1_aeqaj")
+offset = Vector2(24, -12)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1602867338]
-position = Vector2(0, -9)
+position = Vector2(24, -24)
 amount = 32
 lifetime = 1.01
 process_material = SubResource("ParticleProcessMaterial_gb8ac")

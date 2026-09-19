@@ -33,8 +33,8 @@ chunk_container = NodePath("Tiles")
 item_container = NodePath("ItemLayer")
 noise_map = SubResource("NoiseTexture2D_f5w2v")
 
+[node name="ItemLayer" type="Node2D" parent="." unique_id=1589812991]
+
 [node name="Tiles" type="CanvasGroup" parent="." unique_id=1224250136]
 material = SubResource("ShaderMaterial_f5w2v")
 script = ExtResource("4_lovyd")
-
-[node name="ItemLayer" type="Node2D" parent="." unique_id=1589812991]

@@ -17,9 +17,9 @@
 - [x] Current item UI
 
 # In progress
+- [ ] Add structure/interactables generation system 
 
 # To do
-- [ ] Add structure/interactables generation system 
 - [ ] Add fountains
 - [ ] SFX
 - [ ] Automatic publish to itch
