@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duencw8o85jn0"]
 
 [ext_resource type="Texture2D" uid="uid://bahcix65cwagj" path="res://assets/art/sprites/interactables/fountain.png" id="1_aeqaj"]
+[ext_resource type="Script" uid="uid://biygwqvacnpyc" path="res://src/gameplay/interactables/fountain.gd" id="2_wg17o"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gb8ac"]
 particle_flag_disable_z = true
@@ -12,13 +13,26 @@ gravity = Vector3(0, 98, 0)
 linear_accel_min = -2.2351742e-06
 linear_accel_max = -2.2351742e-06
 
-[node name="Fountain" type="Sprite2D" unique_id=1493492279]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg17o"]
+size = Vector2(48, 25)
+
+[node name="Fountain" type="Sprite2D" unique_id=1493492279 node_paths=PackedStringArray("area_2D", "particles")]
 texture_filter = 1
 texture = ExtResource("1_aeqaj")
-offset = Vector2(24, -12)
+centered = false
+offset = Vector2(0, -32)
+script = ExtResource("2_wg17o")
+area_2D = NodePath("Area2D")
+particles = NodePath("GPUParticles2D")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1602867338]
 position = Vector2(24, -24)
 amount = 32
 lifetime = 1.01
 process_material = SubResource("ParticleProcessMaterial_gb8ac")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=223387806]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1525304811]
+position = Vector2(24, -12.5)
+shape = SubResource("RectangleShape2D_wg17o")

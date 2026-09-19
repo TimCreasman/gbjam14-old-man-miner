@@ -28,6 +28,7 @@ shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 [node name="CaveGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("chunk_container", "item_container")]
 material = SubResource("ShaderMaterial_5nb03")
 script = ExtResource("2_yyyc3")
+chunk_size = Vector2i(8, 8)
 player_coordinate = ExtResource("3_7ecim")
 chunk_container = NodePath("Tiles")
 item_container = NodePath("ItemLayer")

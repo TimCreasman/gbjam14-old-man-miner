@@ -33,3 +33,6 @@ func increment_age():
 
 func get_depth():
 	return _age
+
+func make_young():
+	_age = 0

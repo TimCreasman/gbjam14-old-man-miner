@@ -1,4 +1,6 @@
-[gd_resource type="FastNoiseLite" format=3 uid="uid://74d1gyqwt2or"]
+[gd_resource type="FastNoiseLite" script_class="OMM_TerrainNoise" format=3 uid="uid://74d1gyqwt2or"]
+
+[ext_resource type="Script" uid="uid://b7oxwhjtaglxn" path="res://src/terrain/terrain_noise.gd" id="1_styag"]
 
 [resource]
 frequency = 0.0026
@@ -12,3 +14,5 @@ domain_warp_amplitude = 8.42
 domain_warp_frequency = 0.04
 domain_warp_fractal_type = 2
 domain_warp_fractal_octaves = 1
+script = ExtResource("1_styag")
+metadata/_custom_type_script = "uid://b7oxwhjtaglxn"

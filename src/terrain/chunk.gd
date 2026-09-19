@@ -2,7 +2,7 @@ class_name OMM_Chunk
 extends Node2D
 
 @export var screen_notifier: VisibleOnScreenNotifier2D
-@export var noise: Noise
+@export var noise: OMM_TerrainNoise
 
 var bounds: Rect2i
 var rng = RandomNumberGenerator.new()
@@ -29,29 +29,22 @@ func _ready():
 
 	structure_generator.set_spawn_container(item_container)
 
+	structure_generator.generate(Vector2i(-8, 168))
 	_generate()
 
 func _generate():
+
 	for x in range(bounds.position.x, bounds.position.x + bounds.size.x, TILE_SIZE):
 		for y in range(bounds.position.y, bounds.position.y + bounds.size.y, TILE_SIZE):
 			_generate_tile(Vector2i(x, y))
 			structure_generator.generate(Vector2i(x, y))
 			# _generate_items(Vector2i(x, y))
 
-func _hardness(global_pos: Vector2i):
-	var noise_level = noise.get_noise_2dv(global_pos)
-	return clampi(remap(noise_level, -0.5, 1, 0, 10), 0, 10)
-
-# Generate noise for items
-# func _item_noise_clamp(global_pos: Vector2i):
-# 	var noise_level = structure_noise.get_noise_2dv(global_pos)
-# 	return clampi(remap(noise_level, -1, 1, 0, 1), 0, 1)
-
 func _generate_tile(global_pos: Vector2i):
 	if destroyed_tiles.has_position(global_pos):
 		return
 
-	var hardness = _hardness(global_pos)
+	var hardness = noise.get_ground_hardness(global_pos)
 	if hardness <= 0:
 		return
 
@@ -64,6 +57,7 @@ func _generate_tile(global_pos: Vector2i):
 	add_child.call_deferred(tile)
 
 func reset_all_to_pool():
+	print_debug("Chunk %s Resetting all tiles to pool" % name)
 	for tile in get_children():
 		if tile is OMM_GroundTile:
 			remove_child(tile)

@@ -7,12 +7,6 @@
 [ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definition.gd" id="5_f6dje"]
 [ext_resource type="Resource" uid="uid://d2j6ghh7kpec0" path="res://src/resources/fountain_definition.tres" id="6_33bo7"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_gurm3"]
-noise_type = 5
-frequency = 0.16
-fractal_type = 0
-fractal_octaves = 1
-
 [node name="ChunkGenerator" type="Node2D" unique_id=484316964 node_paths=PackedStringArray("screen_notifier", "structure_generator")]
 script = ExtResource("1_y714x")
 screen_notifier = NodePath("VisibleOnScreenNotifier2D")
@@ -23,7 +17,7 @@ structure_generator = NodePath("StructureGenerator")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2088750862]
 
 [node name="StructureGenerator" type="Node2D" parent="." unique_id=1314648726]
+z_as_relative = false
 script = ExtResource("4_gurm3")
 structures = Array[ExtResource("5_f6dje")]([ExtResource("6_33bo7")])
-noise = SubResource("FastNoiseLite_gurm3")
 terrain_noise = ExtResource("2_k0l0t")

@@ -91,6 +91,7 @@ func handle_mine():
 
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age
+
 func on_died():
 	old_timer.stop()
 	StateManager.change_state(StateManager.STATE.HUB)
@@ -131,3 +132,6 @@ func handle_use_item():
 func _on_state_changed(new_state, old_state) -> void:
 	if old_state != StateManager.STATE.MINE and new_state == StateManager.STATE.MINE:
 		old_timer.start()
+
+func make_young():
+	age_component.make_young()

@@ -15,12 +15,12 @@
 - [x] Add getting old timer
 - [x] Create basic bomb item and item scalfolding
 - [x] Current item UI
+- [x] Add structure/interactables generation system 
+- [x] Add fountains
 
 # In progress
-- [ ] Add structure/interactables generation system 
 
 # To do
-- [ ] Add fountains
 - [ ] SFX
 - [ ] Automatic publish to itch
 - [ ] Add spikes to top / death

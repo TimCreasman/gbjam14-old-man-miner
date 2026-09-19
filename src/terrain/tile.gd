@@ -16,6 +16,7 @@ extends StaticBody2D
 @export var gold_sound: AudioStreamPlayer2D
 @export var break_sound: AudioStreamPlayer2D
 @export var destroy_sound: AudioStreamPlayer2D
+@export var on_screen_notifier: VisibleOnScreenNotifier2D
 
 @export var destroyed_positions: OMM_DestroyedPositions
 
@@ -24,6 +25,9 @@ var indestructable = false
 var _is_gold: bool: 
 	get():
 		return hardness >= 9
+
+# func _ready():
+	# on_screen_notifier.screen_exited.connect(_on_screen_exit)
 
 ## Takes place of _ready since this a pooled object
 func reset_properties(properties: Dictionary):
@@ -103,3 +107,7 @@ func propagate_destroy():
 	# Turn off monitoring
 	neighbor_area.monitoring = false
 	neighbor_area.monitorable = false
+
+# func _on_screen_exit():
+# 	OMM_ObjectPool.add_to_pool(self)
+# 	pass

@@ -113,7 +113,7 @@ initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_yjbks")
 
-[node name="Node2D2" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "hardness_sprite", "gold_sprite", "neighbor_area", "gold_sound", "break_sound", "destroy_sound")]
+[node name="Node2D2" type="StaticBody2D" unique_id=1157843804 node_paths=PackedStringArray("breaking_animation_sprite", "hardness_sprite", "gold_sprite", "neighbor_area", "gold_sound", "break_sound", "destroy_sound", "on_screen_notifier")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_e36cl")
@@ -124,30 +124,38 @@ neighbor_area = NodePath("Area2D")
 gold_sound = NodePath("GoldSound")
 break_sound = NodePath("BreakSound")
 destroy_sound = NodePath("DestroySound")
+on_screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 destroyed_positions = ExtResource("2_tqlut")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453375674]
+visible = false
 texture_filter = 1
 texture_repeat = 1
+position = Vector2(4, 4)
 texture = ExtResource("2_mfvtv")
 
 [node name="HardnessSprite" type="Sprite2D" parent="." unique_id=1173574428]
 texture_filter = 1
 texture_repeat = 1
+position = Vector2(4, -4)
 texture = ExtResource("3_vx8v6")
 hframes = 11
 
 [node name="BreakingAnimation" type="AnimatedSprite2D" parent="." unique_id=890741485]
+position = Vector2(4, -4)
 sprite_frames = SubResource("SpriteFrames_hd8ri")
+animation = &"breaking_animation"
 speed_scale = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715147708]
+position = Vector2(4, -4)
 shape = SubResource("RectangleShape2D_chlg1")
 debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="BreakTimer" type="Timer" parent="." unique_id=1383425191]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=602176226]
+position = Vector2(4, -4)
 collision_layer = 2
 collision_mask = 2
 
@@ -160,8 +168,8 @@ shape = SubResource("RectangleShape2D_fy6p4")
 debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="Gold" type="Sprite2D" parent="." unique_id=833049567]
-visible = false
 texture_filter = 1
+position = Vector2(4, -4)
 texture = ExtResource("5_tqlut")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Gold" unique_id=1552504546]
@@ -179,3 +187,6 @@ stream = ExtResource("8_tqlut")
 [node name="DestroySound" type="AudioStreamPlayer2D" parent="." unique_id=1525073696]
 stream = ExtResource("9_bp25x")
 volume_db = -5.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=783490036]
+rect = Rect2(0, -8, 8, 8)

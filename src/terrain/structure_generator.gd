@@ -2,8 +2,7 @@ class_name OMM_StructureGenerator
 extends Node2D
 
 @export var structures: Array[OMM_StructureDefinition]
-@export var noise: Noise
-@export var terrain_noise: Noise
+@export var terrain_noise: OMM_TerrainNoise
 
 var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
 var bomb_definition = preload("res://src/resources/bomb_definition.tres")
@@ -19,41 +18,36 @@ func set_spawn_container(container: Node2D):
 	_spawn_container = container
 
 func sparse_noise_at(global_pos: Vector2):
-	var noise_level = noise.get_noise_2dv(global_pos)
-	print(noise_level)
-	if noise_level > 0.5:
-		return 1
-	return 0
+	return OMM_RandomNoise.get_noise_2dv(global_pos)
 
-func is_space(global_pos: Vector2i, size: Vector2i) -> bool:
-	for x in range(1, size.x):
-		for y in range(1, size.y):
-			if _point_is_ground(global_pos + Vector2i(size.y * 8, size.x * 8)):
+func is_space(rect: Rect2i) -> bool:
+	for x in range(rect.position.x, rect.position.x + rect.size.x, 8):
+		if !terrain_noise.is_ground(Vector2i(x, rect.position.y + 8)):
+			return false
+
+		for y in range(rect.position.y, rect.position.y - rect.size.y, -8):
+			if terrain_noise.is_ground(Vector2i(x, y)):
 				return false
 	return true
 
-func _point_is_ground(global_pos: Vector2i):
-	var noise_level = terrain_noise.get_noise_2dv(global_pos)
-	return clampi(remap(noise_level, -0.5, 1, 0, 10), 0, 10) > 0
-
-# TODO get fountain showing
 func generate(global_pos: Vector2i):
 	# If below me is not ground, or above me is not air return
-	if !_point_is_ground(global_pos + Vector2i(0, 8)) || _point_is_ground(global_pos + Vector2i(0, -8)):
+	if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)) || terrain_noise.is_ground(global_pos + Vector2i(0, -8)):
 		return
 
 	if !sparse_noise_at(global_pos):
 		return
 
-	if !is_space(global_pos, structure.size):
+	var structure_rect = Rect2i(global_pos, structure.size * 8)
+
+	if !is_space(structure_rect):
 		return
 
-	# print(sparse_noise_at(global_pos))
-
-	var structure_name = str(global_pos).sha1_text()
+	var structure_name = "fnt" + str(global_pos).sha1_text()
 	if !_spawn_container.has_node(structure_name):
 		var structure_scene = structure.scene.instantiate()
 		# pickup.definition = bomb_definition
 		structure_scene.position = global_pos
 		structure_scene.name = structure_name
+		print(global_pos)
 		_spawn_container.add_child(structure_scene)
