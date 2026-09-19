@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://crgxi0du6hto4"]
+[gd_scene format=3 uid="uid://b8iui5k0dy5v7"]
 
 [ext_resource type="Script" uid="uid://cfn8xfrcp64se" path="res://src/scenes/main.gd" id="1_pt3y5"]
 [ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="2_eb5hi"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="3_2uk7y"]
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="4_n51yc"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/terrain/cave_generation.tscn" id="4_sqac6"]
-[ext_resource type="Texture2D" uid="uid://74d1gyqwt2or" path="res://src/terrain/cave_generation_noise.tres" id="5_c14fy"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="5_vsekg"]
 [ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/tiles/tile.tscn" id="6_bwctk"]
 [ext_resource type="Script" uid="uid://b50kdm01xtr10" path="res://src/debug/shop.gd" id="11_122ex"]
@@ -19,10 +18,10 @@
 [ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="15_xr847"]
 [ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="16_bdst1"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="17_pj22h"]
+[ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/debug/shop_menu.gd" id="19_3b2i5"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="19_g6nvp"]
-[ext_resource type="Script" path="res://src/ui/menu.gd" id="20_3fv3h"]
-[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_resource.gd" id="20_78y2o"]
-[ext_resource type="Script" path="res://src/debug/OMM_button.gd" id="20_xr847"]
+[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="20_78y2o"]
+[ext_resource type="Script" uid="uid://b8bwdapkqks8w" path="res://src/debug/OMM_button.gd" id="20_xr847"]
 [ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="21_hjir0"]
 [ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="21_mn1od"]
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="23_hjir0"]
@@ -32,7 +31,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr847"]
 size = Vector2(22, 22)
 
-[node name="Game2" type="Node" unique_id=1274922351 node_paths=PackedStringArray("pause_menu")]
+[node name="Game3" type="Node" unique_id=1274922351 node_paths=PackedStringArray("pause_menu")]
 process_mode = 3
 script = ExtResource("1_pt3y5")
 pause_menu = NodePath("Viewport/PauseMenu")
@@ -50,19 +49,16 @@ audio_listener_enable_2d = true
 size = Vector2i(160, 144)
 render_target_update_mode = 4
 
-[node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node", "depth_component") instance=ExtResource("2_wx3cu")]
+[node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("2_wx3cu")]
 follow_node = NodePath("../Player")
-depth_component = NodePath("../../../Systems/OMM_DepthComponent")
 
 [node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container") instance=ExtResource("2_pwqg8")]
 position = Vector2(76, -18)
 age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
 
-[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 node_paths=PackedStringArray("depth_component") instance=ExtResource("4_sqac6")]
+[node name="ChunkGenerator" parent="Viewport/SubViewport" unique_id=1622406730 instance=ExtResource("4_sqac6")]
 position = Vector2(-94, 0)
-depth_component = NodePath("../../../Systems/OMM_DepthComponent")
-noise_map = ExtResource("5_c14fy")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
@@ -322,7 +318,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("20_3fv3h")
+script = ExtResource("19_3b2i5")
 
 [node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/UI" unique_id=2059883757]
 layout_mode = 1
