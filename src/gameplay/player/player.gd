@@ -10,19 +10,19 @@ const JUMP_VELOCITY = -200.0
 
 @export_category("Internal Components")
 @export var sprite: Sprite2D
-@export var ray_cast: RayCast2D
 @export var old_timer: Timer
 @export var dash_timer: Timer
 @export var dash_area: Area2D
 @export var midas_area: Area2D
-@export var dig_timer: Timer
 @export var midas_timer: Timer
+
+@export var mining_component: OMM_MiningComponent
+
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate
 
 var dashing = false
 var has_midas = false
-var dig_speed: float = 1.0
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 @export var current_item : OMM_CurrentItemResource
 
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	if !age_component.is_dead:
 		handle_jump()
 		handle_move()
-		handle_mine()
+		mining_component.handle_mine()
 		handle_use_item()
 	else:
 		velocity.x = 0
@@ -76,19 +76,6 @@ func handle_move():
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-func handle_mine():
-	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if move_dir.is_zero_approx():
-		return
-
-	ray_cast.rotation = move_dir.angle()
-
-	var tile = ray_cast.get_collider()
-	if tile is OMM_GroundTile:
-		tile.do_break(dig_speed)
-		if StateManager.current_state != StateManager.STATE.MINE:
-			StateManager.change_state(StateManager.STATE.MINE)
 
 func on_aged(age: OMM_AgeComponent.AGES):
 	sprite.frame = age

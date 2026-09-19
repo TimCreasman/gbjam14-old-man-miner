@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://src/gameplay/camera/camera.tscn" id="4_bvr34"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="5_sr17e"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/terrain/cave_generation.tscn" id="5_srulj"]
-[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_component.gd" id="7_0rwjj"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="7_5nb03"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="7_yjmwy"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b82a52ea3c6ce" path="res://src/gameplay/interactables/shop.tscn" id="11_7opv2"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_sr17e"]
 [ext_resource type="Script" uid="uid://2snaqpav0at1" path="res://src/ui/hud/died_message.gd" id="13_lcp4o"]
+[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/score_resource.tres" id="14_am227"]
 [ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="14_qsm7c"]
 [ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="14_yk6rd"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="15_htxff"]
@@ -164,7 +164,7 @@ theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 text = "GOLD"
 
-[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448 node_paths=PackedStringArray("node_component")]
+[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -172,7 +172,7 @@ theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("14_qsm7c")
-node_component = NodePath("../../../../../../../../../Systems/OMM_ScoreComponent")
+resource = ExtResource("14_am227")
 
 [node name="DepthContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=2085984537]
 layout_mode = 2
@@ -187,7 +187,7 @@ theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 text = "depth"
 
-[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237 node_paths=PackedStringArray("node_component")]
+[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -195,7 +195,6 @@ theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("14_qsm7c")
-node_component = NodePath("../../../../../../../../../Systems/OMM_DepthComponent")
 
 [node name="AgeContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1643491241]
 layout_mode = 2
@@ -210,7 +209,7 @@ theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 text = "age"
 
-[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810 node_paths=PackedStringArray("node_component")]
+[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -218,7 +217,6 @@ theme = ExtResource("11_sr17e")
 theme_override_fonts/font = ExtResource("10_qj0xg")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("14_qsm7c")
-node_component = NodePath("../../../../../../../../../Systems/OMM_AgeComponent")
 
 [node name="DeathMessage" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1404031394 node_paths=PackedStringArray("age_component")]
 visible = false
@@ -393,10 +391,6 @@ stream = ExtResource("24_dso5o")
 [node name="OMM_DepthComponent" type="Node" parent="Systems" unique_id=529392818]
 script = ExtResource("7_yjmwy")
 metadata/_custom_type_script = "uid://g75t136olir6"
-
-[node name="OMM_ScoreComponent" type="Node" parent="Systems" unique_id=1581058316]
-script = ExtResource("7_0rwjj")
-metadata/_custom_type_script = "uid://pix2oapfihac"
 
 [node name="OMM_AgeComponent" type="Node" parent="Systems" unique_id=880571301]
 script = ExtResource("17_lcp4o")

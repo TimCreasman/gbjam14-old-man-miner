@@ -4,22 +4,22 @@
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="2_k2146"]
 [ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/art/sprites/player/miner.png" id="2_onrkg"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
+[ext_resource type="Script" uid="uid://du6w038owrjud" path="res://src/gameplay/player/mining_component.gd" id="5_d3trc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(7, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_64h4j"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "ray_cast", "old_timer", "dash_timer", "dash_area", "midas_area", "dig_timer", "midas_timer")]
+[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "old_timer", "dash_timer", "dash_area", "midas_area", "midas_timer", "mining_component")]
 script = ExtResource("1_4flbx")
 sprite = NodePath("Sprite2D")
-ray_cast = NodePath("RayCast2D")
 old_timer = NodePath("OldTimer")
 dash_timer = NodePath("DashTimer")
 dash_area = NodePath("DashArea")
 midas_area = NodePath("MidasArea")
-dig_timer = NodePath("DigTimer")
 midas_timer = NodePath("Midas Timer")
+mining_component = NodePath("MiningComponent")
 player_coordinate = ExtResource("2_sjr3t")
 current_item = ExtResource("2_k2146")
 
@@ -33,13 +33,7 @@ texture_repeat = 1
 texture = ExtResource("2_onrkg")
 hframes = 6
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=312943075]
-target_position = Vector2(8, 0)
-collision_mask = 2
-
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
-
-[node name="DigTimer" type="Timer" parent="." unique_id=627870635]
 
 [node name="DashArea" type="Area2D" parent="." unique_id=1914255011]
 
@@ -58,3 +52,12 @@ one_shot = true
 [node name="Midas Timer" type="Timer" parent="." unique_id=1355493002]
 wait_time = 0.5
 one_shot = true
+
+[node name="MiningComponent" type="Node2D" parent="." unique_id=501280726 node_paths=PackedStringArray("ray_cast")]
+script = ExtResource("5_d3trc")
+ray_cast = NodePath("RayCast2D")
+dig_speed = 0.2
+
+[node name="RayCast2D" type="RayCast2D" parent="MiningComponent" unique_id=312943075]
+target_position = Vector2(8, 0)
+collision_mask = 2

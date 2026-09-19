@@ -20,11 +20,10 @@ extends StaticBody2D
 
 @export var destroyed_positions: OMM_DestroyedPositions
 
-var score_component: OMM_ScoreComponent
+@export var score_resource: OMM_ScoreResource
 var indestructable = false
-var _is_gold: bool: 
-	get():
-		return hardness >= 9
+
+var _is_gold: bool
 
 signal pool_me(body: OMM_GroundTile)
 
@@ -36,22 +35,29 @@ func reset_properties(properties: Dictionary):
 	for key in properties.keys():
 		set(key, properties[key])
 
+	_is_gold = hardness >= 9
 	gold_sprite.visible = _is_gold
 	update_hardness_sprite()
 
 	# Reset signal connections
-	if breaking_animation_sprite.animation_finished.is_connected(breaking_done):
-		breaking_animation_sprite.animation_finished.disconnect(breaking_done)
+	if break_timer.timeout.is_connected(breaking_done):
+		break_timer.timeout.disconnect(breaking_done)
 
-	if !indestructable:
-		breaking_animation_sprite.animation_finished.connect(breaking_done)
+	break_timer.timeout.connect(breaking_done)
+	break_timer.stop()
 
-func do_break(dig_speed):
-	if breaking_animation_sprite.is_playing() || !get_parent():
+func do_break(time_to_break: float):
+	breaking_animation_sprite.speed_scale = 1 / break_timer.wait_time
+
+	if !breaking_animation_sprite.is_playing():
+		breaking_animation_sprite.play("breaking_animation")
+
+	if break_timer.time_left:
 		return
+
+	break_timer.wait_time = time_to_break
+	break_timer.start()
 	break_sound.play()
-	breaking_animation_sprite.play("breaking_animation")
-	breaking_animation_sprite.speed_scale = dig_speed * 10
 
 func update_hardness_sprite():
 	hardness_sprite.frame = hardness
@@ -68,18 +74,15 @@ func turn_to_gold() -> void:
 		gold_sprite.visible = _is_gold
 	
 func on_destroy():
-	if indestructable:
-		return
 
-	# destroy_sound.play()
+	destroy_sound.play()
+	await destroy_sound.finished
 	
 	if _is_gold:
-		# score_component.increment_score()
-		gold_sound.play()
 		print("GOLD")
+		score_resource.increment_score()
+		gold_sound.play()
 		await gold_sound.finished
-		# _is_gold = false
-	# await destroy_sound.finished
 
 	destroyed_positions.add_position(global_position)
 
@@ -92,24 +95,25 @@ func do_damage():
 	hardness -= 1
 
 	if hardness == 0:
+		print("DESTORYING")
 		on_destroy()
 
-# Hack to expose more area
-func propagate_destroy():
-	if !neighbor_area.monitoring:
-		return
-	var bodies = neighbor_area.get_overlapping_bodies()
-	neighbor_area.monitoring = false
-	neighbor_area.monitorable = false
-
-	for neighbor in bodies:
-		if neighbor is OMM_GroundTile:
-			if neighbor.hardness <= 0:
-				neighbor.on_destroy()
-
-	# Turn off monitoring
-	neighbor_area.monitoring = false
-	neighbor_area.monitorable = false
+# # Hack to expose more area
+# func propagate_destroy():
+# 	if !neighbor_area.monitoring:
+# 		return
+# 	var bodies = neighbor_area.get_overlapping_bodies()
+# 	neighbor_area.monitoring = false
+# 	neighbor_area.monitorable = false
+#
+# 	for neighbor in bodies:
+# 		if neighbor is OMM_GroundTile:
+# 			if neighbor.hardness <= 0:
+# 				neighbor.on_destroy()
+#
+# 	# Turn off monitoring
+# 	neighbor_area.monitoring = false
+# 	neighbor_area.monitorable = false
 
 func _on_screen_exit():
 	pool_me.emit(self)

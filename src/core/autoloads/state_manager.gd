@@ -1,4 +1,3 @@
-
 extends Node2D
 
 var states = ["mine", "shop", "hub"]
