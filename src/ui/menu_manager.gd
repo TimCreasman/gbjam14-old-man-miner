@@ -40,4 +40,3 @@ func start():
 
 func back():
 	open_menu_close_others("MainMenu")
-
