@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/pickedup_items.tres" id="3_kc85w"]
 [ext_resource type="Texture2D" uid="uid://iqwxfusnkjbe" path="res://assets/art/sprites/interactables/bomb.png" id="3_o0mvt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ik772"]
-radius = 5.0990195
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc85w"]
+size = Vector2(4, 4)
 
 [node name="Pickup" type="Node2D" unique_id=1075131245 node_paths=PackedStringArray("sprite_2d", "area_2d")]
 script = ExtResource("1_vaouk")
@@ -23,4 +23,5 @@ texture = ExtResource("3_o0mvt")
 position = Vector2(4, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=298042041]
-shape = SubResource("CircleShape2D_ik772")
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_kc85w")

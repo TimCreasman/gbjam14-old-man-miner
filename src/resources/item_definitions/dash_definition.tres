@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="OMM_ItemDefinition" format=3 uid="uid://6lys5lpocnpe"]
 
-[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="1_dmfu7"]
-[ext_resource type="Texture2D" uid="uid://ruyvghmgool5" path="res://assets/art/sprites/interactables/dash.png" id="2_caewx"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="1_pnbpr"]
+[ext_resource type="Texture2D" uid="uid://ruyvghmgool5" path="res://assets/art/sprites/interactables/dash.png" id="2_jdc2v"]
 
 [resource]
-script = ExtResource("1_dmfu7")
+script = ExtResource("1_pnbpr")
 type = 1
 cost = 100
-texture = ExtResource("2_caewx")
+texture = ExtResource("2_jdc2v")
+rarity = 0.05
 metadata/_custom_type_script = "uid://cohj448giry3f"

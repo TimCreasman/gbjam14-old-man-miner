@@ -6,14 +6,16 @@ extends Node2D
 
 var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
 
-var item_definitions = [
+var item_definitions: Array[OMM_ItemDefinition] = [
 	preload("res://src/resources/item_definitions/bomb_definition.tres"),
 	preload("res://src/resources/item_definitions/midas_definition.tres"),
-	preload("res://src/resources/item_definitions/bomb_definition.tres"),
+	preload("res://src/resources/item_definitions/dash_definition.tres"),
 ]
 
-func sparse_noise_at(global_pos: Vector2):
-	return OMM_RandomNoise.get_noise_2dv(global_pos, 0.1, 1)
+var item_index = 0
+
+func sparse_noise_at(global_pos: Vector2, rarity: float):
+	return OMM_RandomNoise.get_noise_2dv(global_pos, rarity, 1)
 
 func generate(global_pos: Vector2i):
 	if picked_up_items.has_position(global_pos):
@@ -23,7 +25,9 @@ func generate(global_pos: Vector2i):
 	if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)) || terrain_noise.is_ground(global_pos + Vector2i(0, -8)):
 		return
 
-	if !sparse_noise_at(global_pos):
+	var item_to_spawn = item_definitions[item_index]
+
+	if !sparse_noise_at(global_pos, item_to_spawn.rarity):
 		return
 
 	var item_name = "itm" + str(global_pos).sha1_text()
@@ -33,5 +37,8 @@ func generate(global_pos: Vector2i):
 		# pickup.definition = bomb_definition
 		item_scene.position = global_pos
 		item_scene.name = item_name
-		item_scene.set_definition(item_definitions[1])
+		item_scene.set_definition(item_to_spawn)
 		add_child(item_scene)
+
+		item_index += 1
+		item_index %= item_definitions.size()
