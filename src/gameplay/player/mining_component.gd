@@ -3,7 +3,7 @@ extends Node2D
 @export var ray_cast: RayCast2D
 
 ## Dig speed in seconds
-@export var dig_speed: float = 1.0
+@export var dig_speed: OMM_UpgradeResource
 
 func handle_mine():
 	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -14,6 +14,7 @@ func handle_mine():
 
 	var tile = ray_cast.get_collider()
 	if tile && tile.has_method("do_break"):
-		tile.do_break(dig_speed)
+		print(dig_speed.get_stat_value())
+		tile.do_break(dig_speed.get_stat_value())
 		if StateManager.current_state != StateManager.STATE.MINE && StateManager.current_state != StateManager.STATE.WIN:
 			StateManager.change_state(StateManager.STATE.MINE)

@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
 [ext_resource type="Script" uid="uid://bqd0ldayf20wh" path="res://src/core/components/max_depth_reached_component.gd" id="19_htxff"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="20_v252j"]
+[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="23_j04uq"]
 [ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/core/autoloads/music_manager.gd" id="23_jirt8"]
 [ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_dso5o"]
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="25_gjsjt"]
@@ -64,14 +65,14 @@ spawn_point = NodePath("../SpawnPoint")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
+[node name="Shop" parent="Viewport/SubViewport" unique_id=1161904382 node_paths=PackedStringArray("shop_menu", "player", "music_manager") instance=ExtResource("11_7opv2")]
+position = Vector2(29, 128)
+shop_menu = NodePath("../../ShopMenu")
+player = NodePath("../Player")
+music_manager = NodePath("../../../MusicManager")
+
 [node name="Platform" parent="Viewport/SubViewport" unique_id=35432797 instance=ExtResource("9_v252j")]
 position = Vector2(74, 136)
-
-[node name="Shop" parent="Viewport/SubViewport/Platform" unique_id=1161904382 node_paths=PackedStringArray("shop_menu", "player", "music_manager") instance=ExtResource("11_7opv2")]
-position = Vector2(-45, -8)
-shop_menu = NodePath("../../../ShopMenu")
-player = NodePath("../../Player")
-music_manager = NodePath("../../../../MusicManager")
 
 [node name="Control" type="Control" parent="Viewport/SubViewport" unique_id=2071779767]
 layout_mode = 3
@@ -158,4 +159,5 @@ metadata/_custom_type_script = "uid://g75t136olir6"
 [node name="OMM_MaxDepthReachedComponent" type="Node" parent="Systems" unique_id=137415430]
 script = ExtResource("19_htxff")
 player_coordinate = ExtResource("20_v252j")
+age_component = ExtResource("23_j04uq")
 metadata/_custom_type_script = "uid://bqd0ldayf20wh"

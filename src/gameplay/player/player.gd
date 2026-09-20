@@ -57,7 +57,7 @@ func _physics_process(delta):
 	if not is_on_floor() and !dashing:
 		velocity += get_gravity() * delta
 
-	if !age_component.is_dead:
+	if !age_component.is_dead():
 		handle_jump()
 		handle_move()
 		mining_component.handle_mine()

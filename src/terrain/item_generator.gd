@@ -26,6 +26,8 @@ func generate(global_pos: Vector2i):
 		return
 
 	var item_to_spawn = item_definitions[item_index]
+	if !item_to_spawn.is_unlocked:
+		return
 
 	if !sparse_noise_at(global_pos, item_to_spawn.rarity):
 		return
@@ -34,7 +36,6 @@ func generate(global_pos: Vector2i):
 	if !has_node(item_name):
 
 		var item_scene = pickup_scene.instantiate() as OMM_Pickup
-		# pickup.definition = bomb_definition
 		item_scene.position = global_pos
 		item_scene.name = item_name
 		item_scene.set_definition(item_to_spawn)

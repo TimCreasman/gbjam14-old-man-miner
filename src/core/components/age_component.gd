@@ -20,7 +20,7 @@ func _init():
 
 var _death_count = 0
 
-var is_dead:
+var _is_dead:
 	get():
 		return _age >= ages[ages.size() - 1]
 
@@ -41,12 +41,18 @@ var _age := 0:
 
 		_age = value
 
+func is_dead():
+	if StateManager.is_state(StateManager.STATE.WIN):
+		return false
+
+	return _is_dead
+
 func increment_age():
-	if is_dead:
+	if _is_dead:
 		return
 	_age += 1
 
-	if is_dead:
+	if _is_dead:
 		_die()
 
 func make_young():

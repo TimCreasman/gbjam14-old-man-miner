@@ -220,6 +220,7 @@ texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
 theme = ExtResource("1_3uucy")
+theme_override_fonts/font = ExtResource("3_x3x8j")
 theme_override_font_sizes/font_size = 8
 text = "you made it to 
 the bottom"

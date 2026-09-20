@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
 [ext_resource type="Script" uid="uid://du6w038owrjud" path="res://src/gameplay/player/mining_component.gd" id="5_d3trc"]
 [ext_resource type="PackedScene" uid="uid://dahtenw73jrvt" path="res://src/gameplay/player/player_sprite.tscn" id="5_kjyqo"]
+[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/quantity_resources/mining_speed.tres" id="7_rdc6l"]
 [ext_resource type="Script" uid="uid://cvt3e7s3458f8" path="res://src/gameplay/player/death_component.gd" id="7_uia4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -60,7 +61,7 @@ one_shot = true
 [node name="MiningComponent" type="Node2D" parent="." unique_id=501280726 node_paths=PackedStringArray("ray_cast")]
 script = ExtResource("5_d3trc")
 ray_cast = NodePath("RayCast2D")
-dig_speed = 0.01
+dig_speed = ExtResource("7_rdc6l")
 
 [node name="RayCast2D" type="RayCast2D" parent="MiningComponent" unique_id=312943075]
 target_position = Vector2(8, 0)

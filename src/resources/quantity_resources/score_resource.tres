@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OMM_ScoreResource" format=3 uid="uid://bkptwtqsivgvm"]
 
-[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/core/components/score_resource.gd" id="1_ngt58"]
+[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/resources/quantity_resources/score_resource.gd" id="1_ngt58"]
 
 [resource]
 script = ExtResource("1_ngt58")

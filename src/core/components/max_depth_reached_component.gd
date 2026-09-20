@@ -2,6 +2,7 @@ class_name OMM_MaxDepthReachedComponent
 extends Node
 
 @export var player_coordinate: OMM_Coordinate
+@export var age_component: OMM_AgeResource
 
 var max_depth
 
@@ -21,6 +22,6 @@ func load_cfg():
 
 func _on_coordinate_changed(coordinate: Vector2i):
 	# TODO use TILESIZS
-	if coordinate.y >= (max_depth - 80):
+	if coordinate.y >= (max_depth - 80) && !age_component.is_dead():
 		StateManager.change_state(StateManager.STATE.WIN)
 		max_depth_reached.emit()

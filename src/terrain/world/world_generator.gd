@@ -19,7 +19,7 @@ const GENERATION_OFFSET = 36 * TILE_SIZE
 ## In tiles
 const HALF_SCREEN_HEIGHT = 9
 const HALF_SCREEN_WIDTH = 10
-const SCREEN_PADDING = 0
+const SCREEN_PADDING = 3
 
 var max_depth: float
 
