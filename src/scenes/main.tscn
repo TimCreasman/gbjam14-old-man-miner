@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
 [ext_resource type="Script" uid="uid://bqd0ldayf20wh" path="res://src/core/components/max_depth_reached_component.gd" id="19_htxff"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="20_v252j"]
-[ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/debug/music_manager.gd" id="23_jirt8"]
+[ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/core/autoloads/music_manager.gd" id="23_jirt8"]
 [ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_dso5o"]
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="25_gjsjt"]
 [ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="25_h8ax2"]

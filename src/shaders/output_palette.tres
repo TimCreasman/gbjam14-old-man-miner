@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_qkke4")
-background = Color(0.5921569, 0.18039216, 0.12941177, 1)
-foreground = Color(0.78431374, 0.5921569, 0.21568628, 1)
+background = Color(0.14862919, 0.3691256, 0.293613, 1)
+shadow = Color(0.017101575, 0.046941355, 0.03427492, 1)
+foreground = Color(0.62196916, 0.6584717, 0.34277138, 1)
 highlight = Color(0.9529412, 0.92156863, 0.7647059, 1)
 metadata/_custom_type_script = "uid://cm3iofpy5h14b"

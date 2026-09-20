@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b82a52ea3c6ce"]
 
-[ext_resource type="Script" uid="uid://b50kdm01xtr10" path="res://src/debug/shop.gd" id="1_1nyts"]
+[ext_resource type="Script" uid="uid://b50kdm01xtr10" path="res://src/ui/shop_menu/shop.gd" id="1_1nyts"]
 [ext_resource type="Texture2D" uid="uid://chon4kxny4ugd" path="res://assets/art/sprites/interactables/shop-Sheet.png" id="2_1nyts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr847"]

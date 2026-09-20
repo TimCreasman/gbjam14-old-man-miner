@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="3_bnu6r"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_37hmv"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="5_4evt0"]
-[ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/debug/shop_menu.gd" id="6_3abm2"]
+[ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/ui/shop_menu/shop_menu.gd" id="6_3abm2"]
 [ext_resource type="Script" uid="uid://b752oug8vxds5" path="res://src/resources/buyable_definition/buyable_definition.gd" id="8_5kyyw"]
 [ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/item_definitions/bomb_definition.tres" id="8_abowv"]
 [ext_resource type="Texture2D" uid="uid://bahcix65cwagj" path="res://assets/art/sprites/interactables/fountain.png" id="9_bnu6r"]
@@ -44,6 +44,7 @@ canvas_item_default_texture_filter = 0
 render_target_update_mode = 4
 
 [node name="UI" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1604366270 node_paths=PackedStringArray("buy_buttons")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

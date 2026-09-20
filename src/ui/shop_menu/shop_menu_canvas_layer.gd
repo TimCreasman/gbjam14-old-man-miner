@@ -3,6 +3,9 @@ extends CanvasLayer
 
 @export var menu: Menu
 
+func _ready():
+	menu.close()
+
 func open():
 	menu.open()
 

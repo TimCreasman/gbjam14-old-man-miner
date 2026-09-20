@@ -84,6 +84,7 @@ script = ExtResource("8_3unv1")
 resource = ExtResource("8_d5ccl")
 
 [node name="DepthContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=2045150409]
+visible = false
 layout_mode = 2
 alignment = 2
 
@@ -106,6 +107,7 @@ theme_override_font_sizes/font_size = 8
 script = ExtResource("8_3unv1")
 
 [node name="AgeContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1715316328]
+visible = false
 layout_mode = 2
 alignment = 2
 
