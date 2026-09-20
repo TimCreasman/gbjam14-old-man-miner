@@ -4,6 +4,9 @@ extends Node
 @export var player_coordinate: OMM_Coordinate
 @export var age_component: OMM_AgeResource
 
+@export var half_way_palette: GBPalette
+@export var output_palette: GBPalette
+
 var max_depth
 
 signal max_depth_reached()
@@ -25,3 +28,10 @@ func _on_coordinate_changed(coordinate: Vector2i):
 	if coordinate.y >= (max_depth - 80) && !age_component.is_dead():
 		StateManager.change_state(StateManager.STATE.WIN)
 		max_depth_reached.emit()
+
+	if coordinate.y == (max_depth / 2):
+		go_deeper()
+
+func go_deeper():
+	output_palette.set_palette(half_way_palette)
+	MusicManager.switch_to_song("DeeperTheme")

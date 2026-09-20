@@ -17,12 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://bxl2ko754m7ej" path="res://src/ui/hud/hud.tscn" id="12_tyryd"]
 [ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
 [ext_resource type="Script" uid="uid://bqd0ldayf20wh" path="res://src/core/components/max_depth_reached_component.gd" id="19_htxff"]
+[ext_resource type="Resource" uid="uid://q2hp31ss2580" path="res://src/shaders/level_1_palette.tres" id="20_qsm7c"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="20_v252j"]
 [ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="23_j04uq"]
-[ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/core/autoloads/music_manager.gd" id="23_jirt8"]
-[ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_dso5o"]
-[ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="25_gjsjt"]
-[ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="25_h8ax2"]
 
 [node name="Game2" type="Node" unique_id=1274922351 node_paths=PackedStringArray("pause_menu")]
 process_mode = 3
@@ -69,7 +66,7 @@ spawn_point = NodePath("../SpawnPoint")
 position = Vector2(29, 128)
 shop_menu = NodePath("../../ShopMenu")
 player = NodePath("../Player")
-music_manager = NodePath("../../../MusicManager")
+music_manager = NodePath("")
 
 [node name="Platform" parent="Viewport/SubViewport" unique_id=35432797 instance=ExtResource("9_v252j")]
 position = Vector2(74, 136)
@@ -138,18 +135,6 @@ output_palette = ExtResource("5_sr17e")
 
 [node name="ShopMenu" parent="Viewport" unique_id=188154621 instance=ExtResource("13_htxff")]
 
-[node name="MusicManager" type="Node2D" parent="." unique_id=1998449071]
-script = ExtResource("23_jirt8")
-
-[node name="MineTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=641415259]
-stream = ExtResource("25_h8ax2")
-
-[node name="HubTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=479637867]
-stream = ExtResource("25_gjsjt")
-
-[node name="ShopTheme" type="AudioStreamPlayer2D" parent="MusicManager" unique_id=204359646]
-stream = ExtResource("24_dso5o")
-
 [node name="Systems" type="Node" parent="." unique_id=569555038]
 
 [node name="OMM_DepthComponent" type="Node" parent="Systems" unique_id=529392818]
@@ -160,4 +145,6 @@ metadata/_custom_type_script = "uid://g75t136olir6"
 script = ExtResource("19_htxff")
 player_coordinate = ExtResource("20_v252j")
 age_component = ExtResource("23_j04uq")
+half_way_palette = ExtResource("20_qsm7c")
+output_palette = ExtResource("5_sr17e")
 metadata/_custom_type_script = "uid://bqd0ldayf20wh"
