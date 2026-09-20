@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cwrflbaxd2ay8" path="res://src/ui/name_label.gd" id="12_n75dp"]
 [ext_resource type="PackedScene" uid="uid://bxl2ko754m7ej" path="res://src/ui/hud/hud.tscn" id="12_tyryd"]
 [ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
+[ext_resource type="Resource" uid="uid://c2lauste7l43o" path="res://src/resources/quantity_resources/generation_resource.tres" id="14_qsm7c"]
 [ext_resource type="Script" uid="uid://bqd0ldayf20wh" path="res://src/core/components/max_depth_reached_component.gd" id="19_htxff"]
 [ext_resource type="Resource" uid="uid://7sroh34x726" path="res://src/shaders/level_0_palette.tres" id="20_n75dp"]
 [ext_resource type="Resource" uid="uid://q2hp31ss2580" path="res://src/shaders/level_1_palette.tres" id="20_qsm7c"]
@@ -94,6 +95,7 @@ theme_override_fonts/font = ExtResource("10_auijp")
 text = "Go forth and mine 
 "
 script = ExtResource("12_n75dp")
+generation_resource = ExtResource("14_qsm7c")
 
 [node name="PauseMenu" type="CanvasLayer" parent="Viewport" unique_id=1753711030]
 visible = false

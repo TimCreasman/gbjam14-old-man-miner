@@ -21,6 +21,7 @@ const JUMP_VELOCITY = -200.0
 
 @export var mining_component: OMM_MiningComponent
 @export var death_component: OMM_DeathComponent
+@export var generation_component: OMM_GenerationResource
 
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate
@@ -34,11 +35,12 @@ var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_defini
 @export var current_item : OMM_CurrentItemResource
 
 func _ready():
+	
 	SignalBus.restarted.connect(_on_restarted)
 
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
-
+	
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
 
@@ -98,6 +100,7 @@ func on_aged(age: OMM_AgeResource.AGES):
 	sprite.frame = age
 
 func on_died(_died_reason):
+	generation_component.increment_generation()
 	old_timer.stop()
 
 func pickup(item_definition: OMM_ItemDefinition):

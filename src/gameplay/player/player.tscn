@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="2_dxsvo"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="2_k2146"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
+[ext_resource type="Resource" uid="uid://c2lauste7l43o" path="res://src/resources/quantity_resources/generation_resource.tres" id="3_xdbtd"]
 [ext_resource type="Script" uid="uid://du6w038owrjud" path="res://src/gameplay/player/mining_component.gd" id="5_d3trc"]
 [ext_resource type="PackedScene" uid="uid://dahtenw73jrvt" path="res://src/gameplay/player/player_sprite.tscn" id="5_kjyqo"]
 [ext_resource type="Script" uid="uid://dqxcirny3ugar" path="res://src/gameplay/player/old_timer.gd" id="6_rdc6l"]
@@ -30,6 +31,7 @@ midas_area = NodePath("MidasArea")
 midas_timer = NodePath("Midas Timer")
 mining_component = NodePath("MiningComponent")
 death_component = NodePath("DeathComponent")
+generation_component = ExtResource("3_xdbtd")
 player_coordinate = ExtResource("2_sjr3t")
 current_item = ExtResource("2_k2146")
 
