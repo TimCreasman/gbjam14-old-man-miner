@@ -14,9 +14,11 @@
 [ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/item_definitions/midas_definition.tres" id="11_5kyyw"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="11_ih0lp"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="12_u4eqt"]
-[ext_resource type="Resource" uid="uid://bd4pu401gerld" path="res://src/resources/buyable_definition/speed_up.tres" id="13_slot5"]
+[ext_resource type="Resource" uid="uid://bd4pu401gerld" path="res://src/resources/upgrade_defintition/speed_up.tres" id="13_slot5"]
 [ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="14_abowv"]
+[ext_resource type="Resource" uid="uid://fbyph7et5enn" path="res://src/resources/upgrade_defintition/mine_up.tres" id="14_odc3c"]
 [ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="15_4evt0"]
+[ext_resource type="Resource" uid="uid://duc164g3yi18p" path="res://src/resources/upgrade_defintition/jump_up.tres" id="15_cp0ni"]
 [ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="16_3abm2"]
 
 [sub_resource type="Resource" id="Resource_bnu6r"]
@@ -58,7 +60,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("5_4evt0")
 script = ExtResource("6_3abm2")
-buyables = Array[ExtResource("8_5kyyw")]([SubResource("Resource_bnu6r"), ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw"), ExtResource("13_slot5")])
+buyables = Array[ExtResource("8_5kyyw")]([SubResource("Resource_bnu6r"), ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw"), ExtResource("13_slot5"), ExtResource("14_odc3c"), ExtResource("15_cp0ni")])
 buy_buttons = NodePath("CenterContainer/VBoxContainer/BuyButtons")
 score_resource = ExtResource("14_abowv")
 buy_sound = NodePath("BuySound")
@@ -80,9 +82,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer" unique_id=1439658148]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=921352698]
 texture_filter = 1
@@ -94,12 +98,15 @@ theme_override_fonts/font = ExtResource("12_u4eqt")
 text = "SHOP"
 horizontal_alignment = 1
 
-[node name="BuyButtons" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1089251204]
+[node name="BuyButtons" type="GridContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=855861312]
 layout_mode = 2
+mouse_filter = 2
+columns = 3
 
 [node name="Leave" type="Button" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1538497323]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("11_ih0lp")
 text = "LEAVE"
 
