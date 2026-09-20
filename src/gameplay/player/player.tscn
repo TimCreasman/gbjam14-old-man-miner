@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bm4wkjp71d2vb"]
 
 [ext_resource type="Script" uid="uid://cbubdv7obrftg" path="res://src/gameplay/player/player.gd" id="1_4flbx"]
-[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/age_resource.tres" id="2_dxsvo"]
+[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="2_dxsvo"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="2_k2146"]
 [ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/art/sprites/player/miner.png" id="2_onrkg"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
@@ -61,7 +61,7 @@ one_shot = true
 [node name="MiningComponent" type="Node2D" parent="." unique_id=501280726 node_paths=PackedStringArray("ray_cast")]
 script = ExtResource("5_d3trc")
 ray_cast = NodePath("RayCast2D")
-dig_speed = 0.2
+dig_speed = 0.01
 
 [node name="RayCast2D" type="RayCast2D" parent="MiningComponent" unique_id=312943075]
 target_position = Vector2(8, 0)

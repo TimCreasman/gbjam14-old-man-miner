@@ -1,7 +1,7 @@
 class_name ShopMenu
 extends Menu
 
-@export var buyables: Array[OMM_ItemDefinition]
+@export var buyables: Array[OMM_Buyable]
 @export var buy_buttons: Container
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

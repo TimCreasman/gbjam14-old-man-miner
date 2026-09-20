@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="OMM_StructureDefinition" format=3 uid="uid://d2j6ghh7kpec0"]
 
 [ext_resource type="PackedScene" uid="uid://duencw8o85jn0" path="res://src/gameplay/interactables/fountain.tscn" id="1_8yklo"]
-[ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definition.gd" id="1_ms8pi"]
+[ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definitions/structure_definition.gd" id="1_ms8pi"]
 
 [resource]
 script = ExtResource("1_ms8pi")

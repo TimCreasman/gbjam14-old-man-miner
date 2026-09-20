@@ -6,7 +6,7 @@ extends Node2D
 
 var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
 
-var item_definitions: Array[OMM_ItemDefinition] = [
+@export var item_definitions: Array[OMM_ItemDefinition] = [
 	preload("res://src/resources/item_definitions/bomb_definition.tres"),
 	preload("res://src/resources/item_definitions/midas_definition.tres"),
 	preload("res://src/resources/item_definitions/dash_definition.tres"),

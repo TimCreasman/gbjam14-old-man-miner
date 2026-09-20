@@ -8,10 +8,10 @@
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="5_2u0ga"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="6_hg5gy"]
 [ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="8_3unv1"]
-[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/score_resource.tres" id="8_d5ccl"]
+[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="8_d5ccl"]
 [ext_resource type="Script" uid="uid://2snaqpav0at1" path="res://src/ui/hud/died_message.gd" id="9_1ilyr"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_0lyew"]
-[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/age_resource.tres" id="11_0lyew"]
+[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="11_0lyew"]
 [ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="11_v4dvs"]
 [ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="12_s8lle"]
 [ext_resource type="Script" uid="uid://dqmgwlhg2gd4a" path="res://src/ui/hud/win_message.gd" id="13_v4dvs"]
@@ -138,15 +138,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_1ilyr")
 age_component = ExtResource("11_0lyew")
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=379672608]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1526423519]
 layout_mode = 1

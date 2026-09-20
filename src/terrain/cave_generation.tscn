@@ -5,13 +5,15 @@
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
 [ext_resource type="Script" uid="uid://dyr1n61a54yv8" path="res://src/terrain/item_generator.gd" id="4_27ujy"]
 [ext_resource type="Script" uid="uid://bxf6t82jxbgij" path="res://src/terrain/world/tiles/tile_generator.gd" id="5_in67t"]
-[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/destroyed_tiles.tres" id="6_7lict"]
+[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/collections/destroyed_tiles.tres" id="6_7lict"]
 [ext_resource type="Script" uid="uid://bn3x17gdumh67" path="res://src/resources/object_pool.gd" id="6_nmn5o"]
-[ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/pickedup_items.tres" id="6_r2bs0"]
+[ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/collections/pickedup_items.tres" id="6_r2bs0"]
 [ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/world/noise/cave_generation_noise.tres" id="7_870o3"]
 [ext_resource type="Script" uid="uid://brpi7ye8k2q4g" path="res://src/terrain/world/structures/structure_generator.gd" id="7_rsdux"]
-[ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definition.gd" id="8_27ujy"]
-[ext_resource type="Resource" uid="uid://d2j6ghh7kpec0" path="res://src/resources/fountain_definition.tres" id="9_r2bs0"]
+[ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definitions/structure_definition.gd" id="8_27ujy"]
+[ext_resource type="Resource" uid="uid://d2j6ghh7kpec0" path="res://src/resources/structure_definitions/fountain_definition.tres" id="9_r2bs0"]
+[ext_resource type="Resource" uid="uid://sxcp0joh846g" path="res://src/resources/structure_definitions/mine_definition.tres" id="10_ux334"]
+[ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="11_f30lk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -48,8 +50,9 @@ picked_up_items = ExtResource("6_r2bs0")
 [node name="StructureGenerator" type="Node2D" parent="." unique_id=463061862]
 z_as_relative = false
 script = ExtResource("7_rsdux")
-structures = Array[ExtResource("8_27ujy")]([ExtResource("9_r2bs0")])
+structures = Array[ExtResource("8_27ujy")]([ExtResource("9_r2bs0"), ExtResource("10_ux334")])
 terrain_noise = ExtResource("7_870o3")
+destroyed_structures = ExtResource("11_f30lk")
 
 [node name="TileGenerator" type="Node2D" parent="." unique_id=948789447 node_paths=PackedStringArray("tile_container", "ref_rect", "structure_generator")]
 script = ExtResource("5_in67t")

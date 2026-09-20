@@ -26,6 +26,7 @@ var indestructable = false
 var _is_gold: bool
 
 signal pool_me(body: OMM_GroundTile)
+signal destroyed()
 
 func _ready():
 	on_screen_notifier.screen_exited.connect(_on_screen_exit)
@@ -47,12 +48,13 @@ func reset_properties(properties: Dictionary):
 	break_timer.stop()
 
 func do_break(time_to_break: float):
+
 	breaking_animation_sprite.speed_scale = 1 / break_timer.wait_time
 
 	if !breaking_animation_sprite.is_playing():
 		breaking_animation_sprite.play("breaking_animation")
 
-	if break_timer.time_left:
+	if break_timer.time_left != 0 || hardness <= 0:
 		return
 
 	break_timer.wait_time = time_to_break
@@ -63,9 +65,13 @@ func update_hardness_sprite():
 	hardness_sprite.frame = hardness
 
 func breaking_done():
-	do_damage()
-
+	# do_damage()
+	hardness -= 1
 	update_hardness_sprite()
+
+	if hardness == 0:
+		on_destroy()
+
 
 func turn_to_gold() -> void:
 	_is_gold = true
@@ -84,6 +90,7 @@ func on_destroy():
 	destroyed_positions.add_position(global_position)
 
 	pool_me.emit(self)
+	destroyed.emit()
 
 	# propagate_destroy()
 

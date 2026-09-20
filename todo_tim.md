@@ -25,6 +25,18 @@
 # In progress
 - [ ] Item spawns
 
+# Roadmap to the end
+- [ ] Get loop working
+- [ ] Display name on start
+- [ ] Use name as seed
+- [ ] Upgrade system
+
+- [ ] Add health to the player
+- [ ] Create hazards
+- [ ] Have name define seed
+- [ ] Reset back to name state
+- [ ] Have fountain be first system unlocked
+
 # To do
 - [ ] SFX
 - [ ] Automatic publish to itch

@@ -35,3 +35,6 @@ func get_depth():
 
 func make_young():
 	_age = 0
+
+func die():
+	_age = ages[AGES.HISTORY]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OMM_DestroyedPositions" format=3 uid="uid://gkvrcadfwxta"]
 
-[ext_resource type="Script" uid="uid://of8mksbs432p" path="res://src/resources/destroyed_positions.gd" id="1_nwgpd"]
+[ext_resource type="Script" uid="uid://of8mksbs432p" path="res://src/resources/collections/destroyed_positions.gd" id="1_nwgpd"]
 
 [resource]
 script = ExtResource("1_nwgpd")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OMM_StructureDefinition" format=3 uid="uid://sxcp0joh846g"]
+
+[ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definitions/structure_definition.gd" id="1_rw78c"]
+[ext_resource type="PackedScene" uid="uid://cic7k5dj07okp" path="res://src/gameplay/interactables/mine.tscn" id="1_xtysi"]
+
+[resource]
+script = ExtResource("1_rw78c")
+size = Vector2i(3, 1)
+scene = ExtResource("1_xtysi")
+metadata/_custom_type_script = "uid://co3v6ry86kyd"

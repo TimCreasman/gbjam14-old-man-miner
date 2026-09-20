@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cic7k5dj07okp"]
+
+[ext_resource type="Texture2D" uid="uid://bhwvc2f8btfff" path="res://assets/art/sprites/interactables/mine.png" id="1_cggsh"]
+[ext_resource type="Script" uid="uid://bwen5bmx8byod" path="res://src/gameplay/interactables/mine.gd" id="1_o3bqt"]
+[ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="2_mdqhl"]
+[ext_resource type="Texture2D" uid="uid://cu0vq6rtrcwax" path="res://assets/art/sprites/particles/explosion.png" id="3_mdqhl"]
+[ext_resource type="Script" uid="uid://ylp1qkapyf1l" path="res://src/gameplay/interactables/explode_component.gd" id="5_k0r3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cggsh"]
+resource_local_to_scene = true
+size = Vector2(8, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdqhl"]
+resource_local_to_scene = true
+radius = 32.0
+
+[sub_resource type="Curve" id="Curve_7uy0p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xkgpd"]
+curve = SubResource("Curve_7uy0p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2n4x6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 32.0
+angle_min = -190.9
+angle_max = 245.50002
+direction = Vector3(0, 0, 0)
+spread = 109.648
+initial_velocity_min = -21.05
+initial_velocity_max = 22.73
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_xkgpd")
+
+[node name="Mine" type="Node2D" unique_id=1082911436 node_paths=PackedStringArray("area_2d", "sprite", "explode_component")]
+script = ExtResource("1_o3bqt")
+area_2d = NodePath("TriggerArea2D")
+sprite = NodePath("Sprite2D")
+explode_component = NodePath("OMM_ExplodeComponent")
+destroyed_structures = ExtResource("2_mdqhl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=616418442]
+position = Vector2(12, -4)
+texture = ExtResource("1_cggsh")
+
+[node name="TriggerArea2D" type="Area2D" parent="." unique_id=1623535901]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea2D" unique_id=1630235356]
+position = Vector2(12, -1)
+shape = SubResource("RectangleShape2D_cggsh")
+
+[node name="ExplosionRadius" type="Area2D" parent="." unique_id=1335265427]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius" unique_id=965322315]
+position = Vector2(12, -1)
+shape = SubResource("CircleShape2D_mdqhl")
+
+[node name="OMM_ExplodeComponent" type="Node2D" parent="." unique_id=2044562328 node_paths=PackedStringArray("explosion_particles", "explosion_area")]
+script = ExtResource("5_k0r3j")
+explosion_particles = NodePath("ExplosionParticles")
+explosion_area = NodePath("../ExplosionRadius")
+metadata/_custom_type_script = "uid://ylp1qkapyf1l"
+
+[node name="ExplosionParticles" type="GPUParticles2D" parent="OMM_ExplodeComponent" unique_id=1283338233]
+texture_filter = 1
+position = Vector2(12, -1)
+emitting = false
+amount = 200
+texture = ExtResource("3_mdqhl")
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_2n4x6")

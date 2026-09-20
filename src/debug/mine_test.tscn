@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dwit31okjlqmc"]
+
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/world/tiles/tile.tscn" id="1_xtxi3"]
+[ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://src/gameplay/camera/camera.tscn" id="2_3fs45"]
+[ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="2_ltw4a"]
+[ext_resource type="PackedScene" uid="uid://cic7k5dj07okp" path="res://src/gameplay/interactables/mine.tscn" id="4_3fs45"]
+[ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/pickup.tscn" id="5_rcyxn"]
+
+[node name="Node2D" type="Node2D" unique_id=1743279622]
+
+[node name="Camera" parent="." unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("2_3fs45")]
+position = Vector2(72, 81)
+follow_node = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1488697836 node_paths=PackedStringArray("item_container") instance=ExtResource("2_ltw4a")]
+position = Vector2(72, 81)
+item_container = NodePath("..")
+
+[node name="Node2D2" parent="." unique_id=1157843804 instance=ExtResource("1_xtxi3")]
+position = Vector2(54, 94)
+hardness = 6
+
+[node name="Node2D3" parent="." unique_id=631976146 instance=ExtResource("1_xtxi3")]
+position = Vector2(64, 94)
+hardness = 6
+
+[node name="Node2D4" parent="." unique_id=218006328 instance=ExtResource("1_xtxi3")]
+position = Vector2(74, 94)
+hardness = 6
+
+[node name="Node2D5" parent="." unique_id=2080168146 instance=ExtResource("1_xtxi3")]
+position = Vector2(84, 94)
+hardness = 6
+
+[node name="Mine" parent="." unique_id=1082911436 instance=ExtResource("4_3fs45")]
+position = Vector2(46, 86)
+
+[node name="Pickup" parent="." unique_id=1075131245 instance=ExtResource("5_rcyxn")]
+position = Vector2(69, 65)

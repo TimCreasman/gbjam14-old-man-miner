@@ -83,7 +83,6 @@ func on_aged(age: OMM_AgeResource.AGES):
 
 func on_died():
 	old_timer.stop()
-	StateManager.change_state(StateManager.STATE.HUB)
 	z_index = 100
 
 func pickup(item_definition: OMM_ItemDefinition):
@@ -127,3 +126,6 @@ func _on_state_changed(new_state, old_state) -> void:
 
 func make_young():
 	age_component.make_young()
+
+func do_kill():
+	age_component.die()

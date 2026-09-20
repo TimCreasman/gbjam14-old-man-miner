@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cw3nktgo17f7h" path="res://src/terrain/world/tiles/tile.gd" id="1_e36cl"]
 [ext_resource type="Texture2D" uid="uid://b8diqeiwyi7r8" path="res://assets/art/sprites/tiles/ground.png" id="2_mfvtv"]
-[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/destroyed_tiles.tres" id="2_tqlut"]
-[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/score_resource.tres" id="3_evjkc"]
+[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/collections/destroyed_tiles.tres" id="2_tqlut"]
+[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="3_evjkc"]
 [ext_resource type="Texture2D" uid="uid://b6yyepw71eau3" path="res://assets/art/sprites/tiles/numbers.png" id="3_vx8v6"]
 [ext_resource type="Texture2D" uid="uid://74ksolvvfqk5" path="res://assets/art/sprites/tiles/break_animation.png" id="4_olca0"]
 [ext_resource type="Texture2D" uid="uid://descwxsauqwik" path="res://assets/art/sprites/tiles/gold.png" id="5_tqlut"]

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="OMM_DestroyedPositions" format=3 uid="uid://dcjmtrsdr246m"]
+
+[ext_resource type="Script" uid="uid://of8mksbs432p" path="res://src/resources/collections/destroyed_positions.gd" id="1_urdn2"]
+
+[resource]
+script = ExtResource("1_urdn2")
+metadata/_custom_type_script = "uid://of8mksbs432p"

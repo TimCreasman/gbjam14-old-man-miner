@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://vl83qwbal2o2" path="res://src/gameplay/interactables/fuse_particle_process_material.tres" id="4_pe4mc"]
 [ext_resource type="Texture2D" uid="uid://cu0vq6rtrcwax" path="res://assets/art/sprites/particles/explosion.png" id="5_xpk8j"]
 [ext_resource type="Material" uid="uid://cy221mebt8kmk" path="res://src/gameplay/interactables/explosion_particle_process_material.tres" id="6_0un4j"]
+[ext_resource type="Script" uid="uid://ylp1qkapyf1l" path="res://src/gameplay/interactables/explode_component.gd" id="7_xpk8j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpk8j"]
 atlas = ExtResource("2_pe4mc")
@@ -68,16 +69,16 @@ animations = [{
 radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wm5i"]
+resource_local_to_scene = true
 radius = 32.0
 
-[node name="BombDropped" type="RigidBody2D" unique_id=2041238797 node_paths=PackedStringArray("explode_timer", "explosion_area", "sprite", "explosion_particles")]
+[node name="BombDropped" type="RigidBody2D" unique_id=2041238797 node_paths=PackedStringArray("explode_component", "sprite", "explode_timer")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7mgnp")
-explode_timer = NodePath("Timer")
-explosion_area = NodePath("ExplosionArea")
+explode_component = NodePath("OMM_ExplodeComponent")
 sprite = NodePath("AnimatedSprite2D")
-explosion_particles = NodePath("ExplosionParticles")
+explode_timer = NodePath("ExplosionTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=555922962]
 texture_filter = 1
@@ -89,14 +90,6 @@ speed_scale = 2.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=633900095]
 shape = SubResource("CircleShape2D_7mgnp")
 
-[node name="Timer" type="Timer" parent="." unique_id=1915847436]
-autostart = true
-
-[node name="ExplosionArea" type="Area2D" parent="." unique_id=439749412]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1732977273]
-shape = SubResource("CircleShape2D_0wm5i")
-
 [node name="FuseParticles" type="GPUParticles2D" parent="." unique_id=1133497381]
 texture_filter = 1
 position = Vector2(0, -3)
@@ -104,6 +97,9 @@ amount = 16
 texture = ExtResource("3_0wm5i")
 lifetime = 0.83
 process_material = ExtResource("4_pe4mc")
+
+[node name="ExplosionTimer" type="Timer" parent="." unique_id=1915847436]
+autostart = true
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="." unique_id=1936148718]
 texture_filter = 1
@@ -113,3 +109,13 @@ texture = ExtResource("5_xpk8j")
 lifetime = 0.1
 one_shot = true
 process_material = ExtResource("6_0un4j")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=439749412]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1732977273]
+shape = SubResource("CircleShape2D_0wm5i")
+
+[node name="OMM_ExplodeComponent" type="Node2D" parent="." unique_id=302174746 node_paths=PackedStringArray("explosion_particles", "explosion_area")]
+script = ExtResource("7_xpk8j")
+explosion_particles = NodePath("../ExplosionParticles")
+explosion_area = NodePath("../ExplosionArea")

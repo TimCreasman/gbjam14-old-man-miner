@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7oxwhjtaglxn" path="res://src/terrain/world/noise/terrain_noise.gd" id="1_styag"]
 
 [resource]
+seed = 2
 frequency = 0.0026
 offset = Vector3(0, -167.66, 0)
 fractal_type = 3

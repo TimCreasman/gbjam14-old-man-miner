@@ -1,25 +1,22 @@
 extends RigidBody2D
 
 @export_category("Internal Components")
-@export var explode_timer: Timer
-@export var explosion_area: Area2D
+@export var explode_component: OMM_ExplodeComponent
 @export var sprite: AnimatedSprite2D
-@export var explosion_particles: GPUParticles2D
+@export var explode_timer: Timer
 
 func _ready() -> void:
-	explode_timer.timeout.connect(explode)
+	explode_timer.timeout.connect(_on_explode_timer)
 
-func explode() -> void:
+func _on_explode_timer() -> void:
+
 	sprite.play("explode")
 	await sprite.animation_finished
 
-	for tile in explosion_area.get_overlapping_bodies():
-		if tile is OMM_GroundTile:
-			tile.on_destroy()
-	# Hide sprite
+	explode_component.explode()
+
 	sprite.visible = false
-	# animated gpu
-	explosion_particles.emitting = true
-	await explosion_particles.finished
+
+	await explode_component.exploded
 
 	queue_free()
