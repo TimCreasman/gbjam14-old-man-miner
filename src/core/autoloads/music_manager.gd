@@ -17,7 +17,6 @@ func switch_to_song(name: String) -> void:
 	songs.get(name).play()
 	
 func _on_state_changed(new_state, _old_state) -> void:
-
 	match new_state:
 		StateManager.STATE.HUB:
 			switch_to_song("HubTheme")

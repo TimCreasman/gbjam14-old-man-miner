@@ -21,4 +21,5 @@ func restart():
 	SignalBus.restarted.emit()
 
 func quit():
+	MusicManager.switch_to_song("ShopTheme")
 	get_tree().change_scene_to_file("res://src/ui/end_screen/end_screen.tscn")

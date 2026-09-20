@@ -14,6 +14,7 @@ func _ready():
 	death_label.text = str(age_resource.get_death_count())
 
 func _process(delta: float):
-	if Input.is_action_just_pressed("pause"):
-		get_tree().change_scene_to_file("res://src/ui/end_screen/title.tscn")
+	if Input.is_action_just_pressed("jump"):
+		MusicManager.stop_all_songs()
+		get_tree().change_scene_to_file("res://src/scenes/title.tscn")
 		pass
