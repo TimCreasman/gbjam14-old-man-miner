@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_t1gqs")
-ending_value = 0.05
-steps = 5
-starting_value = 0.3
+ending_value = 0.01
+steps = 10
+starting_value = 0.2
 metadata/_custom_type_script = "uid://d4kqvn3r4jyjw"

@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bxl2ko754m7ej" path="res://src/ui/hud/hud.tscn" id="12_tyryd"]
 [ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
 [ext_resource type="Script" uid="uid://bqd0ldayf20wh" path="res://src/core/components/max_depth_reached_component.gd" id="19_htxff"]
+[ext_resource type="Resource" uid="uid://7sroh34x726" path="res://src/shaders/level_0_palette.tres" id="20_n75dp"]
 [ext_resource type="Resource" uid="uid://q2hp31ss2580" path="res://src/shaders/level_1_palette.tres" id="20_qsm7c"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="20_v252j"]
 [ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="23_j04uq"]
@@ -62,11 +63,10 @@ spawn_point = NodePath("../SpawnPoint")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
-[node name="Shop" parent="Viewport/SubViewport" unique_id=1161904382 node_paths=PackedStringArray("shop_menu", "player", "music_manager") instance=ExtResource("11_7opv2")]
+[node name="Shop" parent="Viewport/SubViewport" unique_id=1161904382 node_paths=PackedStringArray("shop_menu", "player") instance=ExtResource("11_7opv2")]
 position = Vector2(29, 128)
 shop_menu = NodePath("../../ShopMenu")
 player = NodePath("../Player")
-music_manager = NodePath("")
 
 [node name="Platform" parent="Viewport/SubViewport" unique_id=35432797 instance=ExtResource("9_v252j")]
 position = Vector2(74, 136)
@@ -145,6 +145,9 @@ metadata/_custom_type_script = "uid://g75t136olir6"
 script = ExtResource("19_htxff")
 player_coordinate = ExtResource("20_v252j")
 age_component = ExtResource("23_j04uq")
+level_0_palette = ExtResource("20_n75dp")
 half_way_palette = ExtResource("20_qsm7c")
 output_palette = ExtResource("5_sr17e")
 metadata/_custom_type_script = "uid://bqd0ldayf20wh"
+
+[node name="Timer" type="Timer" parent="Systems/OMM_MaxDepthReachedComponent" unique_id=1215529671]

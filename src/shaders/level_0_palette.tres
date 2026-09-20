@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GBPalette" format=3 uid="uid://7sroh34x726"]
+
+[ext_resource type="Script" uid="uid://cm3iofpy5h14b" path="res://src/shaders/gb_palette.gd" id="1_053ch"]
+
+[resource]
+script = ExtResource("1_053ch")
+background = Color(0.14862919, 0.3691256, 0.293613, 1)
+shadow = Color(0.017101575, 0.046941355, 0.03427492, 1)
+foreground = Color(0.62196916, 0.6584717, 0.34277138, 1)
+highlight = Color(0.9529412, 0.92156863, 0.7647059, 1)
+metadata/_custom_type_script = "uid://cm3iofpy5h14b"

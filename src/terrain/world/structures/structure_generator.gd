@@ -12,7 +12,7 @@ func set_spawn_container(container: Node2D):
 	_spawn_container = container
 
 func sparse_noise_at(global_pos: Vector2, _seed: int):
-	return OMM_RandomNoise.get_noise_2dv(global_pos, 0.4, _seed)
+	return OMM_RandomNoise.get_noise_2dv(global_pos, 1, _seed)
 
 func is_space(rect: Rect2i) -> bool:
 	for x in range(rect.position.x, rect.position.x + rect.size.x, 8):
@@ -30,8 +30,6 @@ func generate(global_pos: Vector2i):
 	
 	for i in structures.size():
 		var structure_to_spawn = structures[i]
-		# if !structure_to_spawn.is_unlocked:
-		# 	continue
 
 		if destroyed_structures.has_position(global_pos):
 			continue
@@ -47,7 +45,6 @@ func generate(global_pos: Vector2i):
 		var structure_name = "str" + str(global_pos).sha1_text()
 		if !_spawn_container.has_node(structure_name):
 			var structure_scene = structure_to_spawn.scene.instantiate()
-			# pickup.definition = bomb_definition
 			structure_scene.position = global_pos
 			structure_scene.name = structure_name
 			_spawn_container.add_child(structure_scene)

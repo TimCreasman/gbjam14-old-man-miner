@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="3_0njo0"]
 [ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="4_cbknf"]
 [ext_resource type="AudioStream" uid="uid://n8lx14eva0nl" path="res://assets/audio/music/Mid Depth.wav" id="4_dgxdd"]
+[ext_resource type="AudioStream" uid="uid://de0obumefq835" path="res://assets/audio/music/The Bottom.wav" id="5_0njo0"]
 
 [node name="MusicManager" type="Node2D" unique_id=326241275]
 script = ExtResource("1_jiote")
@@ -17,6 +18,10 @@ stream = ExtResource("3_0njo0")
 
 [node name="DeeperTheme" type="AudioStreamPlayer2D" parent="." unique_id=1612591336]
 stream = ExtResource("4_dgxdd")
+
+[node name="TheBottomTheme" type="AudioStreamPlayer2D" parent="." unique_id=772954210]
+stream = ExtResource("5_0njo0")
+volume_db = -5.324
 
 [node name="ShopTheme" type="AudioStreamPlayer2D" parent="." unique_id=2062813567]
 stream = ExtResource("4_cbknf")

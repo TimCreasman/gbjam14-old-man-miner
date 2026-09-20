@@ -41,3 +41,9 @@ func set_palette(other: GBPalette):
 	shadow = other.shadow
 	foreground = other.foreground
 	highlight = other.highlight
+
+func lighten(value: float):
+	background = background.lightened(value)
+	shadow = shadow.lightened(value)
+	foreground = foreground.lightened(value)
+	highlight = highlight.lightened(value)
