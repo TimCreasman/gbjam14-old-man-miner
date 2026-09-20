@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OMM_UpgradeResource" format=3 uid="uid://mr8nlfrpbk7g"]
+
+[ext_resource type="Script" uid="uid://d4kqvn3r4jyjw" path="res://src/resources/quantity_resources/upgrade_resource.gd" id="1_t1gqs"]
+
+[resource]
+script = ExtResource("1_t1gqs")
+ending_value = 0.01
+steps = 5
+starting_value = 0.1
+metadata/_custom_type_script = "uid://d4kqvn3r4jyjw"

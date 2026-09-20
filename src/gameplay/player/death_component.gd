@@ -11,7 +11,7 @@ func set_up(_death_container, _age_component):
 	age_component = _age_component
 	age_component.died.connect(on_died)
 
-func on_died():
+func on_died(_death_reason):
 	var sprite = sprite_scene.instantiate() as Sprite2D
 	sprite.frame = 5
 	sprite.position = global_position

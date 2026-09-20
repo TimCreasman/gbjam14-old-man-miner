@@ -7,4 +7,5 @@
 script = ExtResource("1_rw78c")
 size = Vector2i(3, 1)
 scene = ExtResource("1_xtysi")
+is_unlocked = true
 metadata/_custom_type_script = "uid://co3v6ry86kyd"

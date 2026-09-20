@@ -6,7 +6,8 @@
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
 [ext_resource type="Script" uid="uid://du6w038owrjud" path="res://src/gameplay/player/mining_component.gd" id="5_d3trc"]
 [ext_resource type="PackedScene" uid="uid://dahtenw73jrvt" path="res://src/gameplay/player/player_sprite.tscn" id="5_kjyqo"]
-[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/quantity_resources/mining_speed.tres" id="7_rdc6l"]
+[ext_resource type="Script" uid="uid://dqxcirny3ugar" path="res://src/gameplay/player/old_timer.gd" id="6_rdc6l"]
+[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/quantity_resources/mining_speed_stat.tres" id="7_rdc6l"]
 [ext_resource type="Script" uid="uid://cvt3e7s3458f8" path="res://src/gameplay/player/death_component.gd" id="7_uia4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -39,6 +40,8 @@ shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
 wait_time = 0.3
+script = ExtResource("6_rdc6l")
+age_component = ExtResource("2_dxsvo")
 
 [node name="DashArea" type="Area2D" parent="." unique_id=1914255011]
 

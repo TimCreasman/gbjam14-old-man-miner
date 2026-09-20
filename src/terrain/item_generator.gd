@@ -18,15 +18,17 @@ func sparse_noise_at(global_pos: Vector2, rarity: float):
 	return OMM_RandomNoise.get_noise_2dv(global_pos, rarity, 1)
 
 func generate(global_pos: Vector2i):
+	var item_to_spawn = item_definitions[item_index]
+	if !item_to_spawn.is_unlocked:
+		item_index += 1
+		item_index %= item_definitions.size()
+		return
+
 	if picked_up_items.has_position(global_pos):
 		return
 
 	# If below me is not ground, or above me is not air return
 	if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)) || terrain_noise.is_ground(global_pos + Vector2i(0, -8)):
-		return
-
-	var item_to_spawn = item_definitions[item_index]
-	if !item_to_spawn.is_unlocked:
 		return
 
 	if !sparse_noise_at(global_pos, item_to_spawn.rarity):
