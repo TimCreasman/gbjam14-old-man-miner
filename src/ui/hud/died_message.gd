@@ -10,9 +10,9 @@ func _ready():
 	again_button.pressed.connect(restart)
 	quit_button.pressed.connect(quit)
 
-func on_died():
+func on_died(death_reason: OMM_AgeResource.DEATH_REASON):
 	again_button.grab_focus()
-	death_label.text = age_component.get_death_reason()
+	death_label.text = OMM_AgeResource.DEATH_REASON_READABLE[death_reason]
 	visible = true
 
 func restart():
@@ -21,4 +21,4 @@ func restart():
 	SignalBus.restarted.emit()
 
 func quit():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://src/ui/end_screen/end_screen.tscn")

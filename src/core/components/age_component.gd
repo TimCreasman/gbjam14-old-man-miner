@@ -18,6 +18,8 @@ signal died()
 func _init():
 	SignalBus.restarted.connect(_reset)
 
+var _death_count = 0
+
 var is_dead:
 	get():
 		return _age >= ages[ages.size() - 1]
@@ -28,30 +30,34 @@ func get_death_reason():
 func _reset():
 	_age = 0
 
+func get_death_count():
+	return _death_count
+
 var _age := 0:
 	set(value):
-		if value >= ages[ages.size() - 1] && StateManager.current_state != StateManager.STATE.WIN:
-			died.emit()
-
 		if _age != value:
 			aged.emit(int(remap(value, 0, max_age, 0, ages.size())) as AGES)
 			changed.emit(value)
 
 		_age = value
 
-func increment_age(age_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
+func increment_age():
 	if is_dead:
-		_death_reason = age_reason
 		return
-
 	_age += 1
 
-func get_depth():
-	return _age
+	if is_dead:
+		_die()
 
 func make_young():
 	_age = 0
 
-func die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
+func do_die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
+	_die(death_reason)
+
+func _die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
+	if StateManager.current_state == StateManager.STATE.WIN:
+		return
 	_death_reason = death_reason
-	_age = ages[AGES.HISTORY]
+	_death_count += 1
+	died.emit(death_reason)

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://d3fold0sh8m4p"]
+
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="1_6eggb"]
+[ext_resource type="Script" uid="uid://cv0n2bf6lcxic" path="res://src/ui/end_screen/end_screen.gd" id="2_8cx0g"]
+[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="3_eh1st"]
+[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="4_t55bn"]
+[ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="5_p30h0"]
+[ext_resource type="Resource" uid="uid://b1yhre2qjfj7y" path="res://src/resources/name_resource.tres" id="5_rxh4c"]
+[ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="6_djdti"]
+[ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="7_p30h0"]
+[ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="8_6u0v2"]
+
+[node name="EndScreen" type="CanvasLayer" unique_id=1810225098 node_paths=PackedStringArray("name_label", "gold_label", "death_label")]
+script = ExtResource("2_8cx0g")
+name_resource = ExtResource("5_rxh4c")
+score_resource = ExtResource("4_t55bn")
+age_resource = ExtResource("3_eh1st")
+name_label = NodePath("EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerName")
+gold_label = NodePath("EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2/GoldCollected")
+death_label = NodePath("EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2/Generation")
+
+[node name="EndScreenViewport" type="SubViewportContainer" parent="." unique_id=2135837621]
+material = ExtResource("5_p30h0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6eggb")
+script = ExtResource("6_djdti")
+input_palette = ExtResource("7_p30h0")
+output_palette = ExtResource("8_6u0v2")
+
+[node name="SubViewport" type="SubViewport" parent="EndScreenViewport" unique_id=89964376]
+handle_input_locally = false
+audio_listener_enable_2d = true
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="Panel" type="Panel" parent="EndScreenViewport/SubViewport" unique_id=1327277506]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6eggb")
+
+[node name="CenterContainer" type="CenterContainer" parent="EndScreenViewport/SubViewport/Panel" unique_id=520521633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreenViewport/SubViewport/Panel/CenterContainer" unique_id=591304858]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer" unique_id=1717752236]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer" unique_id=725126528]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer" unique_id=1894749351]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=343487529]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1972348885]
+layout_mode = 2
+text = "Name"
+
+[node name="GoldCollected" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1117410381]
+layout_mode = 2
+text = "Gold"
+
+[node name="Generation" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1682295246]
+layout_mode = 2
+text = "Deaths"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1927700243]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1781299686]
+layout_mode = 2
+text = "N"
+
+[node name="GoldCollected" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=388163395]
+layout_mode = 2
+text = "G"
+
+[node name="Generation" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=963205557]
+layout_mode = 2
+text = "D"
+
+[node name="Label" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer" unique_id=1356767804]
+layout_mode = 2
+text = "Thanks for playing!"

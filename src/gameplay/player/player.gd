@@ -139,4 +139,4 @@ func make_young():
 	age_component.make_young()
 
 func do_kill(death_reason: OMM_AgeResource.DEATH_REASON):
-	age_component.die(death_reason)
+	age_component.do_die(death_reason)
