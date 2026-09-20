@@ -12,3 +12,8 @@ func _ready():
 	name_label.text = name_resource.get_player_name()
 	gold_label.text = "$" + str(score_resource.get_total_score())
 	death_label.text = str(age_resource.get_death_count())
+
+func _process(delta: float):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().change_scene_to_file("res://src/ui/end_screen/title.tscn")
+		pass

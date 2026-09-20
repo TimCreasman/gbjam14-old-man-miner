@@ -32,6 +32,7 @@ pause_menu = NodePath("Viewport/PauseMenu")
 material = ExtResource("2_sr17e")
 offset_right = 160.0
 offset_bottom = 144.0
+mouse_filter = 2
 script = ExtResource("2_b8ek1")
 input_palette = ExtResource("4_7gaau")
 output_palette = ExtResource("5_sr17e")
@@ -120,6 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Viewport/PauseMenu/UI/CenterContainer" unique_id=2064720606]
 texture_filter = 1

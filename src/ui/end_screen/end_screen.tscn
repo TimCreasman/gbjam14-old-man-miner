@@ -99,4 +99,6 @@ text = "D"
 
 [node name="Label" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer" unique_id=1356767804]
 layout_mode = 2
-text = "Thanks for playing!"
+text = "Thanks for playing!
+(press shift to go back to title)"
+horizontal_alignment = 1

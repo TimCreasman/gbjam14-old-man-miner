@@ -28,6 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("4_q3sj1")
 input_palette = ExtResource("5_2u0ga")
 output_palette = ExtResource("6_hg5gy")
@@ -46,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_3uucy")
 metadata/_edit_use_anchors_ = true
 
@@ -55,13 +57,16 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 7.0
 grow_horizontal = 2
+mouse_filter = 2
 theme = ExtResource("1_3uucy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/MarginContainer" unique_id=409457985]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="GoldContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1783579757]
 layout_mode = 2
+mouse_filter = 2
 alignment = 2
 
 [node name="GoldLabel" type="Label" parent="SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=1217668865]
@@ -86,6 +91,7 @@ resource = ExtResource("8_d5ccl")
 [node name="DepthContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=2045150409]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 alignment = 2
 
 [node name="DepthLabel" type="Label" parent="SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=1945255689]
@@ -197,6 +203,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("13_v4dvs")
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/UI/WinMessage" unique_id=1194312515]
@@ -206,9 +213,11 @@ anchor_right = 1.0
 offset_top = 17.0
 offset_bottom = 93.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/WinMessage/CenterContainer" unique_id=698514083]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/UI/WinMessage/CenterContainer/VBoxContainer" unique_id=25268827]
@@ -243,6 +252,7 @@ offset_left = -16.0
 offset_top = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -250,6 +260,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/UI/ItemUI" unique_id=1649285282 node_paths=PackedStringArray("item_texture_rect")]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("1_3uucy")
 script = ExtResource("11_v4dvs")
 current_item = ExtResource("12_s8lle")
@@ -263,4 +274,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch_mode = 3
