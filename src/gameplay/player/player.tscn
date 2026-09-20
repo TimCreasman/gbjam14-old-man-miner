@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="Sprite2D" parent="." unique_id=1234786695 instance=ExtResource("5_kjyqo")]
 
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
-wait_time = 0.04
+wait_time = 0.3
 
 [node name="DashArea" type="Area2D" parent="." unique_id=1914255011]
 

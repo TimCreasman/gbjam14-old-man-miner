@@ -48,9 +48,6 @@ render_target_update_mode = 4
 position = Vector2(0, 144)
 follow_node = NodePath("../Player")
 
-[node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
-position = Vector2(0, 144)
-
 [node name="DeathContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=992368805]
 
 [node name="SpawnPoint" type="Node2D" parent="Viewport/SubViewport" unique_id=1684506461]
@@ -64,6 +61,8 @@ world_generator = NodePath("../WorldGenerator")
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="WorldGenerator" parent="Viewport/SubViewport" unique_id=1622406730 instance=ExtResource("5_srulj")]
+
+[node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
 [node name="Platform" parent="Viewport/SubViewport" unique_id=35432797 instance=ExtResource("9_v252j")]
 position = Vector2(74, 136)

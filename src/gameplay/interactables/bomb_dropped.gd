@@ -13,7 +13,7 @@ func _on_explode_timer() -> void:
 	sprite.play("explode")
 	await sprite.animation_finished
 
-	explode_component.explode()
+	explode_component.explode(OMM_AgeResource.DEATH_REASON.SELF_EXPLOSION)
 
 	sprite.visible = false
 

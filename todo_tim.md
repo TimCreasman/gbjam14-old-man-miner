@@ -21,20 +21,18 @@
 - [x] Add score resource / Fix gold
 - [x] Correctly color menu
 - [x] Get to bottom
+- [x] Item spawns
+- [x] Get loop working
+- [x] Display name on start
+- [x] Use name as seed
 
 # In progress
-- [ ] Item spawns
 
 # Roadmap to the end
-- [ ] Get loop working
-- [ ] Display name on start
-- [ ] Use name as seed
 - [ ] Upgrade system
 
 - [ ] Add health to the player
 - [ ] Create hazards
-- [ ] Have name define seed
-- [ ] Reset back to name state
 - [ ] Have fountain be first system unlocked
 
 # To do

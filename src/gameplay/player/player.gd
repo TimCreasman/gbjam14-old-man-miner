@@ -138,5 +138,5 @@ func _on_state_changed(new_state, old_state) -> void:
 func make_young():
 	age_component.make_young()
 
-func do_kill():
-	age_component.die()
+func do_kill(death_reason: OMM_AgeResource.DEATH_REASON):
+	age_component.die(death_reason)

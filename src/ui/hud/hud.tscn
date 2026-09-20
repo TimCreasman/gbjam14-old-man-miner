@@ -145,10 +145,14 @@ death_label = NodePath("CenterContainer/VBoxContainer/Label")
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1526423519]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-offset_bottom = 76.0
+anchor_bottom = 0.5
+offset_top = -54.0
+offset_bottom = -6.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=1020109497]
 layout_mode = 2
@@ -159,7 +163,7 @@ texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
 theme = ExtResource("1_3uucy")
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_0lyew")
 text = "u ded"
 horizontal_alignment = 1
@@ -173,6 +177,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
 theme_override_font_sizes/font_size = 16
 text = "Cease your family line..."
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=463582753]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=1494940126]
+layout_mode = 2
 
 [node name="WinMessage" type="Control" parent="SubViewportContainer/SubViewport/UI" unique_id=187543218]
 visible = false

@@ -9,8 +9,8 @@ var _death_reason : DEATH_REASON
 
 enum AGES {BABY, YOUNG, MIDDLE, OLD, ANCIENT, HISTORY }
 
-enum DEATH_REASON {OLD_AGE, MINE}
-const DEATH_REASON_READABLE = ["u got old", "u blew up"]
+enum DEATH_REASON {OLD_AGE, EXPLOSION, SELF_EXPLOSION}
+const DEATH_REASON_READABLE = ["u got old", "u blew up", "u blew urself up"]
 
 signal aged(current_age: AGES)
 signal died()
@@ -52,5 +52,6 @@ func get_depth():
 func make_young():
 	_age = 0
 
-func die():
+func die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
+	_death_reason = death_reason
 	_age = ages[AGES.HISTORY]

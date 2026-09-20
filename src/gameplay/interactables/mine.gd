@@ -9,13 +9,13 @@ extends Node2D
 func _ready():
 	area_2d.body_exited.connect(_on_body_exited)
 
-func _on_body_exited(body: Node2D):
+func _on_body_exited(_body: Node2D):
 	explode_component.explode()
 
 	await explode_component.exploded
 
-	if body.has_method("do_kill"):
-		body.call("do_kill")
+	# if body.has_method("do_kill"):
+	# 	body.call("do_kill")
 
 	destroyed_structures.add_position(global_position)
 

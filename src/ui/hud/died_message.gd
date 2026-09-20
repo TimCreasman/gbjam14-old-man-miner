@@ -11,6 +11,7 @@ func _ready():
 	quit_button.pressed.connect(quit)
 
 func on_died():
+	again_button.grab_focus()
 	death_label.text = age_component.get_death_reason()
 	visible = true
 
