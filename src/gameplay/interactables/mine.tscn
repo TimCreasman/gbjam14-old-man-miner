@@ -5,6 +5,8 @@
 [ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="2_mdqhl"]
 [ext_resource type="Texture2D" uid="uid://cu0vq6rtrcwax" path="res://assets/art/sprites/particles/explosion.png" id="3_mdqhl"]
 [ext_resource type="Script" uid="uid://ylp1qkapyf1l" path="res://src/gameplay/interactables/explode_component.gd" id="5_k0r3j"]
+[ext_resource type="AudioStream" uid="uid://dbc6jhl78d016" path="res://assets/audio/sfx/Landmine.wav" id="6_ek4pe"]
+[ext_resource type="AudioStream" uid="uid://cj21plmc3mqs4" path="res://assets/audio/sfx/Explosion.wav" id="7_k0r3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cggsh"]
 resource_local_to_scene = true
@@ -35,10 +37,11 @@ gravity = Vector3(0, 0, 0)
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_xkgpd")
 
-[node name="Mine" type="Node2D" unique_id=1082911436 node_paths=PackedStringArray("area_2d", "sprite", "explode_component")]
+[node name="Mine" type="Node2D" unique_id=1082911436 node_paths=PackedStringArray("area_2d", "sprite", "triggered_sound", "explode_component")]
 script = ExtResource("1_o3bqt")
 area_2d = NodePath("TriggerArea2D")
 sprite = NodePath("Sprite2D")
+triggered_sound = NodePath("Triggered")
 explode_component = NodePath("OMM_ExplodeComponent")
 destroyed_structures = ExtResource("2_mdqhl")
 
@@ -58,10 +61,11 @@ shape = SubResource("RectangleShape2D_cggsh")
 position = Vector2(12, -1)
 shape = SubResource("CircleShape2D_mdqhl")
 
-[node name="OMM_ExplodeComponent" type="Node2D" parent="." unique_id=2044562328 node_paths=PackedStringArray("explosion_particles", "explosion_area")]
+[node name="OMM_ExplodeComponent" type="Node2D" parent="." unique_id=2044562328 node_paths=PackedStringArray("explosion_particles", "explosion_area", "explosion_sound")]
 script = ExtResource("5_k0r3j")
 explosion_particles = NodePath("ExplosionParticles")
 explosion_area = NodePath("../ExplosionRadius")
+explosion_sound = NodePath("../Explosion")
 metadata/_custom_type_script = "uid://ylp1qkapyf1l"
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="OMM_ExplodeComponent" unique_id=1283338233]
@@ -73,3 +77,9 @@ texture = ExtResource("3_mdqhl")
 lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_2n4x6")
+
+[node name="Triggered" type="AudioStreamPlayer2D" parent="." unique_id=2014711399]
+stream = ExtResource("6_ek4pe")
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="." unique_id=1630471148]
+stream = ExtResource("7_k0r3j")

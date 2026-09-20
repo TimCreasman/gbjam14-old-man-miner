@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://d2j6ghh7kpec0" path="res://src/resources/structure_definitions/fountain_definition.tres" id="9_r2bs0"]
 [ext_resource type="Resource" uid="uid://sxcp0joh846g" path="res://src/resources/structure_definitions/mine_definition.tres" id="10_ux334"]
 [ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="11_f30lk"]
+[ext_resource type="FastNoiseLite" uid="uid://crbrgw7kolv1j" path="res://src/terrain/world/noise/half_depth_noise.tres" id="14_7m5ls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -52,6 +53,7 @@ z_as_relative = false
 script = ExtResource("7_rsdux")
 structures = Array[ExtResource("8_27ujy")]([ExtResource("9_r2bs0"), ExtResource("10_ux334")])
 terrain_noise = ExtResource("7_870o3")
+half_depth_terrain_noise = ExtResource("14_7m5ls")
 destroyed_structures = ExtResource("11_f30lk")
 
 [node name="TileGenerator" type="Node2D" parent="." unique_id=948789447 node_paths=PackedStringArray("tile_container", "ref_rect", "structure_generator")]
@@ -60,6 +62,7 @@ player_coordinate = ExtResource("3_7ecim")
 tile_container = NodePath("Tiles")
 destroyed_tiles = ExtResource("6_7lict")
 terrain_noise = ExtResource("7_870o3")
+half_depth_terrain_noise = ExtResource("14_7m5ls")
 ref_rect = NodePath("../ReferenceRect")
 structure_generator = NodePath("../StructureGenerator")
 tile_object_pool = SubResource("Resource_ux334")

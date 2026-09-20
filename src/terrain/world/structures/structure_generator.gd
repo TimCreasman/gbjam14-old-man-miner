@@ -3,10 +3,24 @@ extends Node2D
 
 @export var structures: Array[OMM_StructureDefinition] = []
 @export var terrain_noise: OMM_TerrainNoise
+@export var half_depth_terrain_noise: OMM_TerrainNoise
 
 var _spawn_container: Node2D = self
 
 @export var destroyed_structures: OMM_DestroyedPositions
+
+var max_depth
+
+func _ready():
+	load_cfg()
+
+func load_cfg():
+	var world_gen_cfg = ConfigFile.new()
+	var err = world_gen_cfg.load("res://src/terrain/world/world_gen.cfg")
+	if err!= OK:
+		print_debug("Could not load world gen config file")
+
+	max_depth = world_gen_cfg.get_value("main", "max_depth", INF)
 
 func set_spawn_container(container: Node2D):
 	_spawn_container = container
@@ -25,8 +39,14 @@ func is_space(rect: Rect2i) -> bool:
 	return true
 
 func generate(global_pos: Vector2i):
-	if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)):
+	if global_pos.y >= max_depth:
 		return
+	elif global_pos.y >= max_depth / 2:
+		if !half_depth_terrain_noise.is_ground(global_pos):
+			return
+	else:
+		if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)):
+			return
 	
 	for i in structures.size():
 		var structure_to_spawn = structures[i]

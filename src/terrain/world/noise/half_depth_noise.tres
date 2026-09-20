@@ -1,0 +1,19 @@
+[gd_resource type="FastNoiseLite" script_class="OMM_TerrainNoise" format=3 uid="uid://crbrgw7kolv1j"]
+
+[ext_resource type="Script" uid="uid://b7oxwhjtaglxn" path="res://src/terrain/world/noise/terrain_noise.gd" id="1_khilx"]
+
+[resource]
+seed = 2
+frequency = 0.0068
+offset = Vector3(0, -167.66, 0)
+fractal_type = 3
+fractal_octaves = 1
+fractal_ping_pong_strength = 2.33
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 8.42
+domain_warp_frequency = 0.04
+domain_warp_fractal_type = 2
+domain_warp_fractal_octaves = 1
+script = ExtResource("1_khilx")
+metadata/_custom_type_script = "uid://b7oxwhjtaglxn"

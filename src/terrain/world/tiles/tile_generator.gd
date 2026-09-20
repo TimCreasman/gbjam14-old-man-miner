@@ -7,6 +7,7 @@ extends Node2D
 @export var destroyed_tiles: OMM_DestroyedPositions
 
 @export var terrain_noise: OMM_TerrainNoise
+@export var half_depth_terrain_noise: OMM_TerrainNoise
 @export var ref_rect: ReferenceRect
 
 @export var structure_generator : OMM_StructureGenerator
@@ -45,7 +46,17 @@ func generate(global_pos: Vector2i):
 	if tile_container.has_node(tile_name):
 		return
 
-	var hardness = 9 if global_pos.y >= max_depth else terrain_noise.get_ground_hardness(global_pos)
+	var hardness = 0
+	if global_pos.y >= max_depth:
+		hardness = 9
+	elif global_pos.y >= max_depth / 2:
+		hardness = half_depth_terrain_noise.get_ground_hardness(global_pos)
+	else:
+		hardness = terrain_noise.get_ground_hardness(global_pos)
+
+	# No gold before 80 below
+	if hardness == 9 && global_pos.y < 160:
+		hardness -= 1
 
 	if global_pos.y == 0: hardness = 1
 

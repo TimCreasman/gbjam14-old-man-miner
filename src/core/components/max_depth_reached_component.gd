@@ -33,9 +33,8 @@ func _on_coordinate_changed(coordinate: Vector2i):
 	if coordinate.y == (max_depth / 2):
 		go_deeper()
 	# TODO use TILESIZS
-	if coordinate.y >= (max_depth - 80) && !age_component.is_dead():
+	if coordinate.y == (max_depth - 80) && !age_component.is_dead():
 		bottom_reached()
-
 
 func go_deeper():
 	output_palette.set_palette(half_way_palette)
