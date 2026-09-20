@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_ekiwp")
-background = Color(0.46657193, 0.23286489, 0.37746778, 1)
-shadow = Color(0.22533566, 0.095974155, 0.17607614, 1)
-foreground = Color(0.85215837, 0.5413557, 0.3623843, 1)
+background = Color(0.5286577, 0.20277503, 0.18700731, 1)
+shadow = Color(0.22774926, 0.04495974, 0.10016654, 1)
+foreground = Color(0.83016497, 0.5560193, 0.4001555, 1)
 highlight = Color(0.95, 0.874, 0.76, 1)
 metadata/_custom_type_script = "uid://cm3iofpy5h14b"

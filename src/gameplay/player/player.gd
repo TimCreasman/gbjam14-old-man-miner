@@ -39,7 +39,9 @@ func _ready():
 
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
-	old_timer.timeout.connect(age_component.increment_age)
+
+	# old_timer.timeout.connect(age_component.increment_age)
+
 	dash_timer.timeout.connect(stop_dashing)
 	midas_timer.timeout.connect(stop_midas_touch)
 
@@ -93,7 +95,7 @@ func on_aged(age: OMM_AgeResource.AGES):
 		return
 	sprite.frame = age
 
-func on_died():
+func on_died(_died_reason):
 	old_timer.stop()
 
 func pickup(item_definition: OMM_ItemDefinition):

@@ -7,25 +7,18 @@
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_37hmv"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="5_4evt0"]
 [ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/ui/shop_menu/shop_menu.gd" id="6_3abm2"]
-[ext_resource type="Script" uid="uid://b752oug8vxds5" path="res://src/resources/buyable_definition/buyable_definition.gd" id="8_5kyyw"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="7_slot5"]
 [ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/item_definitions/bomb_definition.tres" id="8_abowv"]
-[ext_resource type="Texture2D" uid="uid://bahcix65cwagj" path="res://assets/art/sprites/interactables/fountain.png" id="9_bnu6r"]
+[ext_resource type="Resource" uid="uid://088wupevtfyj" path="res://src/resources/upgrade_defintition/mine_up.tres" id="9_4evt0"]
 [ext_resource type="Resource" uid="uid://6lys5lpocnpe" path="res://src/resources/item_definitions/dash_definition.tres" id="9_odc3c"]
 [ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/item_definitions/midas_definition.tres" id="11_5kyyw"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="11_ih0lp"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="12_u4eqt"]
-[ext_resource type="Resource" uid="uid://bd4pu401gerld" path="res://src/resources/upgrade_defintition/speed_up.tres" id="13_slot5"]
 [ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="14_abowv"]
-[ext_resource type="Resource" uid="uid://fbyph7et5enn" path="res://src/resources/upgrade_defintition/mine_up.tres" id="14_odc3c"]
+[ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_defintition/upgrade_defintion.gd" id="14_odc3c"]
 [ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="15_4evt0"]
-[ext_resource type="Resource" uid="uid://duc164g3yi18p" path="res://src/resources/upgrade_defintition/jump_up.tres" id="15_cp0ni"]
 [ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="16_3abm2"]
-
-[sub_resource type="Resource" id="Resource_bnu6r"]
-script = ExtResource("8_5kyyw")
-cost = 1
-texture = ExtResource("9_bnu6r")
-metadata/_custom_type_script = "uid://b752oug8vxds5"
+[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="17_abowv"]
 
 [node name="ShopMenu" type="CanvasLayer" unique_id=188154621 node_paths=PackedStringArray("menu")]
 script = ExtResource("1_5kyyw")
@@ -47,10 +40,10 @@ output_palette = ExtResource("4_37hmv")
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
 render_target_update_mode = 4
 
-[node name="UI" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1604366270 node_paths=PackedStringArray("buy_buttons", "buy_sound", "not_enough_gold_sound")]
-visible = false
+[node name="UI" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1604366270 node_paths=PackedStringArray("buy_upgrade_buttons", "item_upgrade_buttons", "buy_sound", "not_enough_gold_sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,8 +53,10 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("5_4evt0")
 script = ExtResource("6_3abm2")
-buyables = Array[ExtResource("8_5kyyw")]([SubResource("Resource_bnu6r"), ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw"), ExtResource("13_slot5"), ExtResource("14_odc3c"), ExtResource("15_cp0ni")])
-buy_buttons = NodePath("CenterContainer/VBoxContainer/BuyButtons")
+upgrades = Array[ExtResource("14_odc3c")]([ExtResource("9_4evt0")])
+items = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw")])
+buy_upgrade_buttons = NodePath("CenterContainer/VBoxContainer/UpgradeContainer")
+item_upgrade_buttons = NodePath("CenterContainer/VBoxContainer/ItemContainer")
 score_resource = ExtResource("14_abowv")
 buy_sound = NodePath("BuySound")
 not_enough_gold_sound = NodePath("NotEnoughGoldSound")
@@ -88,7 +83,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=921352698]
+[node name="ShopHeader" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=921352698]
 texture_filter = 1
 texture_repeat = 1
 material = ExtResource("1_gmpoe")
@@ -98,10 +93,33 @@ theme_override_fonts/font = ExtResource("12_u4eqt")
 text = "SHOP"
 horizontal_alignment = 1
 
-[node name="BuyButtons" type="GridContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=855861312]
+[node name="Upgrades2" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=959139199]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("1_gmpoe")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_abowv")
+theme_override_font_sizes/font_size = 8
+text = "item unlocks"
+horizontal_alignment = 1
+
+[node name="ItemContainer" type="FlowContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=288313806]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Upgrades" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=616872988]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("1_gmpoe")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_abowv")
+theme_override_font_sizes/font_size = 8
+text = "upgrades"
+horizontal_alignment = 1
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1893214308]
 layout_mode = 2
 mouse_filter = 2
-columns = 3
 
 [node name="Leave" type="Button" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1538497323]
 unique_name_in_owner = true

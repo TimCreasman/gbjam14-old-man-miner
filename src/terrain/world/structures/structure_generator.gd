@@ -6,8 +6,6 @@ extends Node2D
 
 var _spawn_container: Node2D = self
 
-var structure: OMM_StructureDefinition
-
 @export var destroyed_structures: OMM_DestroyedPositions
 
 func set_spawn_container(container: Node2D):
@@ -32,6 +30,8 @@ func generate(global_pos: Vector2i):
 	
 	for i in structures.size():
 		var structure_to_spawn = structures[i]
+		# if !structure_to_spawn.is_unlocked:
+		# 	continue
 
 		if destroyed_structures.has_position(global_pos):
 			continue

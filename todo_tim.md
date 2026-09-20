@@ -25,17 +25,18 @@
 - [x] Get loop working
 - [x] Display name on start
 - [x] Use name as seed
+- [x] Upgrade system
 
 # In progress
 
 # Roadmap to the end
-- [ ] Upgrade system
-
-- [ ] Add health to the player
-- [ ] Create hazards
+- [ ] Remove default gold
 - [ ] Have fountain be first system unlocked
 
 # To do
+
+- [ ] Add health to the player
+- [ ] Create hazards
 - [ ] SFX
 - [ ] Automatic publish to itch
 - [ ] Add spikes to top / death

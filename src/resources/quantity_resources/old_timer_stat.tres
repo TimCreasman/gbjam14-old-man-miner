@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="OMM_UpgradeResource" format=3 uid="uid://beuc1tjh01yf2"]
+
+[ext_resource type="Script" uid="uid://d4kqvn3r4jyjw" path="res://src/resources/quantity_resources/upgrade_resource.gd" id="1_lbp0j"]
+
+[resource]
+script = ExtResource("1_lbp0j")
+metadata/_custom_type_script = "uid://d4kqvn3r4jyjw"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://n8lx14eva0nl"
+path="res://.godot/imported/Mid Depth.wav-a79c797c987aecb626832681c50d0dff.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/Mid Depth.wav"
+dest_files=["res://.godot/imported/Mid Depth.wav-a79c797c987aecb626832681c50d0dff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

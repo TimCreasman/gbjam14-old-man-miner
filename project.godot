@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 StateManager="*uid://cobna54xycba3"
 SignalBus="*uid://b7pedwadh8fi3"
+MusicManager="*uid://bfhs3a2tll6px"
 
 [display]
 
