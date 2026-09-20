@@ -62,15 +62,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_a750j")
 
 [node name="MainMenu" type="CenterContainer" parent="SubViewport/UI/MenuManager" unique_id=1583333976]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("2_gctki")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1273331197]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer" unique_id=1327643460]
 layout_mode = 2
@@ -82,6 +85,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer" unique_id=1738123876]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="Play" type="Button" parent="SubViewport/UI/MenuManager/MainMenu/VBoxContainer/HBoxContainer" unique_id=1216149324]
@@ -98,20 +102,24 @@ text = "Quit
 
 [node name="NameMenu" type="CenterContainer" parent="SubViewport/UI/MenuManager" unique_id=1991112592]
 layout_mode = 2
+mouse_filter = 2
 use_top_left = true
 script = ExtResource("2_gctki")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu" unique_id=1524082759]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Keyboard" type="VBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2" unique_id=1809688236]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("3_shm1j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=468757829]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="Button" type="Button" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard/HBoxContainer" unique_id=889290904]
 layout_mode = 2

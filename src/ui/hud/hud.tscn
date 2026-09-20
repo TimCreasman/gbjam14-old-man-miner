@@ -137,6 +137,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("9_1ilyr")
 age_component = ExtResource("11_0lyew")
 again_button = NodePath("CenterContainer/VBoxContainer/Again")
@@ -153,9 +154,11 @@ offset_top = -54.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=1020109497]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=2098276936]
@@ -170,10 +173,12 @@ horizontal_alignment = 1
 
 [node name="Again" type="Button" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1674298756]
 layout_mode = 2
+mouse_filter = 2
 text = "Have a child?"
 
 [node name="Quit" type="Button" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1823182810]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
 theme_override_font_sizes/font_size = 16
 text = "Cease your family line..."

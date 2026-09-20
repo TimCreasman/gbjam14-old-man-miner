@@ -27,7 +27,7 @@ func create_button(buyable: OMM_Buyable) -> Button:
 	var button = Button.new()
 	button.text = str(buyable.cost)
 	button.icon = buyable.texture
-	button.pressed.connect(_on_buy_button_pressed.bind(buyable))
+	button.pressed.connect(_on_buy_button_pressed.bind(buyable, button))
 
 	# if buyable is OMM_UpgradeDefintion:
 	# 	buyable.upgrade_resource.upgrade_finished.connect(_on_upgrade_finished.bind(button))
@@ -36,12 +36,13 @@ func create_button(buyable: OMM_Buyable) -> Button:
 		pass
 	return button
 
-func _on_buy_button_pressed(buyable: OMM_Buyable):
+func _on_buy_button_pressed(buyable: OMM_Buyable, button: Button):
 	var purchase_made = false
 	if buyable.cost <= score_resource._score:
 
 		if buyable is OMM_ItemDefinition and !buyable.is_unlocked:
 			buyable.is_unlocked = true
+			button.text="sold"
 			score_resource.decrement_score(buyable.cost)
 			purchase_made = true
 
@@ -52,5 +53,6 @@ func _on_buy_button_pressed(buyable: OMM_Buyable):
 			
 	if purchase_made:
 		buy_sound.play()
+		
 	else:
 		not_enough_gold_sound.play()
