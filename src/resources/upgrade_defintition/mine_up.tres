@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_resource type="Resource" script_class="OMM_UpgradeDefintion" format=3 uid="uid://bns3oom2uguki"]
 
 [ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_defintition/upgrade_defintion.gd" id="1_3ek2v"]
@@ -10,4 +11,13 @@ upgrade_type = 1
 upgrade_resource = ExtResource("3_jmlao")
 cost = 10
 texture = ExtResource("2_jmlao")
+=======
+[gd_resource type="Resource" script_class="OMM_Buyable" format=3 uid="uid://fbyph7et5enn"]
+
+[ext_resource type="Script" uid="uid://b752oug8vxds5" path="res://src/resources/buyable_definition/buyable_definition.gd" id="1_jjtw5"]
+
+[resource]
+script = ExtResource("1_jjtw5")
+cost = 10
+>>>>>>> f231f495a78e98bd56a69c048709bd73a9b168c8
 metadata/_custom_type_script = "uid://b752oug8vxds5"

@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="14_abowv"]
 [ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_defintition/upgrade_defintion.gd" id="14_odc3c"]
 [ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="15_4evt0"]
+[ext_resource type="Resource" uid="uid://duc164g3yi18p" path="res://src/resources/upgrade_defintition/jump_up.tres" id="15_cp0ni"]
 [ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="16_3abm2"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="17_abowv"]
 
@@ -77,9 +78,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer" unique_id=1439658148]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ShopHeader" type="Label" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=921352698]
 texture_filter = 1
@@ -117,10 +120,13 @@ horizontal_alignment = 1
 
 [node name="UpgradeContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1893214308]
 layout_mode = 2
+mouse_filter = 2
+columns = 3
 
 [node name="Leave" type="Button" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1538497323]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("11_ih0lp")
 text = "LEAVE"
 
