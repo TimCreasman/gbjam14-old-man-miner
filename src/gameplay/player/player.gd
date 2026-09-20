@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -200.0
 @export var age_component: OMM_AgeResource
 @export var item_container: Node2D
 @export var world_generator: OMM_WorldGenerator
+@export var spawn_point: Node2D
 
 @export_category("Internal Components")
 @export var sprite: Sprite2D
@@ -29,6 +30,8 @@ var none_item: OMM_ItemDefinition = preload("res://src/resources/item_definition
 @export var current_item : OMM_CurrentItemResource
 
 func _ready():
+	SignalBus.restarted.connect(_on_restarted)
+
 	midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
 
@@ -37,6 +40,9 @@ func _ready():
 	old_timer.timeout.connect(age_component.increment_age)
 	dash_timer.timeout.connect(stop_dashing)
 	midas_timer.timeout.connect(stop_midas_touch)
+
+func _on_restarted():
+	position = spawn_point.position
 
 func on_body_entered(body: Node2D) -> void:
 	if body is OMM_GroundTile:

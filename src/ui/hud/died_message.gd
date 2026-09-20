@@ -1,17 +1,23 @@
 extends Control
 
 @export var age_component:OMM_AgeResource
+@export var again_button: Button
+@export var quit_button: Button
+@export var death_label: Label
 
 func _ready():
 	age_component.died.connect(on_died)
+	again_button.pressed.connect(restart)
+	quit_button.pressed.connect(quit)
 
 func on_died():
+	death_label.text = age_component.get_death_reason()
 	visible = true
 
-## TODO Get loop workgin
-func _process(_delta):
-	pass
-	# if age_component.is_dead && (Input.is_action_pressed("jump")):
-	# 	get_tree().reload_current_scene()
-	# 	visible = false
-	# 	set_process(false)
+func restart():
+	visible = false
+	StateManager.change_state(StateManager.STATE.HUB)
+	SignalBus.restarted.emit()
+
+func quit():
+	get_tree().quit()

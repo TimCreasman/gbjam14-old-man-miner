@@ -17,3 +17,6 @@ func get_ground_hardness(global_pos: Vector2i):
 func is_ground(position_to_check: Vector2i) -> bool:
 	var noise_level = get_noise_2dv(position_to_check)
 	return _noise_clamp(noise_level) >= GROUND_HARDNESS_LEVEL_START
+
+func set_name_seed(_name: String):
+	set_seed(_name.hash())

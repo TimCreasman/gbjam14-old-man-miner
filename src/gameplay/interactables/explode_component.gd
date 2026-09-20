@@ -10,7 +10,6 @@ func explode() -> void:
 	for tile in explosion_area.get_overlapping_bodies():
 		if tile is OMM_GroundTile:
 			tile.on_destroy()
-			print(tile)
 			# await tile.destroyed
 
 	explosion_particles.emitting = true

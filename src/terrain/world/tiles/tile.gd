@@ -21,7 +21,6 @@ extends StaticBody2D
 @export var destroyed_positions: OMM_DestroyedPositions
 
 @export var score_resource: OMM_ScoreResource
-var indestructable = false
 
 var _is_gold: bool
 
@@ -29,6 +28,7 @@ signal pool_me(body: OMM_GroundTile)
 signal destroyed()
 
 func _ready():
+	reset_properties({})
 	on_screen_notifier.screen_exited.connect(_on_screen_exit)
 
 ## Takes place of _ready since this a pooled object

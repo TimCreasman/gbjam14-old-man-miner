@@ -259,7 +259,8 @@ layout_mode = 2
 text = "<"
 autowrap_trim_flags = 0
 
-[node name="LineEdit" type="LineEdit" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=775687488]
+[node name="NameLineEdit" type="LineEdit" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2/Keyboard" unique_id=775687488]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)

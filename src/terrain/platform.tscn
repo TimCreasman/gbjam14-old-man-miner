@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dlhoibbija0ok"]
+
+[ext_resource type="Texture2D" uid="uid://b6yyepw71eau3" path="res://assets/art/sprites/tiles/numbers.png" id="1_ht1j2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht1j2"]
+size = Vector2(88, 8)
+
+[node name="Platform" type="Node2D" unique_id=35432797]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002362263]
+position = Vector2(0, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1203903520]
+position = Vector2(8, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=394269564]
+position = Vector2(16, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1655369435]
+position = Vector2(24, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=582882735]
+position = Vector2(-8, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=242041868]
+position = Vector2(-16, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1258016182]
+position = Vector2(-24, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1278544556]
+position = Vector2(-32, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=1339307285]
+position = Vector2(-40, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=845635922]
+position = Vector2(32, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=1797201516]
+position = Vector2(40, -4)
+texture = ExtResource("1_ht1j2")
+hframes = 11
+frame = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1110605780]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1729883262]
+shape = SubResource("RectangleShape2D_ht1j2")

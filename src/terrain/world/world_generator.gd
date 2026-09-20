@@ -3,14 +3,15 @@ extends Node2D
 
 @export_category("Internal Components")
 
-signal generated()
-
 @export var player_coordinate: OMM_Coordinate
 @export var ref_rect: ReferenceRect
 
 @export var tile_generator: OMM_TileGenerator
 @export var structure_generator : OMM_StructureGenerator
 @export var item_generator : OMM_ItemGenerator
+
+var name_resource = preload("res://src/resources/name_resource.tres")
+var terrain_noise = preload("res://src/terrain/world/noise/cave_generation_noise.tres")
 
 const TILE_SIZE = 8
 const GENERATION_OFFSET = 36 * TILE_SIZE
@@ -21,6 +22,9 @@ const HALF_SCREEN_WIDTH = 10
 const SCREEN_PADDING = 0
 
 var max_depth: float
+
+func _init():
+	terrain_noise.set_name_seed(name_resource.get_player_name())
 
 func _ready():
 	player_coordinate.coordinate_changed.connect(on_coordinate_changed)
@@ -56,7 +60,7 @@ func on_coordinate_changed(coordinate: Vector2i):
 func _generate(generation_bounds: Rect2i):
 	for x in range(generation_bounds.position.x, generation_bounds.position.x + generation_bounds.size.x, TILE_SIZE):
 		for y in range(generation_bounds.position.y, generation_bounds.position.y + generation_bounds.size.y, TILE_SIZE):
-			if y < 0: continue
+			if y < 144: continue
 			var pos = Vector2i(x, y)
 
 			structure_generator.generate(pos)

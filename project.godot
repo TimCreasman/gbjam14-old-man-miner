@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 StateManager="*uid://cobna54xycba3"
+SignalBus="*uid://b7pedwadh8fi3"
 
 [display]
 

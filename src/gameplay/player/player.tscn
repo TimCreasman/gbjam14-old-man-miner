@@ -39,6 +39,7 @@ texture = ExtResource("2_onrkg")
 hframes = 6
 
 [node name="OldTimer" type="Timer" parent="." unique_id=1992525477]
+wait_time = 0.04
 
 [node name="DashArea" type="Area2D" parent="." unique_id=1914255011]
 

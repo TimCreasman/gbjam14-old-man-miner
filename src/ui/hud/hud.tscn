@@ -28,7 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 script = ExtResource("4_q3sj1")
 input_palette = ExtResource("5_2u0ga")
 output_palette = ExtResource("6_hg5gy")
@@ -128,7 +127,7 @@ theme_override_fonts/font = ExtResource("3_x3x8j")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("8_3unv1")
 
-[node name="DeathMessage" type="Control" parent="SubViewportContainer/SubViewport/UI" unique_id=1340299620]
+[node name="DeathMessage" type="Control" parent="SubViewportContainer/SubViewport/UI" unique_id=1340299620 node_paths=PackedStringArray("again_button", "quit_button", "death_label")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -138,6 +137,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_1ilyr")
 age_component = ExtResource("11_0lyew")
+again_button = NodePath("CenterContainer/VBoxContainer/Again")
+quit_button = NodePath("CenterContainer/VBoxContainer/Quit")
+death_label = NodePath("CenterContainer/VBoxContainer/Label")
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1526423519]
 layout_mode = 1
@@ -155,19 +157,20 @@ texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
 theme = ExtResource("1_3uucy")
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("10_0lyew")
 text = "u ded"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1314577984]
-texture_filter = 1
-texture_repeat = 1
+[node name="Again" type="Button" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1674298756]
 layout_mode = 2
-theme = ExtResource("1_3uucy")
-theme_override_font_sizes/font_size = 8
-text = "press anything to 
-try again"
-horizontal_alignment = 1
+text = "Have a child?"
+
+[node name="Quit" type="Button" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1823182810]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
+theme_override_font_sizes/font_size = 16
+text = "Cease your family line..."
 
 [node name="WinMessage" type="Control" parent="SubViewportContainer/SubViewport/UI" unique_id=187543218]
 visible = false

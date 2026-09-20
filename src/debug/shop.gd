@@ -1,5 +1,5 @@
 class_name OMM_Shop
-extends RigidBody2D
+extends Node2D
 @export var shop_menu: OMM_ShopMenuLayer
 @export var player: OMM_Player
 @export var music_manager: MusicManager
@@ -38,7 +38,14 @@ func close():
 	area_2d.body_entered.disconnect(on_body_entered)
 	sprite.frame = 1
 
+func open():
+	area_2d.body_entered.connect(on_body_entered)
+	sprite.frame = 0
+
 func _on_state_changed(new_state, _old_state) -> void:
+	if new_state == StateManager.STATE.HUB:
+		open()
+
 	if new_state == StateManager.STATE.MINE:
 		close()
 	# if new_state == StateManager.STATE.HUB:
