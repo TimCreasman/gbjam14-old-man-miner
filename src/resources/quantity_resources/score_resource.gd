@@ -1,7 +1,7 @@
 class_name OMM_ScoreResource
 extends Resource
 
-var _score: int = 100:
+var _score: int = 0:
 	set(value):
 		_score = value
 		changed.emit(_score)

@@ -15,9 +15,11 @@
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="11_ih0lp"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="12_u4eqt"]
 [ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="14_abowv"]
+[ext_resource type="Resource" uid="uid://dv7e3oh27yyw4" path="res://src/resources/item_definitions/inf_bomb_definition.tres" id="14_cp0ni"]
 [ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_defintition/upgrade_defintion.gd" id="14_odc3c"]
 [ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="15_4evt0"]
 [ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="16_3abm2"]
+[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="16_cp0ni"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="17_abowv"]
 
 [node name="ShopMenu" type="CanvasLayer" unique_id=188154621 node_paths=PackedStringArray("menu")]
@@ -54,12 +56,13 @@ mouse_filter = 2
 theme = ExtResource("5_4evt0")
 script = ExtResource("6_3abm2")
 upgrades = Array[ExtResource("14_odc3c")]([ExtResource("9_4evt0")])
-items = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw")])
+items = Array[ExtResource("7_slot5")]([ExtResource("11_5kyyw"), ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("14_cp0ni")])
 buy_upgrade_buttons = NodePath("CenterContainer/VBoxContainer/UpgradeContainer")
 item_upgrade_buttons = NodePath("CenterContainer/VBoxContainer/ItemContainer")
 score_resource = ExtResource("14_abowv")
 buy_sound = NodePath("BuySound")
 not_enough_gold_sound = NodePath("NotEnoughGoldSound")
+current_item = ExtResource("16_cp0ni")
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/UI" unique_id=1997063660]
 layout_mode = 1

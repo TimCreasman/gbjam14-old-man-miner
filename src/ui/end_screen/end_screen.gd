@@ -10,5 +10,5 @@ extends CanvasLayer
 
 func _ready():
 	name_label.text = name_resource.get_player_name()
-	gold_label.text = str(score_resource.get_total_score())
+	gold_label.text = "$" + str(score_resource.get_total_score())
 	death_label.text = str(age_resource.get_death_count())

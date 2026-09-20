@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_pnbpr")
 type = 1
-cost = 100
-texture = ExtResource("2_jdc2v")
 rarity = 0.05
+cost = 20
+texture = ExtResource("2_jdc2v")
 metadata/_custom_type_script = "uid://cohj448giry3f"

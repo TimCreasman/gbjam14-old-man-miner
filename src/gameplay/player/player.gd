@@ -28,6 +28,7 @@ var dashing = false
 var has_midas = false
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 var none_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/none_definition.tres")
+var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/inf_bomb_definition.tres")
 
 @export var current_item : OMM_CurrentItemResource
 
@@ -131,7 +132,10 @@ func handle_use_item():
 			OMM_ItemDefinition.ITEM_TYPES.MIDAS:
 				midas_touch()
 				
-		current_item.definition = none_item 
+		if inf_bomb_item.is_unlocked:
+			current_item.definition = inf_bomb_item 
+		else:
+			current_item.definition = none_item
 
 func _on_state_changed(new_state, old_state) -> void:
 	if old_state != StateManager.STATE.MINE and new_state == StateManager.STATE.MINE:

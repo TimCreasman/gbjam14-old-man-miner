@@ -12,7 +12,7 @@ func set_spawn_container(container: Node2D):
 	_spawn_container = container
 
 func sparse_noise_at(global_pos: Vector2, _seed: int):
-	return OMM_RandomNoise.get_noise_2dv(global_pos, 0.1, _seed)
+	return OMM_RandomNoise.get_noise_2dv(global_pos, 0.4, _seed)
 
 func is_space(rect: Rect2i) -> bool:
 	for x in range(rect.position.x, rect.position.x + rect.size.x, 8):

@@ -10,6 +10,8 @@ extends Menu
 @export var score_resource: OMM_ScoreResource
 @export var buy_sound: AudioStreamPlayer2D
 @export var not_enough_gold_sound: AudioStreamPlayer2D
+
+@export var current_item: OMM_CurrentItemResource
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
@@ -42,6 +44,7 @@ func _on_buy_button_pressed(buyable: OMM_Buyable, button: Button):
 
 		if buyable is OMM_ItemDefinition and !buyable.is_unlocked:
 			buyable.is_unlocked = true
+			current_item.definition = buyable
 			button.text="sold"
 			score_resource.decrement_score(buyable.cost)
 			purchase_made = true

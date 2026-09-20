@@ -1,6 +1,8 @@
 class_name OMM_DeathComponent
 extends Node2D
 
+@export var death_scream: AudioStreamPlayer2D
+
 var death_container: Node2D
 var age_component: OMM_AgeResource
 
@@ -16,3 +18,5 @@ func on_died(_death_reason):
 	sprite.frame = 5
 	sprite.position = global_position
 	death_container.add_child(sprite)
+	death_scream.play()
+	await death_scream.finished

@@ -20,14 +20,13 @@ func _init():
 
 var _death_count = 0
 
-var _is_dead:
-	get():
-		return _age >= ages[ages.size() - 1]
+var _is_dead
 
 func get_death_reason():
 	return DEATH_REASON_READABLE[_death_reason]
 
 func _reset():
+	_is_dead = false
 	_age = 0
 
 func get_death_count():
@@ -50,12 +49,14 @@ func is_dead():
 func increment_age():
 	if _is_dead:
 		return
+
 	_age += 1
 
-	if _is_dead:
+	if _age >= ages[ages.size() - 1]:
 		_die()
 
 func make_young():
+	_is_dead = false
 	_age = 0
 
 func do_die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
@@ -66,4 +67,5 @@ func _die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
 		return
 	_death_reason = death_reason
 	_death_count += 1
+	_is_dead = true
 	died.emit(death_reason)

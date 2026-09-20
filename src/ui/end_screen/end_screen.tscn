@@ -76,7 +76,7 @@ text = "Name"
 
 [node name="GoldCollected" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1117410381]
 layout_mode = 2
-text = "Gold"
+text = "Wealth"
 
 [node name="Generation" type="Label" parent="EndScreenViewport/SubViewport/Panel/CenterContainer/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1682295246]
 layout_mode = 2

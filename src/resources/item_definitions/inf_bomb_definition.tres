@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="OMM_ItemDefinition" format=3 uid="uid://dv7e3oh27yyw4"]
+
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="1_g0f6s"]
+[ext_resource type="Texture2D" uid="uid://k6lfahgfuncs" path="res://assets/art/sprites/interactables/bomb-inf.png" id="2_g0f6s"]
+
+[resource]
+script = ExtResource("1_g0f6s")
+is_unlocked = null
+rarity = 0.1
+cost = 50
+texture = ExtResource("2_g0f6s")
+metadata/_custom_type_script = "uid://cohj448giry3f"
