@@ -23,18 +23,20 @@ func _on_buy_button_pressed(buyable: OMM_Buyable):
 	if buyable.cost <= score_resource._score:
 		if buyable is OMM_ItemDefinition and !buyable.is_unlocked:
 			buyable.is_unlocked = true
-			score_resource.increment_score(-buyable.cost)
+			score_resource.decrement_score(buyable.cost)
 			purchase_made = true
 		if buyable is OMM_UpgradeDefintion:
 			match buyable.UPGRADE_TYPES:
 				OMM_UpgradeDefintion.UPGRADE_TYPES.SPEED:
+					score_resource.decrement_score(buyable.cost)
 					purchase_made = true
 				OMM_UpgradeDefintion.UPGRADE_TYPES.MINE:
+					score_resource.decrement_score(buyable.cost)
 					purchase_made = true
 				OMM_UpgradeDefintion.UPGRADE_TYPES.JUMP:
+					score_resource.decrement_score(buyable.cost)
 					purchase_made = true
 	if purchase_made:
 		buy_sound.play()
 	else:
 		not_enough_gold_sound.play()
-		print("cant buy")
