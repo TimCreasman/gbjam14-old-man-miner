@@ -1,6 +1,5 @@
-class_name OMM_GenerationComponent
-extends Node
-signal changed(new_value)
+class_name OMM_GenerationResource
+extends Resource
 var generation = 1
 
 func increment_generation():
