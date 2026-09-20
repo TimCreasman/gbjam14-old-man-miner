@@ -10,16 +10,32 @@
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="7_5nb03"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="7_yjmwy"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
+[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="10_qj0xg"]
 [ext_resource type="PackedScene" uid="uid://b82a52ea3c6ce" path="res://src/gameplay/interactables/shop.tscn" id="11_7opv2"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_sr17e"]
-[ext_resource type="PackedScene" uid="uid://bxl2ko754m7ej" path="res://src/ui/hud/hud.tscn" id="12_tyryd"]
-[ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
-[ext_resource type="Script" uid="uid://bqd0ldayf20wh" path="res://src/core/components/max_depth_reached_component.gd" id="19_htxff"]
-[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="20_v252j"]
+[ext_resource type="Script" uid="uid://2snaqpav0at1" path="res://src/ui/hud/died_message.gd" id="13_lcp4o"]
+[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/score_resource.tres" id="14_am227"]
+[ext_resource type="Script" uid="uid://sp52lrdyknle" path="res://src/ui/hud/amount_label.gd" id="14_qsm7c"]
+[ext_resource type="Script" uid="uid://b0tbpieyw0gw1" path="res://src/ui/hud/current_item_panel.gd" id="14_yk6rd"]
+[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="15_htxff"]
+[ext_resource type="Script" uid="uid://cwrp6vmtltp0d" path="res://src/core/components/age_component.gd" id="17_lcp4o"]
+[ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/debug/shop_menu.gd" id="17_tx8mq"]
+[ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/bomb_definition.tres" id="18_am227"]
+[ext_resource type="Resource" uid="uid://6lys5lpocnpe" path="res://src/resources/dash_definition.tres" id="19_7opv2"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="19_h8ax2"]
+[ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/midas_definition.tres" id="20_h8ax2"]
+[ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="21_7opv2"]
 [ext_resource type="Script" uid="uid://ce0pxsf6m2jd4" path="res://src/debug/music_manager.gd" id="23_jirt8"]
+[ext_resource type="Script" path="res://src/core/components/score_resource.gd" id="23_n157j"]
 [ext_resource type="AudioStream" uid="uid://lnbmasstkgox" path="res://assets/audio/music/Shop.wav" id="24_dso5o"]
+[ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="24_r0lsc"]
 [ext_resource type="AudioStream" uid="uid://b8l2vg5rt026g" path="res://assets/audio/music/Hub.wav" id="25_gjsjt"]
 [ext_resource type="AudioStream" uid="uid://rdffwp8m2dmy" path="res://assets/audio/music/Main Theme.wav" id="25_h8ax2"]
+[ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="25_n157j"]
+
+[sub_resource type="Resource" id="Resource_jirt8"]
+script = ExtResource("23_n157j")
+metadata/_custom_type_script = "uid://pix2oapfihac"
 
 [node name="Game2" type="Node" unique_id=1274922351 node_paths=PackedStringArray("pause_menu")]
 process_mode = 3
@@ -47,8 +63,9 @@ follow_node = NodePath("../Player")
 
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
-[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("item_container", "world_generator") instance=ExtResource("7_5nb03")]
+[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("age_component", "item_container", "world_generator") instance=ExtResource("7_5nb03")]
 position = Vector2(80, -20)
+age_component = NodePath("../../../Systems/OMM_AgeComponent")
 item_container = NodePath("../ItemContainer")
 world_generator = NodePath("../WorldGenerator")
 
@@ -56,7 +73,7 @@ world_generator = NodePath("../WorldGenerator")
 position = Vector2(32, -21)
 disable_mode = 2
 collision_layer = 0
-shop_menu = NodePath("../../ShopMenu")
+shop_menu = NodePath("../../ShopMenu/SubViewportContainer/SubViewport/ShopMenu")
 player = NodePath("../Player")
 music_manager = NodePath("../../../MusicManager")
 
@@ -98,9 +115,282 @@ script = ExtResource("2_b8ek1")
 input_palette = ExtResource("4_7gaau")
 output_palette = ExtResource("5_sr17e")
 
-[node name="HUD" parent="Viewport" unique_id=446722643 instance=ExtResource("12_tyryd")]
+[node name="HUD" type="CanvasLayer" parent="Viewport" unique_id=1035683140]
 
-[node name="ShopMenu" parent="Viewport" unique_id=188154621 instance=ExtResource("13_htxff")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/HUD" unique_id=1854463738]
+material = ExtResource("2_sr17e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("2_b8ek1")
+input_palette = ExtResource("4_7gaau")
+output_palette = ExtResource("5_sr17e")
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/HUD/SubViewportContainer" unique_id=39225272]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(160, 144)
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport" unique_id=707963452]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_sr17e")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=2005923689]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme = ExtResource("11_sr17e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer" unique_id=63561127]
+layout_mode = 2
+
+[node name="GoldContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1325225060]
+layout_mode = 2
+alignment = 2
+
+[node name="GoldLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=1081440667]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_qj0xg")
+theme_override_font_sizes/font_size = 8
+text = "GOLD"
+
+[node name="GoldAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/GoldContainer" unique_id=141622448]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_qj0xg")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("14_qsm7c")
+resource = ExtResource("14_am227")
+
+[node name="DepthContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=2085984537]
+layout_mode = 2
+alignment = 2
+
+[node name="DepthLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=1650333426]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_qj0xg")
+theme_override_font_sizes/font_size = 8
+text = "depth"
+
+[node name="DepthAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/DepthContainer" unique_id=621829237]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_qj0xg")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("14_qsm7c")
+
+[node name="AgeContainer" type="HBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer" unique_id=1643491241]
+layout_mode = 2
+alignment = 2
+
+[node name="AgeLabel" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=2143857136]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_qj0xg")
+theme_override_font_sizes/font_size = 8
+text = "age"
+
+[node name="AgeAmount" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/MarginContainer/VBoxContainer/AgeContainer" unique_id=1093226810]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_qj0xg")
+theme_override_font_sizes/font_size = 8
+script = ExtResource("14_qsm7c")
+
+[node name="DeathMessage" type="Control" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1404031394 node_paths=PackedStringArray("age_component")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_lcp4o")
+age_component = NodePath("../../../../../../Systems/OMM_AgeComponent")
+
+[node name="ColorRect" type="ColorRect" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1682492565]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage" unique_id=1566707419]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=896279887]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1096330182]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_fonts/font = ExtResource("10_auijp")
+text = "u ded"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer/VBoxContainer" unique_id=1227053849]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+theme_override_font_sizes/font_size = 8
+text = "press anything to 
+try again"
+horizontal_alignment = 1
+
+[node name="ItemUI" type="MarginContainer" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI" unique_id=1307777169]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/ItemUI" unique_id=1012120049 node_paths=PackedStringArray("item_texture_rect")]
+layout_mode = 2
+theme = ExtResource("11_sr17e")
+script = ExtResource("14_yk6rd")
+current_item = ExtResource("15_htxff")
+item_texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="Viewport/HUD/SubViewportContainer/SubViewport/UI/ItemUI/Panel" unique_id=8159934]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
+
+[node name="ShopMenu" type="CanvasLayer" parent="Viewport" unique_id=1229948301]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport/ShopMenu" unique_id=1763926736]
+material = ExtResource("2_sr17e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_b8ek1")
+input_palette = ExtResource("4_7gaau")
+output_palette = ExtResource("5_sr17e")
+
+[node name="SubViewport" type="SubViewport" parent="Viewport/ShopMenu/SubViewportContainer" unique_id=2065020275]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+render_target_update_mode = 4
+
+[node name="ShopMenu" type="Control" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport" unique_id=61426069 node_paths=PackedStringArray("buy_buttons", "buy_sound", "not_enough_gold_sound")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("17_tx8mq")
+buyables = Array[ExtResource("19_h8ax2")]([ExtResource("18_am227"), ExtResource("19_7opv2"), ExtResource("20_h8ax2")])
+buy_buttons = NodePath("CenterContainer/VBoxContainer/BuyButtons")
+score_resource = SubResource("Resource_jirt8")
+buy_sound = NodePath("BuySound")
+not_enough_gold_sound = NodePath("NotEnoughGoldSound")
+
+[node name="ColorRect" type="ColorRect" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu" unique_id=2059883757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu" unique_id=768246629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu/CenterContainer" unique_id=1219942490]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu/CenterContainer/VBoxContainer" unique_id=576526890]
+texture_filter = 1
+texture_repeat = 1
+material = ExtResource("2_sr17e")
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+theme_override_fonts/font = ExtResource("10_auijp")
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="BuyButtons" type="HBoxContainer" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu/CenterContainer/VBoxContainer" unique_id=1392602854]
+layout_mode = 2
+
+[node name="Leave" type="Button" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu/CenterContainer/VBoxContainer" unique_id=1333496974]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("21_7opv2")
+text = "LEAVE"
+
+[node name="BuySound" type="AudioStreamPlayer2D" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu" unique_id=1085586064]
+stream = ExtResource("24_r0lsc")
+
+[node name="NotEnoughGoldSound" type="AudioStreamPlayer2D" parent="Viewport/ShopMenu/SubViewportContainer/SubViewport/ShopMenu" unique_id=1316622442]
+stream = ExtResource("25_n157j")
 
 [node name="MusicManager" type="Node2D" parent="." unique_id=1998449071]
 script = ExtResource("23_jirt8")
@@ -120,7 +410,5 @@ stream = ExtResource("24_dso5o")
 script = ExtResource("7_yjmwy")
 metadata/_custom_type_script = "uid://g75t136olir6"
 
-[node name="OMM_MaxDepthReachedComponent" type="Node" parent="Systems" unique_id=137415430]
-script = ExtResource("19_htxff")
-player_coordinate = ExtResource("20_v252j")
-metadata/_custom_type_script = "uid://bqd0ldayf20wh"
+[node name="OMM_AgeComponent" type="Node" parent="Systems" unique_id=880571301]
+script = ExtResource("17_lcp4o")
