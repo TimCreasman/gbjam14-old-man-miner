@@ -30,7 +30,7 @@ func _reset():
 
 var _age := 0:
 	set(value):
-		if value >= ages[ages.size() - 1]:
+		if value >= ages[ages.size() - 1] && StateManager.current_state != StateManager.STATE.WIN:
 			died.emit()
 
 		if _age != value:

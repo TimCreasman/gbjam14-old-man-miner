@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dahtenw73jrvt"]
+
+[ext_resource type="Texture2D" uid="uid://d0jc1gduj0ww2" path="res://assets/art/sprites/player/miner.png" id="1_pajs0"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1234786695]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_pajs0")
+hframes = 6

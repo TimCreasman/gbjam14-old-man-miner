@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -200.0
 
 @export var age_component: OMM_AgeResource
 @export var item_container: Node2D
+@export var death_container: Node2D
 @export var world_generator: OMM_WorldGenerator
 @export var spawn_point: Node2D
 
@@ -18,6 +19,7 @@ const JUMP_VELOCITY = -200.0
 @export var midas_timer: Timer
 
 @export var mining_component: OMM_MiningComponent
+@export var death_component: OMM_DeathComponent
 
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate
@@ -40,6 +42,8 @@ func _ready():
 	old_timer.timeout.connect(age_component.increment_age)
 	dash_timer.timeout.connect(stop_dashing)
 	midas_timer.timeout.connect(stop_midas_touch)
+
+	death_component.set_up(death_container, age_component)
 
 func _on_restarted():
 	position = spawn_point.position
@@ -85,11 +89,12 @@ func handle_jump():
 		velocity.y = JUMP_VELOCITY
 
 func on_aged(age: OMM_AgeResource.AGES):
+	if age > sprite.hframes:
+		return
 	sprite.frame = age
 
 func on_died():
 	old_timer.stop()
-	z_index = 100
 
 func pickup(item_definition: OMM_ItemDefinition):
 	current_item.definition = item_definition

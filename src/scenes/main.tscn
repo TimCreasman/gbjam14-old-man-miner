@@ -51,12 +51,15 @@ follow_node = NodePath("../Player")
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 position = Vector2(0, 144)
 
+[node name="DeathContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=992368805]
+
 [node name="SpawnPoint" type="Node2D" parent="Viewport/SubViewport" unique_id=1684506461]
 position = Vector2(98, 123)
 
-[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("item_container", "world_generator", "spawn_point") instance=ExtResource("7_5nb03")]
+[node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("item_container", "death_container", "world_generator", "spawn_point") instance=ExtResource("7_5nb03")]
 position = Vector2(98, 123)
 item_container = NodePath("../ItemContainer")
+death_container = NodePath("../DeathContainer")
 world_generator = NodePath("../WorldGenerator")
 spawn_point = NodePath("../SpawnPoint")
 

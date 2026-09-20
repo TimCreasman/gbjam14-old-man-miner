@@ -51,4 +51,3 @@ func generate(global_pos: Vector2i):
 			structure_scene.position = global_pos
 			structure_scene.name = structure_name
 			_spawn_container.add_child(structure_scene)
-			print("spawning %s" % i)
