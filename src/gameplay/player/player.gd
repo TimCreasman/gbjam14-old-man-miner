@@ -21,7 +21,7 @@ const JUMP_VELOCITY = -200.0
 
 @export var mining_component: OMM_MiningComponent
 @export var death_component: OMM_DeathComponent
-@export var generation_component: OMM_GenerationResource
+@export var generation_resource: OMM_GenerationResource
 
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate

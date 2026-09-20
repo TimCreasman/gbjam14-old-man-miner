@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="OMM_GenerationComponent" format=3 uid="uid://c2lauste7l43o"]
+[gd_resource type="Resource" script_class="OMM_GenerationResource" format=3 uid="uid://c2lauste7l43o"]
 
-[ext_resource type="Script" uid="uid://bwfwdjthw7f3a" path="res://src/core/components/generation_resource.gd" id="1_d62x0"]
+[ext_resource type="Script" uid="uid://bctmn5v2s6g10" path="res://src/core/components/generation_resource.gd" id="1_d62x0"]
 
 [resource]
 script = ExtResource("1_d62x0")
