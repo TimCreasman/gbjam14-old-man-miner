@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -200.0
 @export var death_container: Node2D
 @export var world_generator: OMM_WorldGenerator
 @export var spawn_point: Node2D
-
+@export var generation_component: OMM_GenerationResource
 @export_category("Internal Components")
 @export var sprite: Sprite2D
 @export var old_timer: Timer
@@ -17,6 +17,7 @@ const JUMP_VELOCITY = -200.0
 @export var dash_area: Area2D
 @export var midas_area: Area2D
 @export var midas_timer: Timer
+
 
 @export var mining_component: OMM_MiningComponent
 @export var death_component: OMM_DeathComponent
