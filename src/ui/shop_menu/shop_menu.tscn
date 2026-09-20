@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ddcmuwh2sd4tr" path="res://src/ui/shop_menu/shop_menu.gd" id="6_3abm2"]
 [ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="7_slot5"]
 [ext_resource type="Resource" uid="uid://c1o384t5a750w" path="res://src/resources/item_definitions/bomb_definition.tres" id="8_abowv"]
-[ext_resource type="Resource" uid="uid://bns3oom2uguki" path="res://src/resources/upgrade_defintition/mine_up.tres" id="9_bnu6r"]
+[ext_resource type="Resource" uid="uid://088wupevtfyj" path="res://src/resources/upgrade_defintition/mine_up.tres" id="9_4evt0"]
 [ext_resource type="Resource" uid="uid://6lys5lpocnpe" path="res://src/resources/item_definitions/dash_definition.tres" id="9_odc3c"]
 [ext_resource type="Resource" uid="uid://cmcv71apbpf70" path="res://src/resources/item_definitions/midas_definition.tres" id="11_5kyyw"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="11_ih0lp"]
@@ -17,7 +17,6 @@
 [ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="14_abowv"]
 [ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_defintition/upgrade_defintion.gd" id="14_odc3c"]
 [ext_resource type="AudioStream" uid="uid://btf7v56u81g44" path="res://assets/audio/sfx/Gold.wav" id="15_4evt0"]
-[ext_resource type="Resource" uid="uid://duc164g3yi18p" path="res://src/resources/upgrade_defintition/jump_up.tres" id="15_cp0ni"]
 [ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="16_3abm2"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="17_abowv"]
 
@@ -54,8 +53,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("5_4evt0")
 script = ExtResource("6_3abm2")
-upgrades = Array[ExtResource("14_odc3c")]([ExtResource("9_bnu6r")])
-items = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("11_5kyyw"), ExtResource("9_odc3c")])
+upgrades = Array[ExtResource("14_odc3c")]([ExtResource("9_4evt0")])
+items = Array[ExtResource("7_slot5")]([ExtResource("8_abowv"), ExtResource("9_odc3c"), ExtResource("11_5kyyw")])
 buy_upgrade_buttons = NodePath("CenterContainer/VBoxContainer/UpgradeContainer")
 item_upgrade_buttons = NodePath("CenterContainer/VBoxContainer/ItemContainer")
 score_resource = ExtResource("14_abowv")
@@ -121,7 +120,6 @@ horizontal_alignment = 1
 [node name="UpgradeContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1893214308]
 layout_mode = 2
 mouse_filter = 2
-columns = 3
 
 [node name="Leave" type="Button" parent="SubViewportContainer/SubViewport/UI/CenterContainer/VBoxContainer" unique_id=1538497323]
 unique_name_in_owner = true
