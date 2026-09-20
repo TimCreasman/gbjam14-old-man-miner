@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://ccjh7o7nojkxo" path="res://src/ui/menu.gd" id="2_gctki"]
 [ext_resource type="AudioStream" uid="uid://crnlfretcxwbw" path="res://assets/audio/music/Title.wav" id="3_a750j"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="3_eoavt"]
-[ext_resource type="Script" path="res://src/ui/OMM_keyboard.gd" id="3_shm1j"]
+[ext_resource type="Script" uid="uid://dw2s0net6bpp2" path="res://src/ui/OMM_keyboard.gd" id="3_shm1j"]
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="3_y7a7n"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_g5sub"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="6_adtws"]

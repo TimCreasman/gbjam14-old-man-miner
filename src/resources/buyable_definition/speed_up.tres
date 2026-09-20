@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OMM_Buyable" format=3 uid="uid://bd4pu401gerld"]
+
+[ext_resource type="Script" uid="uid://b752oug8vxds5" path="res://src/resources/buyable_definition/buyable_definition.gd" id="1_wjdqo"]
+
+[resource]
+script = ExtResource("1_wjdqo")
+cost = 10
+metadata/_custom_type_script = "uid://b752oug8vxds5"
