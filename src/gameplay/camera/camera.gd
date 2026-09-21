@@ -20,5 +20,5 @@ func _on_coordinate_change(coordinate: Vector2i):
 	if offset == Vector2.ZERO:
 		return
 
-	if coordinate.y > 40:
+	if coordinate.y > 144:
 		offset = Vector2.ZERO
