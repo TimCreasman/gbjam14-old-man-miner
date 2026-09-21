@@ -7,7 +7,6 @@ extends Node2D
 signal exploded()
 
 func explode(death_reason: OMM_AgeResource.DEATH_REASON = OMM_AgeResource.DEATH_REASON.EXPLOSION) -> void:
-	print(explosion_area.get_overlapping_bodies().size())
 	for body in explosion_area.get_overlapping_bodies():
 
 		if body.has_method("do_kill"):

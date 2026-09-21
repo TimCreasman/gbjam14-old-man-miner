@@ -30,6 +30,8 @@
 # In progress
 
 # Roadmap to the end
+- [ ] Fix structure generation
+
 - [ ] Remove default gold
 - [ ] Have fountain be first system unlocked
 

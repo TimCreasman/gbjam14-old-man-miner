@@ -11,7 +11,6 @@ func _ready() -> void:
 func open() -> void:
 	visible = true
 	is_open = true
-	print(buttons)
 	if buttons.size() > 0: 
 		buttons.values()[0].grab_focus()
 	

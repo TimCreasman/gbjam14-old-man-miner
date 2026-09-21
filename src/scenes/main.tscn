@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://src/gameplay/camera/camera.tscn" id="4_bvr34"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="5_sr17e"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/terrain/cave_generation.tscn" id="5_srulj"]
+[ext_resource type="Texture2D" uid="uid://dupqcjhemt5v1" path="res://assets/art/sprites/arrow.png" id="6_tyryd"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="7_5nb03"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="7_yjmwy"]
 [ext_resource type="PackedScene" uid="uid://dlhoibbija0ok" path="res://src/terrain/platform.tscn" id="9_v252j"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
 [ext_resource type="PackedScene" uid="uid://b82a52ea3c6ce" path="res://src/gameplay/interactables/shop.tscn" id="11_7opv2"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_sr17e"]
+[ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="12_j04uq"]
 [ext_resource type="Script" uid="uid://cwrflbaxd2ay8" path="res://src/ui/name_label.gd" id="12_n75dp"]
 [ext_resource type="PackedScene" uid="uid://bxl2ko754m7ej" path="res://src/ui/hud/hud.tscn" id="12_tyryd"]
 [ext_resource type="PackedScene" uid="uid://d3f1n5iemoan3" path="res://src/ui/shop_menu/shop_menu.tscn" id="13_htxff"]
@@ -45,17 +47,22 @@ audio_listener_enable_2d = true
 size = Vector2i(160, 144)
 render_target_update_mode = 4
 
+[node name="Sprite2D" type="Sprite2D" parent="Viewport/SubViewport" unique_id=412368693]
+position = Vector2(153, 35)
+texture = ExtResource("6_tyryd")
+
 [node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("4_bvr34")]
 position = Vector2(0, 144)
 follow_node = NodePath("../Player")
+coordinate_component = ExtResource("20_v252j")
 
 [node name="DeathContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=992368805]
 
 [node name="SpawnPoint" type="Node2D" parent="Viewport/SubViewport" unique_id=1684506461]
-position = Vector2(98, 123)
+position = Vector2(101, 38)
 
 [node name="Player" parent="Viewport/SubViewport" unique_id=1488697836 node_paths=PackedStringArray("item_container", "death_container", "world_generator", "spawn_point") instance=ExtResource("7_5nb03")]
-position = Vector2(98, 123)
+position = Vector2(101, 38)
 item_container = NodePath("../ItemContainer")
 death_container = NodePath("../DeathContainer")
 world_generator = NodePath("../WorldGenerator")
@@ -66,35 +73,39 @@ spawn_point = NodePath("../SpawnPoint")
 [node name="ItemContainer" type="Node2D" parent="Viewport/SubViewport" unique_id=1311332670]
 
 [node name="Shop" parent="Viewport/SubViewport" unique_id=1161904382 node_paths=PackedStringArray("shop_menu", "player") instance=ExtResource("11_7opv2")]
-position = Vector2(29, 128)
+position = Vector2(5, 43)
 shop_menu = NodePath("../../ShopMenu")
 player = NodePath("../Player")
 
 [node name="Platform" parent="Viewport/SubViewport" unique_id=35432797 instance=ExtResource("9_v252j")]
-position = Vector2(74, 136)
+position = Vector2(77, 51)
 
 [node name="Control" type="Control" parent="Viewport/SubViewport" unique_id=2071779767]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_top = -19.0
+offset_bottom = -19.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Viewport/SubViewport/Control" unique_id=1520274781]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -7.5
+offset_right = 26.0
+offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Viewport/SubViewport/Control/CenterContainer" unique_id=258948925]
 layout_mode = 2
 theme = ExtResource("11_sr17e")
-theme_override_fonts/font = ExtResource("10_auijp")
-text = "Go forth and mine 
-"
+theme_override_fonts/font = ExtResource("12_j04uq")
+theme_override_font_sizes/font_size = 7
+text = "Go forth and mine "
 script = ExtResource("12_n75dp")
 generation_resource = ExtResource("14_qsm7c")
 

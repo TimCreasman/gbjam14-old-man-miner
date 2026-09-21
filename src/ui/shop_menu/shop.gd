@@ -39,7 +39,8 @@ func close():
 	sprite.frame = 1
 
 func open():
-	area_2d.body_entered.connect(on_body_entered)
+	if !area_2d.body_entered.is_connected(on_body_entered):
+		area_2d.body_entered.connect(on_body_entered)
 	sprite.frame = 0
 
 func _on_state_changed(new_state, _old_state) -> void:
