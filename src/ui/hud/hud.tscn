@@ -195,7 +195,7 @@ layout_mode = 2
 [node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/UI/DeathMessage/CenterContainer" unique_id=1494940126]
 layout_mode = 2
 
-[node name="WinMessage" type="Control" parent="SubViewportContainer/SubViewport/UI" unique_id=187543218]
+[node name="WinMessage" type="Control" parent="SubViewportContainer/SubViewport/UI" unique_id=187543218 node_paths=PackedStringArray("victory_timer")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -205,6 +205,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("13_v4dvs")
+victory_timer = NodePath("VictoryTimer")
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/UI/WinMessage" unique_id=1194312515]
 layout_mode = 1
@@ -239,6 +240,9 @@ theme_override_font_sizes/font_size = 8
 text = "you made it to 
 the bottom"
 horizontal_alignment = 1
+
+[node name="VictoryTimer" type="Timer" parent="SubViewportContainer/SubViewport/UI/WinMessage" unique_id=796425865]
+wait_time = 5.0
 
 [node name="ItemUI" type="MarginContainer" parent="SubViewportContainer/SubViewport/UI" unique_id=1050670838]
 custom_minimum_size = Vector2(20, 20)
