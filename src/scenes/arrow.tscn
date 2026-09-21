@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dtjhi3dob3mpw"]
+
+[ext_resource type="Texture2D" uid="uid://dupqcjhemt5v1" path="res://assets/art/sprites/arrow.png" id="1_mu5ly"]
+
+[sub_resource type="Animation" id="Animation_bs4rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ot0rj"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 2.0, 4.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ng3e6"]
+_data = {
+&"RESET": SubResource("Animation_bs4rt"),
+&"move": SubResource("Animation_ot0rj")
+}
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1027695013]
+texture = ExtResource("1_mu5ly")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=277756820]
+libraries/ = SubResource("AnimationLibrary_ng3e6")

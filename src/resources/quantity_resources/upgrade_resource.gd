@@ -10,14 +10,11 @@ signal upgrade_finished()
 func upgrade_stat():
 	# TODO this math will only approach the starting value but never get there
 	var step := (ending_value - starting_value) / steps
-	print(step)
 
 	if is_upgrade_finished(step):
 		return
 
-	print(starting_value)
 	starting_value += step
-	print(starting_value)
 
 	if is_upgrade_finished(step):
 		upgrade_finished.emit()

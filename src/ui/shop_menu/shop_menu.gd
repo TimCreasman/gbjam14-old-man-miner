@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func create_button(buyable: OMM_Buyable) -> Button:
 	var button = Button.new()
-	button.text = str(buyable.cost)
+	button.text = "$" + str(buyable.cost)
 	button.icon = buyable.texture
 	button.pressed.connect(_on_buy_button_pressed.bind(buyable, button))
 

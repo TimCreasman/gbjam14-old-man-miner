@@ -11,7 +11,6 @@ func _ready() -> void:
 			child.pressed.connect(_on_button_pressed.bind(child))
 		if child is LineEdit:
 			entry_box = child
-			print(entry_box)
 	
 func _on_button_pressed(button: Button) -> void:
 	if button.text == "<":

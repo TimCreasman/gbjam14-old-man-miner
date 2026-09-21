@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_g5sub"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="6_adtws"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://UI.tres" id="6_damdu"]
+[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/world/tiles/tile.tscn" id="10_y7a7n"]
 [ext_resource type="StyleBox" uid="uid://deesfixrsgr1j" path="res://src/ui/style_box_flat.tres" id="11_8jlty"]
 
 [node name="Title" type="SubViewportContainer" unique_id=122588369]
@@ -66,7 +67,6 @@ mouse_filter = 2
 script = ExtResource("2_a750j")
 
 [node name="MainMenu" type="CenterContainer" parent="SubViewport/UI/MenuManager" unique_id=1583333976]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_gctki")
@@ -100,7 +100,104 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="Node2D2" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1157843804 instance=ExtResource("10_y7a7n")]
+position = Vector2(-44, -31)
+
+[node name="Node2D3" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1890058829 instance=ExtResource("10_y7a7n")]
+position = Vector2(-34, -31)
+
+[node name="Node2D4" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1997652330 instance=ExtResource("10_y7a7n")]
+position = Vector2(-24, -31)
+
+[node name="Node2D5" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1656060997 instance=ExtResource("10_y7a7n")]
+position = Vector2(-14, -31)
+
+[node name="Node2D6" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=427738957 instance=ExtResource("10_y7a7n")]
+position = Vector2(-4, -31)
+
+[node name="Node2D7" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=103131246 instance=ExtResource("10_y7a7n")]
+position = Vector2(6, -31)
+
+[node name="Node2D8" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=19425064 instance=ExtResource("10_y7a7n")]
+position = Vector2(16, -31)
+
+[node name="Node2D9" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1664315078 instance=ExtResource("10_y7a7n")]
+position = Vector2(26, -31)
+
+[node name="Node2D10" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=715665926 instance=ExtResource("10_y7a7n")]
+position = Vector2(36, -31)
+
+[node name="Node2D11" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1918119649 instance=ExtResource("10_y7a7n")]
+position = Vector2(46, -31)
+
+[node name="Node2D12" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=416360554 instance=ExtResource("10_y7a7n")]
+position = Vector2(56, -31)
+
+[node name="Node2D13" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1224285303 instance=ExtResource("10_y7a7n")]
+position = Vector2(66, -31)
+
+[node name="Node2D14" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=520696814 instance=ExtResource("10_y7a7n")]
+position = Vector2(76, -31)
+
+[node name="Node2D15" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1196368501 instance=ExtResource("10_y7a7n")]
+position = Vector2(86, -31)
+
+[node name="Node2D16" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1315702437 instance=ExtResource("10_y7a7n")]
+position = Vector2(96, -31)
+
+[node name="Node2D17" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=147403973 instance=ExtResource("10_y7a7n")]
+position = Vector2(106, -31)
+
+[node name="Node2D18" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1188660629 instance=ExtResource("10_y7a7n")]
+position = Vector2(-44, 103)
+
+[node name="Node2D19" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1588344952 instance=ExtResource("10_y7a7n")]
+position = Vector2(-34, 103)
+
+[node name="Node2D20" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=334579052 instance=ExtResource("10_y7a7n")]
+position = Vector2(-24, 103)
+
+[node name="Node2D21" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=60081816 instance=ExtResource("10_y7a7n")]
+position = Vector2(-14, 103)
+
+[node name="Node2D22" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=215884413 instance=ExtResource("10_y7a7n")]
+position = Vector2(-4, 103)
+
+[node name="Node2D23" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=268405144 instance=ExtResource("10_y7a7n")]
+position = Vector2(6, 103)
+
+[node name="Node2D24" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1633282363 instance=ExtResource("10_y7a7n")]
+position = Vector2(16, 103)
+
+[node name="Node2D25" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=189046213 instance=ExtResource("10_y7a7n")]
+position = Vector2(26, 103)
+
+[node name="Node2D26" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1571462984 instance=ExtResource("10_y7a7n")]
+position = Vector2(36, 103)
+
+[node name="Node2D27" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1720522232 instance=ExtResource("10_y7a7n")]
+position = Vector2(46, 103)
+
+[node name="Node2D28" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1470432322 instance=ExtResource("10_y7a7n")]
+position = Vector2(56, 103)
+
+[node name="Node2D29" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=202164736 instance=ExtResource("10_y7a7n")]
+position = Vector2(66, 103)
+
+[node name="Node2D30" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1083035385 instance=ExtResource("10_y7a7n")]
+position = Vector2(76, 103)
+
+[node name="Node2D31" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=950624424 instance=ExtResource("10_y7a7n")]
+position = Vector2(86, 103)
+
+[node name="Node2D32" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=1627511161 instance=ExtResource("10_y7a7n")]
+position = Vector2(96, 103)
+
+[node name="Node2D33" parent="SubViewport/UI/MenuManager/MainMenu" unique_id=896578541 instance=ExtResource("10_y7a7n")]
+position = Vector2(106, 103)
+
 [node name="NameMenu" type="CenterContainer" parent="SubViewport/UI/MenuManager" unique_id=1991112592]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 use_top_left = true
@@ -109,6 +206,10 @@ script = ExtResource("2_gctki")
 [node name="VBoxContainer2" type="VBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu" unique_id=1524082759]
 layout_mode = 2
 mouse_filter = 2
+
+[node name="Label" type="Label" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2" unique_id=1954506979]
+layout_mode = 2
+text = "Name your miner"
 
 [node name="Keyboard" type="VBoxContainer" parent="SubViewport/UI/MenuManager/NameMenu/VBoxContainer2" unique_id=1809688236]
 layout_mode = 2
