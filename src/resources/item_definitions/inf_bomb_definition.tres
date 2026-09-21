@@ -7,6 +7,6 @@
 script = ExtResource("1_g0f6s")
 is_unlocked = null
 rarity = 0.1
-cost = 50
+cost = 250
 texture = ExtResource("2_g0f6s")
 metadata/_custom_type_script = "uid://cohj448giry3f"

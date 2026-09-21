@@ -13,7 +13,7 @@ sprite = NodePath("Sprite2D")
 area_2d = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1061096533]
-position = Vector2(20, -20)
+position = Vector2(20, -23)
 texture = ExtResource("2_1nyts")
 hframes = 2
 
