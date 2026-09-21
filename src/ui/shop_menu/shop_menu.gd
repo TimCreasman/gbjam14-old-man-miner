@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	for buyable in items:
 		item_upgrade_buttons.add_child(create_button(buyable))
+
 	super()
 
 # func _on_upgrade_finished(button: Button):

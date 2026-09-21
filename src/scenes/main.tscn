@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/terrain/cave_generation.tscn" id="5_srulj"]
 [ext_resource type="Texture2D" uid="uid://dupqcjhemt5v1" path="res://assets/art/sprites/arrow.png" id="6_tyryd"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="7_5nb03"]
+[ext_resource type="Script" uid="uid://c2rd007qby0ur" path="res://src/scenes/arrow.gd" id="7_tx8mq"]
 [ext_resource type="Script" uid="uid://g75t136olir6" path="res://src/core/components/depth_component.gd" id="7_yjmwy"]
 [ext_resource type="PackedScene" uid="uid://dlhoibbija0ok" path="res://src/terrain/platform.tscn" id="9_v252j"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
@@ -50,6 +51,7 @@ render_target_update_mode = 4
 [node name="Sprite2D" type="Sprite2D" parent="Viewport/SubViewport" unique_id=412368693]
 position = Vector2(153, 35)
 texture = ExtResource("6_tyryd")
+script = ExtResource("7_tx8mq")
 
 [node name="Camera" parent="Viewport/SubViewport" unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("4_bvr34")]
 position = Vector2(0, 144)
