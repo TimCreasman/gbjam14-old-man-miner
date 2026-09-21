@@ -30,6 +30,10 @@ func _on_state_changed(new_state, _old_state):
 		output_palette.set_palette(level_0_palette)
 
 func _on_coordinate_changed(coordinate: Vector2i):
+	if coordinate.y == 144:
+		if !StateManager.is_state(StateManager.STATE.MINE):
+			StateManager.change_state(StateManager.STATE.MINE)
+
 	if coordinate.y == (max_depth / 2):
 		go_deeper()
 	# TODO use TILESIZS
