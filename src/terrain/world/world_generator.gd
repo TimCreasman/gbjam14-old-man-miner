@@ -28,7 +28,11 @@ func _init():
 
 func _ready():
 	player_coordinate.coordinate_changed.connect(on_coordinate_changed)
+	# player_coordinate.coordinate_changed_delta.connect(on_coordinate_changed_delta)
 	on_coordinate_changed(player_coordinate.coordinate)
+
+	# Load bounds of the screen once.
+	# _generate(expand_bounds_around(player_coordinate.coordinate))
 
 	load_cfg()
 
@@ -49,11 +53,34 @@ func expand_bounds_around(coordinate: Vector2i) -> Rect2i:
 		(HALF_SCREEN_HEIGHT + SCREEN_PADDING) * TILE_SIZE
 )
 
+func on_coordinate_changed_delta(coordinate, delta):
+	var height = 0;
+	var width = 0
+	var y = 0
+	var x = 0
+
+	if abs(delta.y) > 0:
+		height = 32
+		width = 176
+		x = -HALF_SCREEN_WIDTH * 8
+		y = 10 * delta.y - (height / 2)
+
+	if abs(delta.x) > 0:
+		width = 32
+		height = 160
+		y = -HALF_SCREEN_HEIGHT * 8
+		x = 10 * delta.x - (width / 2)
+
+	ref_rect.position = coordinate + (Vector2i(x, y))
+	ref_rect.size = Vector2i(width, height)
+
+	_generate(ref_rect.get_rect())
+
 func on_coordinate_changed(coordinate: Vector2i):
 	# pass
 	var bounds = expand_bounds_around(coordinate)
 	ref_rect.position = bounds.position
-	ref_rect.custom_minimum_size = bounds.size
+	ref_rect.size = bounds.size
 
 	_generate(bounds)
 
@@ -63,7 +90,7 @@ func _generate(generation_bounds: Rect2i):
 			if y < 144: continue
 			var pos = Vector2i(x, y)
 
-			structure_generator.generate(pos)
+			# structure_generator.generate(pos)
 			item_generator.generate(pos)
 
 			if y <= max_depth && y >= (max_depth - 10 * TILE_SIZE):

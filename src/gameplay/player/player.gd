@@ -7,7 +7,6 @@ const JUMP_VELOCITY = -200.0
 @export var age_component: OMM_AgeResource
 @export var item_container: Node2D
 @export var death_container: Node2D
-@export var world_generator: OMM_WorldGenerator
 @export var spawn_point: Node2D
 @export var generation_component: OMM_GenerationResource
 @export_category("Internal Components")
@@ -49,7 +48,8 @@ func _ready():
 	dash_timer.timeout.connect(stop_dashing)
 	midas_timer.timeout.connect(stop_midas_touch)
 
-	death_component.set_up(death_container, age_component)
+	if death_container:
+		death_component.set_up(death_container, age_component)
 
 func _on_restarted():
 	position = spawn_point.position
@@ -130,7 +130,8 @@ func handle_use_item():
 				var bomb = bomb_scene.instantiate()
 				bomb.position = position
 				bomb.apply_force(velocity*200)
-				item_container.add_child(bomb)
+				if item_container:
+					item_container.add_child(bomb)
 			OMM_ItemDefinition.ITEM_TYPES.DASH:
 				dash()
 			OMM_ItemDefinition.ITEM_TYPES.MIDAS:

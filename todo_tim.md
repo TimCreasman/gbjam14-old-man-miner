@@ -26,27 +26,25 @@
 - [x] Display name on start
 - [x] Use name as seed
 - [x] Upgrade system
+- [x] Design Miner Sprite
 
 # In progress
 
 # Roadmap to the end
-- [ ] Fix structure generation
-
-- [ ] Remove default gold
-- [ ] Have fountain be first system unlocked
+- [ ] Improve terrain generation performance
+- [ ] Rework shader design as a separate godot asset store tool
 
 # To do
 
+- [ ] Fix structure generation
 - [ ] Add health to the player
-- [ ] Create hazards
-- [ ] SFX
 - [ ] Automatic publish to itch
 - [ ] Add spikes to top / death
 - [ ] Brainstorm items
-- [ ] Design Miner Sprite
-- [ ] Konami Code BOMBS
 
-# Roadmap to full game (the completion goal will be getting to the bottom)
+
+
+# (OLD) Roadmap to full game (the completion goal will be getting to the bottom)
 
 - [ ] Add structure/interactables generation system 
 - [ ] Add depth bar (the deepest chunk will be 144)

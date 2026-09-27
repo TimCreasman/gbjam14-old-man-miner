@@ -1,5 +1,5 @@
-class_name OMM_GroundTile
-extends StaticBody2D
+class_name OMM_GroundTile 
+extends OMM_PooledStaticBody2D
 
 @export_range(0, 10, 1) var hardness = 0:
 	set(value):
@@ -16,7 +16,9 @@ extends StaticBody2D
 @export var gold_sound: AudioStreamPlayer2D
 @export var break_sound: AudioStreamPlayer2D
 @export var destroy_sound: AudioStreamPlayer2D
+
 @export var on_screen_notifier: VisibleOnScreenNotifier2D
+@export var check_on_screen_timer: Timer
 
 @export var destroyed_positions: OMM_DestroyedPositions
 
@@ -24,12 +26,12 @@ extends StaticBody2D
 
 var _is_gold: bool
 
-signal pool_me(body: OMM_GroundTile)
 signal destroyed()
 
 func _ready():
 	reset_properties({})
 	on_screen_notifier.screen_exited.connect(_on_screen_exit)
+	check_on_screen_timer.timeout.connect(_on_check_on_screen)
 
 ## Takes place of _ready since this a pooled object
 func reset_properties(properties: Dictionary):
@@ -72,7 +74,6 @@ func breaking_done():
 	if hardness == 0:
 		on_destroy()
 
-
 func turn_to_gold() -> void:
 	_is_gold = true
 	gold_sprite.visible = _is_gold
@@ -103,3 +104,7 @@ func do_damage():
 
 func _on_screen_exit():
 	pool_me.emit(self)
+
+func _on_check_on_screen():
+	if !on_screen_notifier.is_on_screen():
+		pool_me.emit(self)

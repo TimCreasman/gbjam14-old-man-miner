@@ -3,10 +3,10 @@
 [ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://src/shaders/inline.gdshader" id="1_7uvl8"]
 [ext_resource type="Script" uid="uid://bp88867fua5og" path="res://src/terrain/world/world_generator.gd" id="2_rsdux"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
-[ext_resource type="Script" uid="uid://dyr1n61a54yv8" path="res://src/terrain/item_generator.gd" id="4_27ujy"]
+[ext_resource type="Script" uid="uid://dyr1n61a54yv8" path="res://src/terrain/world/structures/item_generator.gd" id="4_27ujy"]
 [ext_resource type="Script" uid="uid://bxf6t82jxbgij" path="res://src/terrain/world/tiles/tile_generator.gd" id="5_in67t"]
 [ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/collections/destroyed_tiles.tres" id="6_7lict"]
-[ext_resource type="Script" uid="uid://bn3x17gdumh67" path="res://src/resources/object_pool.gd" id="6_nmn5o"]
+[ext_resource type="Script" uid="uid://bn3x17gdumh67" path="res://src/core/object_pooling/object_pool.gd" id="6_nmn5o"]
 [ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/collections/pickedup_items.tres" id="6_r2bs0"]
 [ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/world/noise/cave_generation_noise.tres" id="7_870o3"]
 [ext_resource type="Script" uid="uid://brpi7ye8k2q4g" path="res://src/terrain/world/structures/structure_generator.gd" id="7_rsdux"]
@@ -74,3 +74,4 @@ material = SubResource("ShaderMaterial_f5w2v")
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+editor_only = false

@@ -12,21 +12,19 @@ extends Node2D
 
 @export var structure_generator : OMM_StructureGenerator
 
-@export var tile_object_pool: Resource = preload("res://src/terrain/world/tiles/tile_pool.tres")
-
-const TILE_SIZE = 8
-const GENERATION_OFFSET = 36 * TILE_SIZE
-
-## In tiles
-const HALF_SCREEN_HEIGHT = 9
-const HALF_SCREEN_WIDTH = 10
-const SCREEN_PADDING = 0
-
+var tile_object_pool: OMM_ObjectPool 
 var max_depth: float
 
 func _ready():
-	tile_object_pool.set_object_pool_node(tile_container)
-	tile_object_pool.pre_populate_pool()
+	tile_object_pool = OMM_ObjectPool.new(18 * 20, "res://src/terrain/world/tiles/tile.tscn", 
+{
+	"name": "inactive",
+	"global_position": Vector2(0, -8),
+	"hardness": 0,
+	"indestructable": true,
+	"visible": false,
+	"process_mode": Node.PROCESS_MODE_DISABLED
+}, tile_container)
 
 	load_cfg()
 
