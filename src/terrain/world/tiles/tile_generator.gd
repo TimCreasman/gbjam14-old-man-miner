@@ -16,7 +16,7 @@ var tile_object_pool: OMM_ObjectPool
 var max_depth: float
 
 func _ready():
-	tile_object_pool = OMM_ObjectPool.new(18 * 20, "res://src/terrain/world/tiles/tile.tscn", 
+	tile_object_pool = OMM_ObjectPool.new(26 * 24, "res://src/terrain/world/tiles/tile.tscn", 
 {
 	"name": "inactive",
 	"global_position": Vector2(0, -8),

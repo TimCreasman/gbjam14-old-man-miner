@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://wrxrqmxf5tth"]
+
+[ext_resource type="Texture2D" uid="uid://descwxsauqwik" path="res://assets/art/sprites/tiles/gold.png" id="1_2rlne"]
+[ext_resource type="Texture2D" uid="uid://dqnti0oyt4p4i" path="res://assets/art/sprites/particles/glint.png" id="2_d561j"]
+
+[sub_resource type="Curve" id="Curve_xsv2n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9982547, 0.49101412), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yjbks"]
+curve = SubResource("Curve_xsv2n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fy6p4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 1)
+direction = Vector3(0, 0, 0)
+spread = 13.485
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_yjbks")
+
+[node name="Node2D" type="Node2D" unique_id=1905817560]
+
+[node name="Gold" type="Sprite2D" parent="." unique_id=548865247]
+texture_filter = 1
+texture = ExtResource("1_2rlne")
+
+[node name="GoldParticles" type="GPUParticles2D" parent="Gold" unique_id=476086091]
+amount = 2
+texture = ExtResource("2_d561j")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_fy6p4")

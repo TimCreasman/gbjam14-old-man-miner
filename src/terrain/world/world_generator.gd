@@ -6,7 +6,8 @@ extends Node2D
 @export var player_coordinate: OMM_Coordinate
 @export var ref_rect: ReferenceRect
 
-@export var tile_generator: OMM_TileGenerator
+# @export var tile_generator: OMM_TileGenerator
+@export var tile_map_generator: OMM_TileMapGenerator
 @export var structure_generator : OMM_StructureGenerator
 @export var item_generator : OMM_ItemGenerator
 
@@ -19,7 +20,7 @@ const GENERATION_OFFSET = 36 * TILE_SIZE
 ## In tiles
 const HALF_SCREEN_HEIGHT = 9
 const HALF_SCREEN_WIDTH = 10
-const SCREEN_PADDING = 3
+const SCREEN_PADDING = 0
 
 var max_depth: float
 
@@ -89,14 +90,14 @@ func _generate(generation_bounds: Rect2i):
 		for y in range(generation_bounds.position.y, generation_bounds.position.y + generation_bounds.size.y, TILE_SIZE):
 			if y < 144: continue
 			var pos = Vector2i(x, y)
-
-			# structure_generator.generate(pos)
+			tile_map_generator.generate(pos)
+			structure_generator.generate(pos)
 			item_generator.generate(pos)
 
-			if y <= max_depth && y >= (max_depth - 10 * TILE_SIZE):
-				continue
-
-			tile_generator.generate(pos)
-
-			if y >= max_depth:
-				continue
+			# if y <= max_depth && y >= (max_depth - 10 * TILE_SIZE):
+			# 	continue
+			#
+			# tile_generator.generate(pos)
+			#
+			# if y >= max_depth:
+			# 	continue

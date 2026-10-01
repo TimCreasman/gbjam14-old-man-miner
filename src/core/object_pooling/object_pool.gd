@@ -26,6 +26,7 @@ static var ACTIVE_GROUP = "active"
 func pull_from_pool(initial_properties: Dictionary = {}) -> OMM_PooledStaticBody2D:
 	var node: OMM_PooledStaticBody2D
 	if _pool.is_empty():
+		print_debug("Ran out of pooled nodes. Container count: ", _container_node.get_children().size())
 		_instantiate_node()
 
 	node = _pool.pop_back()
@@ -59,8 +60,8 @@ func _init(
 	_default_properties = default_properties
 	_default_properties.merge(_ensured_default_properties)
 
-	_populate_pool(starting_population)
 	_container_node = container_node
+	_populate_pool(starting_population)
 
 func _new_node() -> OMM_PooledStaticBody2D:
 	var node: OMM_PooledStaticBody2D = _pooled_node_scene.instantiate()

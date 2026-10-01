@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://bp88867fua5og" path="res://src/terrain/world/world_generator.gd" id="2_rsdux"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
 [ext_resource type="Script" uid="uid://dyr1n61a54yv8" path="res://src/terrain/world/structures/item_generator.gd" id="4_27ujy"]
-[ext_resource type="Script" uid="uid://bxf6t82jxbgij" path="res://src/terrain/world/tiles/tile_generator.gd" id="5_in67t"]
-[ext_resource type="Resource" uid="uid://cbydjbchuyug6" path="res://src/resources/collections/destroyed_tiles.tres" id="6_7lict"]
-[ext_resource type="Script" uid="uid://bn3x17gdumh67" path="res://src/core/object_pooling/object_pool.gd" id="6_nmn5o"]
 [ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/collections/pickedup_items.tres" id="6_r2bs0"]
 [ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/world/noise/cave_generation_noise.tres" id="7_870o3"]
 [ext_resource type="Script" uid="uid://brpi7ye8k2q4g" path="res://src/terrain/world/structures/structure_generator.gd" id="7_rsdux"]
@@ -15,6 +12,11 @@
 [ext_resource type="Resource" uid="uid://sxcp0joh846g" path="res://src/resources/structure_definitions/mine_definition.tres" id="10_ux334"]
 [ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="11_f30lk"]
 [ext_resource type="FastNoiseLite" uid="uid://crbrgw7kolv1j" path="res://src/terrain/world/noise/half_depth_noise.tres" id="14_7m5ls"]
+[ext_resource type="Material" uid="uid://l502786pv8tp" path="res://src/shaders/inline_shader.tres" id="15_b230s"]
+[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/terrain/terrain_tile_set.tres" id="15_qytrn"]
+[ext_resource type="Script" uid="uid://of8mksbs432p" path="res://src/resources/collections/destroyed_positions.gd" id="16_71tk6"]
+[ext_resource type="Script" uid="uid://bidf4vooucc7v" path="res://src/debug/tile_map_generator.gd" id="16_b230s"]
+[ext_resource type="PackedScene" uid="uid://wrxrqmxf5tth" path="res://src/terrain/world/tiles/gold.tscn" id="17_b230s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -23,23 +25,16 @@ shader_parameter/tile_size = 7.932000851769999
 shader_parameter/line_thickness = 1.0
 shader_parameter/line_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Resource" id="Resource_ux334"]
-script = ExtResource("6_nmn5o")
-metadata/_custom_type_script = "uid://bn3x17gdumh67"
+[sub_resource type="Resource" id="Resource_a3dt7"]
+script = ExtResource("16_71tk6")
+metadata/_custom_type_script = "uid://of8mksbs432p"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5w2v"]
-shader = ExtResource("1_7uvl8")
-shader_parameter/fog_color = Color(0, 0, 0, 1)
-shader_parameter/tile_size = 8.000000855
-shader_parameter/line_thickness = 1.0
-shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
-
-[node name="WorldGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("ref_rect", "tile_generator", "structure_generator", "item_generator")]
+[node name="WorldGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("ref_rect", "tile_map_generator", "structure_generator", "item_generator")]
 material = SubResource("ShaderMaterial_5nb03")
 script = ExtResource("2_rsdux")
 player_coordinate = ExtResource("3_7ecim")
 ref_rect = NodePath("ReferenceRect")
-tile_generator = NodePath("TileGenerator")
+tile_map_generator = NodePath("Tiles/TileMapGenerator")
 structure_generator = NodePath("StructureGenerator")
 item_generator = NodePath("ItemGenerator")
 
@@ -56,22 +51,18 @@ terrain_noise = ExtResource("7_870o3")
 half_depth_terrain_noise = ExtResource("14_7m5ls")
 destroyed_structures = ExtResource("11_f30lk")
 
-[node name="TileGenerator" type="Node2D" parent="." unique_id=948789447 node_paths=PackedStringArray("tile_container", "ref_rect", "structure_generator")]
-script = ExtResource("5_in67t")
-player_coordinate = ExtResource("3_7ecim")
-tile_container = NodePath("Tiles")
-destroyed_tiles = ExtResource("6_7lict")
-terrain_noise = ExtResource("7_870o3")
-half_depth_terrain_noise = ExtResource("14_7m5ls")
-ref_rect = NodePath("../ReferenceRect")
-structure_generator = NodePath("../StructureGenerator")
-tile_object_pool = SubResource("Resource_ux334")
-
-[node name="Tiles" type="CanvasGroup" parent="TileGenerator" unique_id=1224250136]
-material = SubResource("ShaderMaterial_f5w2v")
-
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1999696519]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 editor_only = false
+
+[node name="Tiles" type="CanvasGroup" parent="." unique_id=537513308]
+material = ExtResource("15_b230s")
+
+[node name="TileMapGenerator" type="TileMapLayer" parent="Tiles" unique_id=1836546335]
+tile_set = ExtResource("15_qytrn")
+script = ExtResource("16_b230s")
+terrain_noise = ExtResource("7_870o3")
+generated_tiles = SubResource("Resource_a3dt7")
+gold_tile_scene = ExtResource("17_b230s")

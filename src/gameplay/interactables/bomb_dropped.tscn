@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://vl83qwbal2o2" path="res://src/gameplay/interactables/fuse_particle_process_material.tres" id="4_pe4mc"]
 [ext_resource type="Texture2D" uid="uid://cu0vq6rtrcwax" path="res://assets/art/sprites/particles/explosion.png" id="5_xpk8j"]
 [ext_resource type="Material" uid="uid://cy221mebt8kmk" path="res://src/gameplay/interactables/explosion_particle_process_material.tres" id="6_0un4j"]
+[ext_resource type="Shape2D" uid="uid://t5a6asa1fo4g" path="res://src/gameplay/interactables/bomb_explosion_shape.tres" id="7_0un4j"]
 [ext_resource type="Script" uid="uid://ylp1qkapyf1l" path="res://src/gameplay/interactables/explode_component.gd" id="7_xpk8j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpk8j"]
@@ -68,10 +69,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mgnp"]
 radius = 3.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0wm5i"]
-resource_local_to_scene = true
-radius = 32.0
-
 [node name="BombDropped" type="RigidBody2D" unique_id=2041238797 node_paths=PackedStringArray("explode_component", "sprite", "explode_timer")]
 collision_layer = 2
 collision_mask = 2
@@ -113,9 +110,10 @@ process_material = ExtResource("6_0un4j")
 [node name="ExplosionArea" type="Area2D" parent="." unique_id=439749412]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1732977273]
-shape = SubResource("CircleShape2D_0wm5i")
+shape = ExtResource("7_0un4j")
 
 [node name="OMM_ExplodeComponent" type="Node2D" parent="." unique_id=302174746 node_paths=PackedStringArray("explosion_particles", "explosion_area")]
 script = ExtResource("7_xpk8j")
 explosion_particles = NodePath("../ExplosionParticles")
 explosion_area = NodePath("../ExplosionArea")
+explosion_shape = ExtResource("7_0un4j")

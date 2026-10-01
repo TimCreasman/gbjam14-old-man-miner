@@ -30,8 +30,13 @@
 
 # In progress
 
-# Roadmap to the end
 - [ ] Improve terrain generation performance
+  - [x] Mining for tilemap
+  - [x] Animate mining break on tilemap 
+  - [x] Particles on golden tile
+  - [x] Explosions should remove tiles
+  - [ ] Add breaking sounds back
+  - [ ] Fix structure generation offset
 - [ ] Rework shader design as a separate godot asset store tool
 
 # To do
@@ -41,7 +46,6 @@
 - [ ] Automatic publish to itch
 - [ ] Add spikes to top / death
 - [ ] Brainstorm items
-
 
 
 # (OLD) Roadmap to full game (the completion goal will be getting to the bottom)
