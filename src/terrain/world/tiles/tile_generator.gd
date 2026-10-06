@@ -4,7 +4,7 @@ extends Node2D
 @export var player_coordinate: OMM_Coordinate
 
 @export var tile_container: Node2D
-@export var destroyed_tiles: OMM_DestroyedPositions
+@export var destroyed_tiles: OMM_Positions
 
 @export var terrain_noise: OMM_TerrainNoise
 @export var half_depth_terrain_noise: OMM_TerrainNoise

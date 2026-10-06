@@ -1,4 +1,4 @@
-class_name OMM_DestroyedPositions
+class_name OMM_Positions
 extends Resource
 
 var _positions: Dictionary[String, bool] = {}

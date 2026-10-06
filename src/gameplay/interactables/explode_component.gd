@@ -8,6 +8,9 @@ extends Node2D
 signal exploded()
 
 func explode(death_reason: OMM_AgeResource.DEATH_REASON = OMM_AgeResource.DEATH_REASON.EXPLOSION) -> void:
+	# Workaround because overlapping bodies sometimes will not detect the tile map...
+	TileMapManager.get_tilemap().remove_radius(global_position, explosion_shape.radius)
+
 	for body in explosion_area.get_overlapping_bodies():
 
 		if body.has_method("do_kill"):
@@ -16,7 +19,6 @@ func explode(death_reason: OMM_AgeResource.DEATH_REASON = OMM_AgeResource.DEATH_
 		if body is OMM_TileMapGenerator:
 			body.remove_radius(global_position, explosion_shape.radius)
 			
-			# await tile.destroyed
 	if explosion_sound:
 		explosion_sound.play()
 

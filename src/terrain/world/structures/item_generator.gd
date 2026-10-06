@@ -2,7 +2,7 @@ class_name OMM_ItemGenerator
 extends Node2D
 
 @export var terrain_noise: OMM_TerrainNoise
-@export var picked_up_items: OMM_DestroyedPositions
+@export var picked_up_items: OMM_Positions
 
 var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
 

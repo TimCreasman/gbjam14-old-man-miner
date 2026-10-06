@@ -35,7 +35,7 @@
   - [x] Animate mining break on tilemap 
   - [x] Particles on golden tile
   - [x] Explosions should remove tiles
-  - [ ] Add breaking sounds back
+  - [x] Add breaking sounds back
   - [ ] Fix structure generation offset
 - [ ] Rework shader design as a separate godot asset store tool
 

@@ -11,6 +11,8 @@ extends Node2D
 @export var structure_generator : OMM_StructureGenerator
 @export var item_generator : OMM_ItemGenerator
 
+@export var generated_positions: OMM_Positions
+
 var name_resource = preload("res://src/resources/name_resource.tres")
 var terrain_noise = preload("res://src/terrain/world/noise/cave_generation_noise.tres")
 
@@ -20,7 +22,7 @@ const GENERATION_OFFSET = 36 * TILE_SIZE
 ## In tiles
 const HALF_SCREEN_HEIGHT = 9
 const HALF_SCREEN_WIDTH = 10
-const SCREEN_PADDING = 0
+const SCREEN_PADDING = 2
 
 var max_depth: float
 
@@ -31,6 +33,7 @@ func _ready():
 	player_coordinate.coordinate_changed.connect(on_coordinate_changed)
 	# player_coordinate.coordinate_changed_delta.connect(on_coordinate_changed_delta)
 	on_coordinate_changed(player_coordinate.coordinate)
+	TileMapManager.set_tilemap(tile_map_generator)
 
 	# Load bounds of the screen once.
 	# _generate(expand_bounds_around(player_coordinate.coordinate))
@@ -90,14 +93,25 @@ func _generate(generation_bounds: Rect2i):
 		for y in range(generation_bounds.position.y, generation_bounds.position.y + generation_bounds.size.y, TILE_SIZE):
 			if y < 144: continue
 			var pos = Vector2i(x, y)
-			tile_map_generator.generate(pos)
-			structure_generator.generate(pos)
-			item_generator.generate(pos)
+			if generated_positions.has_position(pos): continue
+
+			var generated = tile_map_generator.generate(pos)
+			if generated:
+				generated_positions.add_position(pos)
+
+			# Skip generating this position if a tile took its place
+			if generated: continue
+
+			generated = structure_generator.generate(pos, tile_map_generator)
+			if generated:
+				generated_positions.add_position(pos)
+
+			generated = item_generator.generate(pos)
+			if generated:
+				generated_positions.add_position(pos)
 
 			# if y <= max_depth && y >= (max_depth - 10 * TILE_SIZE):
 			# 	continue
-			#
-			# tile_generator.generate(pos)
 			#
 			# if y >= max_depth:
 			# 	continue

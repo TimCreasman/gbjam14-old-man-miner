@@ -7,7 +7,9 @@ extends Node2D
 
 var _spawn_container: Node2D = self
 
-@export var destroyed_structures: OMM_DestroyedPositions
+@export var destroyed_structures: OMM_Positions
+
+@export var generated_positions: OMM_Positions
 
 var max_depth
 
@@ -38,29 +40,25 @@ func is_space(rect: Rect2i) -> bool:
 				return false
 	return true
 
-func generate(global_pos: Vector2i):
-	if global_pos.y >= max_depth:
-		return
-	elif global_pos.y >= max_depth / 2:
-		if !half_depth_terrain_noise.is_ground(global_pos):
-			return
-	else:
-		if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)):
-			return
+func add_space(rect: Rect2i):
+	for x in range(rect.position.x, rect.position.x + rect.size.x, 8):
+		for y in range(rect.position.y, rect.position.y - rect.size.y, -8):
+			generated_positions.add_position(Vector2(x, y))
+
+## Returns true if something was generated
+func generate(global_pos: Vector2i, tile_map_layer: OMM_TileMapGenerator) -> bool:
+	if !tile_map_layer: return false
+	if global_pos.y >= max_depth: return false
+	if !tile_map_layer.is_ground_below(global_pos): return false
 	
 	for i in structures.size():
 		var structure_to_spawn = structures[i]
 
-		if destroyed_structures.has_position(global_pos):
-			continue
-
-		if !sparse_noise_at(global_pos, 1000 * i):
-			continue
+		if !sparse_noise_at(global_pos, 1000 * i): continue
 
 		var structure_rect = Rect2i(global_pos, structure_to_spawn.size * 8)
 
-		if !is_space(structure_rect):
-			continue
+		if !is_space(structure_rect): continue
 
 		var structure_name = "str" + str(global_pos).sha1_text()
 		if !_spawn_container.has_node(structure_name):
@@ -68,3 +66,9 @@ func generate(global_pos: Vector2i):
 			structure_scene.position = global_pos
 			structure_scene.name = structure_name
 			_spawn_container.add_child(structure_scene)
+
+			# mark all positions within structure rect as generated
+			add_space(structure_rect)
+
+
+	return true

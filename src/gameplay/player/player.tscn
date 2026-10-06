@@ -20,6 +20,7 @@ size = Vector2(7, 6)
 radius = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "old_timer", "dash_timer", "dash_area", "midas_area", "midas_timer", "mining_component", "death_component")]
+collision_mask = 3
 script = ExtResource("1_4flbx")
 age_component = ExtResource("2_dxsvo")
 generation_component = ExtResource("3_xdbtd")

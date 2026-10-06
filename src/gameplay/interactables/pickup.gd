@@ -2,7 +2,7 @@ class_name OMM_Pickup
 extends Node2D
 
 @export var definition: OMM_ItemDefinition
-@export var picked_up_items: OMM_DestroyedPositions
+@export var picked_up_items: OMM_Positions
 
 @export_category("Internal components")
 @export var sprite_2d: Sprite2D

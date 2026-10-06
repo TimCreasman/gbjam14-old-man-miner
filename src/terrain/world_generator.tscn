@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bp88867fua5og" path="res://src/terrain/world/world_generator.gd" id="2_rsdux"]
 [ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
 [ext_resource type="Script" uid="uid://dyr1n61a54yv8" path="res://src/terrain/world/structures/item_generator.gd" id="4_27ujy"]
+[ext_resource type="Resource" uid="uid://33j27kjs5la0" path="res://src/terrain/world/generated_positions_resource.tres" id="4_b230s"]
 [ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/collections/pickedup_items.tres" id="6_r2bs0"]
 [ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/world/noise/cave_generation_noise.tres" id="7_870o3"]
 [ext_resource type="Script" uid="uid://brpi7ye8k2q4g" path="res://src/terrain/world/structures/structure_generator.gd" id="7_rsdux"]
@@ -12,11 +13,11 @@
 [ext_resource type="Resource" uid="uid://sxcp0joh846g" path="res://src/resources/structure_definitions/mine_definition.tres" id="10_ux334"]
 [ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="11_f30lk"]
 [ext_resource type="FastNoiseLite" uid="uid://crbrgw7kolv1j" path="res://src/terrain/world/noise/half_depth_noise.tres" id="14_7m5ls"]
+[ext_resource type="Script" uid="uid://xrxqngm2lrxe" path="res://src/core/utils/debug_node.gd" id="14_71tk6"]
+[ext_resource type="PackedScene" uid="uid://bvagxnsv70hug" path="res://src/terrain/tile_map_generator.tscn" id="15_71tk6"]
 [ext_resource type="Material" uid="uid://l502786pv8tp" path="res://src/shaders/inline_shader.tres" id="15_b230s"]
-[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/terrain/terrain_tile_set.tres" id="15_qytrn"]
-[ext_resource type="Script" uid="uid://of8mksbs432p" path="res://src/resources/collections/destroyed_positions.gd" id="16_71tk6"]
-[ext_resource type="Script" uid="uid://bidf4vooucc7v" path="res://src/debug/tile_map_generator.gd" id="16_b230s"]
-[ext_resource type="PackedScene" uid="uid://wrxrqmxf5tth" path="res://src/terrain/world/tiles/gold.tscn" id="17_b230s"]
+[ext_resource type="AudioStream" uid="uid://bo2drw4nqa2jr" path="res://assets/audio/sfx/Break.wav" id="19_5dtfw"]
+[ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="20_65yut"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nb03"]
 shader = ExtResource("1_7uvl8")
@@ -25,18 +26,15 @@ shader_parameter/tile_size = 7.932000851769999
 shader_parameter/line_thickness = 1.0
 shader_parameter/line_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Resource" id="Resource_a3dt7"]
-script = ExtResource("16_71tk6")
-metadata/_custom_type_script = "uid://of8mksbs432p"
-
 [node name="WorldGenerator" type="Node2D" unique_id=747406970 node_paths=PackedStringArray("ref_rect", "tile_map_generator", "structure_generator", "item_generator")]
 material = SubResource("ShaderMaterial_5nb03")
 script = ExtResource("2_rsdux")
 player_coordinate = ExtResource("3_7ecim")
-ref_rect = NodePath("ReferenceRect")
+ref_rect = NodePath("DebugNode2D/ReferenceRect")
 tile_map_generator = NodePath("Tiles/TileMapGenerator")
 structure_generator = NodePath("StructureGenerator")
 item_generator = NodePath("ItemGenerator")
+generated_positions = ExtResource("4_b230s")
 
 [node name="ItemGenerator" type="Node2D" parent="." unique_id=914317322]
 script = ExtResource("4_27ujy")
@@ -50,8 +48,13 @@ structures = Array[ExtResource("8_27ujy")]([ExtResource("9_r2bs0"), ExtResource(
 terrain_noise = ExtResource("7_870o3")
 half_depth_terrain_noise = ExtResource("14_7m5ls")
 destroyed_structures = ExtResource("11_f30lk")
+generated_positions = ExtResource("4_b230s")
 
-[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1999696519]
+[node name="DebugNode2D" type="Node2D" parent="." unique_id=619950134]
+script = ExtResource("14_71tk6")
+metadata/_custom_type_script = "uid://xrxqngm2lrxe"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="DebugNode2D" unique_id=1999696519]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
@@ -60,9 +63,14 @@ editor_only = false
 [node name="Tiles" type="CanvasGroup" parent="." unique_id=537513308]
 material = ExtResource("15_b230s")
 
-[node name="TileMapGenerator" type="TileMapLayer" parent="Tiles" unique_id=1836546335]
-tile_set = ExtResource("15_qytrn")
-script = ExtResource("16_b230s")
-terrain_noise = ExtResource("7_870o3")
-generated_tiles = SubResource("Resource_a3dt7")
-gold_tile_scene = ExtResource("17_b230s")
+[node name="TileMapGenerator" parent="Tiles" unique_id=206538037 node_paths=PackedStringArray("break_sound", "destroy_sound") instance=ExtResource("15_71tk6")]
+half_depth_terrain_noise = ExtResource("14_7m5ls")
+break_sound = NodePath("../BreakSound")
+destroy_sound = NodePath("../DestroySound")
+
+[node name="BreakSound" type="AudioStreamPlayer2D" parent="Tiles" unique_id=525429753]
+stream = ExtResource("19_5dtfw")
+
+[node name="DestroySound" type="AudioStreamPlayer2D" parent="Tiles" unique_id=634542408]
+stream = ExtResource("20_65yut")
+volume_db = -5.0

@@ -20,8 +20,6 @@ extends OMM_PooledStaticBody2D
 @export var on_screen_notifier: VisibleOnScreenNotifier2D
 @export var check_on_screen_timer: Timer
 
-@export var destroyed_positions: OMM_DestroyedPositions
-
 @export var score_resource: OMM_ScoreResource
 
 var _is_gold: bool
@@ -39,7 +37,7 @@ func reset_properties(properties: Dictionary):
 		set(key, properties[key])
 
 	_is_gold = hardness >= 9
-	gold_sprite.visible = _is_gold
+	
 	update_hardness_sprite()
 
 	# Reset signal connections
@@ -87,8 +85,6 @@ func on_destroy():
 		score_resource.increment_score()
 		gold_sound.play()
 		await gold_sound.finished
-
-	destroyed_positions.add_position(global_position)
 
 	pool_me.emit(self)
 	destroyed.emit()
