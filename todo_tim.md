@@ -26,27 +26,30 @@
 - [x] Display name on start
 - [x] Use name as seed
 - [x] Upgrade system
+- [x] Design Miner Sprite
+- [x] Improve terrain generation performance
+  - [x] Mining for tilemap
+  - [x] Animate mining break on tilemap 
+  - [x] Particles on golden tile
+  - [x] Explosions should remove tiles
+  - [x] Add breaking sounds back
+  - [x] Fix structure generation offset
 
 # In progress
+- [ ] Get midas touch and dash working again
 
-# Roadmap to the end
-- [ ] Fix structure generation
-
-- [ ] Remove default gold
-- [ ] Have fountain be first system unlocked
+- [ ] Rework shader design as a separate godot asset store tool
 
 # To do
 
+- [ ] Fix structure generation
 - [ ] Add health to the player
-- [ ] Create hazards
-- [ ] SFX
 - [ ] Automatic publish to itch
 - [ ] Add spikes to top / death
 - [ ] Brainstorm items
-- [ ] Design Miner Sprite
-- [ ] Konami Code BOMBS
 
-# Roadmap to full game (the completion goal will be getting to the bottom)
+
+# (OLD) Roadmap to full game (the completion goal will be getting to the bottom)
 
 - [ ] Add structure/interactables generation system 
 - [ ] Add depth bar (the deepest chunk will be 144)

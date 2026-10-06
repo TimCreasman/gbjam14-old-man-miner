@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://4gusw4x816ki"]
+
+[ext_resource type="Script" uid="uid://na5rja0c2fe" path="res://src/gameplay/player/dash/dash_component.gd" id="1_0cb50"]
+[ext_resource type="Texture2D" uid="uid://p4po4d6agtcx" path="res://assets/art/sprites/particles/dash.png" id="2_1ktsd"]
+[ext_resource type="Material" uid="uid://dtx8i4ljgamy7" path="res://src/gameplay/player/dash/dash_particle_process_material.tres" id="3_q5nym"]
+[ext_resource type="Script" uid="uid://dhy7gtwilwfc2" path="res://src/gameplay/player/dash/dash_particles.gd" id="4_qw727"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nem4e"]
+radius = 16.0
+
+[node name="DashComponent" type="Node2D" unique_id=1674881797 node_paths=PackedStringArray("dash_timer", "dash_particles")]
+script = ExtResource("1_0cb50")
+dash_timer = NodePath("DashTimer")
+dash_circle = SubResource("CircleShape2D_nem4e")
+dash_particles = NodePath("DashParticles2D")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=51674844]
+wait_time = 0.5
+one_shot = true
+
+[node name="DashParticles2D" type="GPUParticles2D" parent="." unique_id=678321990]
+top_level = true
+emitting = false
+amount = 100
+texture = ExtResource("2_1ktsd")
+lifetime = 0.8
+one_shot = true
+process_material = ExtResource("3_q5nym")
+script = ExtResource("4_qw727")

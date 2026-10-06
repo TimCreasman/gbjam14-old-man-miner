@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dcl7opineqkmm"]
+
+[ext_resource type="Script" uid="uid://du6w038owrjud" path="res://src/gameplay/player/mining/mining_component.gd" id="1_iq2fw"]
+[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/quantity_resources/mining_speed_stat.tres" id="2_ml8in"]
+[ext_resource type="Script" uid="uid://xrxqngm2lrxe" path="res://src/core/utils/debug_node.gd" id="3_gceto"]
+[ext_resource type="Material" uid="uid://m0c6yd3ig36l" path="res://src/gameplay/player/mining/particles/sparks.tres" id="3_lhm2k"]
+[ext_resource type="Texture2D" uid="uid://dla15p3qkuu5y" path="res://assets/art/sprites/tiles/break_animation_2.png" id="3_nd5e6"]
+[ext_resource type="Script" uid="uid://c8ohl1wcl6st4" path="res://src/gameplay/player/mining/breaking_animation.gd" id="4_nd5e6"]
+[ext_resource type="Script" uid="uid://b7wh2a7lbo7k5" path="res://src/gameplay/player/mining/particles/sparks_emitter.gd" id="7_7yhsi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yhsi"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(0, 0, 2, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tatq6"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(2, 0, 2, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k2mt"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(4, 0, 2, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52rx3"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(6, 0, 2, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nktx6"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(8, 0, 2, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h61ap"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(10, 0, 2, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww62p"]
+atlas = ExtResource("3_nd5e6")
+region = Rect2(12, 0, 2, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67p5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yhsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tatq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k2mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52rx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nktx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h61ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww62p")
+}],
+"loop": true,
+"name": &"breaking",
+"speed": 5.0
+}]
+
+[node name="MiningComponent" type="Node2D" unique_id=1122903610 node_paths=PackedStringArray("ray_cast", "debug_line", "mining_animation", "sparks_emitter", "dig_timer")]
+script = ExtResource("1_iq2fw")
+dig_speed = ExtResource("2_ml8in")
+ray_cast = NodePath("RayCast2D")
+debug_line = NodePath("DebugNode2D/DebugLine")
+mining_animation = NodePath("BreakingAnimation")
+sparks_emitter = NodePath("SparkParticles")
+dig_timer = NodePath("DigTimer")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=501099121]
+target_position = Vector2(8, 0)
+collision_mask = 2
+
+[node name="DebugNode2D" type="Node2D" parent="." unique_id=2140239318]
+script = ExtResource("3_gceto")
+metadata/_custom_type_script = "uid://xrxqngm2lrxe"
+
+[node name="DebugLine" type="Line2D" parent="DebugNode2D" unique_id=143220752]
+points = PackedVector2Array(0, 0, 8, 0)
+width = 1.0
+default_color = Color(1, 0, 1, 1)
+
+[node name="DigTimer" type="Timer" parent="." unique_id=1939996843]
+
+[node name="BreakingAnimation" type="AnimatedSprite2D" parent="." unique_id=1800574446]
+top_level = true
+z_index = 1
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_67p5l")
+animation = &"breaking"
+frame = 5
+frame_progress = 0.33576977
+speed_scale = 5.0
+script = ExtResource("4_nd5e6")
+
+[node name="SparkParticles" type="GPUParticles2D" parent="." unique_id=1271668278]
+emitting = false
+lifetime = 0.2
+process_material = ExtResource("3_lhm2k")
+script = ExtResource("7_7yhsi")

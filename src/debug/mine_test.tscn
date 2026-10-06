@@ -1,39 +1,47 @@
-[gd_scene format=3 uid="uid://dwit31okjlqmc"]
+[gd_scene format=4 uid="uid://dwit31okjlqmc"]
 
-[ext_resource type="PackedScene" uid="uid://c6ggmu5a15gnh" path="res://src/terrain/world/tiles/tile.tscn" id="1_xtxi3"]
-[ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://src/gameplay/camera/camera.tscn" id="2_3fs45"]
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="2_ltw4a"]
 [ext_resource type="PackedScene" uid="uid://cic7k5dj07okp" path="res://src/gameplay/interactables/mine.tscn" id="4_3fs45"]
+[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/terrain/terrain_tile_set.tres" id="4_rcyxn"]
+[ext_resource type="Script" uid="uid://bidf4vooucc7v" path="res://src/terrain/tile_map_generator.gd" id="5_5m4n1"]
 [ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/pickup.tscn" id="5_rcyxn"]
+[ext_resource type="AudioStream" uid="uid://bo2drw4nqa2jr" path="res://assets/audio/sfx/Break.wav" id="6_v6ecs"]
+[ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="7_q1fya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcyxn"]
+size = Vector2(53, 8)
 
 [node name="Node2D" type="Node2D" unique_id=1743279622]
 
-[node name="Camera" parent="." unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("2_3fs45")]
-position = Vector2(72, 81)
-follow_node = NodePath("../Player")
+[node name="OMM_TileMapGenerator" type="TileMapLayer" parent="." unique_id=370377830 node_paths=PackedStringArray("break_sound", "destroy_sound")]
+tile_map_data = PackedByteArray("AAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAAAAAADAAoAAAABAAAAAAADAAsAAAABAAAAAAADAAwAAAABAAAAAAADAA0AAAABAAAAAAAEAA0AAAABAAAAAAAFAA0AAAABAAAAAAAGAA0AAAABAAAAAAAHAA0AAAABAAAAAAAIAA0AAAABAAAAAAAJAA0AAAABAAAAAAAKAA0AAAABAAAAAAALAA0AAAABAAAAAAAMAA0AAAABAAAAAAANAA0AAAABAAAAAAANAAwAAAABAAAAAAANAAsAAAABAAAAAAANAAoAAAABAAAAAAANAAkAAAABAAAAAAANAAgAAAABAAAAAAADAA4AAAABAAAAAAACAA4AAAABAAAAAAACAA0AAAABAAAAAAA=")
+tile_set = ExtResource("4_rcyxn")
+script = ExtResource("5_5m4n1")
+break_sound = NodePath("../BreakSound")
+destroy_sound = NodePath("../DestroySound")
+metadata/_custom_type_script = "uid://bidf4vooucc7v"
 
 [node name="Player" parent="." unique_id=1488697836 node_paths=PackedStringArray("item_container") instance=ExtResource("2_ltw4a")]
 position = Vector2(72, 81)
 item_container = NodePath("..")
 
-[node name="Node2D2" parent="." unique_id=1157843804 instance=ExtResource("1_xtxi3")]
-position = Vector2(54, 94)
-hardness = 6
-
-[node name="Node2D3" parent="." unique_id=631976146 instance=ExtResource("1_xtxi3")]
-position = Vector2(64, 94)
-hardness = 6
-
-[node name="Node2D4" parent="." unique_id=218006328 instance=ExtResource("1_xtxi3")]
-position = Vector2(74, 94)
-hardness = 6
-
-[node name="Node2D5" parent="." unique_id=2080168146 instance=ExtResource("1_xtxi3")]
-position = Vector2(84, 94)
-hardness = 6
-
 [node name="Mine" parent="." unique_id=1082911436 instance=ExtResource("4_3fs45")]
-position = Vector2(46, 86)
+position = Vector2(46, 78)
 
 [node name="Pickup" parent="." unique_id=1075131245 instance=ExtResource("5_rcyxn")]
 position = Vector2(69, 65)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=56831644]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1739534848]
+position = Vector2(66.5, 90)
+shape = SubResource("RectangleShape2D_rcyxn")
+
+[node name="BreakSound" type="AudioStreamPlayer2D" parent="." unique_id=2005372177]
+stream = ExtResource("6_v6ecs")
+
+[node name="DestroySound" type="AudioStreamPlayer2D" parent="." unique_id=494418338]
+stream = ExtResource("7_q1fya")
+volume_db = -5.0

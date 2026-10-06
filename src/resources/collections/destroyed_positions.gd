@@ -1,11 +1,10 @@
-class_name OMM_DestroyedPositions
+class_name OMM_Positions
 extends Resource
 
-var _positions: Array[Vector2i] = []
+var _positions: Dictionary[String, bool] = {}
 
 func add_position(position: Vector2):
-	var normalized = position.snapped(Vector2(8,8))
-	_positions.append(normalized)
+	_positions.get_or_add(OMM_VectorUtils.hash_vector(position), true)
 
 func has_position(position: Vector2):
-	return _positions.has(position)
+	return _positions.has(OMM_VectorUtils.hash_vector(position))

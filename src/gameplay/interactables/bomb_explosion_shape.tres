@@ -1,0 +1,5 @@
+[gd_resource type="CircleShape2D" format=3 uid="uid://t5a6asa1fo4g"]
+
+[resource]
+resource_local_to_scene = true
+radius = 32.0

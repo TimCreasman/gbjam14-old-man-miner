@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://l502786pv8tp"]
+
+[ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://src/shaders/inline.gdshader" id="1_ivhfd"]
+
+[resource]
+shader = ExtResource("1_ivhfd")
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/tile_size = 8.000000855
+shader_parameter/line_thickness = 1.0
+shader_parameter/line_color = Color(0.64705884, 0.64705884, 0.64705884, 1)

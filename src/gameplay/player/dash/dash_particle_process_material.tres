@@ -1,0 +1,14 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://dtx8i4ljgamy7"]
+
+[sub_resource type="Curve" id="Curve_1ktsd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_777s7"]
+curve = SubResource("Curve_1ktsd")
+
+[resource]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_777s7")

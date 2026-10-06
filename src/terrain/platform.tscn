@@ -117,7 +117,7 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ht1j2")
 
 [node name="Fountain" parent="." unique_id=1493492279 instance=ExtResource("2_l77af")]
-position = Vector2(13, -8)
+position = Vector2(13, -16)
 
 [node name="Area2D" parent="Fountain" index="1" unique_id=223387806]
 monitoring = false

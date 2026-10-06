@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bebt73q0ldqqb"]
+
+[ext_resource type="Script" uid="uid://bqle53o63aok2" path="res://src/gameplay/player/midas/midas_component.gd" id="1_fv42w"]
+[ext_resource type="Texture2D" uid="uid://dqnti0oyt4p4i" path="res://assets/art/sprites/particles/glint.png" id="2_1wrj4"]
+
+[sub_resource type="Curve" id="Curve_1wrj4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c2esf"]
+curve = SubResource("Curve_1wrj4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c2esf"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 32.0
+angle_min = 1.0728835e-05
+angle_max = 90.000015
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_c2esf")
+
+[node name="MidasComponent" type="Node2D" unique_id=43842415 node_paths=PackedStringArray("midas_timer", "midas_particles")]
+script = ExtResource("1_fv42w")
+midas_timer = NodePath("Midas Timer")
+midas_particles = NodePath("GPUParticles2D")
+
+[node name="Midas Timer" type="Timer" parent="." unique_id=1607983808]
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1486603359]
+emitting = false
+amount = 100
+texture = ExtResource("2_1wrj4")
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_c2esf")

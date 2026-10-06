@@ -16,11 +16,11 @@ sprite_2d = NodePath("Sprite2D")
 area_2d = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=463033412]
-position = Vector2(4, -4)
+position = Vector2(4, 4)
 texture = ExtResource("3_o0mvt")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1028423161]
-position = Vector2(4, -4)
+position = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=298042041]
 position = Vector2(-1, 1)
