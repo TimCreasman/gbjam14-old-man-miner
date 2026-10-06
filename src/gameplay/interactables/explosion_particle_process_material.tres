@@ -10,7 +10,7 @@ curve = SubResource("Curve_7uy0p")
 [resource]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 15.87
+emission_sphere_radius = 32.0
 angle_min = -190.9
 angle_max = 245.50002
 direction = Vector3(0, 0, 0)

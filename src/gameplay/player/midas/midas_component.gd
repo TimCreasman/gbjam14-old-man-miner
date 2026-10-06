@@ -17,7 +17,6 @@ func _physics_process(_delta: float) -> void:
 		TileMapManager.get_tilemap().add_gold_tile)
 
 func start_midas() -> void:
-	print("starting midas")
 	_midas = true
 	midas_particles.emitting = true
 	midas_timer.start()

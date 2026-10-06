@@ -17,6 +17,7 @@ const directions = { &"move_left":Vector2(-1, 0), &"move_up":Vector2(0, -1), &"m
 
 func _ready():
 	dig_timer.wait_time = dig_speed.get_stat_value()
+	dig_speed.changed.connect(_on_dig_speed_changed)
 	mining_animation.hide()
 	sparks_emitter.emitting = false
 
@@ -69,3 +70,6 @@ func mine(mine_dir):
 		mining_animation.stop_breaking()
 		sparks_emitter.emitting = false
 	pass
+
+func _on_dig_speed_changed():
+	dig_timer.wait_time = dig_speed.get_stat_value()
