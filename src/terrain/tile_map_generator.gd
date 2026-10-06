@@ -43,7 +43,7 @@ func generate(tile_global_position: Vector2i) -> bool:
 		return false
 
 	set_cell(tile_map_coords, 0, Vector2i(hardness,0), 0)
-	_set_tile_custom_data(tile_map_coords, hardness)
+	_set_tile_custom_data(tile_global_position, hardness)
 	return true
 
 func is_ground_below(tile_global_position: Vector2i):
@@ -66,12 +66,15 @@ func break_tile(tile_global_position: Vector2i):
 	break_sound.play()
 
 func remove_radius(start_global_position: Vector2i, radius: int):
+	over_radius(start_global_position, radius, _remove_tile)
+
+func over_radius(start_global_position: Vector2i, radius: int, do_method: Callable):
 	for x in range(start_global_position.x - radius, start_global_position.x + radius, 8):
 		for y in range(start_global_position.y - radius, start_global_position.y + radius, 8):
 			var global_coords = Vector2i(x, y).snappedi(8)
 			if global_coords.distance_to(start_global_position) > radius:
 				continue
-			_remove_tile(global_coords)
+			do_method.call(global_coords)
 
 func _remove_tile(global_coords: Vector2i):
 	var map_coords = _global_to_map_coords(global_coords)
@@ -86,7 +89,14 @@ func _remove_tile(global_coords: Vector2i):
 
 func _set_tile_custom_data(map_coords: Vector2i, hardness: int):
 	if hardness >= 9:
-		var gold_tile = gold_tile_scene.instantiate() as Node2D
-		gold_tile.position = to_global(map_to_local(map_coords))
-		gold_tile.add_to_group(OMM_VectorUtils.hash_vector(map_coords))
-		add_child(gold_tile)
+		add_gold_tile(map_coords)
+
+func add_gold_tile(global_coords: Vector2i):
+	var map_coords = to_local(local_to_map(global_coords))
+	if get_tree().get_nodes_in_group(OMM_VectorUtils.hash_vector(map_coords)): return
+	if get_cell_source_id(map_coords) < 0: return
+
+	var gold_tile = gold_tile_scene.instantiate() as Node2D
+	gold_tile.position = to_global(map_to_local(map_coords))
+	gold_tile.add_to_group(OMM_VectorUtils.hash_vector(map_coords))
+	add_child(gold_tile)

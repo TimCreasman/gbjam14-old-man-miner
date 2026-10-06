@@ -9,24 +9,17 @@ const JUMP_VELOCITY = -200.0
 @export var death_container: Node2D
 @export var spawn_point: Node2D
 @export var generation_component: OMM_GenerationResource
-@export_category("Internal Components")
+
+@export_group("Internal Components")
 @export var sprite: Sprite2D
 @export var old_timer: Timer
-@export var dash_timer: Timer
-@export var dash_area: Area2D
-@export var midas_area: Area2D
-@export var midas_timer: Timer
-
-
 @export var mining_component: OMM_MiningComponent
+@export var midas_component: OMM_MidasComponent
+@export var dash_component: OMM_DashComponent
 @export var death_component: OMM_DeathComponent
-@export var generation_resource: OMM_GenerationResource
-
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate
 
-var dashing = false
-var has_midas = false
 var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
 var none_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/none_definition.tres")
 var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/inf_bomb_definition.tres")
@@ -36,17 +29,14 @@ var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_defini
 func _ready():
 	
 	SignalBus.restarted.connect(_on_restarted)
-
-	midas_area.body_entered.connect(on_body_entered)
+	# midas_area.body_entered.connect(on_body_entered)
 	StateManager.state_changed.connect(_on_state_changed)
 	
 	age_component.aged.connect(on_aged)
 	age_component.died.connect(on_died)
 
 	# old_timer.timeout.connect(age_component.increment_age)
-
-	dash_timer.timeout.connect(stop_dashing)
-	midas_timer.timeout.connect(stop_midas_touch)
+	# midas_timer.timeout.connect(stop_midas_touch)
 
 	if death_container:
 		death_component.set_up(death_container, age_component)
@@ -54,13 +44,8 @@ func _ready():
 func _on_restarted():
 	position = spawn_point.position
 
-func on_body_entered(body: Node2D) -> void:
-	if body is OMM_GroundTile:
-		if has_midas:
-			body.turn_to_gold()
-
 func _physics_process(delta):
-	if not is_on_floor() and !dashing:
+	if not is_on_floor() and !dash_component.is_dashing:
 		velocity += get_gravity() * delta
 
 	if !age_component.is_dead():
@@ -70,10 +55,6 @@ func _physics_process(delta):
 		handle_use_item()
 	else:
 		velocity.x = 0
-	if dashing:
-		for tile in dash_area.get_overlapping_bodies():
-			if tile is OMM_GroundTile:
-				tile.on_destroy()
 
 	move_and_slide()
 
@@ -83,8 +64,8 @@ func handle_move():
 			sprite.flip_h = direction < 0
 		if direction:
 			velocity.x = direction * SPEED
-			if dashing:
-				velocity.x = velocity.x*10
+			if dash_component.is_dashing:
+				velocity.x = velocity.x*5
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -106,23 +87,6 @@ func on_died(_died_reason):
 func pickup(item_definition: OMM_ItemDefinition):
 	current_item.definition = item_definition
 
-func dash():
-	
-	dashing = true
-	dash_timer.start()
-
-func stop_dashing():
-	dashing = false
-
-func midas_touch() -> void:
-	has_midas = true
-	midas_area.monitoring = true
-	midas_timer.start()
-
-func stop_midas_touch() -> void:
-	midas_area.monitoring = false
-	has_midas = false
-
 func handle_use_item():
 	if Input.is_action_just_pressed("use_item"):
 		match current_item.definition.type:
@@ -133,9 +97,9 @@ func handle_use_item():
 				if item_container:
 					item_container.add_child(bomb)
 			OMM_ItemDefinition.ITEM_TYPES.DASH:
-				dash()
+				dash_component.start_dash()
 			OMM_ItemDefinition.ITEM_TYPES.MIDAS:
-				midas_touch()
+				midas_component.start_midas()
 				
 		if inf_bomb_item.is_unlocked:
 			current_item.definition = inf_bomb_item 
