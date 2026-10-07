@@ -34,9 +34,14 @@
   - [x] Explosions should remove tiles
   - [x] Add breaking sounds back
   - [x] Fix structure generation offset
+- [x] Get midas touch and dash working again
+- [x] Fix structure generation
 
 # In progress
-- [ ] Get midas touch and dash working again
+- [ ] CHORE: reorganize project structure
+- [ ] CHORE: cull dead code
+- [ ] CHORE: cull dead art
+- [ ] CHORE: investigate and fix runtime warnings/errors
 
 - [ ] Rework shader design as a separate godot asset store tool
 
