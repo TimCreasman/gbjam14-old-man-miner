@@ -17,7 +17,7 @@ func _ready():
 
 func load_cfg():
 	var world_gen_cfg = ConfigFile.new()
-	var err = world_gen_cfg.load("res://src/terrain/world/world_gen.cfg")
+	var err = world_gen_cfg.load("res://src/world/world_gen.cfg")
 	if err!= OK:
 		print_debug("Could not load world gen config file")
 

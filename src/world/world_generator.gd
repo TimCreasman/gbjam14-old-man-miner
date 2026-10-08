@@ -31,18 +31,14 @@ func _init():
 
 func _ready():
 	player_coordinate.coordinate_changed.connect(on_coordinate_changed)
-	# player_coordinate.coordinate_changed_delta.connect(on_coordinate_changed_delta)
 	on_coordinate_changed(player_coordinate.coordinate)
 	TileMapManager.set_tilemap(tile_map_generator)
-
-	# Load bounds of the screen once.
-	# _generate(expand_bounds_around(player_coordinate.coordinate))
 
 	load_cfg()
 
 func load_cfg():
 	var world_gen_cfg = ConfigFile.new()
-	var err = world_gen_cfg.load("res://src/terrain/world/world_gen.cfg")
+	var err = world_gen_cfg.load("res://src/world/world_gen.cfg")
 	if err!= OK:
 		print_debug("Could not load world gen config file")
 

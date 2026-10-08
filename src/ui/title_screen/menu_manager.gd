@@ -2,6 +2,7 @@ class_name MenuManager
 extends Control
 
 var name_resource = preload("res://src/resources/atom_resources/string_resources/name_resource.tres")
+var next_scene = preload("res://src/scenes/main.tscn")
 
 var menus = {}
 
@@ -28,7 +29,6 @@ func open_menu_close_others(menu_name):
 		menus.get(menu_name).open()
 
 func play():
-	print("pressed play")
 	open_menu_close_others("NameMenu")
 	
 func quit():
@@ -36,7 +36,7 @@ func quit():
 
 func start():
 	name_resource.set_value(%NameLineEdit.text)
-	get_tree().change_scene_to_file("res://src/scenes/main.tscn")
+	get_tree().change_scene_to_packed(next_scene)
 
 func back():
 	open_menu_close_others("MainMenu")

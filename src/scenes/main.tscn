@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dlhoibbija0ok" path="res://src/scenes/platform.tscn" id="9_v252j"]
 [ext_resource type="FontFile" uid="uid://bullhtixkbja5" path="res://assets/fonts/GrapeSoda.ttf" id="10_auijp"]
 [ext_resource type="PackedScene" uid="uid://b82a52ea3c6ce" path="res://src/gameplay/interactables/structures/shops/shop.tscn" id="11_7opv2"]
-[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="11_sr17e"]
+[ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/themes/main_theme/ui_theme.tres" id="11_sr17e"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="12_j04uq"]
 [ext_resource type="Script" uid="uid://cwrflbaxd2ay8" path="res://src/ui/name_label.gd" id="12_n75dp"]
 [ext_resource type="PackedScene" uid="uid://bxl2ko754m7ej" path="res://src/ui/hud/hud.tscn" id="12_tyryd"]
