@@ -2,7 +2,6 @@ class_name OMM_Pickup
 extends Node2D
 
 @export var definition: OMM_ItemDefinition
-@export var picked_up_items: OMM_Positions
 
 @export_category("Internal components")
 @export var sprite_2d: Sprite2D
@@ -18,5 +17,4 @@ func set_definition(_definition: OMM_ItemDefinition):
 func grant_pickup(body: Node2D):
 	if body.has_method("pickup"):
 		body.pickup(definition)
-		picked_up_items.add_position(global_position)
 		queue_free()

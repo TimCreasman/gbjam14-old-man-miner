@@ -2,7 +2,7 @@ class_name OMM_MiningComponent
 extends Node2D
 
 ## Dig speed in seconds
-@export var dig_speed: OMM_UpgradeResource
+@export var dig_speed: OMM_StatResource
 @export var dig_distance = 7
 
 @export_category("Internal Components")

@@ -1,4 +1,4 @@
-class_name OMM_UpgradeResource
+class_name OMM_StatResource
 extends Resource
 
 @export var ending_value: float

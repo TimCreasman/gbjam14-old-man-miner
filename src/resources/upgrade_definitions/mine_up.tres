@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="OMM_UpgradeDefintion" format=3 uid="uid://088wupevtfyj"]
 
-[ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_defintition/upgrade_defintion.gd" id="1_3f44l"]
+[ext_resource type="Script" uid="uid://dmaf5uae4xmh0" path="res://src/resources/upgrade_definitions/upgrade_defintion.gd" id="1_3f44l"]
 [ext_resource type="Texture2D" uid="uid://b64ry3amibc1w" path="res://assets/art/sprites/upgrades/mine_upgrade.png" id="2_jmlao"]
-[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/quantity_resources/mining_speed_stat.tres" id="3_qwg4l"]
+[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/stat_resources/mining_speed_stat.tres" id="3_qwg4l"]
 
 [resource]
 script = ExtResource("1_3f44l")

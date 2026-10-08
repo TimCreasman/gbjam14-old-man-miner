@@ -9,4 +9,3 @@ signal item_changed(definition: OMM_ItemDefinition)
 		if value:
 			item_changed.emit(value)
 		definition = value
-

@@ -42,6 +42,7 @@
 - [ ] CHORE: cull dead code
 - [ ] CHORE: cull dead art
 - [ ] CHORE: investigate and fix runtime warnings/errors
+- [ ] CHORE: switch all internal component to export_group
 
 - [ ] Rework shader design as a separate godot asset store tool
 

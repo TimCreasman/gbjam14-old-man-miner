@@ -2,16 +2,14 @@
 
 [ext_resource type="Shader" uid="uid://b4pnkp32pesly" path="res://src/shaders/inline.gdshader" id="1_7uvl8"]
 [ext_resource type="Script" uid="uid://bp88867fua5og" path="res://src/terrain/world/world_generator.gd" id="2_rsdux"]
-[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="3_7ecim"]
+[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/positional_resources/player_coordinate.tres" id="3_7ecim"]
 [ext_resource type="Script" uid="uid://dyr1n61a54yv8" path="res://src/terrain/world/structures/item_generator.gd" id="4_27ujy"]
-[ext_resource type="Resource" uid="uid://33j27kjs5la0" path="res://src/terrain/world/generated_positions_resource.tres" id="4_b230s"]
-[ext_resource type="Resource" uid="uid://gkvrcadfwxta" path="res://src/resources/collections/pickedup_items.tres" id="6_r2bs0"]
+[ext_resource type="Resource" uid="uid://33j27kjs5la0" path="res://src/resources/collection_resources/generated_positions_resource.tres" id="4_b230s"]
 [ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/terrain/world/noise/cave_generation_noise.tres" id="7_870o3"]
 [ext_resource type="Script" uid="uid://brpi7ye8k2q4g" path="res://src/terrain/world/structures/structure_generator.gd" id="7_rsdux"]
 [ext_resource type="Script" uid="uid://co3v6ry86kyd" path="res://src/resources/structure_definitions/structure_definition.gd" id="8_27ujy"]
 [ext_resource type="Resource" uid="uid://d2j6ghh7kpec0" path="res://src/resources/structure_definitions/fountain_definition.tres" id="9_r2bs0"]
 [ext_resource type="Resource" uid="uid://sxcp0joh846g" path="res://src/resources/structure_definitions/mine_definition.tres" id="10_ux334"]
-[ext_resource type="Resource" uid="uid://dcjmtrsdr246m" path="res://src/resources/collections/destroyed_structures.tres" id="11_f30lk"]
 [ext_resource type="FastNoiseLite" uid="uid://crbrgw7kolv1j" path="res://src/terrain/world/noise/half_depth_noise.tres" id="14_7m5ls"]
 [ext_resource type="Script" uid="uid://xrxqngm2lrxe" path="res://src/core/utils/debug_node.gd" id="14_71tk6"]
 [ext_resource type="PackedScene" uid="uid://bvagxnsv70hug" path="res://src/terrain/tile_map_generator.tscn" id="15_71tk6"]
@@ -39,7 +37,6 @@ generated_positions = ExtResource("4_b230s")
 [node name="ItemGenerator" type="Node2D" parent="." unique_id=914317322]
 script = ExtResource("4_27ujy")
 terrain_noise = ExtResource("7_870o3")
-picked_up_items = ExtResource("6_r2bs0")
 
 [node name="StructureGenerator" type="Node2D" parent="." unique_id=463061862]
 z_as_relative = false
@@ -47,7 +44,6 @@ script = ExtResource("7_rsdux")
 structures = Array[ExtResource("8_27ujy")]([ExtResource("9_r2bs0"), ExtResource("10_ux334")])
 terrain_noise = ExtResource("7_870o3")
 half_depth_terrain_noise = ExtResource("14_7m5ls")
-destroyed_structures = ExtResource("11_f30lk")
 generated_positions = ExtResource("4_b230s")
 
 [node name="DebugNode2D" type="Node2D" parent="." unique_id=619950134]

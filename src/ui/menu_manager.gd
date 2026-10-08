@@ -1,7 +1,7 @@
 class_name MenuManager
 extends Control
 
-var name_resource = preload("res://src/resources/name_resource.tres")
+var name_resource = preload("res://src/resources/string_resources/name_resource.tres")
 
 var menus = {}
 
@@ -39,7 +39,7 @@ func quit():
 	get_tree().quit()
 
 func start():
-	name_resource.set_player_name(%NameLineEdit.text)
+	name_resource.set_value(%NameLineEdit.text)
 	get_tree().change_scene_to_file("res://src/scenes/main.tscn")
 
 func back():

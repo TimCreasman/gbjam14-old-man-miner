@@ -7,7 +7,8 @@ const MAXIMUM_HARDNESS = 10
 const AIR_THRESHOLD = -0.5
 
 func _noise_clamp(noise_level: float) -> int:
-	return clampi(remap(noise_level, AIR_THRESHOLD, GROUND_HARDNESS_LEVEL_START, 0, MAXIMUM_HARDNESS), 0, MAXIMUM_HARDNESS)
+	var remapi = floor(remap(noise_level, AIR_THRESHOLD, GROUND_HARDNESS_LEVEL_START, 0, MAXIMUM_HARDNESS))
+	return clampi(remapi, 0, MAXIMUM_HARDNESS)
 
 ## Gets the hardness level of the point. 0 is air
 func get_ground_hardness(global_pos: Vector2i):

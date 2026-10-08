@@ -2,14 +2,13 @@ class_name OMM_ItemGenerator
 extends Node2D
 
 @export var terrain_noise: OMM_TerrainNoise
-@export var picked_up_items: OMM_Positions
 
 var pickup_scene = preload("res://src/gameplay/interactables/pickup.tscn")
 
 @export var item_definitions: Array[OMM_ItemDefinition] = [
-	preload("res://src/resources/item_definitions/bomb_definition.tres"),
-	preload("res://src/resources/item_definitions/midas_definition.tres"),
-	preload("res://src/resources/item_definitions/dash_definition.tres"),
+	preload("res://src/resources/item_resources/item_definitions/bomb_definition.tres"),
+	preload("res://src/resources/item_resources/item_definitions/midas_definition.tres"),
+	preload("res://src/resources/item_resources/item_definitions/dash_definition.tres"),
 ]
 
 var item_index = 0
@@ -22,9 +21,6 @@ func generate(global_pos: Vector2i):
 	if !item_to_spawn.is_unlocked:
 		item_index += 1
 		item_index %= item_definitions.size()
-		return
-
-	if picked_up_items.has_position(global_pos):
 		return
 
 	# If below me is not ground, or above me is not air return

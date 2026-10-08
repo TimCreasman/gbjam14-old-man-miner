@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="OMM_ValueResource" format=3 uid="uid://c8ir4htbvtfcq"]
+
+[ext_resource type="Script" uid="uid://pix2oapfihac" path="res://src/resources/quantity_resources/value_resource.gd" id="1_s3bw4"]
+
+[resource]
+script = ExtResource("1_s3bw4")
+metadata/_custom_type_script = "uid://pix2oapfihac"

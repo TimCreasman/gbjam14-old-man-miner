@@ -13,7 +13,7 @@ extends Node2D
 
 @export var generated_positions: OMM_Positions
 
-var name_resource = preload("res://src/resources/name_resource.tres")
+var name_resource = preload("res://src/resources/string_resources/name_resource.tres")
 var terrain_noise = preload("res://src/terrain/world/noise/cave_generation_noise.tres")
 
 const TILE_SIZE = 8
@@ -27,7 +27,7 @@ const SCREEN_PADDING = 2
 var max_depth: float
 
 func _init():
-	terrain_noise.set_name_seed(name_resource.get_player_name())
+	terrain_noise.set_name_seed(name_resource.get_value())
 
 func _ready():
 	player_coordinate.coordinate_changed.connect(on_coordinate_changed)
@@ -67,13 +67,13 @@ func on_coordinate_changed_delta(coordinate, delta):
 		height = 32
 		width = 176
 		x = -HALF_SCREEN_WIDTH * 8
-		y = 10 * delta.y - (height / 2)
+		y = 10 * delta.y - (height / 2.0)
 
 	if abs(delta.x) > 0:
 		width = 32
 		height = 160
 		y = -HALF_SCREEN_HEIGHT * 8
-		x = 10 * delta.x - (width / 2)
+		x = 10 * delta.x - (width / 2.0)
 
 	ref_rect.position = coordinate + (Vector2i(x, y))
 	ref_rect.size = Vector2i(width, height)

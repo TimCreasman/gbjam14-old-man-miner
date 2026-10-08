@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OMM_ItemDefinition" format=3 uid="uid://6lys5lpocnpe"]
 
-[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definitions/item_definition.gd" id="1_pnbpr"]
+[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_resources/item_definitions/item_definition.gd" id="1_pnbpr"]
 [ext_resource type="Texture2D" uid="uid://ruyvghmgool5" path="res://assets/art/sprites/interactables/dash.png" id="2_jdc2v"]
 
 [resource]

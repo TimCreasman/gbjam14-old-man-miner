@@ -1,4 +1,5 @@
 ## Age currently reached in years
+## TODO Convert this to a component instead of a resource
 class_name OMM_AgeResource
 extends Resource
 
@@ -27,18 +28,12 @@ func get_death_reason():
 
 func _reset():
 	_is_dead = false
-	_age = 0
+	_age.reset_value()
 
 func get_death_count():
 	return _death_count
 
-var _age := 0:
-	set(value):
-		if _age != value:
-			aged.emit(int(remap(value, 0, max_age, 0, ages.size())) as AGES)
-			changed.emit(value)
-
-		_age = value
+var _age := OMM_ValueResource.new()
 
 func is_dead():
 	if StateManager.is_state(StateManager.STATE.WIN):
@@ -50,17 +45,21 @@ func increment_age():
 	if _is_dead:
 		return
 
-	_age += 1
+	_age.increment()
 
-	if _age >= ages[ages.size() - 1]:
+	if _age.get_value() >= ages[ages.size() - 1]:
 		_die()
 
 func make_young():
 	_is_dead = false
-	_age = 0
+	_age.reset_value()
 
 func do_die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
 	_die(death_reason)
+
+func _on_age_changed():
+	print("age change!")
+	aged.emit(int(remap(_age.get_value(), 0, max_age, 0, ages.size())) as AGES)
 
 func _die(death_reason: DEATH_REASON = DEATH_REASON.OLD_AGE):
 	if StateManager.current_state == StateManager.STATE.WIN:

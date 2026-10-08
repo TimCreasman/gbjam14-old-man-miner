@@ -9,7 +9,7 @@ signal exploded()
 
 func explode(death_reason: OMM_AgeResource.DEATH_REASON = OMM_AgeResource.DEATH_REASON.EXPLOSION) -> void:
 	# Workaround because overlapping bodies sometimes will not detect the tile map...
-	TileMapManager.get_tilemap().remove_radius(global_position, explosion_shape.radius)
+	TileMapManager.get_tilemap().remove_radius(global_position, floor(explosion_shape.radius))
 
 	for body in explosion_area.get_overlapping_bodies():
 

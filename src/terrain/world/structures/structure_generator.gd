@@ -7,8 +7,6 @@ extends Node2D
 
 var _spawn_container: Node2D = self
 
-@export var destroyed_structures: OMM_Positions
-
 @export var generated_positions: OMM_Positions
 
 var max_depth

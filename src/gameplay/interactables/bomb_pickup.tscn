@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8ctpwgqht23n"]
 
-[ext_resource type="PackedScene" path="res://src/gameplay/interactables/pickup.tscn" id="1_gp765"]
-[ext_resource type="Script" uid="uid://cohj448giry3f" path="res://src/resources/item_definition.gd" id="3_7ipx3"]
+[ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/pickup.tscn" id="1_gp765"]
+[ext_resource type="Script" path="res://src/resources/item_definition.gd" id="3_7ipx3"]
 
 [sub_resource type="GDScript" id="GDScript_xuhvl"]
 script/source = "extends \"res://src/gameplay/interactables/pickup.gd\"
