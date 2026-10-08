@@ -1,7 +1,7 @@
 class_name MenuManager
 extends Control
 
-var name_resource = preload("res://src/resources/string_resources/name_resource.tres")
+var name_resource = preload("res://src/resources/atom_resources/string_resources/name_resource.tres")
 
 var menus = {}
 
@@ -10,10 +10,6 @@ func _ready():
 	for child in get_children():
 		if child is Menu:
 			menus.set(child.name, child)
-	#menus.get("MainMenu").buttons.get("Play").pressed.connect(play)
-	#menus.get("MainMenu").buttons.get("Quit").pressed.connect(quit)
-	#menus.get("NameMenu").buttons.get("Start").pressed.connect(start)
-	#menus.get("NameMenu").buttons.get("Back").pressed.connect(back)
 	
 	%Play.pressed.connect(play)
 	%Quit.pressed.connect(quit)

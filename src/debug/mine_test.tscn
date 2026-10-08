@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://dwit31okjlqmc"]
 
 [ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="2_ltw4a"]
-[ext_resource type="PackedScene" uid="uid://cic7k5dj07okp" path="res://src/gameplay/interactables/mine.tscn" id="4_3fs45"]
-[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/terrain/terrain_tile_set.tres" id="4_rcyxn"]
-[ext_resource type="Script" uid="uid://bidf4vooucc7v" path="res://src/terrain/tile_map_generator.gd" id="5_5m4n1"]
-[ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/pickup.tscn" id="5_rcyxn"]
+[ext_resource type="PackedScene" uid="uid://cic7k5dj07okp" path="res://src/gameplay/interactables/tangibles/explosives/mine/mine.tscn" id="4_3fs45"]
+[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/world/terrain/tiles/terrain_tile_set.tres" id="4_rcyxn"]
+[ext_resource type="Script" uid="uid://bidf4vooucc7v" path="res://src/world/terrain/tile_map_generator.gd" id="5_5m4n1"]
+[ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/tangibles/pickups/pickup.tscn" id="5_rcyxn"]
 [ext_resource type="AudioStream" uid="uid://bo2drw4nqa2jr" path="res://assets/audio/sfx/Break.wav" id="6_v6ecs"]
 [ext_resource type="AudioStream" uid="uid://db7spjhymmvm7" path="res://assets/audio/sfx/Destroy.wav" id="7_q1fya"]
 

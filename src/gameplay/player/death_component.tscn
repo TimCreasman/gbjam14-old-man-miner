@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmjs56uk4fsv6"]
 
 [ext_resource type="Script" uid="uid://cvt3e7s3458f8" path="res://src/gameplay/player/death_component.gd" id="1_01508"]
-[ext_resource type="Resource" uid="uid://c8ir4htbvtfcq" path="res://src/resources/quantity_resources/death_count.tres" id="2_7fpbm"]
+[ext_resource type="Resource" uid="uid://c8ir4htbvtfcq" path="res://src/resources/atom_resources/quantity_resources/death_count.tres" id="2_7fpbm"]
 [ext_resource type="AudioStream" uid="uid://b08qwlkpqoaxi" path="res://assets/audio/sfx/Scream.wav" id="2_ijuel"]
 
 [node name="DeathComponent" type="Node2D" unique_id=1094930634 node_paths=PackedStringArray("death_scream", "aging_timer")]

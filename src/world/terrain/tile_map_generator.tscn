@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bvagxnsv70hug"]
+
+[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/world/terrain/tiles/terrain_tile_set.tres" id="1_kjd7a"]
+[ext_resource type="Script" uid="uid://bidf4vooucc7v" path="res://src/world/terrain/tile_map_generator.gd" id="2_8pai8"]
+[ext_resource type="FastNoiseLite" uid="uid://74d1gyqwt2or" path="res://src/world/noise/cave_generation_noise.tres" id="3_p1n2m"]
+[ext_resource type="PackedScene" uid="uid://wrxrqmxf5tth" path="res://src/world/terrain/tiles/gold.tscn" id="4_qoeav"]
+
+[node name="TileMapGenerator" type="TileMapLayer" unique_id=206538037 node_paths=PackedStringArray("break_sound", "destroy_sound")]
+tile_set = ExtResource("1_kjd7a")
+script = ExtResource("2_8pai8")
+terrain_noise = ExtResource("3_p1n2m")
+break_sound = NodePath("")
+destroy_sound = NodePath("")
+gold_tile_scene = ExtResource("4_qoeav")

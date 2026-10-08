@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="4_g5sub"]
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="6_adtws"]
 [ext_resource type="Theme" uid="uid://u6mabc8fuola" path="res://src/ui/UI.tres" id="6_damdu"]
-[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/terrain/terrain_tile_set.tres" id="6_g5sub"]
+[ext_resource type="TileSet" uid="uid://b1xqsnml7572f" path="res://src/world/terrain/tiles/terrain_tile_set.tres" id="6_g5sub"]
 [ext_resource type="StyleBox" uid="uid://deesfixrsgr1j" path="res://src/ui/style_box_flat.tres" id="11_8jlty"]
 [ext_resource type="FontFile" uid="uid://2d14rarxk7v8" path="res://assets/fonts/dogicapixel.ttf" id="11_g5sub"]
 

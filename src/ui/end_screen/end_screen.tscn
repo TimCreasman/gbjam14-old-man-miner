@@ -2,10 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://c5jwnisjhvlu7" path="res://src/ui/ui_theme.tres" id="1_6eggb"]
 [ext_resource type="Script" uid="uid://cv0n2bf6lcxic" path="res://src/ui/end_screen/end_screen.gd" id="2_8cx0g"]
-[ext_resource type="Resource" uid="uid://c8ir4htbvtfcq" path="res://src/resources/quantity_resources/death_count.tres" id="4_p30h0"]
-[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/quantity_resources/score_resource.tres" id="4_t55bn"]
+[ext_resource type="Resource" uid="uid://c8ir4htbvtfcq" path="res://src/resources/atom_resources/quantity_resources/death_count.tres" id="4_p30h0"]
+[ext_resource type="Resource" uid="uid://bkptwtqsivgvm" path="res://src/resources/atom_resources/quantity_resources/score_resource.tres" id="4_t55bn"]
 [ext_resource type="Material" uid="uid://7tnu3blnxwhm" path="res://src/shaders/palette_shader_resource.tres" id="5_p30h0"]
-[ext_resource type="Resource" uid="uid://b1yhre2qjfj7y" path="res://src/resources/string_resources/name_resource.tres" id="5_rxh4c"]
+[ext_resource type="Resource" uid="uid://b1yhre2qjfj7y" path="res://src/resources/atom_resources/string_resources/name_resource.tres" id="5_rxh4c"]
 [ext_resource type="Script" uid="uid://b22tldte1k8ju" path="res://src/shaders/palette_shader.gd" id="6_djdti"]
 [ext_resource type="Resource" uid="uid://dlve26p0npub7" path="res://src/shaders/input_palette.tres" id="7_p30h0"]
 [ext_resource type="Resource" uid="uid://b1aolvgojkjyp" path="res://src/shaders/output_palette.tres" id="8_6u0v2"]

@@ -1,7 +1,7 @@
 class_name NameLabel
 extends Label
 
-var name_resource = preload("res://src/resources/string_resources/name_resource.tres")
+var name_resource = preload("res://src/resources/atom_resources/string_resources/name_resource.tres")
 var qualifiers = [
 	"Brave",
 	"Broken",

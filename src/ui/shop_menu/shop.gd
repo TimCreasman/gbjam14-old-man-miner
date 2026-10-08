@@ -35,8 +35,9 @@ func exit_shop():
 	close()
 
 func close():
-	area_2d.body_entered.disconnect(on_body_entered)
-	sprite.frame = 1
+	if area_2d.body_entered.is_connected(on_body_entered):
+		area_2d.body_entered.disconnect(on_body_entered)
+		sprite.frame = 1
 
 func open():
 	if !area_2d.body_entered.is_connected(on_body_entered):
@@ -49,5 +50,3 @@ func _on_state_changed(new_state, _old_state) -> void:
 
 	if new_state == StateManager.STATE.MINE:
 		close()
-	# if new_state == StateManager.STATE.HUB:
-	# 	sprite.frame = 0

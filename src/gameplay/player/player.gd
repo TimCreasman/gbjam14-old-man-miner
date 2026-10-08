@@ -17,7 +17,7 @@ const JUMP_VELOCITY = -200.0
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate
 
-var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
+var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/tangibles/explosives/bomb/bomb_dropped.tscn")
 var none_item: OMM_ItemDefinition = preload("res://src/resources/item_resources/item_definitions/none_definition.tres")
 var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_resources/item_definitions/inf_bomb_definition.tres")
 
