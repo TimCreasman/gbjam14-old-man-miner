@@ -20,9 +20,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 StateManager="*uid://cobna54xycba3"
-SignalBus="*uid://b7pedwadh8fi3"
 MusicManager="*uid://bfhs3a2tll6px"
 TileMapManager="*uid://bwd56dq37dap5"
+SignalBus="*uid://b7pedwadh8fi3"
 
 [display]
 

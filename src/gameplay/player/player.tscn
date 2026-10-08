@@ -1,28 +1,21 @@
 [gd_scene format=3 uid="uid://bm4wkjp71d2vb"]
 
 [ext_resource type="Script" uid="uid://cbubdv7obrftg" path="res://src/gameplay/player/player.gd" id="1_4flbx"]
-[ext_resource type="Resource" uid="uid://c7y3rtu6x3qck" path="res://src/resources/quantity_resources/age_resource.tres" id="2_dxsvo"]
-[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/current_item.tres" id="2_k2146"]
-[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/player_coordinate.tres" id="2_sjr3t"]
-[ext_resource type="Resource" uid="uid://c2lauste7l43o" path="res://src/resources/quantity_resources/generation_resource.tres" id="3_xdbtd"]
+[ext_resource type="Resource" uid="uid://dlflchdxs0txd" path="res://src/resources/item_resources/current_item.tres" id="2_k2146"]
+[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/positional_resources/player_coordinate.tres" id="2_sjr3t"]
 [ext_resource type="PackedScene" uid="uid://dahtenw73jrvt" path="res://src/gameplay/player/player_sprite.tscn" id="5_kjyqo"]
-[ext_resource type="Script" uid="uid://dqxcirny3ugar" path="res://src/gameplay/player/old_timer.gd" id="6_rdc6l"]
-[ext_resource type="Script" uid="uid://cvt3e7s3458f8" path="res://src/gameplay/player/death_component.gd" id="7_uia4o"]
+[ext_resource type="PackedScene" uid="uid://dmjs56uk4fsv6" path="res://src/gameplay/player/death_component.tscn" id="8_rdc6l"]
 [ext_resource type="PackedScene" uid="uid://dcl7opineqkmm" path="res://src/gameplay/player/mining/mining_component.tscn" id="8_xdbtd"]
-[ext_resource type="AudioStream" uid="uid://b08qwlkpqoaxi" path="res://assets/audio/sfx/Scream.wav" id="10_xdbtd"]
 [ext_resource type="PackedScene" uid="uid://4gusw4x816ki" path="res://src/gameplay/player/dash/dash_component.tscn" id="11_nem4e"]
 [ext_resource type="PackedScene" uid="uid://bebt73q0ldqqb" path="res://src/gameplay/player/midas/midas_component.tscn" id="12_hmrcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(7, 6)
 
-[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "old_timer", "mining_component", "midas_component", "dash_component", "death_component")]
+[node name="Player" type="CharacterBody2D" unique_id=1488697836 node_paths=PackedStringArray("sprite", "mining_component", "midas_component", "dash_component", "death_component")]
 collision_mask = 3
 script = ExtResource("1_4flbx")
-age_component = ExtResource("2_dxsvo")
-generation_component = ExtResource("3_xdbtd")
 sprite = NodePath("Sprite2D")
-old_timer = NodePath("DeathComponent/OldTimer")
 mining_component = NodePath("MiningComponent")
 midas_component = NodePath("MidasComponent")
 dash_component = NodePath("DashComponent")
@@ -30,28 +23,18 @@ death_component = NodePath("DeathComponent")
 player_coordinate = ExtResource("2_sjr3t")
 current_item = ExtResource("2_k2146")
 
-[node name="DashComponent" parent="." unique_id=1674881797 node_paths=PackedStringArray("dasher") instance=ExtResource("11_nem4e")]
-position = Vector2(0, 2)
-dasher = NodePath("..")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779616123]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="DashComponent" parent="." unique_id=1674881797 node_paths=PackedStringArray("dasher") instance=ExtResource("11_nem4e")]
+position = Vector2(0, 2)
+dasher = NodePath("..")
 
 [node name="Sprite2D" parent="." unique_id=1234786695 instance=ExtResource("5_kjyqo")]
 
 [node name="MiningComponent" parent="." unique_id=1122903610 instance=ExtResource("8_xdbtd")]
 
-[node name="DeathComponent" type="Node2D" parent="." unique_id=1323119099 node_paths=PackedStringArray("death_scream")]
-script = ExtResource("7_uia4o")
-death_scream = NodePath("AudioStreamPlayer2D")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DeathComponent" unique_id=750166829]
-stream = ExtResource("10_xdbtd")
-
-[node name="OldTimer" type="Timer" parent="DeathComponent" unique_id=1992525477]
-wait_time = 0.3
-script = ExtResource("6_rdc6l")
-age_component = ExtResource("2_dxsvo")
+[node name="DeathComponent" parent="." unique_id=1094930634 instance=ExtResource("8_rdc6l")]
 
 [node name="MidasComponent" parent="." unique_id=43842415 instance=ExtResource("12_hmrcn")]

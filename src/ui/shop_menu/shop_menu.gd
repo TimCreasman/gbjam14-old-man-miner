@@ -7,7 +7,7 @@ extends Menu
 @export var buy_upgrade_buttons: Container
 @export var item_upgrade_buttons: Container
 
-@export var score_resource: OMM_ScoreResource
+@export var score_resource: OMM_ValueResource
 @export var buy_sound: AudioStreamPlayer2D
 @export var not_enough_gold_sound: AudioStreamPlayer2D
 
@@ -41,17 +41,17 @@ func create_button(buyable: OMM_Buyable) -> Button:
 
 func _on_buy_button_pressed(buyable: OMM_Buyable, button: Button):
 	var purchase_made = false
-	if buyable.cost <= score_resource._score:
+	if buyable.cost <= score_resource.get_value():
 
 		if buyable is OMM_ItemDefinition and !buyable.is_unlocked:
 			buyable.is_unlocked = true
 			current_item.definition = buyable
 			button.text="sold"
-			score_resource.decrement_score(buyable.cost)
+			score_resource.decrement(buyable.cost)
 			purchase_made = true
 
 		if buyable is OMM_UpgradeDefintion:
-			score_resource.decrement_score(buyable.cost)
+			score_resource.decrement(buyable.cost)
 			buyable.upgrade_resource.upgrade_stat()
 			purchase_made = true
 			

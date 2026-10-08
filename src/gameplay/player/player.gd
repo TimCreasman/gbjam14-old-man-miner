@@ -4,15 +4,12 @@ extends CharacterBody2D
 const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
-@export var age_component: OMM_AgeResource
 @export var item_container: Node2D
 @export var death_container: Node2D
 @export var spawn_point: Node2D
-@export var generation_component: OMM_GenerationResource
 
 @export_group("Internal Components")
 @export var sprite: Sprite2D
-@export var old_timer: Timer
 @export var mining_component: OMM_MiningComponent
 @export var midas_component: OMM_MidasComponent
 @export var dash_component: OMM_DashComponent
@@ -20,35 +17,33 @@ const JUMP_VELOCITY = -200.0
 # TODO Add this as a component
 @export var player_coordinate: OMM_Coordinate
 
-var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/bomb_dropped.tscn")
-var none_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/none_definition.tres")
-var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_definitions/inf_bomb_definition.tres")
+var bomb_scene: PackedScene = preload("res://src/gameplay/interactables/tangibles/explosives/bomb/bomb_dropped.tscn")
+var none_item: OMM_ItemDefinition = preload("res://src/resources/item_resources/item_definitions/none_definition.tres")
+var inf_bomb_item: OMM_ItemDefinition = preload("res://src/resources/item_resources/item_definitions/inf_bomb_definition.tres")
 
 @export var current_item : OMM_CurrentItemResource
 
 func _ready():
-	
 	SignalBus.restarted.connect(_on_restarted)
-	# midas_area.body_entered.connect(on_body_entered)
-	StateManager.state_changed.connect(_on_state_changed)
 	
-	age_component.aged.connect(on_aged)
-	age_component.died.connect(on_died)
-
-	# old_timer.timeout.connect(age_component.increment_age)
-	# midas_timer.timeout.connect(stop_midas_touch)
+	death_component.aged.connect(on_aged)
+	death_component.died.connect(_on_player_died)
 
 	if death_container:
-		death_component.set_up(death_container, age_component)
+		death_component.set_death_container(death_container)
 
 func _on_restarted():
+	death_component.reset_age()
 	position = spawn_point.position
+
+func _on_player_died(death_reason: OMM_DeathComponent.DEATH_REASON):
+	SignalBus.player_died.emit(OMM_DeathComponent.get_death_message(death_reason))
 
 func _physics_process(delta):
 	if not is_on_floor() and !dash_component.is_dashing:
 		velocity += get_gravity() * delta
 
-	if !age_component.is_dead():
+	if !death_component.is_dead():
 		handle_jump()
 		handle_move()
 		mining_component.handle_mine()
@@ -75,14 +70,10 @@ func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-func on_aged(age: OMM_AgeResource.AGES):
+func on_aged(age: OMM_DeathComponent.AGES):
 	if age > sprite.hframes:
 		return
 	sprite.frame = age
-
-func on_died(_died_reason):
-	generation_component.increment_generation()
-	old_timer.stop()
 
 func pickup(item_definition: OMM_ItemDefinition):
 	current_item.definition = item_definition
@@ -106,12 +97,8 @@ func handle_use_item():
 		else:
 			current_item.definition = none_item
 
-func _on_state_changed(new_state, old_state) -> void:
-	if old_state != StateManager.STATE.MINE and new_state == StateManager.STATE.MINE:
-		old_timer.start()
-
 func make_young():
-	age_component.make_young()
+	death_component.reset_age()
 
-func do_kill(death_reason: OMM_AgeResource.DEATH_REASON):
-	age_component.do_die(death_reason)
+func do_kill(death_reason: OMM_DeathComponent.DEATH_REASON):
+	death_component.do_die(death_reason)

@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://ciuu6idyepvc1"]
+
+[ext_resource type="Script" uid="uid://bp3wb1iosmuug" path="res://src/gameplay/interactables/tangibles/explosives/bomb/bomb_dropped.gd" id="1_7mgnp"]
+[ext_resource type="Texture2D" uid="uid://l2r6agropbw0" path="res://assets/art/sprites/interactables/bomb-explosion.png" id="2_pe4mc"]
+[ext_resource type="Texture2D" uid="uid://dqnti0oyt4p4i" path="res://assets/art/sprites/particles/glint.png" id="3_0wm5i"]
+[ext_resource type="Material" uid="uid://vl83qwbal2o2" path="res://src/gameplay/interactables/tangibles/explosives/bomb/fuse_particle_process_material.tres" id="4_pe4mc"]
+[ext_resource type="Texture2D" uid="uid://cu0vq6rtrcwax" path="res://assets/art/sprites/particles/explosion.png" id="5_xpk8j"]
+[ext_resource type="Material" uid="uid://cy221mebt8kmk" path="res://src/gameplay/interactables/tangibles/explosives/explosion_particle_process_material.tres" id="6_0un4j"]
+[ext_resource type="Shape2D" uid="uid://t5a6asa1fo4g" path="res://src/gameplay/interactables/tangibles/explosives/bomb/bomb_explosion_shape.tres" id="7_0un4j"]
+[ext_resource type="Script" uid="uid://ylp1qkapyf1l" path="res://src/gameplay/interactables/tangibles/explosives/explode_component.gd" id="7_xpk8j"]
+[ext_resource type="AudioStream" uid="uid://cj21plmc3mqs4" path="res://assets/audio/sfx/Explosion.wav" id="9_klxs2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpk8j"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0un4j"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klxs2"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvllb"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic4wu"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lg7f"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqh43"]
+atlas = ExtResource("2_pe4mc")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klxs2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpk8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0un4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klxs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvllb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic4wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lg7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqh43")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mgnp"]
+radius = 3.0
+
+[node name="BombDropped" type="RigidBody2D" unique_id=2041238797 node_paths=PackedStringArray("explode_component", "sprite", "explode_timer")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_7mgnp")
+explode_component = NodePath("OMM_ExplodeComponent")
+sprite = NodePath("AnimatedSprite2D")
+explode_timer = NodePath("ExplosionTimer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=555922962]
+texture_filter = 1
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_klxs2")
+animation = &"explode"
+speed_scale = 2.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=633900095]
+shape = SubResource("CircleShape2D_7mgnp")
+
+[node name="FuseParticles" type="GPUParticles2D" parent="." unique_id=1133497381]
+texture_filter = 1
+position = Vector2(0, -3)
+amount = 16
+texture = ExtResource("3_0wm5i")
+lifetime = 0.83
+process_material = ExtResource("4_pe4mc")
+
+[node name="ExplosionTimer" type="Timer" parent="." unique_id=1915847436]
+autostart = true
+
+[node name="ExplosionParticles" type="GPUParticles2D" parent="." unique_id=1936148718]
+texture_filter = 1
+emitting = false
+amount = 100
+texture = ExtResource("5_xpk8j")
+lifetime = 0.1
+one_shot = true
+process_material = ExtResource("6_0un4j")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=439749412]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1732977273]
+shape = ExtResource("7_0un4j")
+
+[node name="OMM_ExplodeComponent" type="Node2D" parent="." unique_id=302174746 node_paths=PackedStringArray("explosion_particles", "explosion_area", "explosion_sound")]
+script = ExtResource("7_xpk8j")
+explosion_particles = NodePath("../ExplosionParticles")
+explosion_area = NodePath("../ExplosionArea")
+explosion_shape = ExtResource("7_0un4j")
+explosion_sound = NodePath("../Explosion")
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="." unique_id=770393929]
+stream = ExtResource("9_klxs2")

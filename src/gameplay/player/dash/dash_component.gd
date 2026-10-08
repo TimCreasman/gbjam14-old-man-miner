@@ -19,7 +19,7 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	if !_dashing: return
 	dash_particles.start(global_position, dasher.velocity.angle())
-	TileMapManager.get_tilemap().remove_radius(global_position, dash_circle.radius)
+	TileMapManager.get_tilemap().remove_radius(global_position, floor(dash_circle.radius))
 
 func start_dash():
 	_dashing = true

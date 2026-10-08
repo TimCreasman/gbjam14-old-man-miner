@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcl7opineqkmm"]
 
 [ext_resource type="Script" uid="uid://du6w038owrjud" path="res://src/gameplay/player/mining/mining_component.gd" id="1_iq2fw"]
-[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/quantity_resources/mining_speed_stat.tres" id="2_ml8in"]
+[ext_resource type="Resource" uid="uid://mr8nlfrpbk7g" path="res://src/resources/stat_resources/mining_speed_stat.tres" id="2_ml8in"]
 [ext_resource type="Script" uid="uid://xrxqngm2lrxe" path="res://src/core/utils/debug_node.gd" id="3_gceto"]
 [ext_resource type="Material" uid="uid://m0c6yd3ig36l" path="res://src/gameplay/player/mining/particles/sparks.tres" id="3_lhm2k"]
 [ext_resource type="Texture2D" uid="uid://dla15p3qkuu5y" path="res://assets/art/sprites/tiles/break_animation_2.png" id="3_nd5e6"]
