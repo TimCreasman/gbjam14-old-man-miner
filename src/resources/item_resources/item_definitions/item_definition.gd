@@ -1,7 +1,12 @@
-class_name OMM_ItemDefinition 
+class_name OMM_ItemDefinition
 extends OMM_Buyable
 
-enum ITEM_TYPES { BOMB, DASH, MIDAS, NONE = -1}
+enum ITEM_TYPES {
+	BOMB,
+	DASH,
+	MIDAS,
+	NONE = -1,
+}
 
 @export var type: ITEM_TYPES
 @export var is_unlocked: bool

@@ -2,8 +2,8 @@
 class_name DebugNode2D
 extends Node2D
 
+
 func _ready():
 	hide()
 	if OS.is_debug_build():
 		show()
-		

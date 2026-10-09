@@ -1,6 +1,7 @@
 class_name OMM_DashParticles
 extends GPUParticles2D
 
+
 func start(pos: Vector2, angle: float):
 	emitting = true
 	global_position = pos

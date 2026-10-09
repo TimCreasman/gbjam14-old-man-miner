@@ -10,11 +10,13 @@ var _depth := 0:
 			changed.emit(value)
 		_depth = value
 
+
 func increment_depth(value = null):
 	if value:
 		_depth = max(_depth, value)
 	else:
 		_depth += 1
+
 
 func get_depth():
 	return _depth

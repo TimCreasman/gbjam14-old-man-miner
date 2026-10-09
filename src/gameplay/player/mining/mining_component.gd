@@ -1,6 +1,13 @@
 class_name OMM_MiningComponent
 extends Node2D
 
+const directions = {
+	&"move_left": Vector2(-1, 0),
+	&"move_up": Vector2(0, -1),
+	&"move_right": Vector2(1, 0),
+	&"move_down": Vector2(0, 1),
+}
+
 ## Dig speed in seconds
 @export var dig_speed: OMM_StatResource
 @export var dig_distance = 7
@@ -13,7 +20,7 @@ extends Node2D
 @export var dig_timer: Timer
 
 var pressed_actions = []
-const directions = { &"move_left":Vector2(-1, 0), &"move_up":Vector2(0, -1), &"move_right":Vector2(1, 0), &"move_down":Vector2(0, 1) }
+
 
 func _ready():
 	dig_timer.wait_time = dig_speed.get_stat_value()
@@ -21,12 +28,6 @@ func _ready():
 	mining_animation.hide()
 	sparks_emitter.emitting = false
 
-func _handle_input():
-	for direction in directions:
-		if Input.is_action_just_pressed(direction):
-			pressed_actions.push_back(direction)
-		if Input.is_action_just_released(direction):
-			pressed_actions.erase(direction)
 
 func handle_mine():
 	_handle_input()
@@ -51,6 +52,7 @@ func handle_mine():
 
 	mine(mine_dir)
 
+
 func mine(mine_dir):
 	var tile_map = ray_cast.get_collider()
 	if tile_map && tile_map is OMM_TileMapGenerator:
@@ -70,6 +72,15 @@ func mine(mine_dir):
 		mining_animation.stop_breaking()
 		sparks_emitter.emitting = false
 	pass
+
+
+func _handle_input():
+	for direction in directions:
+		if Input.is_action_just_pressed(direction):
+			pressed_actions.push_back(direction)
+		if Input.is_action_just_released(direction):
+			pressed_actions.erase(direction)
+
 
 func _on_dig_speed_changed():
 	dig_timer.wait_time = dig_speed.get_stat_value()
