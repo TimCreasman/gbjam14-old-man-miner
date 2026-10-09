@@ -35,9 +35,11 @@ func _on_coordinate_changed(coordinate: Vector2i):
 			StateManager.change_state(StateManager.STATE.MINE)
 
 	if coordinate.y == (max_depth / 2):
+		print("HALF WAY")
 		go_deeper()
+
 	# TODO use TILESIZS
-	if coordinate.y == (max_depth - 80) && !age_component.is_dead():
+	if coordinate.y == (max_depth - 80) && !StateManager.is_state(StateManager.STATE.WIN):
 		bottom_reached()
 
 func go_deeper():
