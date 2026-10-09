@@ -10,18 +10,23 @@ var _value: int = 0:
 
 var _total_value: int = 0
 
+
 func get_total():
 	return _total_value
+
 
 func get_value():
 	return _value
 
+
 func reset_value():
 	_value = 0
+
 
 func increment(amount := 1):
 	_value += amount
 	_total_value += amount
+
 
 func decrement(amount := 1):
 	_value -= amount

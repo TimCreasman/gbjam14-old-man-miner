@@ -1,6 +1,8 @@
 class_name OMM_MaxDepthReachedComponent
 extends Node
 
+signal max_depth_reached()
+
 @export var player_coordinate: OMM_Coordinate
 @export var age_component: OMM_AgeResource
 
@@ -10,24 +12,38 @@ extends Node
 
 var max_depth
 
-signal max_depth_reached()
 
 func _ready():
 	player_coordinate.coordinate_changed.connect(_on_coordinate_changed)
 	load_cfg()
 
+
 func load_cfg():
 	var world_gen_cfg = ConfigFile.new()
 	var err = world_gen_cfg.load("res://src/world/world_gen.cfg")
-	if err!= OK:
+	if err != OK:
 		print_debug("Could not load world gen config file")
 
 	max_depth = world_gen_cfg.get_value("main", "max_depth", INF)
 	StateManager.state_changed.connect(_on_state_changed)
 
+
+func go_deeper():
+	output_palette.set_palette(half_way_palette)
+	MusicManager.switch_to_song("DeeperTheme")
+
+
+func bottom_reached():
+	StateManager.change_state(StateManager.STATE.WIN)
+	output_palette.lighten(0.3)
+	MusicManager.switch_to_song("TheBottomTheme")
+	max_depth_reached.emit()
+
+
 func _on_state_changed(new_state, _old_state):
 	if new_state == StateManager.STATE.HUB:
 		output_palette.set_palette(level_0_palette)
+
 
 func _on_coordinate_changed(coordinate: Vector2i):
 	if coordinate.y == 144:
@@ -41,13 +57,3 @@ func _on_coordinate_changed(coordinate: Vector2i):
 	# TODO use TILESIZS
 	if coordinate.y == (max_depth - 80) && !StateManager.is_state(StateManager.STATE.WIN):
 		bottom_reached()
-
-func go_deeper():
-	output_palette.set_palette(half_way_palette)
-	MusicManager.switch_to_song("DeeperTheme")
-
-func bottom_reached():
-	StateManager.change_state(StateManager.STATE.WIN)
-	output_palette.lighten(0.3)
-	MusicManager.switch_to_song("TheBottomTheme")
-	max_depth_reached.emit()

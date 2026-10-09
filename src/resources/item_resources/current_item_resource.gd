@@ -4,7 +4,7 @@ extends Resource
 
 signal item_changed(definition: OMM_ItemDefinition)
 
-@export var definition : OMM_ItemDefinition:
+@export var definition: OMM_ItemDefinition:
 	set(value):
 		if value:
 			item_changed.emit(value)

@@ -3,18 +3,20 @@ extends Node2D
 
 @export var terrain_noise: OMM_TerrainNoise
 
-var pickup_scene = preload("res://src/gameplay/interactables/tangibles/pickups/pickup.tscn")
-
 @export var item_definitions: Array[OMM_ItemDefinition] = [
 	preload("res://src/resources/item_resources/item_definitions/bomb_definition.tres"),
 	preload("res://src/resources/item_resources/item_definitions/midas_definition.tres"),
 	preload("res://src/resources/item_resources/item_definitions/dash_definition.tres"),
 ]
 
+var pickup_scene = preload("res://src/gameplay/interactables/tangibles/pickups/pickup.tscn")
+
 var item_index = 0
+
 
 func sparse_noise_at(global_pos: Vector2, rarity: float):
 	return OMM_RandomNoise.get_noise_2dv(global_pos, rarity, 1)
+
 
 func generate(global_pos: Vector2i):
 	var item_to_spawn = item_definitions[item_index]
@@ -24,7 +26,9 @@ func generate(global_pos: Vector2i):
 		return
 
 	# If below me is not ground, or above me is not air return
-	if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)) || terrain_noise.is_ground(global_pos + Vector2i(0, -8)):
+	if !terrain_noise.is_ground(global_pos + Vector2i(0, 8)) || terrain_noise.is_ground(
+		global_pos + Vector2i(0, -8)
+	):
 		return
 
 	if !sparse_noise_at(global_pos, item_to_spawn.rarity):
@@ -32,7 +36,6 @@ func generate(global_pos: Vector2i):
 
 	var item_name = "itm" + str(global_pos).sha1_text()
 	if !has_node(item_name):
-
 		var item_scene = pickup_scene.instantiate() as OMM_Pickup
 		item_scene.position = global_pos
 		item_scene.name = item_name

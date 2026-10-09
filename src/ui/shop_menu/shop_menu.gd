@@ -12,8 +12,9 @@ extends Menu
 @export var not_enough_gold_sound: AudioStreamPlayer2D
 
 @export var current_item: OMM_CurrentItemResource
-# Called when the node enters the scene tree for the first time.
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for buyable in upgrades:
 		buy_upgrade_buttons.add_child(create_button(buyable))
@@ -23,9 +24,9 @@ func _ready() -> void:
 
 	super()
 
+
 # func _on_upgrade_finished(button: Button):
 # 	button.disabled = true
-
 func create_button(buyable: OMM_Buyable) -> Button:
 	var button = Button.new()
 	button.text = "$" + str(buyable.cost)
@@ -34,19 +35,18 @@ func create_button(buyable: OMM_Buyable) -> Button:
 
 	# if buyable is OMM_UpgradeDefintion:
 	# 	buyable.upgrade_resource.upgrade_finished.connect(_on_upgrade_finished.bind(button))
-	
 	if buyable:
 		pass
 	return button
 
+
 func _on_buy_button_pressed(buyable: OMM_Buyable, button: Button):
 	var purchase_made = false
 	if buyable.cost <= score_resource.get_value():
-
 		if buyable is OMM_ItemDefinition and !buyable.is_unlocked:
 			buyable.is_unlocked = true
 			current_item.definition = buyable
-			button.text="sold"
+			button.text = "sold"
 			score_resource.decrement(buyable.cost)
 			purchase_made = true
 
@@ -54,9 +54,9 @@ func _on_buy_button_pressed(buyable: OMM_Buyable, button: Button):
 			score_resource.decrement(buyable.cost)
 			buyable.upgrade_resource.upgrade_stat()
 			purchase_made = true
-			
+
 	if purchase_made:
 		buy_sound.play()
-		
+
 	else:
 		not_enough_gold_sound.play()

@@ -6,4 +6,3 @@ extends Resource
 @export var min_depth_allowed: int
 @export var scene: PackedScene
 @export var is_unlocked: bool = false
-

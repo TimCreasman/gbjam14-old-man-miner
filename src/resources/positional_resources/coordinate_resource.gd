@@ -1,14 +1,13 @@
 class_name OMM_Coordinate
 extends Resource
 
-@export var output_palette: GBPalette
-
 signal coordinate_changed(coordinate)
 signal coordinate_changed_delta(coordinate, delta)
 
+@export var output_palette: GBPalette
+
 # clamps to tile size coordinate (8, 8)
-@export
-var coordinate: Vector2i:
+@export var coordinate: Vector2i:
 	set(value):
 		var snapped_coordinate = value.snappedi(8)
 		if snapped_coordinate != coordinate:

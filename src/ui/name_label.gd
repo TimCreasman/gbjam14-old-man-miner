@@ -1,7 +1,11 @@
 class_name NameLabel
 extends Label
 
-var name_resource = preload("res://src/resources/atom_resources/string_resources/name_resource.tres")
+static var rng = RandomNumberGenerator.new()
+
+var name_resource = preload(
+	"res://src/resources/atom_resources/string_resources/name_resource.tres"
+)
 var qualifiers = [
 	"Brave",
 	"Broken",
@@ -35,13 +39,12 @@ var qualifiers = [
 	"Derpy One",
 ]
 
-static var rng = RandomNumberGenerator.new()
-
-
-func update_label():
-	text = "Go forth and mine, \n" + name_resource.get_value() + " 'The " + qualifiers[0] + "'" + "\n May your lineage \n reach the golden \n plains at the bottom" 
 
 func _ready():
 	seed(name_resource.get_value().hash())
 	qualifiers.shuffle()
 	update_label()
+
+
+func update_label():
+	text = "Go forth and mine, \n" + name_resource.get_value() + " 'The " + qualifiers[0] + "'" + "\n May your lineage \n reach the golden \n plains at the bottom"
