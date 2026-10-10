@@ -5,7 +5,7 @@ extends Node2D
 @export var player: OMM_Player
 @export var music_manager: MusicManager
 
-@export_category("Internal Components")
+@export_group("Internal Components")
 @export var sprite: Sprite2D
 @export var area_2d: Area2D
 

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export_category("Internal Components")
+@export_group("Internal Components")
 @export var explode_component: OMM_ExplodeComponent
 @export var sprite: AnimatedSprite2D
 @export var explode_timer: Timer

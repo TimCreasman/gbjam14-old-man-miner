@@ -3,7 +3,7 @@ extends Node2D
 
 @export var definition: OMM_ItemDefinition
 
-@export_category("Internal components")
+@export_group("Internal components")
 @export var sprite_2d: Sprite2D
 @export var area_2d: Area2D
 

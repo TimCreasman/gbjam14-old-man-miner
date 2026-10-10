@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export_category("Internal Components")
+@export_group("Internal Components")
 @export var area_2D: Area2D
 @export var particles: GPUParticles2D
 @export var audio: AudioStreamPlayer2D

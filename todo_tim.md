@@ -36,12 +36,12 @@
   - [x] Fix structure generation offset
 - [x] Get midas touch and dash working again
 - [x] Fix structure generation
+- [x] CHORE: reorganize project structure
+- [x] CHORE: cull dead code
+- [x] CHORE: cull dead art
+- [x] CHORE: investigate and fix runtime warnings/errors
 
 # In progress
-- [ ] CHORE: reorganize project structure
-- [ ] CHORE: cull dead code
-- [ ] CHORE: cull dead art
-- [ ] CHORE: investigate and fix runtime warnings/errors
 - [ ] CHORE: switch all internal component to export_group
 
 - [ ] Rework shader design as a separate godot asset store tool

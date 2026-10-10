@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_category("Internal Components")
+@export_group("Internal Components")
 @export var area_2d: Area2D
 @export var sprite: Sprite2D
 @export var triggered_sound: AudioStreamPlayer2D

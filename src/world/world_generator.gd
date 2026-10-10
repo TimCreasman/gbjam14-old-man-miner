@@ -9,7 +9,7 @@ const HALF_SCREEN_HEIGHT = 9
 const HALF_SCREEN_WIDTH = 10
 const SCREEN_PADDING = 2
 
-@export_category("Internal Components")
+@export_group("Internal Components")
 @export var player_coordinate: OMM_Coordinate
 @export var ref_rect: ReferenceRect
 

@@ -12,7 +12,7 @@ const directions = {
 @export var dig_speed: OMM_StatResource
 @export var dig_distance = 7
 
-@export_category("Internal Components")
+@export_group("Internal Components")
 @export var ray_cast: RayCast2D
 @export var debug_line: Line2D
 @export var mining_animation: OMM_BreakingAnimation
