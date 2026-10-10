@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="OMM_UpgradeResource" format=3 uid="uid://mr8nlfrpbk7g"]
+[gd_resource type="Resource" script_class="OMM_StatResource" format=3 uid="uid://mr8nlfrpbk7g"]
 
 [ext_resource type="Script" uid="uid://d4kqvn3r4jyjw" path="res://src/resources/stat_resources/stat_resource.gd" id="1_t1gqs"]
 

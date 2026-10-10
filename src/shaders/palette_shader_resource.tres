@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_pksiv")
 shader_parameter/input_palette = [Vector4(0.32544088, 0.32544088, 0.3254409, 1), Vector4(0, 0, 0, 1), Vector4(0.64705884, 0.64705884, 0.64705884, 1), Vector4(1, 1, 1, 1)]
-shader_parameter/output_palette = [Vector4(0.5921569, 0.18039216, 0.12941177, 1), Vector4(0, 0, 0, 1), Vector4(0.78431374, 0.5921569, 0.21568628, 1), Vector4(0.9529412, 0.92156863, 0.7647059, 1)]
+shader_parameter/output_palette = [Vector4(0.14862919, 0.3691256, 0.293613, 1), Vector4(0.017101575, 0.046941355, 0.03427492, 1), Vector4(0.62196916, 0.6584717, 0.34277138, 1), Vector4(0.9529412, 0.92156863, 0.7647059, 1)]
