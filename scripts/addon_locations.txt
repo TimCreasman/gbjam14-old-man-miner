@@ -1,0 +1,2 @@
+GDScript-formatter/addons/GDQuest_GDScript_formatter
+godot-softbody2d/addons/softbody2d

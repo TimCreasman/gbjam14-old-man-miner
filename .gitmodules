@@ -1,0 +1,6 @@
+[submodule "external/GDScript-formatter"]
+	path = external/GDScript-formatter
+	url = https://github.com/GDQuest/GDScript-formatter
+[submodule "external/godot-softbody2d"]
+	path = external/godot-softbody2d
+	url = https://github.com/appsinacup/godot-softbody2d
