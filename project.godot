@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OldManMiner"
-run/main_scene="uid://b7ksjcn0njxnh"
+run/main_scene="uid://5kivjld1gn14"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/use_filter=false
 boot_splash/image="uid://dynr03j65pqwl"
@@ -30,7 +30,12 @@ window/size/viewport_width=160
 window/size/viewport_height=144
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 [file_customization]
 
@@ -128,4 +133,3 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)

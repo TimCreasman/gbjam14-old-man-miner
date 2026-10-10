@@ -80,6 +80,7 @@ collision_mask = 2
 
 [node name="DebugNode2D" type="Node2D" parent="." unique_id=2140239318]
 script = ExtResource("3_gceto")
+always_hide = true
 metadata/_custom_type_script = "uid://xrxqngm2lrxe"
 
 [node name="DebugLine" type="Line2D" parent="DebugNode2D" unique_id=143220752]
