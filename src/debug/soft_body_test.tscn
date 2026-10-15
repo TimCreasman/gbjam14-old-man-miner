@@ -70,10 +70,10 @@ collision_mask = 3
 linear_damp = 1.5
 metadata/_custom_type_script = "uid://bsr6i4tp1x461"
 
-[node name="Skeleton2D" type="Skeleton2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1170089292]
+[node name="Skeleton2D" type="Skeleton2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=2052053307]
 visible = false
 
-[node name="Bone-0" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=1268362015]
+[node name="Bone-0" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=2039371358]
 position = Vector2(2.5, 6.5)
 rest = Transform2D(1, 0, 0, 1, 2.5, 6.5)
 auto_calculate_length_and_angle = false
@@ -84,7 +84,7 @@ metadata/idx = 0
 metadata/connected_nodes_paths = [NodePath("Bone-2"), NodePath("Bone-3"), NodePath("Bone-1"), NodePath("Bone-4")]
 metadata/connected_nodes_idx = [2, 3, 1, 4]
 
-[node name="Bone-1" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=311505404]
+[node name="Bone-1" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=714409620]
 position = Vector2(2.5, 12.5)
 rest = Transform2D(1, 0, 0, 1, 2.5, 12.5)
 auto_calculate_length_and_angle = false
@@ -95,7 +95,7 @@ metadata/idx = 1
 metadata/connected_nodes_paths = [NodePath("Bone-4"), NodePath("Bone-0"), NodePath("Bone-3")]
 metadata/connected_nodes_idx = [4, 0, 3]
 
-[node name="Bone-2" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=669151120]
+[node name="Bone-2" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=1455771515]
 position = Vector2(7, 2.5)
 rest = Transform2D(1, 0, 0, 1, 7, 2.5)
 auto_calculate_length_and_angle = false
@@ -106,7 +106,7 @@ metadata/idx = 2
 metadata/connected_nodes_paths = [NodePath("Bone-0"), NodePath("Bone-3"), NodePath("Bone-5"), NodePath("Bone-6")]
 metadata/connected_nodes_idx = [0, 3, 5, 6]
 
-[node name="Bone-3" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=763690218]
+[node name="Bone-3" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=903054791]
 position = Vector2(7, 7)
 rest = Transform2D(1, 0, 0, 1, 7, 7)
 auto_calculate_length_and_angle = false
@@ -117,7 +117,7 @@ metadata/idx = 3
 metadata/connected_nodes_paths = [NodePath("Bone-0"), NodePath("Bone-2"), NodePath("Bone-1"), NodePath("Bone-4"), NodePath("Bone-5"), NodePath("Bone-6"), NodePath("Bone-7")]
 metadata/connected_nodes_idx = [0, 2, 1, 4, 5, 6, 7]
 
-[node name="Bone-4" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=1297319869]
+[node name="Bone-4" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=586522606]
 position = Vector2(7, 13.5)
 rest = Transform2D(1, 0, 0, 1, 7, 13.5)
 auto_calculate_length_and_angle = false
@@ -128,7 +128,7 @@ metadata/idx = 4
 metadata/connected_nodes_paths = [NodePath("Bone-1"), NodePath("Bone-0"), NodePath("Bone-3"), NodePath("Bone-6"), NodePath("Bone-7")]
 metadata/connected_nodes_idx = [1, 0, 3, 6, 7]
 
-[node name="Bone-5" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=327171172]
+[node name="Bone-5" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=985799287]
 position = Vector2(12.5, 2.5)
 rest = Transform2D(1, 0, 0, 1, 12.5, 2.5)
 auto_calculate_length_and_angle = false
@@ -139,7 +139,7 @@ metadata/idx = 5
 metadata/connected_nodes_paths = [NodePath("Bone-6"), NodePath("Bone-2"), NodePath("Bone-3")]
 metadata/connected_nodes_idx = [6, 2, 3]
 
-[node name="Bone-6" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=1820292106]
+[node name="Bone-6" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=138892662]
 position = Vector2(13.5, 7)
 rest = Transform2D(1, 0, 0, 1, 13.5, 7)
 auto_calculate_length_and_angle = false
@@ -150,7 +150,7 @@ metadata/idx = 6
 metadata/connected_nodes_paths = [NodePath("Bone-5"), NodePath("Bone-2"), NodePath("Bone-3"), NodePath("Bone-4"), NodePath("Bone-7")]
 metadata/connected_nodes_idx = [5, 2, 3, 4, 7]
 
-[node name="Bone-7" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=1090249264]
+[node name="Bone-7" type="Bone2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Skeleton2D" unique_id=318214682]
 position = Vector2(13.5, 13.5)
 rest = Transform2D(1, 0, 0, 1, 13.5, 13.5)
 auto_calculate_length_and_angle = false
@@ -161,7 +161,7 @@ metadata/idx = 7
 metadata/connected_nodes_paths = [NodePath("Bone-3"), NodePath("Bone-4"), NodePath("Bone-6")]
 metadata/connected_nodes_idx = [3, 4, 6]
 
-[node name="Bone-0" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1260364916]
+[node name="Bone-0" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1358953533]
 position = Vector2(2.5, 6.5)
 collision_layer = 3
 collision_mask = 3
@@ -173,17 +173,17 @@ metadata/shape_fit = 0.70710677
 metadata/edge = true
 metadata/bone_name = &"Bone-0"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1978227079]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1055449911]
 visible = false
 shape = SubResource("CircleShape2D_mggm1")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=679023984]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1634480532]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-0")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-0-Bone-2" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=2115626670]
+[node name="Joint2D-Bone-0-Bone-2" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1545417471]
 visible = false
 position = Vector2(2.25, -2)
 rotation = -2.2974386
@@ -194,7 +194,7 @@ softness = 60.0
 metadata/joint_distance = 6.0207973
 metadata/original_distance = 6.0207973
 
-[node name="Joint2D-Bone-0-Bone-3" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=838151214]
+[node name="Joint2D-Bone-0-Bone-3" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=56820109]
 visible = false
 position = Vector2(2.25, 0.25)
 rotation = -1.4601392
@@ -205,7 +205,7 @@ softness = 60.0
 metadata/joint_distance = 4.527693
 metadata/original_distance = 4.527693
 
-[node name="Joint2D-Bone-0-Bone-1" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1146987078]
+[node name="Joint2D-Bone-0-Bone-1" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1052012018]
 visible = false
 position = Vector2(0, 3)
 node_a = NodePath("..")
@@ -215,7 +215,7 @@ softness = 60.0
 metadata/joint_distance = 6.0
 metadata/original_distance = 6.0
 
-[node name="Joint2D-Bone-0-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=646391396]
+[node name="Joint2D-Bone-0-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=789657019]
 visible = false
 position = Vector2(2.25, 3.5)
 rotation = -0.57133746
@@ -226,7 +226,7 @@ softness = 60.0
 metadata/joint_distance = 8.321658
 metadata/original_distance = 8.321658
 
-[node name="Joint2D-Bone-0-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=229581164]
+[node name="Joint2D-Bone-0-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1615493671]
 visible = false
 position = Vector2(5, -2)
 rotation = -1.9513026
@@ -238,7 +238,7 @@ metadata/joint_distance = 10.770329
 metadata/original_distance = 10.770329
 metadata/hops = 2
 
-[node name="Joint2D-Bone-0-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=820590960]
+[node name="Joint2D-Bone-0-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=565610943]
 visible = false
 position = Vector2(5.5, 0.25)
 rotation = -1.5253731
@@ -250,7 +250,7 @@ metadata/joint_distance = 11.011357
 metadata/original_distance = 11.011357
 metadata/hops = 2
 
-[node name="Joint2D-Bone-0-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1576975665]
+[node name="Joint2D-Bone-0-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-0" unique_id=1981713338]
 visible = false
 position = Vector2(5.5, 3.5)
 rotation = -1.0040672
@@ -262,7 +262,7 @@ metadata/joint_distance = 13.038404
 metadata/original_distance = 13.038404
 metadata/hops = 2
 
-[node name="Bone-1" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=482136432]
+[node name="Bone-1" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1107015526]
 position = Vector2(2.5, 12.5)
 collision_layer = 3
 collision_mask = 3
@@ -274,17 +274,17 @@ metadata/shape_fit = 0.5
 metadata/edge = true
 metadata/bone_name = &"Bone-1"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1779870030]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1383365929]
 visible = false
 shape = SubResource("CircleShape2D_l2lbc")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1100943908]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1683902704]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-1")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-1-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=783263390]
+[node name="Joint2D-Bone-1-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=963983348]
 visible = false
 position = Vector2(2.25, 0.5)
 rotation = -1.3521274
@@ -295,7 +295,7 @@ softness = 60.0
 metadata/joint_distance = 4.609772
 metadata/original_distance = 4.609772
 
-[node name="Joint2D-Bone-1-Bone-3" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1970585608]
+[node name="Joint2D-Bone-1-Bone-3" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=952636355]
 visible = false
 position = Vector2(2.25, -2.75)
 rotation = -2.4558632
@@ -306,7 +306,7 @@ softness = 60.0
 metadata/joint_distance = 7.106335
 metadata/original_distance = 7.106335
 
-[node name="Joint2D-Bone-1-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=393447960]
+[node name="Joint2D-Bone-1-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=942391817]
 visible = false
 position = Vector2(5.5, -2.75)
 rotation = -2.0344439
@@ -318,7 +318,7 @@ metadata/joint_distance = 12.298374
 metadata/original_distance = 12.298374
 metadata/hops = 2
 
-[node name="Joint2D-Bone-1-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1147754116]
+[node name="Joint2D-Bone-1-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1574152187]
 visible = false
 position = Vector2(5.5, 0.5)
 rotation = -1.4801364
@@ -330,7 +330,7 @@ metadata/joint_distance = 11.045361
 metadata/original_distance = 11.045361
 metadata/hops = 2
 
-[node name="Joint2D-Bone-1-Bone-2" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1460866702]
+[node name="Joint2D-Bone-1-Bone-2" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1024276193]
 visible = false
 position = Vector2(2.25, -5)
 rotation = -2.7187388
@@ -342,7 +342,7 @@ metadata/joint_distance = 10.965857
 metadata/original_distance = 10.965857
 metadata/hops = 2
 
-[node name="Joint2D-Bone-1-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1286717822]
+[node name="Joint2D-Bone-1-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-1" unique_id=1987461752]
 visible = false
 position = Vector2(5, -5)
 rotation = -2.3561945
@@ -354,7 +354,7 @@ metadata/joint_distance = 14.142136
 metadata/original_distance = 14.142136
 metadata/hops = 2
 
-[node name="Bone-2" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=319366220]
+[node name="Bone-2" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1059294719]
 position = Vector2(7, 2.5)
 collision_layer = 3
 collision_mask = 3
@@ -365,17 +365,17 @@ metadata/idx = 2
 metadata/edge = true
 metadata/bone_name = &"Bone-2"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=2094593997]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=8546772]
 visible = false
 shape = SubResource("CircleShape2D_if2oo")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=415328728]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=1893768608]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-2")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-2-Bone-3" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=942080846]
+[node name="Joint2D-Bone-2-Bone-3" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=675591778]
 visible = false
 position = Vector2(0, 2.25)
 node_a = NodePath("..")
@@ -385,7 +385,7 @@ softness = 60.0
 metadata/joint_distance = 4.5
 metadata/original_distance = 4.5
 
-[node name="Joint2D-Bone-2-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=1092141164]
+[node name="Joint2D-Bone-2-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=1604890075]
 visible = false
 position = Vector2(2.75, 0)
 rotation = -1.5707964
@@ -396,7 +396,7 @@ softness = 60.0
 metadata/joint_distance = 5.5
 metadata/original_distance = 5.5
 
-[node name="Joint2D-Bone-2-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=1034780309]
+[node name="Joint2D-Bone-2-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=279456078]
 visible = false
 position = Vector2(3.25, 2.25)
 rotation = -0.9652516
@@ -407,7 +407,7 @@ softness = 60.0
 metadata/joint_distance = 7.905694
 metadata/original_distance = 7.905694
 
-[node name="Joint2D-Bone-2-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=378877297]
+[node name="Joint2D-Bone-2-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=332318700]
 visible = false
 position = Vector2(0, 5.5)
 node_a = NodePath("..")
@@ -418,7 +418,7 @@ metadata/joint_distance = 11.0
 metadata/original_distance = 11.0
 metadata/hops = 2
 
-[node name="Joint2D-Bone-2-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=1010016367]
+[node name="Joint2D-Bone-2-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-2" unique_id=670051006]
 visible = false
 position = Vector2(3.25, 5.5)
 rotation = -0.53370816
@@ -430,7 +430,7 @@ metadata/joint_distance = 12.776933
 metadata/original_distance = 12.776933
 metadata/hops = 2
 
-[node name="Bone-3" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=74905955]
+[node name="Bone-3" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1595717587]
 position = Vector2(7, 7)
 collision_layer = 3
 collision_mask = 3
@@ -440,17 +440,17 @@ metadata/rest_position = Vector2(7, 7)
 metadata/idx = 3
 metadata/bone_name = &"Bone-3"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=2024264971]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1988290060]
 visible = false
 shape = SubResource("CircleShape2D_if2oo")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=988986294]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1946889759]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-3")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-3-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=763558305]
+[node name="Joint2D-Bone-3-Bone-4" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=73061706]
 visible = false
 position = Vector2(0, 3.25)
 node_a = NodePath("..")
@@ -460,7 +460,7 @@ softness = 60.0
 metadata/joint_distance = 6.5
 metadata/original_distance = 6.5
 
-[node name="Joint2D-Bone-3-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1309922677]
+[node name="Joint2D-Bone-3-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1898575596]
 visible = false
 position = Vector2(2.75, -2.25)
 rotation = -2.2565258
@@ -471,7 +471,7 @@ softness = 60.0
 metadata/joint_distance = 7.106335
 metadata/original_distance = 7.106335
 
-[node name="Joint2D-Bone-3-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1986369790]
+[node name="Joint2D-Bone-3-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1256036103]
 visible = false
 position = Vector2(3.25, 0)
 rotation = -1.5707964
@@ -482,7 +482,7 @@ softness = 60.0
 metadata/joint_distance = 6.5
 metadata/original_distance = 6.5
 
-[node name="Joint2D-Bone-3-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=438298473]
+[node name="Joint2D-Bone-3-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-3" unique_id=1280059734]
 visible = false
 position = Vector2(3.25, 3.25)
 rotation = -0.7853981
@@ -493,7 +493,7 @@ softness = 60.0
 metadata/joint_distance = 9.192389
 metadata/original_distance = 9.192389
 
-[node name="Bone-4" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1317792352]
+[node name="Bone-4" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1663676564]
 position = Vector2(7, 13.5)
 collision_layer = 3
 collision_mask = 3
@@ -504,17 +504,17 @@ metadata/idx = 4
 metadata/edge = true
 metadata/bone_name = &"Bone-4"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=223685316]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=2110171395]
 visible = false
 shape = SubResource("CircleShape2D_if2oo")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=1538674193]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=1628030747]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-4")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-4-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=1809188641]
+[node name="Joint2D-Bone-4-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=1848216501]
 visible = false
 position = Vector2(3.25, -3.25)
 rotation = -2.3561945
@@ -525,7 +525,7 @@ softness = 60.0
 metadata/joint_distance = 9.192389
 metadata/original_distance = 9.192389
 
-[node name="Joint2D-Bone-4-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=706961502]
+[node name="Joint2D-Bone-4-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=180026665]
 visible = false
 position = Vector2(3.25, 0)
 rotation = -1.5707964
@@ -536,7 +536,7 @@ softness = 60.0
 metadata/joint_distance = 6.5
 metadata/original_distance = 6.5
 
-[node name="Joint2D-Bone-4-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=861591291]
+[node name="Joint2D-Bone-4-Bone-5" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-4" unique_id=1087898180]
 visible = false
 position = Vector2(2.75, -5.5)
 rotation = -2.6779451
@@ -548,7 +548,7 @@ metadata/joint_distance = 12.298374
 metadata/original_distance = 12.298374
 metadata/hops = 2
 
-[node name="Bone-5" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1548515656]
+[node name="Bone-5" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1134903828]
 position = Vector2(12.5, 2.5)
 collision_layer = 3
 collision_mask = 3
@@ -560,17 +560,17 @@ metadata/shape_fit = 0.5
 metadata/edge = true
 metadata/bone_name = &"Bone-5"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=324545119]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=1504252225]
 visible = false
 shape = SubResource("CircleShape2D_g3m7k")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=744008641]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=496714561]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-5")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-5-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=1837562549]
+[node name="Joint2D-Bone-5-Bone-6" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=1946337583]
 visible = false
 position = Vector2(0.5, 2.25)
 rotation = -0.2186689
@@ -581,7 +581,7 @@ softness = 60.0
 metadata/joint_distance = 4.609772
 metadata/original_distance = 4.609772
 
-[node name="Joint2D-Bone-5-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=2106753022]
+[node name="Joint2D-Bone-5-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-5" unique_id=321827244]
 visible = false
 position = Vector2(0.5, 5.5)
 rotation = -0.09065993
@@ -593,7 +593,7 @@ metadata/joint_distance = 11.045361
 metadata/original_distance = 11.045361
 metadata/hops = 2
 
-[node name="Bone-6" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=747353982]
+[node name="Bone-6" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1551134221]
 position = Vector2(13.5, 7)
 collision_layer = 3
 collision_mask = 3
@@ -604,17 +604,17 @@ metadata/idx = 6
 metadata/edge = true
 metadata/bone_name = &"Bone-6"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-6" unique_id=2093036033]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-6" unique_id=2143983011]
 visible = false
 shape = SubResource("CircleShape2D_if2oo")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-6" unique_id=42837475]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-6" unique_id=984130477]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-6")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-6-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-6" unique_id=80766805]
+[node name="Joint2D-Bone-6-Bone-7" type="PinJoint2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-6" unique_id=287858623]
 visible = false
 position = Vector2(0, 3.25)
 node_a = NodePath("..")
@@ -624,7 +624,7 @@ softness = 60.0
 metadata/joint_distance = 6.5
 metadata/original_distance = 6.5
 
-[node name="Bone-7" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=813488427]
+[node name="Bone-7" type="RigidBody2D" parent="Slime/CanvasGroup/OMM_SoftBody2D" unique_id=1487496888]
 position = Vector2(13.5, 13.5)
 collision_layer = 3
 collision_mask = 3
@@ -635,11 +635,11 @@ metadata/idx = 7
 metadata/edge = true
 metadata/bone_name = &"Bone-7"
 
-[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-7" unique_id=2089651732]
+[node name="CircleShape2D" type="CollisionShape2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-7" unique_id=564659634]
 visible = false
 shape = SubResource("CircleShape2D_if2oo")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-7" unique_id=1182033707]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Slime/CanvasGroup/OMM_SoftBody2D/Bone-7" unique_id=226822856]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-7")
 update_rotation = false
