@@ -4,3 +4,6 @@
 [submodule "external/godot-softbody2d"]
 	path = external/godot-softbody2d
 	url = https://github.com/appsinacup/godot-softbody2d
+[submodule "external/godot-rapier-physics"]
+	path = external/godot-rapier-physics
+	url = https://github.com/appsinacup/godot-rapier-physics.git

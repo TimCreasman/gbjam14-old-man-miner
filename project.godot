@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="OldManMiner"
-run/main_scene="uid://b7ksjcn0njxnh"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+run/main_scene="uid://5kivjld1gn14"
+config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/use_filter=false
 boot_splash/image="uid://dynr03j65pqwl"
 config/icon="res://icon.svg"
@@ -26,11 +26,14 @@ SignalBus="*uid://b7pedwadh8fi3"
 
 [display]
 
-window/size/viewport_width=160
-window/size/viewport_height=144
+window/size/viewport_width=240
+window/size/viewport_height=135
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 [file_customization]
 
@@ -111,15 +114,23 @@ use_item={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
+left_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
+2d_render/layer_2="slime_viewport"
 2d_physics/layer_1="player"
 2d_physics/layer_2="tiles"
 2d_physics/layer_3="items"
 
 [physics]
 
+2d/run_on_separate_thread=true
+2d/physics_engine="Rapier2D"
 3d/physics_engine="Jolt Physics"
 
 [rendering]
@@ -128,4 +139,5 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

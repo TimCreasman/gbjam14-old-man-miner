@@ -60,7 +60,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ww62p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"breaking",
 "speed": 5.0
 }]
@@ -83,7 +83,7 @@ script = ExtResource("3_gceto")
 metadata/_custom_type_script = "uid://xrxqngm2lrxe"
 
 [node name="DebugLine" type="Line2D" parent="DebugNode2D" unique_id=143220752]
-points = PackedVector2Array(0, 0, 8, 0)
+points = PackedVector2Array(0, 0, 10, 0)
 width = 1.0
 default_color = Color(1, 0, 1, 1)
 
