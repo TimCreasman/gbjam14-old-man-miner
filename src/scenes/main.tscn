@@ -141,6 +141,7 @@ output_palette = ExtResource("5_sr17e")
 [node name="HUD" parent="Viewport" unique_id=446722643 instance=ExtResource("12_tyryd")]
 
 [node name="ShopMenu" parent="Viewport" unique_id=188154621 instance=ExtResource("13_htxff")]
+visible = false
 
 [node name="Systems" type="Node" parent="." unique_id=569555038]
 

@@ -4,4 +4,4 @@ extends Node2D
 
 
 func _process(_delta):
-	position = soft_body.get_bones_center_position()
+	global_position = soft_body.get_bones_center_position()

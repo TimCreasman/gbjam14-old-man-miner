@@ -1,26 +1,26 @@
 [gd_scene format=3 uid="uid://d0uwmo0cy35ne"]
 
-[ext_resource type="PackedScene" uid="uid://cqv8mb3s82yf2" path="res://src/gameplay/camera/camera.tscn" id="1_qfyf5"]
 [ext_resource type="PackedScene" uid="uid://c6njgqn2764mb" path="res://src/world/world_generator.tscn" id="1_v1yqe"]
-[ext_resource type="PackedScene" uid="uid://bm4wkjp71d2vb" path="res://src/gameplay/player/player.tscn" id="2_6tfmy"]
-[ext_resource type="Resource" uid="uid://bk1k0w4hk1drf" path="res://src/resources/positional_resources/player_coordinate.tres" id="2_pux7k"]
 [ext_resource type="PackedScene" uid="uid://pf1amx6ut2n8" path="res://src/gameplay/interactables/tangibles/pickups/pickup.tscn" id="5_mulue"]
 [ext_resource type="Resource" uid="uid://dv7e3oh27yyw4" path="res://src/resources/item_resources/item_definitions/inf_bomb_definition.tres" id="6_lvcxu"]
+[ext_resource type="PackedScene" uid="uid://lg67h008eivi" path="res://src/gameplay/player/slime.tscn" id="7_dhtca"]
 
 [node name="TerrainGeneration" type="Node2D" unique_id=219085352]
-
-[node name="Camera" parent="." unique_id=777090513 node_paths=PackedStringArray("follow_node") instance=ExtResource("1_qfyf5")]
-position = Vector2(0, 144)
-follow_node = NodePath("../Player")
-coordinate_component = ExtResource("2_pux7k")
-
-[node name="Player" parent="." unique_id=1488697836 node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_6tfmy")]
-position = Vector2(0, -12)
-spawn_point = NodePath("..")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=930577744]
 
 [node name="WorldGenerator" parent="." unique_id=747406970 instance=ExtResource("1_v1yqe")]
 
 [node name="Pickup" parent="." unique_id=1075131245 instance=ExtResource("5_mulue")]
 definition = ExtResource("6_lvcxu")
+
+[node name="Slime" parent="." unique_id=1038388697 node_paths=PackedStringArray("follow_me") instance=ExtResource("7_dhtca")]
+follow_me = NodePath("../SlimeFollower")
+
+[node name="SlimeFollower" type="Node2D" parent="." unique_id=1277907364]
+
+[node name="Camera2D" type="Camera2D" parent="SlimeFollower" unique_id=930577744]
+position = Vector2(0, -14)
+position_smoothing_speed = 20.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_vertical_offset = 1.0
+editor_draw_drag_margin = true

@@ -26,8 +26,8 @@ SignalBus="*uid://b7pedwadh8fi3"
 
 [display]
 
-window/size/viewport_width=160
-window/size/viewport_height=144
+window/size/viewport_width=240
+window/size/viewport_height=135
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
 
@@ -130,7 +130,7 @@ left_click={
 [physics]
 
 2d/run_on_separate_thread=true
-common/physics_ticks_per_second=120
+2d/physics_engine="Rapier2D"
 3d/physics_engine="Jolt Physics"
 
 [rendering]
